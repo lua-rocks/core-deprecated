@@ -7,6 +7,10 @@ documentation tools I know, such as: [ldoc][], [luadoc][], [emmylua][] and
 It generates code documentation in markdown format and also in the future I
 really want to add autocomplete support for some IDE(s).
 
+## Demo
+
+All generated documetation of this project located [here](doc/readme.md).
+
 ## Tags
 
 - `>`: function argument or table field
