@@ -31,7 +31,7 @@ they are mine and this repository is native to them.
 
 [öbject]: doc/lib.object.md
 [mödule]: doc/lib.module.md
-[luapi]: lib/luapi/readme.md
+[luapi]: lib/luapi
 [asserts]: doc/lib.asserts.md
 [lume]: https://github.com/rxi/lume
 [inspect]: https://github.com/kikito/inspect.lua
