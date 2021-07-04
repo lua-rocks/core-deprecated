@@ -12,12 +12,12 @@
 | [lib.module][] | Mödules are neutered Öbjects (without any ÖØP feautures) |
 | [lib.object][] | Öbject - Base superclass that implements ÖØP |
 
-[lib.asserts]: /home/luarocks/repo/core/doc/lib.asserts.md
-[lib.inspect]: /home/luarocks/repo/core/doc/lib.inspect.md
-[lib.luapi]: /home/luarocks/repo/core/doc/lib.luapi.md
-[lib.luapi.block]: /home/luarocks/repo/core/doc/lib.luapi.block.md
-[lib.luapi.conf]: /home/luarocks/repo/core/doc/lib.luapi.conf.md
-[lib.luapi.file]: /home/luarocks/repo/core/doc/lib.luapi.file.md
-[lib.luapi.files]: /home/luarocks/repo/core/doc/lib.luapi.files.md
-[lib.module]: /home/luarocks/repo/core/doc/lib.module.md
-[lib.object]: /home/luarocks/repo/core/doc/lib.object.md
+[lib.asserts]: lib.asserts.md
+[lib.inspect]: lib.inspect.md
+[lib.luapi]: lib.luapi.md
+[lib.luapi.block]: lib.luapi.block.md
+[lib.luapi.conf]: lib.luapi.conf.md
+[lib.luapi.file]: lib.luapi.file.md
+[lib.luapi.files]: lib.luapi.files.md
+[lib.module]: lib.module.md
+[lib.object]: lib.object.md

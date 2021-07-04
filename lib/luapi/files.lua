@@ -132,7 +132,7 @@ function Files:write(index_path)
       local title = file[1].title
       if title then title = title .. ' ' else title = '' end
       out = out .. '| [' .. path .. '][] | ' .. title .. '|\n'
-      links = links .. '['  .. path ..  ']: ' .. file.mdpath .. '\n'
+      links = links .. '['  .. path ..  ']: ' .. file.reqpath .. '.md\n'
     end
   end
   out = out .. '\n' .. links
