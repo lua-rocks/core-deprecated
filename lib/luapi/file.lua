@@ -70,7 +70,7 @@ local function out_methods_and_fields(self, out, is)
       out.head:add ' ('
       for index, value in ipairs(self.fields) do
         if index > 1 then out.head:add ', ' end
-        out_method_args_and_returns(value, out, '↪')
+        out_method_args_and_returns(value, out, '⏩')
       end
       out.head:add ')'
     end
