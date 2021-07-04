@@ -1,6 +1,6 @@
 # Lua Core Bundle (WIP)
 
-This repository contains a minimal build of the first needed lua libraries
+This repository contains a minimal set of the first needed lua libraries
 which I use in my projects as a skeleton.
 
 **Attention!** I plan to cover every library with documentation, but since my
