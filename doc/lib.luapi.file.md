@@ -22,18 +22,18 @@ IDEA: Parse and write list of requires
 
 ## read
 
-↤ `success` : **lib.luapi.file|nil**
+🔚 `success` : **lib.luapi.file|nil**
 
 ## parse
 
-↤ `success` : **lib.luapi.file|nil**
+🔚 `success` : **lib.luapi.file|nil**
 
 ## write
 
 ↪ `indexmd` : **string**
 `index md file name`
 
-↤ `success` : **lib.luapi.file|nil**
+🔚 `success` : **lib.luapi.file|nil**
 
 ## 🖇️ Links
 

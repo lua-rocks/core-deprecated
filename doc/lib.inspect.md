@@ -19,7 +19,7 @@ Inspect variable
 
 ↪ `options` : **lib.inspect.options**
 
-↤ `result` : **string**
+🔚 `result` : **string**
 
 ## 🖇️ Links
 

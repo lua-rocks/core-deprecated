@@ -23,7 +23,7 @@ Write `readme.md` for entire project
 
 ↪ `index_path` : **string**
 
-↤ `success` : **lib.luapi.files|nil**
+🔚 `success` : **lib.luapi.files|nil**
 
 ## 🖇️ Links
 

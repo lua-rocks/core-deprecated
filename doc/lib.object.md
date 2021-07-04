@@ -43,7 +43,7 @@ Creates an instance of the class
 ↪ `...` : **any** _[nil]_
 `Arguments passed to init`
 
-↤ `instance` : **lib.object**
+🔚 `instance` : **lib.object**
 
 ## init
 
@@ -65,7 +65,7 @@ Creates a new class by inheritance
 ↪ `...` : **table|lib.object** _[nil]_
 `Additional properties`
 
-↤ `cls` : **lib.object**
+🔚 `cls` : **lib.object**
 
 ## implement
 
@@ -86,7 +86,7 @@ Returns the "membership range" between self and the checking class
 ↪ `limit` : **integer** _[nil]_
 `Check depth (default unlimited)`
 
-↤ `membership_range` : **integer|boolean**
+🔚 `membership_range` : **integer|boolean**
 
 ## is
 
@@ -94,7 +94,7 @@ Identifies affiliation to class
 
 ↪ `Test` : **string|lib.object**
 
-↤ `result` : **boolean**
+🔚 `result` : **boolean**
 
 ## each
 
@@ -112,7 +112,7 @@ Loops through all elements, performing an action on each
 ↪ `...` _[nil]_
 `Additional arguments for the action`
 
-↤ `result` : **integer=table}**
+🔚 `result` : **integer=table}**
 `Results of all actions`
 
 ## 🖇️ Links
