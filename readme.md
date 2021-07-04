@@ -10,7 +10,7 @@ something, I'd be incredibly grateful!
 
 I don't use libraries like `busted` or `lpeg` because I don't like to
 unnecessarily complicate things. I'm 100% happy with the default asserts and
-patterns and hope you are too, but if not, no one forbids you to add them.
+patterns, and I hope you are too, but if not - no one forbids you to add them.
 
 Target lua version: `5+` (i.e. any version), including `luajit`, `love` etc.
 
@@ -56,7 +56,6 @@ Follow these rules to make your code enjoyable to work with:
 + always check the types of data you get and cover the code with basic tests
   (don't worry about a lot of asserts creating an unnecessary load; the `assert`
   function itself can easily be replaced by a pacifier function in production)
-+ filenames in `snake_case`
 
 Of all the lua programmers I heard, only `rxi` follows the style described
 above. That's why I consider him one of the best. Read The sources of his `lite`
