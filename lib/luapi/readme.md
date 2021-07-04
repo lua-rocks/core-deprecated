@@ -9,7 +9,7 @@ really want to add autocomplete support for some IDE(s).
 
 ## Demo
 
-All generated documetation of this project located [here](doc/readme.md).
+All generated documetation of this project located [here](../../doc/readme.md).
 
 ## Tags
 
