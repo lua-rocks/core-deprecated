@@ -99,13 +99,15 @@ function Files:init(luapi)
     local file = File(reqpath, luapath, mdpath)
 
     if file:read() and file:parse() then
-      file:write(out_path)
+      -- FIXME: Temporary disabled
+      -- file:write(out_path)
       self[reqpath] = file
     end
   end
 
   -- Write index
-  self:write(out_path)
+  -- FIXME: Temporary disabled
+  -- self:write(out_path)
 end
 
 
