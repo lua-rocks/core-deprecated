@@ -33,4 +33,4 @@ IDEA: Parse and write list of requires
 
 ## 🖇️ Links
 
-[Back to root](../???)
+[Go up](..)

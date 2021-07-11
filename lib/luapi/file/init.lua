@@ -283,7 +283,7 @@ function File:write()
   end
 
   out.foot:add '\n## 🖇️ Links\n'
-  out.foot:add('\n[Back to root](../???)\n') -- FIXME
+  out.foot:add('\n[Go up](..)\n')
 
   -- See `lib.luapi.block:out()`
   if self1 then
