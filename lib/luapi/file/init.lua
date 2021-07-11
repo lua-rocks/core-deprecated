@@ -264,10 +264,9 @@ end
 
 
 --[[
-> indexmd (string) index md file name
 < success (lib.luapi.file|nil)
 ]]
-function File:write(indexmd)
+function File:write()
   -- Touch file
   local file = io.open(self.fullpath .. '/readme.md', 'w+')
   if not file then
@@ -284,7 +283,7 @@ function File:write(indexmd)
   end
 
   out.foot:add '\n## 🖇️ Links\n'
-  out.foot:add('\n[Back to root](../' .. indexmd .. ')\n')
+  out.foot:add('\n[Back to root](../???)\n') -- FIXME
 
   -- See `lib.luapi.block:out()`
   if self1 then

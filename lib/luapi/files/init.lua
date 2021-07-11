@@ -84,8 +84,7 @@ function Files:init(luapi)
     local file = File(reqpath, fullpath)
 
     if file:read() and file:parse() then
-      -- FIXME: Temporary disabled
-      -- file:write(out_path)
+      file:write()
       self[reqpath] = file
     end
   end
