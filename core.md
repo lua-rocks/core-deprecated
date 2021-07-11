@@ -37,7 +37,7 @@ they are mine and this repository is native to them.
 [inspect]: https://github.com/kikito/inspect.lua
 [ansicolors]: https://github.com/kikito/ansicolors.lua
 
-## Code style (useful tips)
+## Code style
 
 Follow these rules to make your code enjoyable to work with:
 
@@ -56,26 +56,3 @@ Follow these rules to make your code enjoyable to work with:
 + always check the types of data you get and cover the code with basic tests
   (don't worry about a lot of asserts creating an unnecessary load; the `assert`
   function itself can easily be replaced by a pacifier function in production)
-
-Of all the lua programmers I heard, only `rxi` follows the style described
-above. That's why I consider him one of the best. Read The sources of his `lite`
-text editor is a pure pleasure!
-
-## Git for the lazy (harmful tips)
-
-If you're working alone, you can use these characters at the beginning of a
-commit and then name a commit in one or two words (or not name it at all).
-
-I use these abbreviations when I'm too lazy to type a lot and it's convenient,
-but of course, they make the commit log look like crap and it's better not to do
-that...
-
-**NEVER!** 😆
-
-+ **~**: minor edits
-+ **>**: move, rename
-+ **<**: rollback
-+ **!**: fix, important edit
-+ **\***: updating, improving
-+ **+**: addition
-+ **-**: deletion
