@@ -24,8 +24,7 @@ local content_code
 IDEA: Parse and write list of requires
 @ (list=lib.luapi.file.class) First class is current module
 > reqpath (string)
-> luapath (string)
-> mdpath  (string)
+> fullpath (string)
 ]]
 local File = module 'lib.luapi.file'
 
@@ -128,12 +127,11 @@ local function out_module(self, out)
 end
 
 
-function File:init(reqpath, luapath, mdpath)
-  asserts(function(x) return type(x) == 'string' end, reqpath, luapath, mdpath)
+function File:init(reqpath, fullpath)
+  asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
 
   self.reqpath = reqpath
-  self.luapath = luapath
-  self.mdpath  = mdpath
+  self.fullpath = fullpath
 end
 
 
@@ -141,7 +139,7 @@ end
 < success (lib.luapi.file|nil)
 ]]
 function File:read()
-  local file = io.open(self.luapath, 'rb')
+  local file = io.open(self.fullpath .. '/init.lua', 'rb')
   if not file then file:close() return nil end
   content_full = file:read '*a'
   content_code = content_full:gsub('%-%-%[%[.-%]%]', ''):gsub('%-%-.-\n', '')
@@ -271,9 +269,9 @@ end
 ]]
 function File:write(indexmd)
   -- Touch file
-  local file = io.open(self.mdpath, 'w+')
+  local file = io.open(self.fullpath .. '/readme.md', 'w+')
   if not file then
-    print('error: failed to create "' .. self.mdpath .. '"')
+    print('error: failed to create "' .. self.fullpath .. '/readme.md' .. '"')
     return nil
   end
 
