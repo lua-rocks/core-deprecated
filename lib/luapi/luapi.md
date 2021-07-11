@@ -48,18 +48,17 @@ also any other files on which this module depends, such as sounds, images, and
 whatever else. It makes your modules more portable and independent and also its
 pretty nice to see readme exactly under the files in your git-repository
 website. That's why documentation generates only from `init.lua` files and saves
-output in the same directory.
+output `readme.md` in the same directory. File called `example.lua` from the
+same directory also will be included into readme (you can use such files not
+only as examples, but also as simple unit-tests).
 
 You can document all your code, but keep in mind that luapi will only parse
-**classes** from `init.lua` files (and save output in the same directory). If
-there is no classes in the file or your file has a different name, it will be
-skipped.
-
-Class is `--[[` comments block with the tag `@` inside. Module (or "ClassMod")
-is the special class which does not require `@` tag and is recognized by the
-variable returned at the end of the file. But if file does not return a
-documented variable, then the **first** class in the file will be considered a
-module.
+**classes**. If there is no classes in the file or file name is not `init.lua`,
+it will be skipped. Class is `--[[` comments block with the tag `@` inside.
+Module (or "ClassMod") is the special class which does not require `@` tag and
+is recognized by the variable returned at the end of the file. But if file does
+not return a documented variable, then the **first** class in the file will be
+considered a module.
 
 ## Types
 
@@ -96,7 +95,7 @@ These rules are _important_:
 
 + never call files in your project `readme.md` because these files will be
   generated automatically; use `parent_directory_name.md` instead (its
-  content will be included into `readme.md` in the process of generation)
+  content will be included into `readme.md` in the generation process)
 
 [ldoc]: https://stevedonovan.github.io/ldoc/manual/doc.md.html
 [luadoc]: https://keplerproject.github.io/luadoc
