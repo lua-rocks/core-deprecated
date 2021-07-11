@@ -2,7 +2,7 @@
 
 ## LUAPI
 
-- Documented module **must** be called `index.lua` and documentation **must** be
+- Documented module **must** be called `init.lua` and documentation **must** be
   placed into the same directory with the name `readme.md`.
 - File can have one external class and many internals (tables as classes).
 - Escape whatever you want with `\` (partitially done).
