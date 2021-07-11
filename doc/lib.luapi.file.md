@@ -30,7 +30,7 @@ IDEA: Parse and write list of requires
 
 ## write
 
-✅ `indexmd` : **string**
+✏️ `indexmd` : **string**
 `index md file name`
 
 🔚 `success` : **lib.luapi.file|nil**

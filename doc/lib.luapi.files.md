@@ -21,7 +21,7 @@ Get paths, load, read, parse, write
 
 Write `readme.md` for entire project
 
-✅ `index_path` : **string**
+✏️ `index_path` : **string**
 
 🔚 `success` : **lib.luapi.files|nil**
 
