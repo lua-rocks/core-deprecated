@@ -4,6 +4,14 @@ Extends: **[table][]**
 
 Requires: **none**
 
+<details><summary><b>Example</b></summary>
+
+```lua
+print 'hello world'
+```
+
+</details>
+
 ## Test Module
 
 Import and run with start()
@@ -14,14 +22,6 @@ module.start()
 ```
 
     I'm <not> a [code
-
-<details><summary><b>Example</b></summary>
-
-```lua
-print 'hello world'
-```
-
-</details>
 
 ## 📜 Fields
 
