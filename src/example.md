@@ -15,7 +15,7 @@ module.start()
 
     I'm <not> a [code
 
-<details><h2><summary>Example</summary></h2>
+<details><summary><h2>Example</h2></summary>
 
 ```lua
 print 'hello world'
