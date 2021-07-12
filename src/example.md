@@ -13,7 +13,15 @@ local module = require "testmodule"
 module.start()
 ```
 
-    I'm <not> a [code]
+    I'm <not> a [code
+
+<h2><details><summary>Example</summary>
+
+```lua
+print 'hello world'
+```
+
+</details></h2>
 
 ## 📜 Fields
 
