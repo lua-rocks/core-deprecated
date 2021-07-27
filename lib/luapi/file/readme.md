@@ -19,15 +19,15 @@ IDEA: Parse and write list of requires
 
 ## 🧩 Details
 
-## read
+### method `read`
 
 🔚 `success` : **lib.luapi.file|nil**
 
-## parse
+### method `parse`
 
 🔚 `success` : **lib.luapi.file|nil**
 
-## write
+### method `write`
 
 🔚 `success` : **lib.luapi.file|nil**
 

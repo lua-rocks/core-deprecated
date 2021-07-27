@@ -103,7 +103,7 @@ Key features of this library:
 
 ## 🧩 Details
 
-## new
+### method `new`
 
 Creates an instance of the class
 
@@ -114,7 +114,7 @@ Creates an instance of the class
 
 🔚 `instance` : **lib.object**
 
-## init
+### method `init`
 
 Initializes the class
 
@@ -124,7 +124,7 @@ Initializes the class
 ✏️ `fields` : **table** _[nil]_
 `New fields`
 
-## extend
+### method `extend`
 
 Creates a new class by inheritance
 
@@ -136,14 +136,14 @@ Creates a new class by inheritance
 
 🔚 `cls` : **lib.object**
 
-## implement
+### method `implement`
 
 Sets someone else's methods
 
 ✏️ `...` : **table|lib.object**
 `Methods`
 
-## has
+### method `has`
 
 Returns the "membership range" between self and the checking class
 
@@ -157,7 +157,7 @@ Returns the "membership range" between self and the checking class
 
 🔚 `membership_range` : **integer|boolean**
 
-## is
+### method `is`
 
 Identifies affiliation to class
 
@@ -165,7 +165,7 @@ Identifies affiliation to class
 
 🔚 `result` : **boolean**
 
-## each
+### method `each`
 
 Loops through all elements, performing an action on each
 

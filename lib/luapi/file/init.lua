@@ -5,7 +5,8 @@ local Block   = require 'lib.luapi.block'
 
 local content_full
 local content_code
-local content_example
+local include_example
+local include_readme
 
 
 --[[ Class structure
@@ -62,7 +63,7 @@ local function out_methods_and_fields(self, out, is)
     if self.parent then out.head:add(' : ' .. self.parent) end
     if self.square then out.head:add(' = ' .. self.square) end
   elseif is == 'methods' then
-    out.body:add('\n## ' .. self.name .. '\n')
+    out.body:add('\n### method `' .. self.name .. '`\n')
     if self.title then out.body:add('\n' .. self.title .. '\n') end
     if self.description then out.body:add('\n> ' ..
       self.description:gsub('\n', '\n> ') .. '\n') end
@@ -149,7 +150,7 @@ function File:read()
   -- example.lua
   file = io.open(self.fullpath .. '/example.lua', 'rb')
   if not file then return self end
-  content_example = file:read '*a'
+  include_example = file:read '*a'
   return self
 end
 
@@ -292,18 +293,18 @@ function File:write()
 
   -- See `lib.luapi.block:out()`
   if self1 then
-    -- IDEA: Include lua-file as example
-    -- IDEA: Include md-file as additional info
+    -- TODO: Include md-file as additional info
     -- TODO: Module classes
     -- TODO: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')
-    if content_example then
+    if include_example then
       out.head
         :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
-        :add (content_example)
+        :add (include_example)
         :add '```\n\n</details>\n'
     end
+
     out_module(self1, out)
   end
 

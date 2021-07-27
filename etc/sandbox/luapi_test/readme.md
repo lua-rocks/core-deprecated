@@ -24,7 +24,7 @@ Extends: **table**
 
 ## 🧩 Details
 
-## super_method
+### method `super_method`
 
 Super-duper method
 

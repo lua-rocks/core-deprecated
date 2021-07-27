@@ -11,7 +11,7 @@ Returns any lua variable in human-readable format.
 
 ## 🧩 Details
 
-## inspect
+### method `inspect`
 
 Inspect variable
 
