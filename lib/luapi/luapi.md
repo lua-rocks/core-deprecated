@@ -16,9 +16,9 @@ All generated documetation of this project located [here](../../doc/readme.md).
 - `>`: function argument or table field
 - `<`: function return
 - `@`: mark block as "class" and set its name/reqpath (can be only one in block)
+- first word after tag: variable name (or reqpath if tag is `@`)
 - `(parentheses)`: variable type name or parent class reqpath
 - `[square brackets]`: default value of the variable (makes it _optional_)
-- first word after tag: variable name (or reqpath if tag is `@`)
 - last words: one line comment (title)
 
 Quick example:
@@ -49,15 +49,15 @@ whatever else. It makes your modules more portable and independent and also its
 pretty nice to see readme exactly under the files in your git-repository
 website. That's why documentation generates only from `init.lua` files and saves
 output `readme.md` in the same directory. File called `example.lua` from the
-same directory also will be included into readme (you can use such files not
+same directory will be included into `readme.md` (you can use such files not
 only as examples, but also as simple unit-tests).
 
 You can document all your code, but keep in mind that luapi will only parse
 **classes**. If there is no classes in the file or file name is not `init.lua`,
-it will be skipped. Class is `--[[` comments block with the tag `@` inside.
+it will be skipped. Class is `--[[...]]` comments block with the tag `@` inside.
 Module (or "ClassMod") is the special class which does not require `@` tag and
-is recognized by the variable returned at the end of the file. But if file does
-not return a documented variable, then the **first** class in the file will be
+is recognized by the variable returned at the end of the file. But if the file
+does not return a documented variable, then the **first** class in file will be
 considered a module.
 
 ## Types
@@ -94,7 +94,7 @@ These rules are _optional_, but highly recommended:
 These rules are _important_:
 
 + never call files in your project `readme.md` because these files will be
-  generated automatically; use `parent_directory_name.md` instead (its
+  generated automatically; use `current_directory_name.md` instead (its
   content will be included into `readme.md` in the generation process)
 
 [ldoc]: https://stevedonovan.github.io/ldoc/manual/doc.md.html

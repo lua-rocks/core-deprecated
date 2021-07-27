@@ -5,6 +5,7 @@ local Block   = require 'lib.luapi.block'
 
 local content_full
 local content_code
+local content_example
 
 
 --[[ Class structure
@@ -139,11 +140,16 @@ end
 < success (lib.luapi.file|nil)
 ]]
 function File:read()
+  -- init.lua
   local file = io.open(self.fullpath .. '/init.lua', 'rb')
-  if not file then file:close() return nil end
+  if not file then return nil end
   content_full = file:read '*a'
   content_code = content_full:gsub('%-%-%[%[.-%]%]', ''):gsub('%-%-.-\n', '')
   file:close()
+  -- example.lua
+  file = io.open(self.fullpath .. '/example.lua', 'rb')
+  if not file then return self end
+  content_example = file:read '*a'
   return self
 end
 
@@ -276,14 +282,13 @@ function File:write()
 
   -- Create a table for preparations
   local self1 = self[1]
-  local add = function(add, text) add.text = add.text .. text end
+  local add = function(add, text) add.text = add.text .. text; return add end
   local out = {}
   for _, key in ipairs { 'head', 'body', 'foot' } do
     out[key] = { text = '', add = add }
   end
 
-  out.foot:add '\n## 🖇️ Links\n'
-  out.foot:add('\n[Go up](..)\n')
+  out.foot:add '\n## 🖇️ Links\n\n[Go up](..)\n'
 
   -- See `lib.luapi.block:out()`
   if self1 then
@@ -293,6 +298,12 @@ function File:write()
     -- TODO: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')
+    if content_example then
+      out.head
+        :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
+        :add (content_example)
+        :add '```\n\n</details>\n'
+    end
     out_module(self1, out)
   end
 
