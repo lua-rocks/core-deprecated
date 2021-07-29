@@ -28,7 +28,7 @@ Extends: **table**
 
 ## 🧩 Details
 
-## init
+### Method `init`
 
 Take comments block and create structured data block
 
@@ -36,4 +36,4 @@ Take comments block and create structured data block
 
 ## 🖇️ Links
 
-[Back to root](../doc/readme.md)
+[Go up](..)

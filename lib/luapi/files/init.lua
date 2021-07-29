@@ -14,15 +14,16 @@ function Files:init(luapi)
 
   local filters = luapi.conf.path_filters or {}
   local root = luapi.conf.root_path
-  local luapaths = {}
-  local out_path = luapi.conf.out_path .. '/' .. luapi.conf.index_name
+  local fullpaths = {}
 
-  --[[ Extract files with `.lua` extension and add it to `luapaths`
+  --[[ Extract files called `init.lua` and add paths of their dirs to `fullpaths`
   > all_files (list)
   ]]
-  local function extract_luapaths(all_files)
+  local function extract_fullpaths(all_files)
     for _, path in ipairs(all_files) do
-      if path:find '%.lua$' then table.insert(luapaths, path) end
+      if path:find '/init.lua$' then
+        table.insert(fullpaths, path:sub(1, -10))
+      end
     end
   end
 
@@ -68,44 +69,29 @@ function Files:init(luapi)
     return paths
   end
 
-  --[[
-  > luapath (string)
-  < reqpath (string)
-  < mdpath  (string)
-  ]]
-  local function generate_paths(luapath)
-    local reqpath = luapath
-      :gsub(root .. '/', '')
-      :gsub(root, '')
-      :gsub('%.lua', '')
-      :gsub('/init', '')
-      :gsub('/', '.')
-    local mdpath = root .. '/' .. luapi.conf.out_path .. '/' .. reqpath .. '.md'
-    return reqpath, mdpath
-  end
-
   -- Extract paths
   if #filters == 0 then
-    extract_luapaths(extract_subpaths(root))
+    extract_fullpaths(extract_subpaths(root))
   else
     for _, filter in ipairs(filters) do
-      extract_luapaths(extract_subpaths(root .. '/' .. filter))
+      extract_fullpaths(extract_subpaths(root .. '/' .. filter))
     end
   end
 
   -- Load and handle files
-  for _, luapath in ipairs(luapaths) do
-    local reqpath, mdpath = generate_paths(luapath)
-    local file = File(reqpath, luapath, mdpath)
+  for _, fullpath in ipairs(fullpaths) do
+    local reqpath = fullpath:gsub(root .. '/', ''):gsub(root, ''):gsub('/', '.')
+    local file = File(reqpath, fullpath)
 
     if file:read() and file:parse() then
-      file:write(out_path)
+      file:write()
       self[reqpath] = file
     end
   end
 
   -- Write index
-  self:write(out_path)
+  -- FIXME: Temporary disabled
+  -- self:write(out_path)
 end
 
 

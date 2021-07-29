@@ -2,7 +2,24 @@
 
 Extends: **table**
 
+<details><summary><b>Example</b></summary>
+
+```lua
+print(2+2)
+```
+
+</details>
+
 ## This file is sandbox for testing luapi
+
+Content of `luapi_test.md` will be included into `readme.md`.
+
+Heading #1 from `luapi_test.md` will be used as title only if there is no module
+title in `init.lua`.
+
+### Some heading
+
+All headings levels will be automatically increased to +1 in `readme.md`.
 
 ## 📜 Fields
 
@@ -24,7 +41,7 @@ Extends: **table**
 
 ## 🧩 Details
 
-## super_method
+### Method `super_method`
 
 Super-duper method
 
@@ -32,17 +49,17 @@ Super-duper method
 > (actually you no **need** to describe anything 😉
 > but of course you can if you want to).
 
-↪ `n` : **number**
+✏️ `n` : **number**
 `Spaces between tagged data will be ignored`
 
-↪ `x` : **integer** _[2]_
+✏️ `x` : **integer** _[2]_
 
-↤ `self` : **etc.sandbox.luapi_test**
+🔚 `self` : **etc.sandbox.luapi_test**
 `Bli bla`
 
-↤ `n` : **number**
+🔚 `n` : **number**
 `Blu ble`
 
 ## 🖇️ Links
 
-[Back to root](../doc/readme.md)
+[Go up](..)

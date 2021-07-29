@@ -16,4 +16,4 @@ The test will also fail if an error occurs during the test.
 
 ## 🖇️ Links
 
-[Back to root](../doc/readme.md)
+[Go up](..)

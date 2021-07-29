@@ -17,4 +17,4 @@ The same way you can easily upgrade it to öbject later if you change your mind.
 
 ## 🖇️ Links
 
-[Back to root](../doc/readme.md)
+[Go up](..)

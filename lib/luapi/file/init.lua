@@ -5,6 +5,8 @@ local Block   = require 'lib.luapi.block'
 
 local content_full
 local content_code
+local include_example
+local include_readme
 
 
 --[[ Class structure
@@ -24,8 +26,7 @@ local content_code
 IDEA: Parse and write list of requires
 @ (list=lib.luapi.file.class) First class is current module
 > reqpath (string)
-> luapath (string)
-> mdpath  (string)
+> fullpath (string)
 ]]
 local File = module 'lib.luapi.file'
 
@@ -62,7 +63,7 @@ local function out_methods_and_fields(self, out, is)
     if self.parent then out.head:add(' : ' .. self.parent) end
     if self.square then out.head:add(' = ' .. self.square) end
   elseif is == 'methods' then
-    out.body:add('\n## ' .. self.name .. '\n')
+    out.body:add('\n### Method `' .. self.name .. '`\n')
     if self.title then out.body:add('\n' .. self.title .. '\n') end
     if self.description then out.body:add('\n> ' ..
       self.description:gsub('\n', '\n> ') .. '\n') end
@@ -99,7 +100,22 @@ local function out_module(self, out)
   if self.extends then
     out.head:add('\nExtends: **' .. self.extends ..'**\n')
   end
+  if include_example then
+    out.head
+      :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
+      :add (include_example)
+      :add '```\n\n</details>\n'
+  end
+  if include_readme then
+    if not self.title then
+      self.title = include_readme:match '\n#%s(.-)\n'
+    end
+    include_readme = include_readme
+      :gsub('\n#%s.-\n', '') -- remove title header
+      :gsub('\n#', '\n##') -- increase all headers level
+  end
   if self.title then out.head:add('\n## ' .. self.title .. '\n') end
+  if include_readme then out.head:add(include_readme) end
   if self.requires then
     out.head:add '\nRequires: **'
     for index, value in ipairs(self.requires) do
@@ -128,12 +144,16 @@ local function out_module(self, out)
 end
 
 
-function File:init(reqpath, luapath, mdpath)
-  asserts(function(x) return type(x) == 'string' end, reqpath, luapath, mdpath)
+function File:init(reqpath, fullpath)
+  asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
+
+  content_full    = nil
+  content_code    = nil
+  include_example = nil
+  include_readme  = nil
 
   self.reqpath = reqpath
-  self.luapath = luapath
-  self.mdpath  = mdpath
+  self.fullpath = fullpath
 end
 
 
@@ -141,11 +161,25 @@ end
 < success (lib.luapi.file|nil)
 ]]
 function File:read()
-  local file = io.open(self.luapath, 'rb')
-  if not file then file:close() return nil end
+  -- init.lua
+  local file = io.open(self.fullpath .. '/init.lua', 'rb')
+  if not file then return nil end
   content_full = file:read '*a'
   content_code = content_full:gsub('%-%-%[%[.-%]%]', ''):gsub('%-%-.-\n', '')
   file:close()
+  -- modname.md
+  local modname = self.fullpath:match '.+/(.+)'
+  file = io.open(self.fullpath .. '/' .. modname .. '.md', 'rb')
+  if file then
+    include_readme = '\n' .. file:read '*a'
+    file:close()
+  end
+  -- example.lua
+  file = io.open(self.fullpath .. '/example.lua', 'rb')
+  if file then
+    include_example = file:read '*a'
+    file:close()
+  end
   return self
 end
 
@@ -266,36 +300,33 @@ end
 
 
 --[[
-> indexmd (string) index md file name
 < success (lib.luapi.file|nil)
 ]]
-function File:write(indexmd)
+function File:write()
   -- Touch file
-  local file = io.open(self.mdpath, 'w+')
+  local file = io.open(self.fullpath .. '/readme.md', 'w+')
   if not file then
-    print('error: failed to create "' .. self.mdpath .. '"')
+    print('error: failed to create "' .. self.fullpath .. '/readme.md' .. '"')
     return nil
   end
 
   -- Create a table for preparations
   local self1 = self[1]
-  local add = function(add, text) add.text = add.text .. text end
+  local add = function(add, text) add.text = add.text .. text; return add end
   local out = {}
   for _, key in ipairs { 'head', 'body', 'foot' } do
     out[key] = { text = '', add = add }
   end
 
-  out.foot:add '\n## 🖇️ Links\n'
-  out.foot:add('\n[Back to root](../' .. indexmd .. ')\n')
+  out.foot:add '\n## 🖇️ Links\n\n[Go up](..)\n'
 
   -- See `lib.luapi.block:out()`
   if self1 then
-    -- IDEA: Include lua-file as example
-    -- IDEA: Include md-file as additional info
     -- TODO: Module classes
     -- TODO: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')
+
     out_module(self1, out)
   end
 

@@ -11,7 +11,7 @@ Returns any lua variable in human-readable format.
 
 ## 🧩 Details
 
-## inspect
+### Method `inspect`
 
 Inspect variable
 
@@ -23,4 +23,4 @@ Inspect variable
 
 ## 🖇️ Links
 
-[Back to root](../doc/readme.md)
+[Go up](..)

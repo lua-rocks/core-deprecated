@@ -1,6 +1,4 @@
-# `lib.luapi`
-
-## Documentation generator
+# LUAPI (WIP)
 
 **LUAPI** is an attempt to bring together the best features of all lua
 documentation tools I know, such as: [ldoc][], [luadoc][], [emmylua][] and
@@ -9,11 +7,11 @@ documentation tools I know, such as: [ldoc][], [luadoc][], [emmylua][] and
 It generates code documentation in markdown format and also in the future I
 really want to add autocomplete support for some IDE(s).
 
-### Demo
+## Demo
 
 All generated documetation of this project located [here](../../doc/readme.md).
 
-### Tags
+## Tags
 
 - `>`: function argument or table field
 - `<`: function return
@@ -42,7 +40,7 @@ end
 
 For more examples see source code of all this project 😉.
 
-### Concept
+## Concept
 
 Storing each module in a separate directory is a very good practice because it
 allows you to keep together with the lua files not only the documentation but
@@ -62,7 +60,7 @@ is recognized by the variable returned at the end of the file. But if the file
 does not return a documented variable, then the **first** class in file will be
 considered a module.
 
-### Types
+## Types
 
 When declaring a variable type, you can use all the built-in lua types or actual
 variable values, plus the types listed below (keep in mind that equal sign works
@@ -85,7 +83,7 @@ Also you can use your defined module require paths as types:
 
 You can't use classnames as types because they are not unique.
 
-### Style guide
+## Style guide
 
 These rules are _optional_, but highly recommended:
 
@@ -104,22 +102,3 @@ These rules are _important_:
 [luadoc]: https://keplerproject.github.io/luadoc
 [scriptum]: https://github.com/charlesmallah/lua-scriptum
 [emmylua]: https://github.com/EmmyLua
-
-## 📜 Fields
-
-+ **conf : lib.luapi.conf**
-+ **files : lib.luapi.files**
-
-## 💡 Methods
-
-+ **init (conf)**
-
-## 🧩 Details
-
-### Method `init`
-
-✏️ `conf` : **table=lib.luapi.conf**
-
-## 🖇️ Links
-
-[Go up](..)

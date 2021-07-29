@@ -9,32 +9,28 @@ IDEA: Parse and write list of requires
 ## 📜 Fields
 
 + **reqpath : string**
-+ **luapath : string**
-+ **mdpath : string**
++ **fullpath : string**
 
 ## 💡 Methods
 
 + **read : success**
 + **parse : success**
-+ **write (indexmd) : success**
++ **write : success**
 
 ## 🧩 Details
 
-## read
+### Method `read`
 
 🔚 `success` : **lib.luapi.file|nil**
 
-## parse
+### Method `parse`
 
 🔚 `success` : **lib.luapi.file|nil**
 
-## write
-
-✏️ `indexmd` : **string**
-`index md file name`
+### Method `write`
 
 🔚 `success` : **lib.luapi.file|nil**
 
 ## 🖇️ Links
 
-[Back to root](../doc/readme.md)
+[Go up](..)
