@@ -12,6 +12,15 @@ print(2+2)
 
 ## This file is sandbox for testing luapi
 
+Content of `luapi_test.md` will be included into `readme.md`.
+
+Heading #1 from `luapi_test.md` will be used as title only if there is no module
+title in `init.lua`.
+
+### Some heading
+
+All headings levels will be automatically increased to +1 in `readme.md`.
+
 ## 📜 Fields
 
 + **some_field1 : some_type1 = some_default_value1**

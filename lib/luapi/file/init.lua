@@ -107,12 +107,15 @@ local function out_module(self, out)
       :add '```\n\n</details>\n'
   end
   if include_readme then
-    -- TODO: Include md-file as additional info
     if not self.title then
-      self.title = include_readme:match '\n#%s(.+)\n'
+      self.title = include_readme:match '\n#%s(.-)\n'
     end
+    include_readme = include_readme
+      :gsub('\n#%s.-\n', '') -- remove title header
+      :gsub('\n#', '\n##') -- increase all headers level
   end
   if self.title then out.head:add('\n## ' .. self.title .. '\n') end
+  if include_readme then out.head:add(include_readme) end
   if self.requires then
     out.head:add '\nRequires: **'
     for index, value in ipairs(self.requires) do

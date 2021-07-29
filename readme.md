@@ -29,10 +29,10 @@ they are mine and this repository is native to them.
 + [inspect][] - variable inspector by `kikito`
 + [ansicolors][] - multicolor terminal output by `hoelzro` and `kikito`
 
-[öbject]: doc/lib.object.md
-[mödule]: doc/lib.module.md
+[öbject]: lib/object
+[mödule]: lib/module
 [luapi]: lib/luapi
-[asserts]: doc/lib.asserts.md
+[asserts]: lib/asserts
 [lume]: https://github.com/rxi/lume
 [inspect]: https://github.com/kikito/inspect.lua
 [ansicolors]: https://github.com/kikito/ansicolors.lua
