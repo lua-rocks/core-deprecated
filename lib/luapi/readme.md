@@ -12,8 +12,8 @@ really want to add autocomplete support for some IDE(s).
 ### Demo
 
 Almost all `readme.md` files including this one was generated using `lib.luapi`.
-Check out `init.lua` files to see how it works. Full "stress tests" you can
-find [here](../../etc/sandbox/luapi_test).
+Check out `init.lua` files to see how it works. Some tests you can find
+[here](../../etc/sandbox/luapi_test).
 
 ### Tags
 
