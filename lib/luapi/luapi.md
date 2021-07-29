@@ -63,7 +63,8 @@ considered a module.
 ## Types
 
 When declaring a variable type, you can use all the built-in lua types or actual
-variable values, plus the types listed below:
+variable values, plus the types listed below (keep in mind that equal sign works
+different in different types):
 
 + **any** for any type
 + **integer** for non float number
@@ -71,7 +72,7 @@ variable values, plus the types listed below:
 + **list=function|table** list **of** functions **or** tables
 + **{string=number|string}** table with **one** key=value
 + **{1=string,"size"=32}** similar example of two key=values
-+ **{string=string...}** any number of key/values
++ **{string=string...}** any number of key=values
 + **{integer=any...}** this example is equivalent to **list**
 
 Also you can use your defined module require paths as types:

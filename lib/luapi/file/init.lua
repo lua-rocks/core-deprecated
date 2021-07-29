@@ -100,6 +100,16 @@ local function out_module(self, out)
   if self.extends then
     out.head:add('\nExtends: **' .. self.extends ..'**\n')
   end
+  if include_example then
+    out.head
+      :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
+      :add (include_example)
+      :add '```\n\n</details>\n'
+  end
+  if include_readme then
+    local title = ('\n' .. include_readme):match '\n#%s(.-)\n'
+    if title then dump(title) end
+  end
   if self.title then out.head:add('\n## ' .. self.title .. '\n') end
   if self.requires then
     out.head:add '\nRequires: **'
@@ -132,6 +142,11 @@ end
 function File:init(reqpath, fullpath)
   asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
 
+  content_full    = nil
+  content_code    = nil
+  include_example = nil
+  include_readme  = nil
+
   self.reqpath = reqpath
   self.fullpath = fullpath
 end
@@ -147,10 +162,19 @@ function File:read()
   content_full = file:read '*a'
   content_code = content_full:gsub('%-%-%[%[.-%]%]', ''):gsub('%-%-.-\n', '')
   file:close()
+  -- modname.md
+  local modname = self.fullpath:match '.+/(.+)'
+  file = io.open(self.fullpath .. '/' .. modname .. '.md', 'rb')
+  if file then
+    include_readme = file:read '*a'
+    file:close()
+  end
   -- example.lua
   file = io.open(self.fullpath .. '/example.lua', 'rb')
-  if not file then return self end
-  include_example = file:read '*a'
+  if file then
+    include_example = file:read '*a'
+    file:close()
+  end
   return self
 end
 
@@ -298,12 +322,6 @@ function File:write()
     -- TODO: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')
-    if include_example then
-      out.head
-        :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
-        :add (include_example)
-        :add '```\n\n</details>\n'
-    end
 
     out_module(self1, out)
   end

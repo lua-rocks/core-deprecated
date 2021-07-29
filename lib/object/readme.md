@@ -1,5 +1,7 @@
 # `lib.object`
 
+Extends: **table**
+
 <details><summary><b>Example</b></summary>
 
 ```lua
@@ -68,8 +70,6 @@ end
 ```
 
 </details>
-
-Extends: **table**
 
 ## Öbject - Base superclass that implements ÖØP
 
