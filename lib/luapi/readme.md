@@ -13,7 +13,7 @@
 
 ## 🧩 Details
 
-### method `init`
+### Method `init`
 
 ✏️ `conf` : **table=lib.luapi.conf**
 

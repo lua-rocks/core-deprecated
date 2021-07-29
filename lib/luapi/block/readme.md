@@ -28,7 +28,7 @@ Extends: **table**
 
 ## 🧩 Details
 
-### method `init`
+### Method `init`
 
 Take comments block and create structured data block
 

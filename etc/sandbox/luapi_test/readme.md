@@ -2,6 +2,14 @@
 
 Extends: **table**
 
+<details><summary><b>Example</b></summary>
+
+```lua
+print(2+2)
+```
+
+</details>
+
 ## This file is sandbox for testing luapi
 
 ## 📜 Fields
@@ -24,7 +32,7 @@ Extends: **table**
 
 ## 🧩 Details
 
-### method `super_method`
+### Method `super_method`
 
 Super-duper method
 

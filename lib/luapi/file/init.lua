@@ -63,7 +63,7 @@ local function out_methods_and_fields(self, out, is)
     if self.parent then out.head:add(' : ' .. self.parent) end
     if self.square then out.head:add(' = ' .. self.square) end
   elseif is == 'methods' then
-    out.body:add('\n### method `' .. self.name .. '`\n')
+    out.body:add('\n### Method `' .. self.name .. '`\n')
     if self.title then out.body:add('\n' .. self.title .. '\n') end
     if self.description then out.body:add('\n> ' ..
       self.description:gsub('\n', '\n> ') .. '\n') end
@@ -107,8 +107,10 @@ local function out_module(self, out)
       :add '```\n\n</details>\n'
   end
   if include_readme then
-    local title = ('\n' .. include_readme):match '\n#%s(.-)\n'
-    if title then dump(title) end
+    -- TODO: Include md-file as additional info
+    if not self.title then
+      self.title = include_readme:match '\n#%s(.+)\n'
+    end
   end
   if self.title then out.head:add('\n## ' .. self.title .. '\n') end
   if self.requires then
@@ -166,7 +168,7 @@ function File:read()
   local modname = self.fullpath:match '.+/(.+)'
   file = io.open(self.fullpath .. '/' .. modname .. '.md', 'rb')
   if file then
-    include_readme = file:read '*a'
+    include_readme = '\n' .. file:read '*a'
     file:close()
   end
   -- example.lua
@@ -317,7 +319,6 @@ function File:write()
 
   -- See `lib.luapi.block:out()`
   if self1 then
-    -- TODO: Include md-file as additional info
     -- TODO: Module classes
     -- TODO: Links across document
 

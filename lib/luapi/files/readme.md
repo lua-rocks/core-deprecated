@@ -13,11 +13,11 @@ Extends: **{string=lib.luapi.file...}**
 
 ## 🧩 Details
 
-### method `init`
+### Method `init`
 
 Get paths, load, read, parse, write
 
-### method `write`
+### Method `write`
 
 Write `readme.md` for entire project
 
