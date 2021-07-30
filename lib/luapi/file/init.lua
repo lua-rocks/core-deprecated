@@ -185,6 +185,8 @@ end
 
 
 --[[
++ IDEA: Escape whatever you want with `\` (partitially works)
++ IDEA: Support OOP: inheritance
 < success (lib.luapi.file|nil)
 ]]
 function File:parse()
