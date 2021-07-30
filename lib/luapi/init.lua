@@ -2,6 +2,7 @@ local module = require 'lib.module'
 
 
 --[[ Documentation generator
+## Plans for future
 + IDEA: Add error handler module
 + IDEA: Support `atom-autocomplete`
 + IDEA: Clean markdown (no `markdownlint` warnings)

@@ -89,7 +89,7 @@ function Files:init(luapi)
     end
   end
 
-  -- Write index
+  -- IDEA: Write index
   -- FIXME: Temporary disabled
   -- self:write(out_path)
 end

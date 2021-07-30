@@ -107,6 +107,11 @@ These rules are _important_:
 [scriptum]: https://github.com/charlesmallah/lua-scriptum
 [emmylua]: https://github.com/EmmyLua
 
+## Plans for future
++ IDEA: Add error handler module
++ IDEA: Support `atom-autocomplete`
++ IDEA: Clean markdown (no `markdownlint` warnings)
+
 ## 📜 Fields
 
 + **conf : lib.luapi.conf**

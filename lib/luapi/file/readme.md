@@ -25,6 +25,9 @@ IDEA: Parse and write list of requires
 
 ### Method `parse`
 
+> + IDEA: Escape whatever you want with `\` (partitially works)
+> + IDEA: Support OOP: inheritance
+
 🔚 `success` : **lib.luapi.file|nil**
 
 ### Method `write`
