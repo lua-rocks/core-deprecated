@@ -32,7 +32,7 @@ Extends: **table**
 
 Take comments block and create structured data block
 
-✏️ `block` : **table=lib.luapi.block** _[nil]_
+➡️ `block` : **table=lib.luapi.block** _[nil]_
 
 ## 🖇️ Links
 

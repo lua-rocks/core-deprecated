@@ -15,9 +15,9 @@ Returns any lua variable in human-readable format.
 
 Inspect variable
 
-✏️ `variable` : **any**
+➡️ `variable` : **any**
 
-✏️ `options` : **lib.inspect.options**
+➡️ `options` : **lib.inspect.options**
 
 🔚 `result` : **string**
 

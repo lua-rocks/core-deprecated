@@ -21,7 +21,9 @@ local module = require "testmodule"
 module.start()
 ```
 
-    I'm <not> a [code
+```text
+I`m <not> a [code
+```
 
 ## 📜 Fields
 

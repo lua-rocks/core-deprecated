@@ -109,7 +109,7 @@ Creates an instance of the class
 
 > A simple call to the class as a function does the same.
 
-✏️ `...` : **any** _[nil]_
+➡️ `...` : **any** _[nil]_
 `Arguments passed to init`
 
 🔚 `instance` : **lib.object**
@@ -121,17 +121,17 @@ Initializes the class
 > By default, an object takes a table with fields and applies them to itself,
 > but descendants are expected to replace this method with another.
 
-✏️ `fields` : **table** _[nil]_
+➡️ `fields` : **table** _[nil]_
 `New fields`
 
 ### Method `extend`
 
 Creates a new class by inheritance
 
-✏️ `name` : **string**
+➡️ `name` : **string**
 `New class name`
 
-✏️ `...` : **table|lib.object** _[nil]_
+➡️ `...` : **table|lib.object** _[nil]_
 `Additional properties`
 
 🔚 `cls` : **lib.object**
@@ -140,7 +140,7 @@ Creates a new class by inheritance
 
 Sets someone else's methods
 
-✏️ `...` : **table|lib.object**
+➡️ `...` : **table|lib.object**
 `Methods`
 
 ### Method `has`
@@ -149,10 +149,10 @@ Returns the "membership range" between self and the checking class
 
 > Returns `0` if belongs to it or` false` if there is no membership.
 
-✏️ `Test` : **string|lib.object**
+➡️ `Test` : **string|lib.object**
 `Test class`
 
-✏️ `limit` : **integer** _[nil]_
+➡️ `limit` : **integer** _[nil]_
 `Check depth (default unlimited)`
 
 🔚 `membership_range` : **integer|boolean**
@@ -161,7 +161,7 @@ Returns the "membership range" between self and the checking class
 
 Identifies affiliation to class
 
-✏️ `Test` : **string|lib.object**
+➡️ `Test` : **string|lib.object**
 
 🔚 `result` : **boolean**
 
@@ -172,13 +172,13 @@ Loops through all elements, performing an action on each
 > Can stop at fields, metafields, methods, or all.
 > Always skips basic fields and methods inherent from the Object class.
 
-✏️ `etype` : **"field"|"method"|"meta"|"all"**
+➡️ `etype` : **"field"|"method"|"meta"|"all"**
 `Item type`
 
-✏️ `action` : **function:key,value,...**
+➡️ `action` : **function:key,value,...**
 `Action on each element`
 
-✏️ `...` _[nil]_
+➡️ `...` _[nil]_
 `Additional arguments for the action`
 
 🔚 `result` : **integer=table}**
