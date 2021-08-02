@@ -39,7 +39,7 @@ I`m <not> a [code
 - **[startModule][] (name\*, verbose) : boolean, ololo**
   `My function for documentation`
 
-## 👨‍👦 Classes
+## 👨‍👦 Types
 
 - **lib.test.testclass1 : [table][]**
   `some comment maybe`

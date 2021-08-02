@@ -19,7 +19,7 @@ Check out `init.lua` files to see how it works. Some tests you can find
 
 - `>`: function argument or table field
 - `<`: function return
-- `@`: mark block as "class" and set its name/reqpath (can be only one in block)
+- `@`: set block [type](#types) and name/reqpath (can be only one in block)
 - first word after tag: variable name (or reqpath if tag is `@`)
 - `(parentheses)`: variable type name or parent class reqpath
 - `[square brackets]`: default value of the variable (makes it _optional_)
@@ -32,6 +32,11 @@ Quick example:
 Some function comment.
 Can be multiline.
 _Support_ **markdown**.
+
+Next line (started with tag `@` is unnecessary but it makes this function
+special by specifying its type: *unique pseudo-reqpath*, to refer to it later).
+
+@ src.module.example (function)
 > str (string) some string comment
 > num (number) [2] some number comment
 < con (string) result of concatenation

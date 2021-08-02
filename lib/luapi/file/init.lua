@@ -10,7 +10,7 @@ local include_readme
 
 
 --[[ Class structure
-@ lib.luapi.file.class (lib.luapi.block)
+@ lib.luapi.file.type (lib.luapi.block)
 > title       (string)               []
 > description (string)               []
 > codename    (string)               [] How its actually called in code
@@ -24,7 +24,7 @@ local include_readme
 
 --[[ Single lua file
 IDEA: Parse and write list of requires
-@ (list=lib.luapi.file.class) First class is current module
+@ (list=lib.luapi.file.type) First type is current module
 > reqpath (string)
 > fullpath (string)
 ]]
@@ -92,7 +92,7 @@ end
 
 
 --[[ Moulde output
-> self (lib.luapi.file.class)
+> self (lib.luapi.file.type)
 > out (table)
 ]]
 local function out_module(self, out)
@@ -324,7 +324,7 @@ function File:write()
 
   -- See `lib.luapi.block:out()`
   if self1 then
-    -- TODO: Module classes
+    -- TODO: Module types
     -- TODO: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')

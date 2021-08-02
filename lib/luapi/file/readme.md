@@ -1,6 +1,6 @@
 # `lib.luapi.file`
 
-Extends: **list=lib.luapi.file.class**
+Extends: **list=lib.luapi.file.type**
 
 ## Single lua file
 
