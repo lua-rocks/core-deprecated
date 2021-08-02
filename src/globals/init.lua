@@ -1,4 +1,5 @@
 -- Setup global variables for profuction and development modes
+
 return function (conf)
   -- Core libs can be required globally if you want to
   -- lume    = require 'lib.lume'

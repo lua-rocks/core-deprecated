@@ -1,10 +1,11 @@
-# Additional readme
+# Luapi test module
 
-Content of `luapi_test.md` will be included into `readme.md`.
+The `sandbox` directory is an experimentation ground and you can remove it
+without hesitation, but I advise you to read the contents first. Perhaps you
+will find something useful or interesting there.
 
-Heading #1 from `luapi_test.md` will be used as title only if there is no module
-title in `init.lua`.
+## How to run
 
-## Some heading
-
-All headings levels will be automatically increased to +1 in `readme.md`.
+1. cd to the project **root**
+2. if `/bin/lua` existed then just run: `etc/sandbox/luapi_test/run.lua`
+3. if your lua binary located in another place, put it before the command above
