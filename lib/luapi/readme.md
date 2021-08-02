@@ -33,8 +33,8 @@ Some function comment.
 Can be multiline.
 _Support_ **markdown**.
 
-Next line (started with tag `@` is unnecessary but it makes this function
-special by specifying its type: *unique pseudo-reqpath*, to refer to it later).
+The line started with the tag `@` is unnecessary but it makes this function
+special by specifying its type: *unique pseudo-reqpath*, to refer to it later.
 
 @ src.module.example (function)
 > str (string) some string comment
@@ -57,16 +57,16 @@ also any other files on which this module depends, such as sounds, images, and
 whatever else. It makes your modules more portable and independent and also its
 pretty nice to see readme exactly under the files in your git-repository
 website. That's why documentation generates only from `init.lua` files and saves
-output `readme.md` in the same directory. File called `example.lua` from the
-same directory will be included into `readme.md` (you can use such files not
-only as examples, but also as simple unit-tests).
+output `readme.md` in the same directory. File called `example.lua` will be
+included into `readme.md` (you can use such files not only as examples, but also
+as simple unit-tests).
 
 You can document all your code, but keep in mind that luapi will only parse
-**classes**. If there is no classes in the file or file name is not `init.lua`,
-it will be skipped. Class is `--[[...]]` comments block with the tag `@` inside.
-Module (or "ClassMod") is the special class which does not require `@` tag and
+**types**. If there is no types in the file or file name is not `init.lua`,
+it will be skipped. Type is `--[[...]]` comments block with the tag `@` inside.
+Module (or "ClassMod") is the special type which does not require `@` tag and
 is recognized by the variable returned at the end of the file. But if the file
-does not return a documented variable, then the **first** class in file will be
+does not return a documented variable, then the **first** type in file will be
 considered a module.
 
 ### Types
