@@ -24,7 +24,8 @@
 
 -- support detection
 local function isWindows()
-  return type(package) == 'table' and type(package.config) == 'string' and package.config:sub(1,1) == '\\'
+  return type(package) == 'table' and type(package.config) == 'string' and
+  package.config:sub(1,1) == '\\'
 end
 
 local supported = not isWindows()
