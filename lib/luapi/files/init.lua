@@ -16,7 +16,8 @@ function Files:init(luapi)
   local root = luapi.conf.root_path
   local fullpaths = {}
 
-  --[[ Extract files called `init.lua` and add paths of their dirs to `fullpaths`
+  --[[ Extract files called `init.lua`
+  Add paths of their dirs to `fullpaths`
   > all_files (list)
   ]]
   local function extract_fullpaths(all_files)
