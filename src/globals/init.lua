@@ -19,6 +19,7 @@ return function (conf)
   else
     -- Enable debugging functions
     inspect = require 'lib.inspect'
+    dbg     = require 'lib.debugger'
     function dump(...) print(inspect(...)) end
   end
 end

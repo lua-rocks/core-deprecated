@@ -1,6 +1,6 @@
 new_globals = {
   '_', 'lume',
-  'inspect', 'dump',
+  'inspect', 'dump', 'dbg',
   'assert', 'asserts',
   'module', 'Object',
 }
