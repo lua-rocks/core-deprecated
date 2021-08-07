@@ -53,15 +53,15 @@ Super-duper method
 > (actually you no **need** to describe anything 😉
 > but of course you can if you want to).
 
-➡️ `n` : **number**
+→ `n` : **number**
 `Spaces between tagged data will be ignored`
 
-➡️ `x` : **integer** _[2]_
+→ `x` : **integer** _[2]_
 
-🔚 `self` : **etc.sandbox.luapi_test**
+← `self` : **etc.sandbox.luapi_test**
 `Bli bla`
 
-🔚 `n` : **number**
+← `n` : **number**
 `Blu ble`
 
 ## 🖇️ Links

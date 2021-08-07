@@ -16,7 +16,7 @@
 
 ### Method `init`
 
-➡️ `conf` : **table=lib.luapi.conf**
+→ `conf` : **table=lib.luapi.conf**
 
 ## 🖇️ Links
 
