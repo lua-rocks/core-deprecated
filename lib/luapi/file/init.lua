@@ -144,6 +144,17 @@ local function out_module(self, out)
 end
 
 
+--[[ TODO: Types output
+> self (lib.luapi.file)
+> out (table)
+]]
+local function out_types(self, out)
+  if self[2] then
+    out.head:add '\n## 👨‍👦 Types\n\n**WIP**\n'
+  end
+end
+
+
 function File:init(reqpath, fullpath)
   asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
 
@@ -324,12 +335,12 @@ function File:write()
 
   -- See `lib.luapi.block:out()`
   if self1 then
-    -- TODO: Module types
     -- TODO: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')
 
     out_module(self1, out)
+    out_types(self, out)
   end
 
   -- Write everything

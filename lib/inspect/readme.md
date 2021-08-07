@@ -9,6 +9,10 @@ Returns any lua variable in human-readable format.
 + **inspect (variable, options) : result**
   `Inspect variable`
 
+## 👨‍👦 Types
+
+**WIP**
+
 ## 🧩 Details
 
 ### Method `inspect`

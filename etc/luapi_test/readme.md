@@ -43,6 +43,10 @@ TODO: Reduce any number of empty lines to one
 + **super_method (n, x) : self, n**
   `Super-duper method`
 
+## 👨‍👦 Types
+
+**WIP**
+
 ## 🧩 Details
 
 ### Method `super_method`

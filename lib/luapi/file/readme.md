@@ -17,6 +17,10 @@ IDEA: Parse and write list of requires
 + **parse : success**
 + **write : success**
 
+## 👨‍👦 Types
+
+**WIP**
+
 ## 🧩 Details
 
 ### Method `read`

@@ -26,6 +26,10 @@ Extends: **table**
 + **init (block)**
   `Take comments block and create structured data block`
 
+## 👨‍👦 Types
+
+**WIP**
+
 ## 🧩 Details
 
 ### Method `init`
