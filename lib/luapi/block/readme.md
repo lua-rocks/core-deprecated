@@ -9,17 +9,17 @@ Extends: **table**
 + **title : string = nil**
 + **description : string = nil**
 + **name : string = nil**
-  `Gets from `self.extends.name``
+  `Gets from self.extends.name`
 + **codename : string = nil**
-  `Sets before parsing in `lib.luapi.file``
+  `Sets before parsing in lib.luapi.file`
 + **codeargs : list=string = nil**
-  `Real function arguments (from `lib.luapi.file`)`
+  `Real function arguments (from lib.luapi.file)`
 + **fields : list=lib.luapi.block.line = nil**
-  `Line after `>``
+  `Line after >`
 + **returns : list=lib.luapi.block.line = nil**
-  `Line after `<``
+  `Line after <`
 + **extends : lib.luapi.block.line = nil**
-  `Line after `@``
+  `Line after @`
 
 ## 💡 Methods
 

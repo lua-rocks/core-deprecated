@@ -15,12 +15,12 @@ local lume = require 'lib.lume'
 @ lib.luapi.block (table)
 > title       (string) []
 > description (string) []
-> name        (string) [] Gets from `self.extends.name`
-> codename    (string) [] Sets before parsing in `lib.luapi.file`
-> codeargs    (list=string) [] Real function arguments (from `lib.luapi.file`)
-> fields      (list=lib.luapi.block.line) [] Line after `>`
-> returns     (list=lib.luapi.block.line) [] Line after `<`
-> extends     (lib.luapi.block.line)      [] Line after `@`
+> name        (string) [] Gets from self.extends.name
+> codename    (string) [] Sets before parsing in lib.luapi.file
+> codeargs    (list=string) [] Real function arguments (from lib.luapi.file)
+> fields      (list=lib.luapi.block.line) [] Line after >
+> returns     (list=lib.luapi.block.line) [] Line after <
+> extends     (lib.luapi.block.line)      [] Line after @
 ]]
 local Block = module 'lib.luapi.block'
 

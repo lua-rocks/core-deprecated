@@ -37,7 +37,7 @@ The line started with the tag `@` is unnecessary but it makes this function
 special by specifying its type: *unique pseudo-reqpath*, to refer to it later.
 
 @ src.module.example (function)
-> str (string) some string comment
+> str (string) some string comment (one line and no markdown for such comments)
 > num (number) [2] some number comment
 < con (string) result of concatenation
 ]]
