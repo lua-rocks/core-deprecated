@@ -2,7 +2,7 @@
 
 require 'src.globals' { production = false }
 
-print 'Running example application.'
+print 'Running LUAPI test.'
 
 local luapi = require 'lib.luapi' {
   root_path = '/home/luarocks/repo/core',

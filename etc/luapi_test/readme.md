@@ -22,6 +22,9 @@ will find something useful or interesting there.
 2. if `/bin/lua` existed then just run: `etc/luapi_test/run.lua`
 3. if your lua binary located in another place, put it before the command above
 
+TODO: Reduce any number of empty lines to one
+!!!
+
 ## 📜 Fields
 
 + **some_field1 : some_type1 = some_default_value1**
