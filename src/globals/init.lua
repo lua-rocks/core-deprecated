@@ -16,5 +16,10 @@ return function (conf)
     -- Disable asserts for better perfomance
     function assert(...) return ... end
     if asserts then asserts = assert end
+  else
+    -- Enable debugging functions
+    inspect = require 'lib.inspect'
+    dbg     = require 'lib.debugger'
+    function dump(...) print(inspect(...)) end
   end
 end
