@@ -47,10 +47,17 @@ Because it has no tag @ inside or variable definitions below
 
 
 --[[ Extra field
-If type has no name then it is a current class field or method
+If type has no name then it is a current class field or method.
+The name will be extracted from the code below.
 @ (number) [3]
 ]]
 M.super_number_field = 3
+
+
+--[[ Extra field #2
+...But if there is no code below, you have to set the name:
+@ etc.sandbox.luapi_test.super_string_field (string) ["hello"]
+]]
 
 
 --[[ Another extra field
