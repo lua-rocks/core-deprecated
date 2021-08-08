@@ -19,8 +19,6 @@ IDEA: Parse and write list of requires
 
 ## 👨‍👦 Types
 
-**WIP**
-
 + **lib.luapi.file.class**
 
 ## 🧩 Details

@@ -18,10 +18,6 @@
 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
-
-	TODO:
-	* Print short function arguments as part of stack location.
-	* Properly handle being reentrant due to coroutines.
 ]]
 
 local dbg

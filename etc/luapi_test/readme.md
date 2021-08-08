@@ -31,10 +31,12 @@ TODO: Reduce any number of empty lines to one
   `Some field title1`
 + **some_field2 : some_type2 = some_default_value2**
   `Some field title2`
-+ **class2 : etc.sandbox.luapi_test.class2**
++ **class2 : etc.luapi_test.class2**
   `TODO: Should be parsed as method`
 + **super_number_field : number = 3**
   `Extra field`
++ **super_string_field**
+  `Extra field #2`
 + **super_table_field : table**
   `Another extra field`
 
@@ -45,9 +47,8 @@ TODO: Reduce any number of empty lines to one
 
 ## 👨‍👦 Types
 
-+ **etc.sandbox.luapi_test.mega**
-+ **etc.sandbox.luapi_test.class2**
-+ **etc.sandbox.luapi_test.super_string_field**
++ **etc.luapi_test.mega**
++ **etc.luapi_test.class2**
 
 ## 🧩 Details
 
@@ -64,7 +65,7 @@ Super-duper method
 
 → `x` : **integer** _[2]_
 
-← `self` : **etc.sandbox.luapi_test**
+← `self` : **etc.luapi_test**
 `Bli bla`
 
 ← `n` : **number**

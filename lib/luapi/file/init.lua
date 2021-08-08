@@ -144,7 +144,7 @@ local function out_module(self, out)
 end
 
 
---[[ TODO: Types output
+--[[ XXX: Types output
 > self (lib.luapi.file)
 > out (table)
 ]]
@@ -308,8 +308,26 @@ function File:parse()
         self1 = Block(block) or self1
         if codename then self1.codename = codename end
       end
-    elseif block:match '\n@.+' then -- Class
-      table.insert(selfN, Block(block))
+    elseif block:match '\n@.+' then -- Type
+      local typeN = Block(block)
+      -- Add type as field if it's not a class or function
+      if typeN.typeset and typeN.typeset.name and
+        typeN.typeset.parent ~= 'class' and
+        typeN.typeset.parent ~= 'function'
+        and not typeN.typeset.parent:find '%.' then
+        local name = typeN.typeset.name
+        local from, to = name:find(self.reqpath..".")
+        if from == 1 then
+          name = name:sub(to+1)
+          typeN.name = name
+          self1.fields = self1.fields or {}
+          table.insert(self1.fields, typeN)
+        else
+          table.insert(selfN, typeN)
+        end
+      else
+        table.insert(selfN, typeN)
+      end
     end
   end
 

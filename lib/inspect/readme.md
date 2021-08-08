@@ -4,16 +4,15 @@
 
 Returns any lua variable in human-readable format.
 
+## 📜 Fields
+
++ **options**
+  `Inspecton options`
+
 ## 💡 Methods
 
 + **inspect (variable, options) : result**
   `Inspect variable`
-
-## 👨‍👦 Types
-
-**WIP**
-
-+ **lib.inspect.options**
 
 ## 🧩 Details
 

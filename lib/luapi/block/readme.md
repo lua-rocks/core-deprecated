@@ -25,12 +25,6 @@ Extends: **table**
 + **init (block)**
   `Take comments block and create structured data block`
 
-## 👨‍👦 Types
-
-**WIP**
-
-+ **lib.luapi.block.line**
-
 ## 🧩 Details
 
 ### Method `init`

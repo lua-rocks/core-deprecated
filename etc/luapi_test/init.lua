@@ -7,7 +7,7 @@ TODO: Reduce any number of empty lines to one
 @ this.reqpath.will.be.overwritten.by.real.reqpath (table)
 > some_field1 (some_type1) [some_default_value1] Some field title1
 > some_field2 (some_type2) [some_default_value2] Some field title2
-> class2 (etc.sandbox.luapi_test.class2) TODO: Should be parsed as method
+> class2 (etc.luapi_test.class2) TODO: Should be parsed as method
 ]]
 local M = {}
 
@@ -18,7 +18,7 @@ You no need to describe argument `self` for methods named with colon
 but of course you can if you want to).
 > n    (number)    Spaces between tagged data will be ignored
 > x    (integer)   [2]
-< self (etc.sandbox.luapi_test) Bli bla
+< self (etc.luapi_test) Bli bla
 < n    (number)    Blu ble
 ]]
 function M:super_method(n, x)
@@ -27,15 +27,14 @@ end
 
 
 --[[ Mega-class
-If type has no parentheses or has dots inside them then it is a **class**.
-@ etc.sandbox.luapi_test.mega
+@ etc.luapi_test.mega (class)
 > giga (any) Yay!
 ]]
 
 
 --[[ Test type 2
 If type is function and you set it as module field, it will be parsed as method
-@ etc.sandbox.luapi_test.class2 (function)
+@ etc.luapi_test.class2 (function)
 > take (string)
 < give (integer)
 ]]
@@ -56,7 +55,7 @@ M.super_number_field = 3
 
 --[[ Extra field #2
 ...But if there is no code below, you have to set the **full** name:
-@ etc.sandbox.luapi_test.super_string_field (string) ["hello"]
+@ etc.luapi_test.super_string_field (string) ["hello"]
 ]]
 
 
