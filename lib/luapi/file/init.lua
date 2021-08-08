@@ -150,7 +150,7 @@ end
 ]]
 local function out_types(self, out)
   if self[2] then
-    out.head:add '\n## 👨‍👦 Types\n\n**WIP**\n\n'
+    out.head:add '\n## 👨‍👦 Types\n\n'
     for i = 2, #self do
       local selfi = self[i]
       if selfi.typeset and selfi.typeset.name then
