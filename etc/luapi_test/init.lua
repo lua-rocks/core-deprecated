@@ -55,7 +55,7 @@ M.super_number_field = 3
 
 
 --[[ Extra field #2
-...But if there is no code below, you have to set the name:
+...But if there is no code below, you have to set **full** name:
 @ etc.sandbox.luapi_test.super_string_field (string) ["hello"]
 ]]
 
