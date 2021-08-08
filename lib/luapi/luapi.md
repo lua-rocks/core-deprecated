@@ -74,6 +74,7 @@ variable values, plus the types listed below (keep in mind that equal sign works
 different in different types):
 
 + **any** for any type
++ **class** for class
 + **integer** for non float number
 + **list** for tables with integer keys
 + **list=function|table** list **of** functions **or** tables
