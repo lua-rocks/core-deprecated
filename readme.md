@@ -55,7 +55,7 @@ Follow these rules to make your code enjoyable to work with:
   (don't worry about a lot of asserts creating an unnecessary load; the `assert`
   function itself can easily be replaced by a pacifier function in production)
 
-## Hightly recommended VSCode extensions
+## Highly recommended VSCode extensions
 
 ```sh
 # Core
