@@ -3,7 +3,7 @@ local lume = require 'lib.lume'
 
 
 --[[ One line of tagged block
-@ lib.luapi.block.line (table)
+@ lib.luapi.block.line (class)
 > name    (string) [] First word after tag
 > title   (string) [] Any text at the end
 > parent  (string) [] Text in parentheses

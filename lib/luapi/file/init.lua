@@ -312,9 +312,9 @@ function File:parse()
       local typeN = Block(block)
       -- Add type as field if it's not a class or function
       if typeN.typeset and typeN.typeset.name and
-        typeN.typeset.parent ~= 'class' and
-        typeN.typeset.parent ~= 'function'
-        and not typeN.typeset.parent:find '%.' then
+      typeN.typeset.parent ~= 'class' and
+      typeN.typeset.parent ~= 'function' and
+      not typeN.typeset.parent:find '%.' then
         local name = typeN.typeset.name
         local from, to = name:find(self.reqpath..".")
         if from == 1 then
