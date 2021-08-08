@@ -114,7 +114,7 @@ These rules are _important_:
 
 ## Plans for future
 + IDEA: Add error handler module
-+ IDEA: Support `atom-autocomplete`
++ IDEA: Support some IDE
 + IDEA: Clean markdown (no `markdownlint` warnings)
 
 ## 📜 Fields
