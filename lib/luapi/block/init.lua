@@ -11,16 +11,16 @@ local lume = require 'lib.lume'
 ]]
 
 
---[[ Parsed tagged block of class fields or methods
+--[[ Parsed tagged block of type
 @ lib.luapi.block (table)
 > title       (string) []
 > description (string) []
-> name        (string) [] Gets from self.extends.name
+> name        (string) []
 > codename    (string) [] Sets before parsing in lib.luapi.file
 > codeargs    (list=string) [] Real function arguments (from lib.luapi.file)
 > fields      (list=lib.luapi.block.line) [] Line after >
 > returns     (list=lib.luapi.block.line) [] Line after <
-> extends     (lib.luapi.block.line)      [] Line after @
+> typeset     (lib.luapi.block.line)      [] Line after @
 ]]
 local Block = module 'lib.luapi.block'
 
@@ -59,7 +59,7 @@ local function parse_block(self, block)
         end
       end
       if tag == '@' then
-        self.extends = self.extends or parsed_line
+        self.typeset = self.typeset or parsed_line
       end
     elseif line ~= ']]' then
       local description = self.description or ''

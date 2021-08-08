@@ -20,6 +20,7 @@ IDEA: Parse and write list of requires
 ## 👨‍👦 Types
 
 **WIP**
++ **lib.luapi.file.type**
 
 ## 🧩 Details
 

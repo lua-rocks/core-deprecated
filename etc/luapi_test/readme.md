@@ -46,6 +46,8 @@ TODO: Reduce any number of empty lines to one
 ## 👨‍👦 Types
 
 **WIP**
++ **etc.sandbox.luapi_test.mega**
++ **etc.sandbox.luapi_test.class2**
 
 ## 🧩 Details
 

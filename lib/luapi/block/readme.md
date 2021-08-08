@@ -2,14 +2,13 @@
 
 Extends: **table**
 
-## Parsed tagged block of class fields or methods
+## Parsed tagged block of type
 
 ## 📜 Fields
 
 + **title : string = nil**
 + **description : string = nil**
 + **name : string = nil**
-  `Gets from self.extends.name`
 + **codename : string = nil**
   `Sets before parsing in lib.luapi.file`
 + **codeargs : list=string = nil**
@@ -18,7 +17,7 @@ Extends: **table**
   `Line after >`
 + **returns : list=lib.luapi.block.line = nil**
   `Line after <`
-+ **extends : lib.luapi.block.line = nil**
++ **typeset : lib.luapi.block.line = nil**
   `Line after @`
 
 ## 💡 Methods
@@ -29,6 +28,7 @@ Extends: **table**
 ## 👨‍👦 Types
 
 **WIP**
++ **lib.luapi.block.line**
 
 ## 🧩 Details
 

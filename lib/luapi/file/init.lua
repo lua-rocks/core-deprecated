@@ -15,7 +15,7 @@ local include_readme
 > description (string)               []
 > codename    (string)               [] How its actually called in code
 > reqpath     (string)                  Unique require path
-> extends     (string)               [] Parent class reqpath or lua type
+> typeset     (string)               [] Parent class reqpath or lua type
 > requires    (list=string)          [] Modules only
 > fields      (list=lib.luapi.block) []
 > methods     (list=lib.luapi.block) []
@@ -97,8 +97,8 @@ end
 ]]
 local function out_module(self, out)
   if self.methods then out.body:add '\n## 🧩 Details\n' end
-  if self.extends then
-    out.head:add('\nExtends: **' .. self.extends ..'**\n')
+  if self.typeset then
+    out.head:add('\nExtends: **' .. self.typeset ..'**\n')
   end
   if include_example then
     out.head
@@ -151,6 +151,12 @@ end
 local function out_types(self, out)
   if self[2] then
     out.head:add '\n## 👨‍👦 Types\n\n**WIP**\n'
+    for i = 2, #self do
+      local selfi = self[i]
+      if selfi.typeset and selfi.typeset.name then
+        out.head:add('+ **' .. selfi.typeset.name .. '**\n')
+      end
+    end
   end
 end
 
@@ -206,9 +212,9 @@ function File:parse()
   self1.codename = content_code:match 'return%s([%w_]+)\n?$'
 
   local function set_block_name(block)
-    if block.extends and block.extends.name then
-      block.name = block.extends.name
-      block.extends.name = nil
+    if block.typeset and block.typeset.name then
+      block.name = block.typeset.name
+      block.typeset.name = nil
     else
       block.name = block.codename
     end
@@ -224,8 +230,8 @@ function File:parse()
         end
       end
     end
-    -- Replace `self1.extends` tables with strings
-    if self1.extends then self1.extends = self1.extends.parent end
+    -- Replace `self1.typeset` tables with strings
+    if self1.typeset then self1.typeset = self1.typeset.parent end
     -- Insert classes
     self[1] = self1
     for _, class in ipairs(selfN) do table.insert(self, class) end
@@ -262,9 +268,9 @@ function File:parse()
           :gsub('%s', '')
           :match(self1.codename .. '%.(.+)=')
         set_block_name(field)
-        if field.extends then
-          for key, value in pairs(field.extends) do field[key] = value end
-          field.extends = nil
+        if field.typeset then
+          for key, value in pairs(field.typeset) do field[key] = value end
+          field.typeset = nil
         end
         if next(field) then
           self1.fields = self1.fields or {}
