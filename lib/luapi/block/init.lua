@@ -11,7 +11,7 @@ local lume = require 'lib.lume'
 ]]
 
 
---[[ Parsed tagged block of type
+--[[ Parsed tagged comment block of any TYPE
 @ lib.luapi.block (table)
 > title       (string) []
 > description (string) []
@@ -39,9 +39,9 @@ local function parse_block(self, block)
     if tag == '>' or tag == '<' or tag == '@' then
       local tagged_line = line:sub(3, -1)
       local comment_start_at = math.max(
-        (tagged_line:find('%s') or 0),
-        (tagged_line:find('%)') or 0),
-        (tagged_line:find('%]') or 0)
+        (tagged_line:find '%s' or 0),
+        (tagged_line:find '%)' or 0),
+        (tagged_line:find '%]' or 0)
       ) + 1
       local square = tagged_line:match '%[(.-)%]'
       if square == '' or square == 'opt' then square = 'nil' end

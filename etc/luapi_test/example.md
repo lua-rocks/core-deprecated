@@ -27,32 +27,38 @@ I`m <not> a [code
 
 ## 📜 Fields
 
-- **files : {string=table...} = {}**
+- 📜 **files : {string=table...} = {}**
   `[files paths] = <parsed> (file) tables`
-- **test : string = _nil_**
+- 📜 **test : string = _nil_**
   `some module field`
-- **testTable**
+- 📜 **testTable**
   `Test table field`
 
 ## 💡 Methods
 
-- **[startModule][] (name\*, verbose) : boolean, ololo**
+- 💡 **[startModule][] (name\*, verbose) : boolean, ololo**
   `My function for documentation`
 
 ## 👨‍👦 Types
 
-- **lib.test.testclass1 : [table][]**
+- 👨‍👦 **lib.test.testclass1 : [table][]**
   `some comment maybe`
   - 📜 **someField : {string=table...} = {}**
   `bla bla bla`
   - 💡 **doSomething (name\*, verbose) : boolean, ololo**
-- **lib.test.testclass2 : lib.test**
+- 👨‍👦 **lib.test.testclass2 : lib.test**
   - 📜 **someField : {string=table...} = {}**
   - 💡 **doSomething (name\*, verbose) : boolean, ololo**
+- 📝 **str : string**
+- 🧮 **num : number|boolean**
+- 💡 **fn : function**
+- 📦 **tb : table**
+- 🧵 **wtf : thread|userdata**
+- 📜 **custom : {string=table...}**
 
 ## 🧩 Details
 
-### startModule
+### 💡 startModule
 
 My function for documentation
 
@@ -78,4 +84,4 @@ My function for documentation
 [string]: https://www.lua.org/manual/5.1/manual.html#5.4
 [table]: https://www.lua.org/manual/5.1/manual.html#5.5
 
-[startModule]: #teststartmodule
+[startModule]: #💡-startmodule

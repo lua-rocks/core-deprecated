@@ -1,6 +1,6 @@
 # `lib.luapi.file`
 
-Extends: **list=lib.luapi.file.type**
+Extends: **list=lib.luapi.file.class**
 
 ## Single lua file
 
@@ -20,7 +20,7 @@ IDEA: Parse and write list of requires
 ## 👨‍👦 Types
 
 **WIP**
-+ **lib.luapi.file.type**
++ **lib.luapi.file.class**
 
 ## 🧩 Details
 
