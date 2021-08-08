@@ -10,12 +10,12 @@ local include_readme
 
 
 --[[ Class structure
-@ lib.luapi.file.type (lib.luapi.block)
+@ lib.luapi.file.class (lib.luapi.block)
 > title       (string)               []
 > description (string)               []
 > codename    (string)               [] How its actually called in code
 > reqpath     (string)                  Unique require path
-> typeset     (string)               [] Parent class reqpath or lua type
+> extends     (string)               [] Parent class reqpath or lua type
 > requires    (list=string)          [] Modules only
 > fields      (list=lib.luapi.block) []
 > methods     (list=lib.luapi.block) []
@@ -24,7 +24,7 @@ local include_readme
 
 --[[ Single lua file
 IDEA: Parse and write list of requires
-@ (list=lib.luapi.file.type) First type is current module
+@ (list=lib.luapi.file.class) First type is current module
 > reqpath (string)
 > fullpath (string)
 ]]
@@ -92,13 +92,13 @@ end
 
 
 --[[ Moulde output
-> self (lib.luapi.file.type)
+> self (lib.luapi.file.class)
 > out (table)
 ]]
 local function out_module(self, out)
   if self.methods then out.body:add '\n## 🧩 Details\n' end
-  if self.typeset then
-    out.head:add('\nExtends: **' .. self.typeset ..'**\n')
+  if self.extends then
+    out.head:add('\nExtends: **' .. self.extends ..'**\n')
   end
   if include_example then
     out.head
@@ -230,11 +230,18 @@ function File:parse()
         end
       end
     end
-    -- Replace `self1.typeset` tables with strings
-    if self1.typeset then self1.typeset = self1.typeset.parent end
-    -- Insert classes
+    if self1.typeset then self1.extends = self1.typeset.parent end
+    -- Insert types
     self[1] = self1
-    for _, class in ipairs(selfN) do table.insert(self, class) end
+    for _, typeN in ipairs(selfN) do table.insert(self, typeN) end
+    -- Replace __tostring
+    local mt = getmetatable(self1)
+    if mt then
+      mt.__tostring = function()
+        return 'instance of lib.luapi.file.class'
+      end
+      setmetatable(self1, mt)
+    end
     return self
   end
 
