@@ -59,18 +59,18 @@ Follow these rules to make your code enjoyable to work with:
 
 ```sh
 # Core
-code --install-extension gruntfuggly.todo-tree
+codium --install-extension gruntfuggly.todo-tree
 
 # Lua
-code --install-extension changnet.lua-tags
-code --install-extension dwenegar.vscode-luacheck
-code --install-extension tomblind.local-lua-debugger-vscode
+codium --install-extension changnet.lua-tags
+codium --install-extension dwenegar.vscode-luacheck
+codium --install-extension tomblind.local-lua-debugger-vscode
 
 # Markdown
-code --install-extension yzhang.markdown-all-in-one
-code --install-extension fcrespo82.markdown-table-formatter
-code --install-extension jayfidev.tablegenerator
-code --install-extension davidanson.vscode-markdownlint
-code --install-extension marvhen.reflow-markdown
-code --install-extension zaaack.markdown-editor
+codium --install-extension yzhang.markdown-all-in-one
+codium --install-extension fcrespo82.markdown-table-formatter
+codium --install-extension jayfidev.tablegenerator
+codium --install-extension davidanson.vscode-markdownlint
+codium --install-extension marvhen.reflow-markdown
+codium --install-extension zaaack.markdown-editor
 ```
