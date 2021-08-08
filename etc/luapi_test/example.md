@@ -58,7 +58,7 @@ I`m <not> a [code
 
 ## 🧩 Details
 
-### 💡 startModule
+### Method `startModule`
 
 My function for documentation
 
@@ -84,4 +84,4 @@ My function for documentation
 [string]: https://www.lua.org/manual/5.1/manual.html#5.4
 [table]: https://www.lua.org/manual/5.1/manual.html#5.5
 
-[startModule]: #💡-startmodule
+[startModule]: #method-startmodule
