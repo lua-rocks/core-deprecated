@@ -53,7 +53,7 @@ I`m <not> a [code
 - 🧮 **num : number|boolean**
 - 💡 **fn : function**
 - 📦 **tb : table**
-- 🧵 **wtf : thread|userdata**
+- 🧵 **thr : thread**
 - 📜 **custom : {string=table...}**
 
 ## 🧩 Details
@@ -65,16 +65,16 @@ My function for documentation
 > Additional **muliline** description
 > in `markdown` _format_ supported in any block.
 
-↪ `name` : **typindg**
+→ `name` : **typindg**
 `file will be created and overwritten`
 
-↪ `verbose` : **boolean** _[optional]_
+→ `verbose` : **boolean** _[optional]_
 `more output if true`
 
-↤ `success` : **boolean**
+← `success` : **boolean**
 `fail will be handled gracefully and return false`
 
-↤ `test` : **ololo!**
+← `test` : **ololo!**
 `ddd`
 
 ## 🖇️ Links
