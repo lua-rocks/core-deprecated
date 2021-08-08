@@ -10,6 +10,4 @@ local luapi = require 'lib.luapi' {
   -- path_filters = { 'lib' },
 }
 
-if arg[1] == 'dump' then -- dump(luapi)
-  dump(luapi.files['etc.luapi_test'], { depth = 2 })
-end
+return luapi
