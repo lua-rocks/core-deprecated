@@ -12,6 +12,7 @@ Returns any lua variable in human-readable format.
 ## 👨‍👦 Types
 
 **WIP**
+
 + **lib.inspect.options**
 
 ## 🧩 Details

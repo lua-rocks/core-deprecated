@@ -28,6 +28,7 @@ Extends: **table**
 ## 👨‍👦 Types
 
 **WIP**
+
 + **lib.luapi.block.line**
 
 ## 🧩 Details

@@ -27,13 +27,14 @@ end
 
 
 --[[ Mega-class
+If type has no parentheses or has dots inside them then it is a **class**.
 @ etc.sandbox.luapi_test.mega
 > giga (any) Yay!
 ]]
 
 
---[[ Test class 2
-If class is function and you set it as module field, it will be parsed as method
+--[[ Test type 2
+If type is function and you set it as module field, it will be parsed as method
 @ etc.sandbox.luapi_test.class2 (function)
 > take (string)
 < give (integer)
@@ -46,6 +47,7 @@ Because it has no tag @ inside or variable definitions below
 
 
 --[[ Extra field
+If type has no name then it is a current class field or method
 @ (number) [3]
 ]]
 M.super_number_field = 3
