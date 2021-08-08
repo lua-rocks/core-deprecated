@@ -27,11 +27,11 @@ I`m <not> a [code
 
 ## 📜 Fields
 
-- 📜 **files : {string=table...} = {}**
+- 📦 **files : {string=table...} = {}**
   `[files paths] = <parsed> (file) tables`
-- 📜 **test : string = _nil_**
+- 📝 **test : string = _nil_**
   `some module field`
-- 📜 **testTable**
+- 🧮 **testNumber : 5**
   `Test table field`
 
 ## 💡 Methods
@@ -43,18 +43,18 @@ I`m <not> a [code
 
 - 👨‍👦 **lib.test.testclass1 : [table][]**
   `some comment maybe`
-  - 📜 **someField : {string=table...} = {}**
+  - 📦 **someField : {string=table...} = {}**
   `bla bla bla`
   - 💡 **doSomething (name\*, verbose) : boolean, ololo**
 - 👨‍👦 **lib.test.testclass2 : lib.test**
-  - 📜 **someField : {string=table...} = {}**
+  - 📦 **someField : {string=table...} = {}**
   - 💡 **doSomething (name\*, verbose) : boolean, ololo**
 - 📝 **str : string**
 - 🧮 **num : number|boolean**
 - 💡 **fn : function**
 - 📦 **tb : table**
 - 🧵 **thr : thread**
-- 📜 **custom : {string=table...}**
+- 🔒 **usr : userdata**
 
 ## 🧩 Details
 
