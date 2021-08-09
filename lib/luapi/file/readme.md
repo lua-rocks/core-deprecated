@@ -10,9 +10,12 @@ IDEA: Parse and write list of requires
 
 + **reqpath : string**
 + **fullpath : string**
++ **content : lib.luapi.file.content = nil**
+  `gets removed after File:write()`
 
 ## 💡 Methods
 
++ **init (reqpath, fullpath)**
 + **read : success**
 + **parse : success**
 + **write : success**
@@ -22,6 +25,12 @@ IDEA: Parse and write list of requires
 + **lib.luapi.file.class**
 
 ## 🧩 Details
+
+### Method `init`
+
+→ `reqpath` : **string**
+
+→ `fullpath` : **string**
 
 ### Method `read`
 

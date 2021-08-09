@@ -60,12 +60,15 @@ included into `readme.md` (you can use such files not only as examples, but also
 as simple unit-tests).
 
 You can document all your code, but keep in mind that luapi will only parse
-**types**. If there is no types in the file or file name is not `init.lua`,
-it will be skipped. Type is `--[[...]]` comments block with the tag `@` inside.
-Module (or "ClassMod") is the special type which does not require `@` tag and
-is recognized by the variable returned at the end of the file. But if the file
-does not return a documented variable, then the **first** type in file will be
-considered a module.
+**class types** (curently it is a source of many misunderstandings and bugs;
+later I want to support output for **any types**).
+
+If there is no types in the file or file name is not `init.lua`, it will be
+skipped. Type is `--[[...]]` comments block with the tag `@` inside. Module (or
+"ClassMod") is the special type which does not require `@` tag and is recognized
+by the variable returned at the end of the file. But if the file does not return
+a documented variable, then the **first** type in file will be considered a
+module.
 
 ## Types
 

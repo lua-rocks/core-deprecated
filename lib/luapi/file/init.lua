@@ -1,12 +1,7 @@
 local asserts = require 'lib.asserts'
 local module  = require 'lib.module'
 local Block   = require 'lib.luapi.block'
-
-
-local content_full
-local content_code
-local include_example
-local include_readme
+local _out    = require 'lib.luapi.file._out'
 
 
 --[[ Class structure
@@ -22,155 +17,39 @@ local include_readme
 ]]
 
 
+--[[ Content of this file plus some includes to the output
+@ lib.luapi.file.content (table)
+> full (string)    [] full content of this file
+> code (string)    [] uncommented content of this file
+> example (string) [] example.lua
+> readme (string)  [] dirname.lua
+]]
+
+
 --[[ Single lua file
 IDEA: Parse and write list of requires
 @ (list=lib.luapi.file.class) First type is current module
 > reqpath (string)
 > fullpath (string)
+> content (lib.luapi.file.content) [] gets removed after File:write()
 ]]
 local File = module 'lib.luapi.file'
 
 
---[[ Universal output for method args and returns
-> self (lib.luapi.block.line)
-> out (table)
-> arrow (string)
+--[[
+> reqpath (string)
+> fullpath (string)
 ]]
-local function out_method_args_and_returns(self, out, arrow)
-  out.head:add(self.name)
-  out.body:add('\n' .. arrow .. ' `' .. self.name .. '`')
-  if self.parent then
-    out.body:add(' : **' .. self.parent .. '**')
-  end
-  if self.square then
-    out.body:add(' _[' .. self.square .. ']_')
-  end
-  if self.title then
-    out.body:add('\n`' .. self.title .. '`')
-  end
-  out.body:add '\n'
-end
-
-
---[[ Universal output for methods and fields
-> self (lib.luapi.block)
-> out (table)
-> is ('methods'|'fields')
-]]
-local function out_methods_and_fields(self, out, is)
-  out.head:add('+ **' .. self.name)
-  if is == 'fields' then
-    if self.parent then out.head:add(' : ' .. self.parent) end
-    if self.square then out.head:add(' = ' .. self.square) end
-  elseif is == 'methods' then
-    out.body:add('\n### Method `' .. self.name .. '`\n')
-    if self.title then out.body:add('\n' .. self.title .. '\n') end
-    if self.description then out.body:add('\n> ' ..
-      self.description:gsub('\n', '\n> ') .. '\n') end
-    if self.fields then
-      out.head:add ' ('
-      for index, value in ipairs(self.fields) do
-        if index > 1 then out.head:add ', ' end
-        out_method_args_and_returns(value, out, '→')
-      end
-      out.head:add ')'
-    end
-    if self.returns then
-      out.head:add ' : '
-      for index, value in ipairs(self.returns) do
-        if index > 1 then out.head:add ', ' end
-        out_method_args_and_returns(value, out, '←')
-      end
-    end
-  end
-  out.head:add '**'
-  if self.title then
-    out.head:add('\n  `' .. self.title .. '`')
-  end
-  out.head:add '\n'
-end
-
-
---[[ Moulde output
-> self (lib.luapi.file.class)
-> out (table)
-]]
-local function out_module(self, out)
-  if self.methods then out.body:add '\n## 🧩 Details\n' end
-  if self.extends then
-    out.head:add('\nExtends: **' .. self.extends ..'**\n')
-  end
-  if include_example then
-    out.head
-      :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
-      :add (include_example)
-      :add '```\n\n</details>\n'
-  end
-  if include_readme then
-    if not self.title then
-      self.title = include_readme:match '\n#%s(.-)\n'
-    end
-    include_readme = include_readme
-      :gsub('\n#%s.-\n', '') -- remove title header
-      :gsub('\n#', '\n##') -- increase all headers level
-  end
-  if self.title then out.head:add('\n## ' .. self.title .. '\n') end
-  if include_readme then out.head:add(include_readme) end
-  if self.requires then
-    out.head:add '\nRequires: **'
-    for index, value in ipairs(self.requires) do
-      if index > 1 then out.head:add ', ' end
-      out.head:add(value)
-    end
-    out.head:add '**'
-  end
-  if self.description then
-    out.head:add('\n' .. self.description .. '\n')
-  end
-
-  if self.fields then
-    out.head:add('\n## 📜 Fields\n\n')
-    for _, param in ipairs(self.fields) do
-      out_methods_and_fields(param, out, 'fields')
-    end
-  end
-
-  if self.methods then
-    out.head:add '\n## 💡 Methods\n\n'
-    for _, param in ipairs(self.methods) do
-      out_methods_and_fields(param, out, 'methods')
-    end
-  end
-end
-
-
---[[ XXX: Types output
-> self (lib.luapi.file)
-> out (table)
-]]
-local function out_types(self, out)
-  if self[2] then
-    out.head:add '\n## 👨‍👦 Types\n\n'
-    for i = 2, #self do
-      local selfi = self[i]
-      if selfi.typeset and selfi.typeset.name then
-        out.head:add('+ **' .. selfi.typeset.name .. '**\n')
-      end
-    end
-  end
-end
-
-
 function File:init(reqpath, fullpath)
   asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
-
-  content_full    = nil
-  content_code    = nil
-  include_example = nil
-  include_readme  = nil
-
   self.reqpath = reqpath
   self.fullpath = fullpath
+  self.content = {
+    ["full"]    = nil,
+    ["code"]    = nil,
+    ["example"] = nil,
+    ["readme"]  = nil,
+  }
 end
 
 
@@ -181,20 +60,22 @@ function File:read()
   -- init.lua
   local file = io.open(self.fullpath .. '/init.lua', 'rb')
   if not file then return nil end
-  content_full = file:read '*a'
-  content_code = content_full:gsub('%-%-%[%[.-%]%]', ''):gsub('%-%-.-\n', '')
+  self.content.full = file:read '*a'
+  self.content.code = self.content.full
+    :gsub('%-%-%[%[.-%]%]', '')
+    :gsub('%-%-.-\n', '')
   file:close()
   -- modname.md
   local modname = self.fullpath:match '.+/(.+)'
   file = io.open(self.fullpath .. '/' .. modname .. '.md', 'rb')
   if file then
-    include_readme = '\n' .. file:read '*a'
+    self.content.readme = '\n' .. file:read '*a'
     file:close()
   end
   -- example.lua
   file = io.open(self.fullpath .. '/example.lua', 'rb')
   if file then
-    include_example = file:read '*a'
+    self.content.example = file:read '*a'
     file:close()
   end
   return self
@@ -209,7 +90,7 @@ end
 function File:parse()
   local self1 = Block()
   local selfN = {}
-  self1.codename = content_code:match 'return%s([%w_]+)\n?$'
+  self1.codename = self.content.code:match 'return%s([%w_]+)\n?$'
 
   local function set_block_name(block)
     if block.typeset and block.typeset.name then
@@ -248,12 +129,12 @@ function File:parse()
   if not self1.codename then
     -- If module codename not found in last return,
     -- lets try to take it from first described class.
-    self1.codename = content_full:match
+    self1.codename = self.content.full:match
       '%-%-%[%[.-\n@%s.-]%].-\nlocal%s([%w_]+)'
   end
   if not self1.codename then
     -- Abstract module?
-    local block = content_full:match '%-%-%[%[.-\n@%s.-%]%].-\n'
+    local block = self.content.full:match '%-%-%[%[.-\n@%s.-%]%].-\n'
     self1 = Block(block)
     for _, value in pairs(self1) do
       if type(value) ~= 'function' then
@@ -264,7 +145,8 @@ function File:parse()
   end
 
   -- Parse each commented block
-  for block, last_line in content_full:gmatch '(%-%-%[%[.-%]%].-\n)(.-)\n' do
+  for block, last_line in
+  self.content.full:gmatch '(%-%-%[%[.-%]%].-\n)(.-)\n' do
     local module_codename_found = ('\n' .. last_line)
       :find('%W' .. self1.codename .. '%W')
     if module_codename_found then
@@ -351,6 +233,7 @@ function File:write()
   local file = io.open(self.fullpath .. '/readme.md', 'w+')
   if not file then
     print('error: failed to create "' .. self.fullpath .. '/readme.md' .. '"')
+    self.content = nil
     return nil
   end
 
@@ -370,13 +253,14 @@ function File:write()
 
     out.head:add('# `' .. self.reqpath .. '`\n')
 
-    out_module(self1, out)
-    out_types(self, out)
+    _out.module(self, out)
+    _out.types(self, out)
   end
 
   -- Write everything
   file:write(out.head.text .. out.body.text .. out.foot.text)
   file:close()
+  self.content = nil
   return self
 end
 
