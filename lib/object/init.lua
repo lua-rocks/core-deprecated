@@ -122,7 +122,7 @@ end
 
 
 --[[ Returns the "membership range" between self and the checking class
-Returns `0` if belongs to it or` false` if there is no membership.
+Returns `0` if belongs to it or `false` if there is no membership.
 > Test (string|lib.object) Test class
 > limit (integer) [] Check depth (default unlimited)
 < membership_range (integer|boolean)
