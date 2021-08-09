@@ -38,8 +38,7 @@ local function parse(self, block)
       end
     elseif line ~= ']]' then
       local description = self.description or ''
-      if description ~= '' then description = description .. '\n' end
-      description = description .. line
+      description = description .. line .. '\n'
       self.description = description
     end
   end
