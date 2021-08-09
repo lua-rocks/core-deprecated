@@ -9,7 +9,7 @@ local function parse(self, block)
   self.title = self.title or block:match '%-%-%[%[(.-)%]%]':gsub('\n.*', '')
 
   -- Parse block line by line
-  for line in block:gmatch '\n(%C+)' do
+  for line in block:gmatch '\n(%C*)' do
     local tag = line:sub(1, 1)
     if tag == '>' or tag == '<' or tag == '@' then
       local tagged_line = line:sub(3, -1)
@@ -38,7 +38,9 @@ local function parse(self, block)
       end
     elseif line ~= ']]' then
       local description = self.description or ''
-      description = description .. line .. '\n'
+      if line ~= '' or description:sub(-2) ~= '\n\n' then
+        description = description .. line .. '\n'
+      end
       self.description = description
     end
   end

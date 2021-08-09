@@ -1,10 +1,12 @@
 --[[ Mödules are neutered Öbjects (without any ÖØP feautures)
 If you use öbjects to describe mödules, just replace this:
+
 ```lua
 local File = Object:extend 'lib.luapi.file'
 ```
 
 with this:
+
 ```lua
 local File = module 'lib.luapi.file'
 ```

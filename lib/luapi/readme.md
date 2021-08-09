@@ -117,6 +117,7 @@ These rules are _important_:
 [emmylua]: https://github.com/EmmyLua
 
 ## Plans for future
+
 + IDEA: Add error handler module
 + IDEA: Support some IDE
 + IDEA: Clean markdown (no `markdownlint` warnings)

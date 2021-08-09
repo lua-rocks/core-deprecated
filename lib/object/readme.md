@@ -74,6 +74,7 @@ end
 ## Öbject - Base superclass that implements ÖØP
 
 Key features of this library:
+
 + metamethods inheritance
 + store all metadata in metatables (no `__junk` in actual tables)
 + can subtly identify class membership
