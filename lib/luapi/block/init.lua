@@ -1,3 +1,6 @@
+-- TODO: Add all core types as separate classmodules in true OOP style.
+
+
 local module = require 'lib.module'
 
 
