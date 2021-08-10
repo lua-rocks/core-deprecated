@@ -2,7 +2,7 @@
 
 Extends: **table**
 
-## Parsed tagged comment block of any TYPE
+## Parsed tagged comment block of any type
 
 ## 📜 Fields
 

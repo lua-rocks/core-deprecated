@@ -13,7 +13,7 @@ local module = require 'lib.module'
 ]]
 
 
---[[ Parsed tagged comment block of any TYPE
+--[[ Parsed tagged comment block of any type
 @ lib.luapi.block (table)
 > title       (string) []
 > description (string) []

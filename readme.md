@@ -8,6 +8,10 @@ which I use in my projects as a skeleton.
 doesn't look as good as I'd like it to be. If you fork me and help with
 something, I'd be incredibly grateful!
 
+**Attention (2)!** Keep in mind that [luapi][] curently in hard development
+and from time to time I can **totally break everything**! That's a normal
+behavior until version 1.0 will be officialy released.
+
 I don't use libraries like `busted` or `lpeg` because I don't like to
 unnecessarily complicate things. I'm 100% happy with the default asserts and
 patterns, and I hope you are too, but if not - no one forbids you to add them.

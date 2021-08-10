@@ -1,0 +1,3 @@
+-- TODO: Create type from block.
+-- There is only 4 general types: "class", "function", "table" and "simple".
+-- Type "class" cannot be directly defined by user, he must use reqpaths.
