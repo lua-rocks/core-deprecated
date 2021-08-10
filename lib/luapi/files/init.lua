@@ -83,8 +83,11 @@ function Files:init(luapi)
   for _, fullpath in ipairs(fullpaths) do
     local reqpath = fullpath:gsub(root .. '/', ''):gsub(root, ''):gsub('/', '.')
     local file = File(reqpath, fullpath)
-
-    if file:read() and file:parse() then
+    if not file:read() then
+      print('Cannot read ' .. reqpath)
+    elseif not file:parse() then
+      print('Cannot parse ' .. reqpath)
+    else
       file:write()
       self[reqpath] = file
     end
