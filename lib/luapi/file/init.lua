@@ -251,6 +251,7 @@ end
 
 
 function File:write()
+  self.content = nil
 end
 
 
