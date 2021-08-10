@@ -32,26 +32,20 @@ will find something useful or interesting there.
   `TODO: Should be parsed as method`
 + **tbl**
   `Abstract type`
-+ **super_number_field : number = 3**
-  `Extra field`
-+ **super_string_field**
-  `Extra field #2`
-+ **super_table_field : table**
-  `Another extra field`
 
 ## 💡 Methods
 
-+ **super_method (n, x) : self, n**
++ **etc.luapi_test.super_method (n, x) : self, n**
   `Super-duper method`
 
 ## 👨‍👦 Types
 
 + **etc.luapi_test.mega**
-+ **etc.luapi_test.class2**
++ **etc.luapi_test.type2**
 
 ## 🧩 Details
 
-### Method `super_method`
+### Method `etc.luapi_test.super_method`
 
 Super-duper method
 

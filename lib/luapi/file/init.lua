@@ -88,6 +88,11 @@ end
 < success (lib.luapi.file|nil)
 ]]
 function File:parse()
+end
+
+
+--[[ It was terrible...
+function File:parse()
   local self1 = Block()
   local selfN = {}
   self1.codename = self.content.code:match 'return%s([%w_]+)\n?$'
@@ -222,6 +227,7 @@ function File:parse()
   end
   return nil
 end
+]]
 
 
 --[[

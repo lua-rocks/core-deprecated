@@ -1,5 +1,8 @@
+-- Temporary stop parsing code, so tag `@` MUST be always used
+
+
 --[[ This file is sandbox for testing luapi
-@ this.reqpath.will.be.overwritten.by.real.reqpath (table)
+@ etc.luapi_test (table)
 > some_field1 (some_type1) [some_default_value1] Some field title1
 > some_field2 (some_type2) [some_default_value2] Some field title2
 > class2 (etc.luapi_test.class2) TODO: Should be parsed as method
@@ -11,6 +14,7 @@ local M = {}
 You no need to describe argument `self` for methods named with colon
 (actually you no **need** to describe anything 😉
 but of course you can if you want to).
+@ etc.luapi_test.super_method (function)
 > n    (number)    Spaces between tagged data will be ignored
 > x    (integer)   [2]
 < self (etc.luapi_test) Bli bla
@@ -21,7 +25,7 @@ function M:super_method(n, x)
 end
 
 
---[[ Mega-class
+--[[ Mega-field
 @ etc.luapi_test.mega (lib.object)
 > giga (any) Yay!
 ]]
@@ -29,7 +33,7 @@ end
 
 --[[ Test type 2
 If type is function and you set it as module field, it will be parsed as method
-@ etc.luapi_test.class2 (function)
+@ etc.luapi_test.type2 (function)
 > take (string)
 < give (integer)
 ]]
@@ -46,31 +50,6 @@ Symbol `#` used to define private or abstract type
 --[[ This comment will be ignored
 Because it has no tag @ inside or variable definitions below
 ]]
-
-
---[[ Extra field
-If type has no name then it is a current class field or method.
-The name will be extracted from the code below.
-@ (number) [3]
-]]
-M.super_number_field = 3
-
-
---[[ Extra field #2
-...But if there is no code below, you have to set the **full** name:
-@ etc.luapi_test.super_string_field (string) ["hello"]
-]]
-
-
---[[ Another extra field
-@ (table)
-> a (number) [1]
-> b (integer) [2]
-]]
-M.super_table_field = {
-  a = 1,
-  b = 2,
-}
 
 
 return M
