@@ -59,6 +59,8 @@ By default it returns the same type (if lib.object.init has no returns).
 For example, you can make class Animal which will return instance of
 Dog or Bird, depending on arguments (have it wings or not),
 but usually class Animal returns instanse of Animal.
+
+Notice: it can't return nil! Use false or exception message instead.
 > ... (any) [] Arguments passed to init
 < instance (any) []
 ]]
@@ -69,7 +71,7 @@ function Object:new(...)
   }
   local obj = setmetatable({}, obj_mt)
   local result = obj:init(...)
-  if result then return result end
+  if result ~= nil then return result end
   apply_meta_from_parents(self, obj_mt)
   apply_meta_index_from_parents(self, obj_mt)
   return setmetatable(obj, obj_mt)

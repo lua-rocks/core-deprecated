@@ -97,7 +97,8 @@ end
 
 function File:parse_comments()
   for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
-    table.insert(self, Type(block))
+    local type = Type(block)
+    if type then table.insert(self, type) end
   end
 end
 

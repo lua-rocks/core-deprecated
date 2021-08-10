@@ -8,3 +8,5 @@ new_globals = {
 exclude_files = { '**/.*' }
 
 max_line_length = 80
+
+ignore = { '212/self' }

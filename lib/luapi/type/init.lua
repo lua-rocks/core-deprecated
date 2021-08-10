@@ -25,6 +25,7 @@ function Type:init(raw_block)
     end
     return parsed_block
   end
+  return false
 end
 
 
