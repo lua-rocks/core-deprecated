@@ -1,6 +1,6 @@
 local Object = require 'lib.object'
 
-local Point = Object:extend 'Point'
+local Point = Object:extend 'lib.object#point'
 
 Point.scale = 2 -- Class field!
 
@@ -18,7 +18,7 @@ function Point.__call()
   return 'called'
 end
 
-local Rectangle = Point:extend 'Rectangle'
+local Rectangle = Point:extend 'lib.object#rectangle'
 
 function Rectangle:resize()
   Rectangle.super.resize(self) -- Extend Point's `resize()`.
@@ -47,9 +47,9 @@ local rect = Rectangle:new(2, 4, 6, 8)
 
 assert(rect.w == 6)
 assert(rect:is(Rectangle))
-assert(rect:is 'Rectangle')
+assert(rect:is 'lib.object#rectangle')
 assert(not rect:is(Point))
-assert(rect:has 'Point' == 1)
+assert(rect:has 'lib.object#point' == 1)
 assert(Rectangle:has(Object) == 2)
 assert(rect() == 'called')
 

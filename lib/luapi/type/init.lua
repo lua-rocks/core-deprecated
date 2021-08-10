@@ -10,8 +10,9 @@ local Type = Object:extend 'lib.luapi.type'
 --[[ TODO: Create type from block.
 > raw_block (string) []
 ]]
-function Type:new(raw_block)
+function Type:init(raw_block)
   local parsed_block = require 'lib.luapi.block' (raw_block)
+  parsed_block:each('field', function(k, v) self[k] = v end)
 end
 
 

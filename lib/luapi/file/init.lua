@@ -1,6 +1,6 @@
 local asserts = require 'lib.asserts'
 local module  = require 'lib.module'
-local Block   = require 'lib.luapi.block'
+local Type    = require 'lib.luapi.type'
 local _out    = require 'lib.luapi.file._out'
 
 
@@ -91,10 +91,14 @@ end
 function File:parse()
   self:parse_comments()
   self:parse_code()
+  return self
 end
 
 
 function File:parse_comments()
+  for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
+    table.insert(self, Type(block))
+  end
 end
 
 
@@ -244,6 +248,13 @@ end
 --[[
 < success (lib.luapi.file|nil)
 ]]
+
+
+function File:write()
+end
+
+
+--[[ It was horrible...
 function File:write()
   -- Touch file
   local file = io.open(self.fullpath .. '/readme.md', 'w+')
@@ -279,6 +290,7 @@ function File:write()
   self.content = nil
   return self
 end
+]]
 
 
 return File

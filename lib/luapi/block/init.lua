@@ -1,7 +1,8 @@
 -- TODO: Add all core types as separate classmodules in true OOP style.
 -- TODO: parse abstract (#) types
 
-local module = require 'lib.module'
+
+local Object = require 'lib.object'
 
 
 --[[ One line of tagged block
@@ -14,7 +15,7 @@ local module = require 'lib.module'
 
 
 --[[ Parsed tagged comment block of any type
-@ lib.luapi.block (table)
+@ lib.luapi.block (lib.object)
 > title       (string) []
 > description (string) []
 > name        (string) []
@@ -24,7 +25,7 @@ local module = require 'lib.module'
 > returns     (list=lib.luapi.block#line) [] Line after <
 > typeset     (lib.luapi.block#line)      [] Line after @
 ]]
-local Block = module 'lib.luapi.block'
+local Block = Object:extend 'lib.luapi.block'
 
 
 --[[ Take comments block and create structured data block

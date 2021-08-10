@@ -1,6 +1,7 @@
 local lume = require 'lib.lume'
 
---[[ Parse block; do NOT overwrite existed data
+
+--[[ Parse block; do NOT overwrite existed data FIXME: really? why?
 > self (lib.luapi.block)
 > block (string)
 ]]
@@ -45,6 +46,7 @@ local function parse(self, block)
   end
 end
 
+
 --[[ Trim and remove empty strings in table values
 > self (table)
 ]]
@@ -58,6 +60,7 @@ local function correct_parsed(self)
     end
   end
 end
+
 
 return function(self, block)
   parse(self, block)
