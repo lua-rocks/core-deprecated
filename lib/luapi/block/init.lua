@@ -18,8 +18,8 @@ local module = require 'lib.module'
 > title       (string) []
 > description (string) []
 > name        (string) []
-> codename    (string) [] Sets before parsing in lib.luapi.file
-> codeargs    (list=string) [] Real function arguments (from lib.luapi.file)
+> codename    (string) [] Real name in code
+> codeargs    (list=string) [] Real function arguments
 > fields      (list=lib.luapi.block#line) [] Line after >
 > returns     (list=lib.luapi.block#line) [] Line after <
 > typeset     (lib.luapi.block#line)      [] Line after @
@@ -28,7 +28,7 @@ local Block = module 'lib.luapi.block'
 
 
 --[[ Take comments block and create structured data block
-> block (table=lib.luapi.block) []
+> block (string) []
 ]]
 function Block:init(block)
   if not block then return self end

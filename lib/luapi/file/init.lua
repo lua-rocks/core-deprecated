@@ -5,7 +5,7 @@ local _out    = require 'lib.luapi.file._out'
 
 
 --[[ Class structure
-@ lib.luapi.file.class (lib.luapi.block)
+@ lib.luapi.file#class (lib.luapi.block)
 > title       (string)               []
 > description (string)               []
 > codename    (string)               [] How its actually called in code
@@ -18,7 +18,7 @@ local _out    = require 'lib.luapi.file._out'
 
 
 --[[ Content of this file plus some includes to the output
-@ lib.luapi.file.content (table)
+@ lib.luapi.file#content (table)
 > full (string)    [] full content of this file
 > code (string)    [] uncommented content of this file
 > example (string) [] example.lua
@@ -28,10 +28,10 @@ local _out    = require 'lib.luapi.file._out'
 
 --[[ Single lua file
 IDEA: Parse and write list of requires
-@ (list=lib.luapi.file.class) First type is current module
+@ (list=lib.luapi.file#class) First type is current module
 > reqpath (string)
 > fullpath (string)
-> content (lib.luapi.file.content) [] gets removed after File:write()
+> content (lib.luapi.file#content) [] gets removed after File:write()
 ]]
 local File = module 'lib.luapi.file'
 
@@ -89,6 +89,16 @@ end
 < success (lib.luapi.file|nil)
 ]]
 function File:parse()
+  self:parse_comments()
+  self:parse_code()
+end
+
+
+function File:parse_comments()
+end
+
+
+function File:parse_code()
 end
 
 
@@ -125,7 +135,7 @@ function File:parse()
     local mt = getmetatable(self1)
     if mt then
       mt.__tostring = function()
-        return 'instance of lib.luapi.file.class'
+        return 'instance of lib.luapi.file#class'
       end
       setmetatable(self1, mt)
     end
