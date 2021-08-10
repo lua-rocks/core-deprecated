@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Love",
+      "name": "Debug Love Project",
       "type": "lua-local",
       "request": "launch",
       "program": {
@@ -19,12 +19,24 @@
       ]
     },
     {
-      "name": "Debug LuaJIT",
+      "name": "Debug Lua File",
       "type": "lua-local",
       "request": "launch",
       "program": {
         "lua": "luajit",
         "file": "${file}"
+      },
+      "scriptRoots": [
+        "${workspaceFolder}"
+      ],
+    },
+    {
+      "name": "Debug Lua Project",
+      "type": "lua-local",
+      "request": "launch",
+      "program": {
+        "lua": "luajit",
+        "file": "etc/luapi_test/run.lua"
       },
       "scriptRoots": [
         "${workspaceFolder}"
