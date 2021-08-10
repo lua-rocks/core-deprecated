@@ -1,7 +1,6 @@
 local asserts = require 'lib.asserts'
 local module  = require 'lib.module'
 local Type    = require 'lib.luapi.type'
-local _out    = require 'lib.luapi.file._out'
 
 
 --[[ Class structure

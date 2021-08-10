@@ -7,7 +7,7 @@ local Object = require 'lib.object'
 local Type = Object:extend 'lib.luapi.type'
 
 
---[[ TODO: Create type from block.
+--[[ Create type from block.
 > raw_block (string) []
 ]]
 function Type:init(raw_block)
