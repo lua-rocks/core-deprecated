@@ -94,7 +94,7 @@ function Files:init(luapi)
   end
 
   -- IDEA: Write index
-  -- TODO: Temporary disabled
+  -- Temporary disabled
   -- self:write(out_path)
 end
 

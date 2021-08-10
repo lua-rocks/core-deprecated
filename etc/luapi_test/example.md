@@ -1,6 +1,4 @@
-# lib.test
-
-Extends: **[table][]**
+# lib.test (table)
 
 Requires: **none**
 

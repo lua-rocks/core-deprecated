@@ -83,6 +83,7 @@ end
 
 
 --[[
++ TODO: self1 can be any type (not only a class)
 + IDEA: Escape whatever you want with `\` (partitially works)
 + IDEA: Support OOP: inheritance
 < success (lib.luapi.file|nil)
@@ -254,7 +255,7 @@ function File:write()
 
   -- See `lib.luapi.block:out()`
   if self1 then
-    -- TODO: Links across document
+    -- IDEA: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')
 

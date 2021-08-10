@@ -1,5 +1,5 @@
 -- TODO: Add all core types as separate classmodules in true OOP style.
--- XXX: parse abstract (#) types
+-- TODO: parse abstract (#) types
 
 local module = require 'lib.module'
 
