@@ -1,13 +1,11 @@
--- There is 4 general types: "class", "function", "table" and "simple".
--- Type "class" cannot be directly defined by user.
--- User must extend it from other type.
-
-
 local Object = require 'lib.object'
 local Type = Object:extend 'lib.luapi.type'
 
 
 --[[ Create type from block.
+There is 4 general types: "class", "function", "table" and "simple".
+Type "class" cannot be directly defined by user.
+User must extend it from other class.
 > raw_block (string) []
 ]]
 function Type:init(raw_block)
@@ -26,6 +24,12 @@ function Type:init(raw_block)
     return parsed_block
   end
   return false
+end
+
+
+--[[ TODO: Output type
+]]
+function Type:out()
 end
 
 
