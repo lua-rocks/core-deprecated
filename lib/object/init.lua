@@ -54,8 +54,13 @@ end
 
 --[[ Creates an instance of the class
 A simple call to the class as a function does the same.
+By default it returns the same type (if lib.object.init has no returns).
+
+For example, you can make class Animal which will return instance of
+Dog or Bird, depending on arguments (have it wings or not),
+but usually class Animal returns instanse of Animal.
 > ... (any) [] Arguments passed to init
-< instance (lib.object)
+< instance (any) []
 ]]
 function Object:new(...)
   local obj_mt = {
@@ -63,7 +68,8 @@ function Object:new(...)
     __tostring = function() return 'instance of ' .. self.classname end
   }
   local obj = setmetatable({}, obj_mt)
-  obj:init(...)
+  local result = obj:init(...)
+  if result then return result end
   apply_meta_from_parents(self, obj_mt)
   apply_meta_index_from_parents(self, obj_mt)
   return setmetatable(obj, obj_mt)
@@ -71,8 +77,9 @@ end
 
 
 --[[ Initializes the class
-By default, an object takes a table with fields and applies them to itself,
-but descendants are expected to replace this method with another.
+By default an object takes a table with fields and applies them to itself.
+You can replace it with the function new() of your class.
+This method should not return anything, but it can if you really want to.
 > fields (table) [] New fields
 ]]
 function Object:init(fields)
