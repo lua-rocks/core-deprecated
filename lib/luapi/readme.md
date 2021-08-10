@@ -79,7 +79,6 @@ variable values, plus the types listed below (keep in mind that equal sign works
 different in different types):
 
 + **any** for any type
-+ **class** for class
 + **integer** for non float number
 + **list** for tables with integer keys
 + **list=function|table** list **of** functions **or** tables
@@ -90,11 +89,16 @@ different in different types):
 
 Also you can use your defined module require paths as types:
 
-+ **lib.luapi.conf** some class or module
++ **lib.luapi.block** some class or module
 + **table=lib.luapi.conf** table that has the same fields as class or module,
   but it is not necessarily an instance of it
 
 You can't use classnames as types because they are not unique.
+
+When you use `@` tag, you can mark your type different ways:
+
++ **lib.luapi.line** `line` is field or method of `lib.luapi`
++ **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
 
 ### Style guide
 

@@ -116,7 +116,7 @@ function _out.module(self, out)
 end
 
 
---[[ XXX: Types output
+--[[ TODO: Types output
 > self (lib.luapi.file)
 > out (table)
 ]]

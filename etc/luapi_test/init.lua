@@ -22,7 +22,7 @@ end
 
 
 --[[ Mega-class
-@ etc.luapi_test.mega (class)
+@ etc.luapi_test.mega (lib.object)
 > giga (any) Yay!
 ]]
 
@@ -32,6 +32,14 @@ If type is function and you set it as module field, it will be parsed as method
 @ etc.luapi_test.class2 (function)
 > take (string)
 < give (integer)
+]]
+
+
+--[[ Abstract type
+Symbol `#` used to define private or abstract type
+@ etc.luapi_test#tbl (table)
+> foo (string)
+> bar (string)
 ]]
 
 

@@ -192,9 +192,8 @@ function File:parse()
       end
     elseif block:match '\n@.+' then -- Type
       local typeN = Block(block)
-      -- Add type as field if it's not a class or function
+      -- Add type as field if it's not a function
       if typeN.typeset and typeN.typeset.name and
-      typeN.typeset.parent ~= 'class' and
       typeN.typeset.parent ~= 'function' and
       not typeN.typeset.parent:find '%.' then
         local name = typeN.typeset.name

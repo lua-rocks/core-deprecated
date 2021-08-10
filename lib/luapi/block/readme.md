@@ -13,21 +13,17 @@ Extends: **table**
   `Sets before parsing in lib.luapi.file`
 + **codeargs : list=string = nil**
   `Real function arguments (from lib.luapi.file)`
-+ **fields : list=lib.luapi.block.line = nil**
++ **fields : list=lib.luapi.block#line = nil**
   `Line after >`
-+ **returns : list=lib.luapi.block.line = nil**
++ **returns : list=lib.luapi.block#line = nil**
   `Line after <`
-+ **typeset : lib.luapi.block.line = nil**
++ **typeset : lib.luapi.block#line = nil**
   `Line after @`
 
 ## 💡 Methods
 
 + **init (block)**
   `Take comments block and create structured data block`
-
-## 👨‍👦 Types
-
-+ **lib.luapi.block.line**
 
 ## 🧩 Details
 

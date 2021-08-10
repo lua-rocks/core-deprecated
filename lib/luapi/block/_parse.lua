@@ -3,7 +3,6 @@ local lume = require 'lib.lume'
 --[[ Parse block; do NOT overwrite existed data
 > self (lib.luapi.block)
 > block (string)
-> last_line (string) []
 ]]
 local function parse(self, block)
   self.title = self.title or block:match '%-%-%[%[(.-)%]%]':gsub('\n.*', '')

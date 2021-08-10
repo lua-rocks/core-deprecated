@@ -30,6 +30,8 @@ will find something useful or interesting there.
   `Some field title2`
 + **class2 : etc.luapi_test.class2**
   `TODO: Should be parsed as method`
++ **tbl**
+  `Abstract type`
 + **super_number_field : number = 3**
   `Extra field`
 + **super_string_field**
