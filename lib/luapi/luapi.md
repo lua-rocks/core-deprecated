@@ -63,18 +63,14 @@ You can document all your code, but keep in mind that luapi will only parse
 **class types** (curently it is a source of many misunderstandings and bugs;
 later I want to support output for **any types**).
 
-If there is no types in the file or file name is not `init.lua`, it will be
-skipped. Type is `--[[...]]` comments block with the tag `@` inside. Module (or
-"ClassMod") is the special type which does not require `@` tag and is recognized
-by the variable returned at the end of the file. But if the file does not return
-a documented variable, then the **first** type in file will be considered a
-module.
+Type is `--[[...]]` comments block with the tag `@` inside. If there is no types
+in the file or file name is not `init.lua`, it will be skipped.
 
 ## Types
 
 When declaring a variable type, you can use all the built-in lua types or actual
 variable values, plus the types listed below (keep in mind that equal sign works
-different in different types):
+different in different type definitions):
 
 + **any** for any type
 + **integer** for non float number
@@ -95,7 +91,7 @@ You can't use classnames as types because they are not unique.
 
 When you use `@` tag, you can mark your type different ways:
 
-+ **lib.luapi.line** `line` is field or method of `lib.luapi`
++ **lib.luapi:line** `line` is field or method of `lib.luapi`
 + **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
 
 ## Style guide

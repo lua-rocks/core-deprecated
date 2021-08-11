@@ -1,11 +1,11 @@
 -- Temporary stop parsing code, so tag `@` MUST be always used
-
+-- TODO: replace class.path.field with class.path:field in all project
 
 --[[ This file is sandbox for testing luapi
 @ etc.luapi_test (table)
 > some_field1 (some_type1) [some_default_value1] Some field title1
 > some_field2 (some_type2) [some_default_value2] Some field title2
-> class2 (etc.luapi_test.class2) TODO: Should be parsed as method
+> class2 (etc.luapi_test:type2) TODO: Should be parsed as method
 ]]
 local M = {}
 
@@ -26,14 +26,14 @@ end
 
 
 --[[ Mega-field
-@ etc.luapi_test.mega (lib.object)
+@ etc.luapi_test:mega (lib.object)
 > giga (any) Yay!
 ]]
 
 
 --[[ Test type 2
 If type is function and you set it as module field, it will be parsed as method
-@ etc.luapi_test.type2 (function)
+@ etc.luapi_test:type2 (function)
 > take (string)
 < give (integer)
 ]]
