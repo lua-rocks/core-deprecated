@@ -14,7 +14,6 @@ local Type    = require 'lib.luapi.type'
 ]]
 
 
-
 --[[ Add text to output field
 @ lib.luapi.file#output_field.add (function)
 > self (lib.luapi.file#output_field)
@@ -49,7 +48,7 @@ IDEA: Parse and write list of requires
 local File = module 'lib.luapi.file'
 
 
---[[
+--[[ Init file but don't read it
 > reqpath (string)
 > fullpath (string)
 ]]
@@ -71,7 +70,7 @@ function File:init(reqpath, fullpath)
 end
 
 
---[[
+--[[ Read file
 < success (lib.luapi.file|nil)
 ]]
 function File:read()
@@ -100,7 +99,7 @@ function File:read()
 end
 
 
---[[
+--[[ Parse file
 + TODO: self1 can be any type (not only a class)
 + IDEA: Escape whatever you want with `\` (partitially works)
 + IDEA: Support OOP: inheritance
@@ -126,6 +125,7 @@ end
 
 
 --[[ It was terrible...
+-- < success (lib.luapi.file|nil)
 function File:parse()
   local self1 = Block()
   local selfN = {}
@@ -261,11 +261,6 @@ function File:parse()
   end
   return nil
 end
-]]
-
-
---[[
-< success (lib.luapi.file|nil)
 ]]
 
 
