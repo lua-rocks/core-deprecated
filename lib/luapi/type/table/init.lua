@@ -1,5 +1,5 @@
 local Type = require 'lib.luapi.type'
-local Table = Type:extend 'lib.luapi.table'
+local Table = Type:extend 'lib.luapi.type.table'
 
 
 --[[

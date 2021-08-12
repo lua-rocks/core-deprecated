@@ -1,5 +1,5 @@
 local Type = require 'lib.luapi.type'
-local Function = Type:extend 'lib.luapi.function'
+local Function = Type:extend 'lib.luapi.type.function'
 
 
 --[[

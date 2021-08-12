@@ -1,5 +1,5 @@
 local Type = require 'lib.luapi.type'
-local Simple = Type:extend 'lib.luapi.simple'
+local Simple = Type:extend 'lib.luapi.type.simple'
 
 
 --[[

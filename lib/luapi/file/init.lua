@@ -3,16 +3,30 @@ local module  = require 'lib.module'
 local Type    = require 'lib.luapi.type'
 
 
---[[ Class structure
-@ lib.luapi.file#class (lib.luapi.block)
-> title       (string)               []
-> description (string)               []
-> codename    (string)               [] How its actually called in code
-> reqpath     (string)                  Unique require path
-> extends     (string)               [] Parent class reqpath or lua type
-> requires    (list=string)          [] Modules only
-> fields      (list=lib.luapi.block) []
-> methods     (list=lib.luapi.block) []
+-- IDEA: Links across document
+
+
+--[[ Output model
+@ lib.luapi.file#output (table)
+> head (lib.luapi.file#output_field)
+> body (lib.luapi.file#output_field)
+> foot (lib.luapi.file#output_field)
+]]
+
+
+
+--[[ Add text to output field
+@ lib.luapi.file#output_field.add (function)
+> self (lib.luapi.file#output_field)
+> text (string)
+< self (lib.luapi.file#output_field)
+]]
+
+
+--[[ Element of output model
+@ lib.luapi.file#output_field (table)
+> text (string)
+> add (lib.luapi.file#output_field.add)
 ]]
 
 
@@ -27,7 +41,7 @@ local Type    = require 'lib.luapi.type'
 
 --[[ Single lua file
 IDEA: Parse and write list of requires
-@ (list=lib.luapi.file#class) First type is current module
+@ (list=lib.luapi.type) First type is current module
 > reqpath (string)
 > fullpath (string)
 > content (lib.luapi.file#content) [] gets removed after File:write()
@@ -44,11 +58,16 @@ function File:init(reqpath, fullpath)
   self.reqpath = reqpath
   self.fullpath = fullpath
   self.content = {
-    ["full"]    = nil,
-    ["code"]    = nil,
-    ["example"] = nil,
-    ["readme"]  = nil,
+    ['full']    = nil,
+    ['code']    = nil,
+    ['example'] = nil,
+    ['readme']  = nil,
   }
+  local add = function(add, text) add.text = add.text .. text; return add end
+  self.output = {}
+  for _, key in ipairs { 'head', 'body', 'foot' } do
+    self.output[key] = { text = '', add = add }
+  end
 end
 
 
@@ -250,7 +269,10 @@ end
 ]]
 
 
+--[[ Write `lib.luapi.file#output` to the file
+]]
 function File:write()
+  self.output  = nil
   self.content = nil
 end
 
@@ -277,7 +299,6 @@ function File:write()
 
   -- See `lib.luapi.block:out()`
   if self1 then
-    -- IDEA: Links across document
 
     out.head:add('# `' .. self.reqpath .. '`\n')
 
