@@ -28,10 +28,18 @@ function Type:init(raw_block)
 end
 
 
---[[ TODO: Output type
+--[[ TODO: Output type as module
 > file (lib.luapi.file)
 ]]
-function Type:output(file)
+function Type:output_main(file)
+  assert(file:is 'lib.luapi.file')
+end
+
+
+--[[ TODO: Add type to the output as part of existed module
+> file (lib.luapi.file)
+]]
+function Type:output_add(file)
   assert(file:is 'lib.luapi.file')
 end
 

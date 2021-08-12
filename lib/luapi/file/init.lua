@@ -256,8 +256,9 @@ end
 --[[ Write `lib.luapi.file#output` to the file and clean up file cache
 ]]
 function File:write()
-  for index = 1, #self do
-    self[index]:output(self)
+  if self[1] then
+    self[1]:output_main(self)
+    for index = 2, #self do self[index]:output_add(self) end
   end
   self.output  = nil
   self.content = nil
