@@ -71,7 +71,7 @@ function Object:new(...)
   }
   local obj = setmetatable({}, obj_mt)
   local result = obj:init(...)
-  if result ~= nil then return result end
+  if result ~= nil and result ~= obj then return result end
   apply_meta_from_parents(self, obj_mt)
   apply_meta_index_from_parents(self, obj_mt)
   return setmetatable(obj, obj_mt)
