@@ -65,10 +65,26 @@ function Type:output_main(file)
 end
 
 
---[[ TODO: Add type to the output as part of existed module
+--[[ TODO: Detect is this type component or local and add it
 > file (lib.luapi.file)
 ]]
 function Type:output_add(file)
+  assert(file:is 'lib.luapi.file')
+end
+
+
+--[[ TODO: Add type to the output as component of existed module
+> file (lib.luapi.file)
+]]
+function Type:output_add_component(file)
+  assert(file:is 'lib.luapi.file')
+end
+
+
+--[[ TODO: Add type to the output as local type of existed module
+> file (lib.luapi.file)
+]]
+function Type:output_add_local(file)
   assert(file:is 'lib.luapi.file')
 end
 
