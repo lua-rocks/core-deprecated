@@ -86,8 +86,9 @@ Also you can use your defined module require paths as types:
 + **lib.luapi.block** some class or module
 + **table=lib.luapi.conf** table that has the same fields as class or module,
   but it is not necessarily an instance of it
++ **lib.luapi.type=lib.luapi.block** custom classes can do the same
 
-You can't use classnames as types because they are not unique.
+You **can't** use **ClassNames** as types because they are not unique.
 
 When you use `@` tag, you can mark your type different ways:
 

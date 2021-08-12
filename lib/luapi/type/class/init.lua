@@ -11,11 +11,8 @@ Main differences from Block:
 @ lib.luapi.type.class (lib.luapi.type)
 > requires    (list=string)         []        Required modules (reqpaths)
 > links       ({string=lib.luapi.type...}) [] Links to internal types by names
-> title       (string)              []
-> description (string)              []
-> name        (string)              []
-> codename    (string)              []        Real name in code
-> codeargs    (list=string)         []        Real function arguments
+> title       (string)              []        First line in block
+> description (string)              []        Not tagged lines in block
 > fields      (list=lib.luapi.type) []        Line after >
 > returns     (list=lib.luapi.type) []        Line after <
 > typeset     (lib.luapi.type.class#typeset)  Line after @

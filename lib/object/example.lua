@@ -1,5 +1,6 @@
 local Object = require 'lib.object'
 
+-- See [luapi types documentation](lib/luapi/readme.md#types)
 local Point = Object:extend 'lib.object#point'
 
 Point.scale = 2 -- Class field!

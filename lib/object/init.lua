@@ -7,11 +7,11 @@ Key features of this library:
 + tiny and fast, readable source
 
 @ lib.object (table)
-> classname (string) ["Object"]
+> classname (string) ["lib.object"]
 > super (lib.object|table) [{}]
 ]]
 local Object = {
-  classname = 'Object',
+  classname = 'lib.object',
   super = {}
 }
 
@@ -44,7 +44,7 @@ local function apply_meta_index_from_parents(self, apply_here)
     local v
     if t == 'function' then v = self.__index(instance, key)
       elseif t == 'table' then v = self.__index[key]
-      else error("'__index' must be a function or table", 2)
+      else error('"__index" must be a function or table', 2)
     end
     if v ~= nil then return v end
     return self[key]
@@ -87,7 +87,7 @@ This method should not return anything, but it can if you really want to.
 function Object:init(fields)
   local t = type(fields)
   if t ~= 'table' then
-    error("'Object:init()' expected a table, but got " .. t, 3)
+    error('"Object:init()" expected a table, but got ' .. t, 3)
   end
   for key, value in pairs(fields) do self[key] = value end
 end
