@@ -60,6 +60,9 @@ For example, you can make class Animal which will return instance of
 Dog or Bird, depending on arguments (have it wings or not),
 but usually class Animal returns instanse of Animal.
 
+You can also return self if you want to stop initialisation process
+at the specific line.
+
 Notice: it can't return nil! Use false or exception message instead.
 > ... (any) [] Arguments passed to init
 < instance (any) []
@@ -82,6 +85,7 @@ end
 By default an object takes a table with fields and applies them to itself.
 You can replace it with the function new() of your class.
 This method should not return anything, but it can if you really want to.
+See `lib.object.new` for more details.
 > fields (table) [] New fields
 ]]
 function Object:init(fields)
