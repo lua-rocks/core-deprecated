@@ -1,10 +1,10 @@
 local Type = require 'lib.luapi.type'
 
 
---[[ Class
+--[[ Class is very special type!
 Main differences from Block:
 
-+ `typeset` is not optonal; it must have `name` and `parent`
++ `typeset` is not optonal; it must have `name` and `parent` fields
 + `fields` and `returns` are Types
 + additional fields: `requires` and `links`
 

@@ -7,7 +7,7 @@ local module = require 'lib.module'
 + IDEA: Add error handler module
 + IDEA: Support some IDE
 + IDEA: Clean markdown (no `markdownlint` warnings)
-> conf (lib.luapi.conf)
+> conf  (lib.luapi.conf)
 > files (lib.luapi.files)
 ]]
 local LUAPI = module 'lib.luapi'
