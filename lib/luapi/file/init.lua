@@ -6,27 +6,15 @@ local Type    = require 'lib.luapi.type'
 -- IDEA: Links across document
 
 
---[[ Output model
-@ lib.luapi.file#output (table)
-> head (lib.luapi.file#output_field)
-> body (lib.luapi.file#output_field)
-> foot (lib.luapi.file#output_field)
+--[[ Single lua file
+IDEA: Parse and write list of requires
+@ (list=lib.luapi.type) First type is current module
+> reqpath  (string)
+> fullpath (string)
+> content  (lib.luapi.file#content) [] gets removed after File:write()
+> output   (lib.luapi.file#output)  [] gets removed after File:write()
 ]]
-
-
---[[ Add text to output field
-@ lib.luapi.file#output_field.add (function)
-> self (lib.luapi.file#output_field)
-> text (string)
-< self (lib.luapi.file#output_field)
-]]
-
-
---[[ Element of output model
-@ lib.luapi.file#output_field (table)
-> text (string)
-> add (lib.luapi.file#output_field.add)
-]]
+local File = module 'lib.luapi.file'
 
 
 --[[ Content of this file plus some includes to the output
@@ -38,14 +26,27 @@ local Type    = require 'lib.luapi.type'
 ]]
 
 
---[[ Single lua file
-IDEA: Parse and write list of requires
-@ (list=lib.luapi.type) First type is current module
-> reqpath (string)
-> fullpath (string)
-> content (lib.luapi.file#content) [] gets removed after File:write()
+--[[ Output model
+@ lib.luapi.file#output (table)
+> head (lib.luapi.file#output_field)
+> body (lib.luapi.file#output_field)
+> foot (lib.luapi.file#output_field)
 ]]
-local File = module 'lib.luapi.file'
+
+
+--[[ Element of output model
+@ lib.luapi.file#output_field (table)
+> text (string)
+> add (lib.luapi.file#output_field.add)
+]]
+
+
+--[[ Add text to output field
+@ lib.luapi.file#output_field.add (function)
+> self (lib.luapi.file#output_field)
+> text (string)
+< self (lib.luapi.file#output_field)
+]]
 
 
 --[[ Init file but don't read it

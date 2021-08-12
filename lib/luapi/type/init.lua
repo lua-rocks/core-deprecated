@@ -29,7 +29,8 @@ end
 
 --[[ TODO: Output type
 ]]
-function Type:out()
+function Type:out(file)
+  print(self.title)
 end
 
 
