@@ -9,6 +9,7 @@ User must extend it from other class.
 > raw_block (string) []
 ]]
 function Type:init(raw_block)
+  assert(type(raw_block) == 'string')
   local parsed_block = require 'lib.luapi.block' (raw_block)
   if parsed_block.typeset and parsed_block.typeset.parent then
     local parent = parsed_block.typeset.parent
@@ -28,9 +29,10 @@ end
 
 
 --[[ TODO: Output type
+> file (lib.luapi.file)
 ]]
-function Type:out(file)
-  print(self.title)
+function Type:output(file)
+  assert(file:is 'lib.luapi.file')
 end
 
 

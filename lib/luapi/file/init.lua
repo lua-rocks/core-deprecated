@@ -1,20 +1,18 @@
 local asserts = require 'lib.asserts'
-local module  = require 'lib.module'
+local Object  = require 'lib.object'
 local Type    = require 'lib.luapi.type'
-
-
--- IDEA: Links across document
 
 
 --[[ Single lua file
 IDEA: Parse and write list of requires
+IDEA: Links across document
 @ (list=lib.luapi.type) First type is current module
 > reqpath  (string)
 > fullpath (string)
 > content  (lib.luapi.file#content) [] gets removed after File:write()
 > output   (lib.luapi.file#output)  [] gets removed after File:write()
 ]]
-local File = module 'lib.luapi.file'
+local File = Object:extend 'lib.luapi.file'
 
 
 --[[ Content of this file plus some includes to the output
@@ -101,27 +99,17 @@ end
 
 
 --[[ Parse file
-+ TODO: self1 can be any type (not only a class)
++ XXX: self1 can be any type (not only a class)
 + IDEA: Escape whatever you want with `\` (partitially works)
 + IDEA: Support OOP: inheritance
 < success (lib.luapi.file|nil)
 ]]
 function File:parse()
-  self:parse_comments()
-  self:parse_code()
-  return self
-end
-
-
-function File:parse_comments()
   for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then table.insert(self, type) end
   end
-end
-
-
-function File:parse_code()
+  return self
 end
 
 
@@ -268,6 +256,9 @@ end
 --[[ Write `lib.luapi.file#output` to the file and clean up file cache
 ]]
 function File:write()
+  for index = 1, #self do
+    self[index]:output(self)
+  end
   self.output  = nil
   self.content = nil
 end
