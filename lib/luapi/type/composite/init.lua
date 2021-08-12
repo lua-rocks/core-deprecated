@@ -1,5 +1,5 @@
 local Type = require 'lib.luapi.type'
-local Class = Type:extend 'lib.luapi.type.class'
+local Class = Type:extend 'lib.luapi.type.composite'
 
 
 --[[

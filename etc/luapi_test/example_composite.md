@@ -23,7 +23,7 @@ module.start()
 I`m <not> a [code
 ```
 
-## 📜 Fields
+## 📜 Components
 
 - 📦 **files : {string=table...} = {}**
   `[files paths] = <parsed> (file) tables`
@@ -31,9 +31,6 @@ I`m <not> a [code
   `some module field`
 - 🧮 **testNumber : 5**
   `Test table field`
-
-## 💡 Methods
-
 - 💡 **[startModule][] (name\*, verbose) : boolean, ololo**
   `My function for documentation`
 
@@ -56,7 +53,7 @@ I`m <not> a [code
 
 ## 🧩 Details
 
-### Method `startModule`
+### Function `startModule`
 
 My function for documentation
 

@@ -256,6 +256,20 @@ end
 --[[ Write `lib.luapi.file#output` to the file and clean up file cache
 ]]
 function File:write()
+  local function cleanup()
+    self.output  = nil
+    self.content = nil
+  end
+
+  -- Touch file
+  local file = io.open(self.fullpath .. '/readme.md', 'w+')
+  if not file then
+    print('error: failed to create "' .. self.fullpath .. '/readme.md' .. '"')
+    cleanup()
+    return nil
+  end
+
+  -- Create output
   local self1 = self[1]
   if self1 then
     assert(type(self1.typeset) == 'table')
@@ -264,8 +278,16 @@ function File:write()
     self1:output_main(self)
     for index = 2, #self do self[index]:output_add(self) end
   end
-  self.output  = nil
-  self.content = nil
+
+  -- Write output
+  local out = self.output
+  if self.output then
+    file:write(out.head.text .. out.body.text .. out.foot.text)
+    file:close()
+  end
+
+  cleanup()
+  return self
 end
 
 
