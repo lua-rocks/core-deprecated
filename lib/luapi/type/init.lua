@@ -1,4 +1,9 @@
 local Object = require 'lib.object'
+
+
+--[[ Type copies all its fields from Block but not extends from it
+@ lib.luapi.type (lib.object=lib.luapi.block)
+]]
 local Type = Object:extend 'lib.luapi.type'
 
 

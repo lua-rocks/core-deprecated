@@ -5,27 +5,27 @@
 local Object = require 'lib.object'
 
 
---[[ One line of tagged block
-@ lib.luapi.block#line (table)
-> name    (string) [] First word after tag
-> title   (string) [] Any text at the end
-> parent  (string) [] Text in parentheses
-> square  (string) [] Text in square brackets
-]]
-
-
 --[[ Parsed tagged comment block of any type
 @ lib.luapi.block (lib.object)
-> title       (string) []
-> description (string) []
-> name        (string) []
-> codename    (string) [] Real name in code
-> codeargs    (list=string) [] Real function arguments
+> title       (string)                    []
+> description (string)                    []
+> name        (string)                    []
+> codename    (string)                    [] Real name in code
+> codeargs    (list=string)               [] Real function arguments
 > fields      (list=lib.luapi.block#line) [] Line after >
 > returns     (list=lib.luapi.block#line) [] Line after <
 > typeset     (lib.luapi.block#line)      [] Line after @
 ]]
 local Block = Object:extend 'lib.luapi.block'
+
+
+--[[ One line of tagged block
+@ lib.luapi.block#line (table)
+> name   (string) [] First word after tag
+> title  (string) [] Any text at the end
+> parent (string) [] Text in parentheses
+> square (string) [] Text in square brackets
+]]
 
 
 --[[ Take comments block and create structured data block

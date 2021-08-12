@@ -1,17 +1,34 @@
 local Type = require 'lib.luapi.type'
+
+
+--[[ Class
+Main differences from Block:
+
++ `typeset` is not optonal; it must have `name` and `parent`
++ `fields` and `returns` are Types
++ additional fields: `requires` and `links`
+
+@ lib.luapi.type.class (lib.luapi.type)
+> requires    (list=string)         []        Required modules (reqpaths)
+> links       ({string=lib.luapi.type...}) [] Links to internal types by names
+> title       (string)              []
+> description (string)              []
+> name        (string)              []
+> codename    (string)              []        Real name in code
+> codeargs    (list=string)         []        Real function arguments
+> fields      (list=lib.luapi.type) []        Line after >
+> returns     (list=lib.luapi.type) []        Line after <
+> typeset     (lib.luapi.type.class#typeset)  Line after @
+]]
 local Class = Type:extend 'lib.luapi.type.class'
 
 
---[[ Old class definition FIXME: Remove it!
-@ lib.luapi.file#class (lib.luapi.block)
-> title       (string)               []
-> description (string)               []
-> codename    (string)               [] How its actually called in code
-> reqpath     (string)                  Unique require path
-> extends     (string)               [] Parent class reqpath or lua type
-> requires    (list=string)          [] Modules only
-> fields      (list=lib.luapi.block) []
-> methods     (list=lib.luapi.block) []
+--[[
+@ lib.luapi.type.class#typeset (table)
+> name   (string)    First word after tag (Require path format)
+> title  (string) [] Any text at the end
+> parent (string)    Text in parentheses  (Extended from: reqpath or lua type)
+> square (string) [] Text in square brackets
 ]]
 
 

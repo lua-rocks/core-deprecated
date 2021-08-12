@@ -14,7 +14,7 @@ local M = {}
 You no need to describe argument `self` for methods named with colon
 (actually you no **need** to describe anything 😉
 but of course you can if you want to).
-@ etc.luapi_test.super_method (function)
+@ etc.luapi_test:super_method (function)
 > n    (number)    Spaces between tagged data will be ignored
 > x    (integer)   [2]
 < self (etc.luapi_test) Bli bla
@@ -34,7 +34,7 @@ end
 --[[ Test type 2
 If type is function and you set it as module field, it will be parsed as method
 @ etc.luapi_test:type2 (function)
-> take (string)
+> take (etc.luapi_test#tbl) abstract type desribed below
 < give (integer)
 ]]
 
