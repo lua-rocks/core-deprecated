@@ -83,7 +83,7 @@ end
 
 --[[ Initializes the class
 By default an object takes a table with fields and applies them to itself.
-You can replace it with the function new() of your class.
+But you can (and probably should) replace it with your function.
 This method should not return anything, but it can if you really want to.
 See `lib.object.new` for more details.
 > fields (table) [] New fields
