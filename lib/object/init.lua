@@ -54,7 +54,7 @@ end
 
 --[[ Creates an instance of the class
 A simple call to the class as a function does the same.
-By default it returns the same type (if lib.object.init has no returns).
+By default it returns the same type if lib.object.init has no returns.
 
 For example, you can make class Animal which will return instance of
 Dog or Bird, depending on arguments (have it wings or not),
