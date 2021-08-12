@@ -272,11 +272,14 @@ function File:write()
   -- Create output
   local self1 = self[1]
   if self1 then
-    assert(type(self1.typeset) == 'table')
-    assert(type(self1.typeset.name) == 'string')
-    assert(type(self1.typeset.parent) == 'string')
     self1:output_main(self)
-    for index = 2, #self do self[index]:output_add(self) end
+    for index = 2, #self do
+      local selfi = self[index]
+      assert(type(selfi.typeset) == 'table')
+      assert(type(selfi.typeset.name) == 'string')
+      assert(type(selfi.typeset.parent) == 'string')
+      selfi:output_add(self)
+    end
   end
 
   -- Write output
