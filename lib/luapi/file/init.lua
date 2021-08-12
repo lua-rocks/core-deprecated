@@ -256,8 +256,12 @@ end
 --[[ Write `lib.luapi.file#output` to the file and clean up file cache
 ]]
 function File:write()
-  if self[1] then
-    self[1]:output_main(self)
+  local self1 = self[1]
+  if self1 then
+    assert(type(self1.typeset) == 'table')
+    assert(type(self1.typeset.name) == 'string')
+    assert(type(self1.typeset.parent) == 'string')
+    self1:output_main(self)
     for index = 2, #self do self[index]:output_add(self) end
   end
   self.output  = nil
