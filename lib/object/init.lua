@@ -60,7 +60,7 @@ For example, you can make class Animal which will return instance of
 Dog or Bird, depending on arguments (have it wings or not),
 but usually class Animal returns instanse of Animal.
 
-You can also return self if you want to stop initialisation process
+You can also return self if you want to stop initialization process
 at the specific line.
 
 Notice: it can't return nil! Use false or exception message instead.
