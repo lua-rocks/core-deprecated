@@ -2,9 +2,10 @@ local Object = require 'lib.object'
 
 
 --[[ Type copies all its fields from Block but not extends from it
+Module is the first type in file.
 Main differences from Block:
 
-+ additional fields: `requires` and `links` (for modules)
++ additional fields: `requires` and `links` for modules
 + `typeset` is not optional for modules; it must have `name` and `parent` fields
 
 @ lib.luapi.type (lib.object=lib.luapi.block)
