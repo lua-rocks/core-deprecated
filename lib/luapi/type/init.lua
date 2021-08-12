@@ -3,6 +3,7 @@ local Object = require 'lib.object'
 
 --[[ Type copies all its fields from Block but not extends from it
 Module is the first type in file.
+
 Main differences from Block:
 
 + additional fields: `requires` and `links` for modules
