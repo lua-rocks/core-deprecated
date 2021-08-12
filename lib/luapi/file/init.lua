@@ -264,7 +264,7 @@ end
 ]]
 
 
---[[ Write `lib.luapi.file#output` to the file
+--[[ Write `lib.luapi.file#output` to the file and clean up file model
 ]]
 function File:write()
   self.output  = nil
