@@ -9,7 +9,7 @@ IDEA: Parse and write list of requires
 IDEA: Links across document
 
 Fields `module` and `locals` indexed by type names and can contain type itself
-or string with the full reqpath to the type.
+or string with the full path to the type.
 
 = @ (lib.object)
 > reqpath  (string)
