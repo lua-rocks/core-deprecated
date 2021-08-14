@@ -59,7 +59,7 @@ output `readme.md` in the same directory. File called `example.lua` will be
 included into `readme.md` (you can use such files not only as examples, but also
 as simple unit-tests).
 
-You can document all your code, but keep in mind that luapi will only parse
+You can document all your code, but remember that luapi will only parse
 **types** and only write **module-types**.
 
 + **Type** is `--[[...]]` comments block with the tag `@` inside.
