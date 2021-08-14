@@ -7,6 +7,10 @@ local Type    = require 'lib.luapi.type'
 TODO: Separate internal types from external.
 IDEA: Parse and write list of requires
 IDEA: Links across document
+
+Fields `module` and `locals` indexed by type names and can contain type itself
+or string with the full reqpath to type.
+
 = @ (lib.object)
 > reqpath  (string)
 > fullpath (string)
@@ -102,7 +106,7 @@ end
 
 
 --[[ Parse file
-+ TODO: self1 can be any type (not only a class)
++ XXX: self1 can be any type (not only a class)
 + IDEA: Escape whatever you want with `\` (partitially works)
 + IDEA: Support OOP: inheritance
 < success (@|nil)
@@ -113,7 +117,7 @@ function File:parse()
   for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
-      local short_type_name = type.typeset.name:gsub(escaped_reqpath, '')
+      local short_type_name = type.typeset.name:gsub(escaped_reqpath, '@')
       print(short_type_name)
     end
   end
