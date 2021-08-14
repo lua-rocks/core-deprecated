@@ -4,26 +4,26 @@ local Object = require 'lib.object'
 --[[ Type is a parsed Block
 It copies all blocks fields but not extends from it.
 
-Module is the type with the same `typeset.name` as File's `reqpath`.
+Module is the type with the same `line.name` as File's `reqpath`.
 
 Main differences from Block:
 
 + additional field: `requires` for modules
-+ `typeset` is not optional; it must have `name` and `parent` fields
++ `line` is not optional; it must have `name` and `parent` fields
 
 = @ (lib.object=lib.luapi.block)
-> requires    (list=string)    [] Required modules (reqpaths)
-> title       (string)         [] First line in block
-> description (string)         [] Not tagged lines in block
-> fields      (list=@#typeset) [] Line after >
-> returns     (list=@#typeset) [] Line after <
-> typeset     (@#typeset)         Line after =
+> requires    (list=string) [] Required modules (reqpaths)
+> title       (string)      [] First line in block
+> description (string)      [] Not tagged lines in block
+> fields      (list=@#line) [] Line after >
+> returns     (list=@#line) [] Line after <
+> line        (@#line)         Line after =
 ]]
 local Type = Object:extend 'lib.luapi.type'
 
 
---[[ Main type data
-= @#typeset (table)
+--[[ One line of tagged block (in Type)
+= @#line (table)
 > name   (string)    First word after tag (reqpath or lua type)
 > parent (string)    Text in parentheses  (extended from: reqpath or lua type)
 > title  (string) [] Any text at the end
@@ -41,10 +41,10 @@ function Type:init(raw_block)
   assert(type(raw_block) == 'string')
   local parsed_block = require 'lib.luapi.block' (raw_block)
   if not parsed_block then return false end
-  if not parsed_block.typeset then return false end
-  local name = parsed_block.typeset.name
+  if not parsed_block.line then return false end
+  local name = parsed_block.line.name
   if not name then return false end
-  local parent = parsed_block.typeset.parent
+  local parent = parsed_block.line.parent
   if not parent then return false end
 
   if parent == 'table' or parent:find('%.') then

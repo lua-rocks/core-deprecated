@@ -115,7 +115,7 @@ function File:parse()
   for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
-      local short_type_name = type.typeset.name:gsub(escaped_reqpath, '@')
+      local short_type_name = type.line.name:gsub(escaped_reqpath, '@')
       if short_type_name == '@' then
         for index, value in ipairs(type.fields) do
           print(index, value)
@@ -137,9 +137,9 @@ function File:parse()
   self1.codename = self.content.code:match 'return%s([%w_]+)\n?$'
 
   local function set_block_name(block)
-    if block.typeset and block.typeset.name then
-      block.name = block.typeset.name
-      block.typeset.name = nil
+    if block.line and block.line.name then
+      block.name = block.line.name
+      block.line.name = nil
     else
       block.name = block.codename
     end
@@ -155,7 +155,7 @@ function File:parse()
         end
       end
     end
-    if self1.typeset then self1.extends = self1.typeset.parent end
+    if self1.line then self1.extends = self1.line.parent end
     -- Insert types
     self[1] = self1
     for _, typeN in ipairs(selfN) do table.insert(self, typeN) end
@@ -201,9 +201,9 @@ function File:parse()
           :gsub('%s', '')
           :match(self1.codename .. '%.(.+)=')
         set_block_name(field)
-        if field.typeset then
-          for key, value in pairs(field.typeset) do field[key] = value end
-          field.typeset = nil
+        if field.line then
+          for key, value in pairs(field.line) do field[key] = value end
+          field.line = nil
         end
         if next(field) then
           self1.fields = self1.fields or {}
@@ -237,10 +237,10 @@ function File:parse()
     elseif block:match '\n@.+' then -- Type
       local typeN = Block(block)
       -- Add type as field if it's not a function
-      if typeN.typeset and typeN.typeset.name and
-      typeN.typeset.parent ~= 'function' and
-      not typeN.typeset.parent:find '%.' then
-        local name = typeN.typeset.name
+      if typeN.line and typeN.line.name and
+      typeN.line.parent ~= 'function' and
+      not typeN.line.parent:find '%.' then
+        local name = typeN.line.name
         local from, to = name:find(self.reqpath..".")
         if from == 1 then
           name = name:sub(to+1)
@@ -285,9 +285,9 @@ function File:write()
     self1:output_main(self)
     for index = 2, #self do
       local selfi = self[index]
-      assert(type(selfi.typeset) == 'table')
-      assert(type(selfi.typeset.name) == 'string')
-      assert(type(selfi.typeset.parent) == 'string')
+      assert(type(selfi.line) == 'table')
+      assert(type(selfi.line.name) == 'string')
+      assert(type(selfi.line.parent) == 'string')
       selfi:output_add(self)
     end
   end

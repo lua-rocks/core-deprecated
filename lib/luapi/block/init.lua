@@ -12,7 +12,7 @@ local lume = require 'lib.lume'
 > description (string)      [] Not tagged lines in block
 > fields      (list=@#line) [] Line after >
 > returns     (list=@#line) [] Line after <
-> typeset     (@#line)      [] Line after =
+> line        (@#line)      [] Line after =
 ]]
 local Block = Object:extend 'lib.luapi.block'
 
@@ -69,7 +69,7 @@ function Block:parse(block)
         end
       end
       if tag == '=' then
-        self.typeset = self.typeset or parsed_line
+        self.line = self.line or parsed_line
       end
     elseif line ~= ']]' then
       local description = self.description or ''
