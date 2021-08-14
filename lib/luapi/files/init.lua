@@ -3,7 +3,8 @@ local File = require 'lib.luapi.file'
 
 
 --[[ All files in project (indexed by reqpaths)
-@ lib.luapi.files (lib.object={string=lib.luapi.file...})
+@ lib.luapi.files
+> ?string (lib.luapi.file...)
 ]]
 local Files = Object:extend 'lib.luapi.files'
 
@@ -103,7 +104,7 @@ end
 --[[ Write `readme.md` for entire project
 > index_path (string)
 < success (lib.luapi.files|nil)
-]]
+
 function Files:write(index_path)
   local index_file = io.open(index_path, 'w+')
   if not index_file then
@@ -132,6 +133,7 @@ function Files:write(index_path)
   index_file:close()
   return self
 end
+]]
 
 
 return Files
