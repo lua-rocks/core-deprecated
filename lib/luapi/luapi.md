@@ -103,6 +103,9 @@ Like this:
 `> ?integer (lib.luapi.type) [] Types indexed by integer numbers`
 `> ?string  (lib.luapi.file) [] Files indexed by names`
 
+\* For the most static languages such definition would be unacceptable, but Lua
+is very flexible.
+
 ## Style guide
 
 These rules are _optional_, but highly recommended:
