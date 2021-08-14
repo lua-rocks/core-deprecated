@@ -313,7 +313,7 @@ function Inspector:putValue(v)
 end
 
 --[[ Inspecton options
-@ lib.inspect.options (table)
+= lib.inspect.options (table)
 > depth (integer) []
 > newline (string) []
 > indent (string) []

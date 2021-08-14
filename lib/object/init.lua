@@ -6,7 +6,7 @@ Key features of this library:
 + can subtly identify class membership
 + tiny and fast, readable source
 
-@ lib.object (table)
+= lib.object (table)
 > classname (string) ["lib.object"]
 > super (lib.object|table) [{}]
 ]]

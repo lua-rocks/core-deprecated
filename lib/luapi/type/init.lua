@@ -11,20 +11,20 @@ Main differences from Block:
 + additional fields: `requires` and `links` for modules
 + `typeset` is not optional; it must have `name` and `parent` fields
 
-@ lib.luapi.type (lib.object=lib.luapi.block)
+= lib.luapi.type (lib.object=lib.luapi.block)
 > requires    (list=string)         []        Required modules (reqpaths)
 > links       ({string=lib.luapi.type...}) [] Links to internal types by names
 > title       (string)              []        First line in block
 > description (string)              []        Not tagged lines in block
 > fields      (list=lib.luapi.type) []        Line after >
 > returns     (list=lib.luapi.type) []        Line after <
-> typeset     (lib.luapi.type#typeset)        Line after @
+> typeset     (lib.luapi.type#typeset)        Line after =
 ]]
 local Type = Object:extend 'lib.luapi.type'
 
 
 --[[
-@ lib.luapi.type#typeset (table)
+= lib.luapi.type#typeset (table)
 > name   (string)    First word after tag (reqpath or lua type)
 > parent (string)    Text in parentheses  (extended from: reqpath or lua type)
 > title  (string) [] Any text at the end

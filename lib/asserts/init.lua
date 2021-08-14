@@ -4,7 +4,7 @@ The first argument must be a function, through which the rest are passed.
 This function takes one argument and returns any number.
 If it returns nil or false, the test will be considered to have failed.
 The test will also fail if an error occurs during the test.
-@ lib.asserts (assert)
+= lib.asserts (assert)
 > __call (lib.asserts.__call)
 ]]
 
@@ -17,7 +17,7 @@ The test will also fail if an error occurs during the test.
 ]]
 
 --[[
-@ lib.asserts.__call (function)
+= lib.asserts.__call (function)
 > f (function|string) []
 > ... (any) []
 < f (function|string) []

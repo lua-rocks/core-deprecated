@@ -7,18 +7,18 @@ local lume = require 'lib.lume'
 
 
 --[[ Parsed tagged comment block of any type
-@ lib.luapi.block (lib.object)
+= lib.luapi.block (lib.object)
 > title       (string)                    [] First line in block
 > description (string)                    [] Not tagged lines in block
 > fields      (list=lib.luapi.block#line) [] Line after >
 > returns     (list=lib.luapi.block#line) [] Line after <
-> typeset     (lib.luapi.block#line)      [] Line after @
+> typeset     (lib.luapi.block#line)      [] Line after =
 ]]
 local Block = Object:extend 'lib.luapi.block'
 
 
 --[[ One line of tagged block
-@ lib.luapi.block#line (table)
+= lib.luapi.block#line (table)
 > name   (string) [] First word after tag
 > title  (string) [] Any text at the end
 > parent (string) [] Text in parentheses
@@ -46,7 +46,7 @@ function Block:parse(block)
   -- Parse block line by line
   for line in block:gmatch '\n(%C*)' do
     local tag = line:sub(1, 1)
-    if tag == '>' or tag == '<' or tag == '@' then
+    if tag == '>' or tag == '<' or tag == '=' then
       local tagged_line = line:sub(3, -1)
       local comment_start_at = math.max(
         (tagged_line:find '%s' or 0),
@@ -68,7 +68,7 @@ function Block:parse(block)
           table.insert(self[long], parsed_line)
         end
       end
-      if tag == '@' then
+      if tag == '=' then
         self.typeset = self.typeset or parsed_line
       end
     elseif line ~= ']]' then

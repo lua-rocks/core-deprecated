@@ -7,19 +7,19 @@ local Type    = require 'lib.luapi.type'
 TODO: Separate internal types from external.
 IDEA: Parse and write list of requires
 IDEA: Links across document
-@ lib.luapi.file (lib.object)
+= = (lib.object)
 > reqpath  (string)
 > fullpath (string)
-> module   ({string=lib.luapi.type...}) [] external types indexed by names
-> locals   ({string=lib.luapi.type...}) [] internal types indexed by names
-> content  (lib.luapi.file#content) [] gets removed after File:write() attempt
-> output   (lib.luapi.file#output)  [] gets removed after File:write() attempt
+> module   ({string=lib.luapi.type|string...}) [] external types
+> locals   ({string=lib.luapi.type|string...}) [] internal types
+> content  (@#content) [] gets removed after File:write() attempt
+> output   (@#output)  [] gets removed after File:write() attempt
 ]]
 local File = Object:extend 'lib.luapi.file'
 
 
 --[[ Content of this file plus some includes to the output
-@ lib.luapi.file#content (table)
+= @#content (table)
 > full (string)    [] full content of this file
 > code (string)    [] uncommented content of this file
 > example (string) [] example.lua
@@ -28,25 +28,25 @@ local File = Object:extend 'lib.luapi.file'
 
 
 --[[ Output model
-@ lib.luapi.file#output (table)
-> head (lib.luapi.file#output_field)
-> body (lib.luapi.file#output_field)
-> foot (lib.luapi.file#output_field)
+= @#output (table)
+> head (@#output_field)
+> body (@#output_field)
+> foot (@#output_field)
 ]]
 
 
 --[[ Element of output model
-@ lib.luapi.file#output_field (table)
+= @#output_field (table)
 > text (string)
-> add (lib.luapi.file#output_field.add)
+> add (@#output_field.add)
 ]]
 
 
 --[[ Add text to output field
-@ lib.luapi.file#output_field.add (function)
-> self (lib.luapi.file#output_field)
+= @#output_field.add (function)
+> self (@#output_field)
 > text (string)
-< self (lib.luapi.file#output_field)
+< self (@#output_field)
 ]]
 
 
@@ -73,7 +73,7 @@ end
 
 
 --[[ Read file
-< success (lib.luapi.file|nil)
+< success (@|nil)
 ]]
 function File:read()
   -- init.lua
@@ -105,19 +105,25 @@ end
 + TODO: self1 can be any type (not only a class)
 + IDEA: Escape whatever you want with `\` (partitially works)
 + IDEA: Support OOP: inheritance
-< success (lib.luapi.file|nil)
+< success (@|nil)
 ]]
 function File:parse()
+  self.module = {}
+  local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
   for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
-    if type then table.insert(self, type) end
+    if type then
+      local short_type_name = type.typeset.name:gsub(escaped_reqpath, '')
+      print(short_type_name)
+    end
   end
+  if next(self.module) == nil then self.module = nil end
   return self
 end
 
 
 --[[ It was terrible...
--- < success (lib.luapi.file|nil)
+-- < success (@|nil)
 function File:parse()
   local self1 = Block()
   local selfN = {}
@@ -150,7 +156,7 @@ function File:parse()
     local mt = getmetatable(self1)
     if mt then
       mt.__tostring = function()
-        return 'instance of lib.luapi.file#class'
+        return 'instance of @#class'
       end
       setmetatable(self1, mt)
     end
@@ -256,7 +262,7 @@ end
 ]]
 
 
---[[ Write `lib.luapi.file#output` to the file and clean up file cache
+--[[ Write `@#output` to the file and clean up file cache
 ]]
 function File:write()
   -- Touch file

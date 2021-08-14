@@ -17,8 +17,8 @@ Check out `init.lua` files to see how it works. Some tests you can find
 
 - `>`: function argument or table field
 - `<`: function return
-- `@`: set block [type](#types) and name/reqpath (can be only one in block)
-- first word after tag: variable name (or reqpath if tag is `@`)
+- `=`: set block [type](#types) and name/reqpath (can be only one in block)
+- first word after tag: variable name (or reqpath if tag is `=`)
 - `(parentheses)`: variable type name or parent class reqpath
 - `[square brackets]`: default value of the variable (makes it _optional_)
 - last words: one line comment (title)
@@ -31,10 +31,10 @@ Some function comment.
 Can be multiline.
 _Support_ **markdown**.
 
-The line started with the tag `@` is unnecessary but it makes this function
+The line started with the tag `=` is unnecessary but it makes this function
 special by specifying its type: *unique pseudo-reqpath*, to refer to it later.
 
-@ src.module.example (function)
+= src.module.example (function)
 > str (string) some string comment (one line and no markdown for such comments)
 > num (number) [2] some number comment
 < con (string) result of concatenation
@@ -62,7 +62,7 @@ as simple unit-tests).
 You can document all your code, but remember that luapi will only parse
 **types** and only write files with **module-types**.
 
-+ **Type** is `--[[...]]` comments block with the tag `@` inside.
++ **Type** is `--[[...]]` comments block with the tag `=` inside.
 + **Module-type** is the type whose name matches current file reqpath.
 
 If there is no module-types in the file or file name is not `init.lua`, it will
@@ -92,10 +92,12 @@ Also you can use your defined module require paths as types:
 
 You **can't** use **ClassNames** as types because they are not unique.
 
-When you use `@` tag, you can mark your type different ways:
+When you use `=` tag, you can mark your type different ways:
 
 + **lib.luapi:line** `line` is field or method of `lib.luapi`
 + **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
+
+You can use symbol `@` as shorcut for **this** file reqpath: `@:line`, `@#line`.
 
 Inside field definition (`>`) you can use `=type_of_name` instead of field name
 if your table includes fields with undefined names.

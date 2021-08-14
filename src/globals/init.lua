@@ -1,5 +1,5 @@
 --[[ Configuration table
-@ src.globals.conf (table)
+= src.globals.conf (table)
 > production (boolean) Production or development mode
 ]]
 
