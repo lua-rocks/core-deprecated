@@ -10,8 +10,8 @@ IDEA: Links across document
 @ lib.luapi.file (lib.object)
 > reqpath  (string)
 > fullpath (string)
-> module   (list=lib.luapi.type)    [] external types
-> locals   (list=lib.luapi.type)    [] internal types
+> module   ({string=lib.luapi.type...}) [] external types indexed by names
+> locals   ({string=lib.luapi.type...}) [] internal types indexed by names
 > content  (lib.luapi.file#content) [] gets removed after File:write() attempt
 > output   (lib.luapi.file#output)  [] gets removed after File:write() attempt
 ]]
