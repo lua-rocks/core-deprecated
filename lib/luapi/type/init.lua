@@ -26,7 +26,7 @@ local Type = Object:extend 'lib.luapi.type'
 
 --[[ One line of tagged block (in Type)
 = @#line (table)
-> index  (integer)    Output order
+> index  (integer) [] IDEA: Output order
 > name   (string)     First word after tag (reqpath or lua type)
 > parent (string)     Text in parentheses  (extended from: reqpath or lua type)
 > title  (string)  [] Any text at the end
