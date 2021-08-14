@@ -96,7 +96,8 @@ When you use `@` tag, you can mark your type different ways:
 + **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
 
 Inside field definition (`>`) you can use `?type_of_name` instead of field name
-if your table or class includes fields of a certain types with undefined names.
+if your table includes fields with undefined names.
+
 Like this:
 
 `> ?integer (lib.luapi.type) [] Types indexed by integer numbers`
