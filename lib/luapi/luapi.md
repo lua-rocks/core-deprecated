@@ -60,7 +60,7 @@ included into `readme.md` (you can use such files not only as examples, but also
 as simple unit-tests).
 
 You can document all your code, but remember that luapi will only parse
-**types** and only write **module-types**.
+**types** and only write files with **module-types**.
 
 + **Type** is `--[[...]]` comments block with the tag `@` inside.
 + **Module-type** is the type whose name matches current file reqpath.
