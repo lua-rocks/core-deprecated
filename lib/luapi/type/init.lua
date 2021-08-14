@@ -4,7 +4,7 @@ local Object = require 'lib.object'
 --[[ Type is a parsed Block
 It copies all blocks fields but not extends from it.
 
-Module is the first type in file.
+Module is the type with the same `typeset.name` as File's `reqpath`.
 
 Main differences from Block:
 
