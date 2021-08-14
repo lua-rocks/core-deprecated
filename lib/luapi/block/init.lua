@@ -7,18 +7,18 @@ local lume = require 'lib.lume'
 
 
 --[[ Parsed tagged comment block of any type
-= lib.luapi.block (lib.object)
-> title       (string)                    [] First line in block
-> description (string)                    [] Not tagged lines in block
-> fields      (list=lib.luapi.block#line) [] Line after >
-> returns     (list=lib.luapi.block#line) [] Line after <
-> typeset     (lib.luapi.block#line)      [] Line after =
+= @ (lib.object)
+> title       (string)      [] First line in block
+> description (string)      [] Not tagged lines in block
+> fields      (list=@#line) [] Line after >
+> returns     (list=@#line) [] Line after <
+> typeset     (@#line)      [] Line after =
 ]]
 local Block = Object:extend 'lib.luapi.block'
 
 
 --[[ One line of tagged block
-= lib.luapi.block#line (table)
+= @#line (table)
 > name   (string) [] First word after tag
 > title  (string) [] Any text at the end
 > parent (string) [] Text in parentheses

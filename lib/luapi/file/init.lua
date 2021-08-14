@@ -8,14 +8,11 @@ TODO: Separate internal types from external.
 IDEA: Parse and write list of requires
 IDEA: Links across document
 
-Fields `module` and `locals` indexed by type names and can contain type itself
-or string with the full path to the type.
-
 = @ (lib.object)
 > reqpath  (string)
 > fullpath (string)
-> module   ({string=lib.luapi.type|string...}) [] external types
-> locals   ({string=lib.luapi.type|string...}) [] internal types
+> module   ({string=lib.luapi.type...}) [] external types indexed by type names
+> locals   ({string=lib.luapi.type...}) [] internal types indexed by type names
 > content  (@#content) [] gets removed after File:write() attempt
 > output   (@#output)  [] gets removed after File:write() attempt
 ]]
@@ -113,15 +110,21 @@ end
 ]]
 function File:parse()
   self.module = {}
+  self.locals = {}
   local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
   for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
       local short_type_name = type.typeset.name:gsub(escaped_reqpath, '@')
-      print(short_type_name)
+      if short_type_name == '@' then
+        for index, value in ipairs(type.fields) do
+          print(index, value)
+        end
+      end
     end
   end
   if next(self.module) == nil then self.module = nil end
+  if next(self.locals) == nil then self.locals = nil end
   return self
 end
 
