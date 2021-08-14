@@ -4,13 +4,16 @@ local Type    = require 'lib.luapi.type'
 
 
 --[[ Single lua file
+TODO: Separate internal types from external.
 IDEA: Parse and write list of requires
 IDEA: Links across document
-@ (list=lib.luapi.type) First type is current module
+@ lib.luapi.file (lib.object)
 > reqpath  (string)
 > fullpath (string)
-> content  (lib.luapi.file#content) [] gets removed after File:write()
-> output   (lib.luapi.file#output)  [] gets removed after File:write()
+> module   (list=lib.luapi.type)    [] external types
+> locals   (list=lib.luapi.type)    [] internal types
+> content  (lib.luapi.file#content) [] gets removed after File:write() attempt
+> output   (lib.luapi.file#output)  [] gets removed after File:write() attempt
 ]]
 local File = Object:extend 'lib.luapi.file'
 
@@ -99,7 +102,7 @@ end
 
 
 --[[ Parse file
-+ XXX: self1 can be any type (not only a class)
++ TODO: self1 can be any type (not only a class)
 + IDEA: Escape whatever you want with `\` (partitially works)
 + IDEA: Support OOP: inheritance
 < success (lib.luapi.file|nil)
@@ -256,16 +259,10 @@ end
 --[[ Write `lib.luapi.file#output` to the file and clean up file cache
 ]]
 function File:write()
-  local function cleanup()
-    self.output  = nil
-    self.content = nil
-  end
-
   -- Touch file
   local file = io.open(self.fullpath .. '/readme.md', 'w+')
   if not file then
     print('error: failed to create "' .. self.fullpath .. '/readme.md' .. '"')
-    cleanup()
     return nil
   end
 
@@ -289,7 +286,6 @@ function File:write()
     file:close()
   end
 
-  cleanup()
   return self
 end
 
@@ -330,6 +326,12 @@ function File:write()
   return self
 end
 ]]
+
+
+function File:cleanup()
+  self.output  = nil
+  self.content = nil
+end
 
 
 return File

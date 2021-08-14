@@ -1,4 +1,4 @@
-local module = require 'lib.module'
+local Object = require 'lib.object'
 
 
 --[[ Documentation generator
@@ -10,7 +10,7 @@ local module = require 'lib.module'
 > conf  (lib.luapi.conf)
 > files (lib.luapi.files)
 ]]
-local LUAPI = module 'lib.luapi'
+local LUAPI = Object:extend 'lib.luapi'
 
 
 --[[

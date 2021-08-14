@@ -1,7 +1,9 @@
 local Object = require 'lib.object'
 
 
---[[ Type copies all its fields from Block but not extends from it
+--[[ Type is a parsed Block
+It copies all blocks fields but not extends from it.
+
 Module is the first type in file.
 
 Main differences from Block:

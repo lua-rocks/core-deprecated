@@ -31,16 +31,13 @@ they are mine and this repository is native to them.
 + [lume][] - a set of various goodies by `rxi`
 + [inspect][] - variable inspector by `kikito`
 + [ansicolors][] - multicolor terminal output by `hoelzro` and `kikito`
-+ [debugger][] - a simple, highly embedabble CLI debugger by `slembcke`
 
 [öbject]: lib/object
-[mödule]: lib/module
 [luapi]: lib/luapi
 [asserts]: lib/asserts
 [lume]: https://github.com/rxi/lume
 [inspect]: https://github.com/kikito/inspect.lua
 [ansicolors]: https://github.com/kikito/ansicolors.lua
-[debugger]: https://github.com/slembcke/debugger.lua
 
 ## Code style
 

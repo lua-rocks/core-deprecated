@@ -1,11 +1,11 @@
-local module = require 'lib.module'
+local Object = require 'lib.object'
 
 
 --[[ Documentation generator config
 > root_path (string)
 > path_filters (list) [] Search files only in these subdirs (relative to root)
 ]]
-local Conf = module 'lib.luapi.conf'
+local Conf = Object:extend 'lib.luapi.conf'
 
 
 --[[

@@ -1,11 +1,11 @@
-local module = require 'lib.module'
+local Object = require 'lib.object'
 local File = require 'lib.luapi.file'
 
 
---[[ All files in project
-@ ({string=lib.luapi.file...}) Files indexed by reqpaths
+--[[ All files in project (indexed by reqpaths)
+@ lib.luapi.files (lib.object={string=lib.luapi.file...})
 ]]
-local Files = module 'lib.luapi.files'
+local Files = Object:extend 'lib.luapi.files'
 
 
 --[[ Get paths, load, read, parse, write ]]--
@@ -91,6 +91,7 @@ function Files:init(luapi)
       file:write()
       self[reqpath] = file
     end
+    file:cleanup()
   end
 
   -- IDEA: Write index
