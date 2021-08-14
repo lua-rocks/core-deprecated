@@ -4,7 +4,7 @@ local File = require 'lib.luapi.file'
 
 --[[ All files in project (indexed by reqpaths)
 @ lib.luapi.files
-> ?string (lib.luapi.file...)
+> =string (lib.luapi.file...)
 ]]
 local Files = Object:extend 'lib.luapi.files'
 

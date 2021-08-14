@@ -70,7 +70,7 @@ in the file or file name is not `init.lua`, it will be skipped.
 
 When declaring a variable type, you can use all the built-in lua types or actual
 variable values, plus the types listed below (keep in mind that equal sign works
-different in different type definitions):
+different in different definitions):
 
 + **any** for any type
 + **integer** for non float number
@@ -95,13 +95,13 @@ When you use `@` tag, you can mark your type different ways:
 + **lib.luapi:line** `line` is field or method of `lib.luapi`
 + **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
 
-Inside field definition (`>`) you can use `?type_of_name` instead of field name
+Inside field definition (`>`) you can use `=type_of_name` instead of field name
 if your table includes fields with undefined names.
 
 Like this:
 
-`> ?integer (lib.luapi.type) [] Types indexed by integer numbers`
-`> ?string  (lib.luapi.file) [] Files indexed by names`
+`> =integer (lib.luapi.type) [] Types indexed by integer numbers`
+`> =string  (lib.luapi.file) [] Files indexed by names`
 
 \* For the most static languages such definition would be unacceptable, but Lua
 is very flexible.
