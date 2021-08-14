@@ -7,7 +7,7 @@ local Type    = require 'lib.luapi.type'
 TODO: Separate internal types from external.
 IDEA: Parse and write list of requires
 IDEA: Links across document
-= = (lib.object)
+= @ (lib.object)
 > reqpath  (string)
 > fullpath (string)
 > module   ({string=lib.luapi.type|string...}) [] external types
