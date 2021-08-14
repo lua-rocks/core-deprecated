@@ -60,11 +60,13 @@ included into `readme.md` (you can use such files not only as examples, but also
 as simple unit-tests).
 
 You can document all your code, but keep in mind that luapi will only parse
-**class types** (curently it is a source of many misunderstandings and bugs;
-later I want to support output for **any types**).
+**types** and only write **module-types**.
 
-Type is `--[[...]]` comments block with the tag `@` inside. If there is no types
-in the file or file name is not `init.lua`, it will be skipped.
++ **Type** is `--[[...]]` comments block with the tag `@` inside.
++ **Module-type** is the type whose name matches current file reqpath.
+
+If there is no module-types in the file or file name is not `init.lua`, it will
+be skipped.
 
 ## Types
 
