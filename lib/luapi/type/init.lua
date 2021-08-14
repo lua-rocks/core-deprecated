@@ -10,7 +10,7 @@ Main differences from Block:
 
 + additional field: `requires` for modules
 + `line` is not optional; it must have `name` and `parent` fields
-+ TODO: fields and returns first parsed as lines and then converted into types
++ TODO: fields and returns first parsed as lines, then converted into types
 
 = @ (lib.object=lib.luapi.block)
 > requires    (list=string)   [] Required modules (reqpaths)
