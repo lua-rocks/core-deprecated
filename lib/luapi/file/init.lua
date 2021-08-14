@@ -118,14 +118,14 @@ function File:parse()
       local short_type_name = type.line.name:gsub(escaped_reqpath, '@')
       if short_type_name == '@' then
         for _, ifield in ipairs(type.fields) do
-          table.insert(self.module, ifield)
+          self.module[ifield.name] = ifield
         end
       else
         local s = short_type_name:sub(1, 2)
         if s == '@:' then
-          table.insert(self.module, type)
+          self.module[short_type_name:sub(3, -1)] = type
         elseif s == '@#' then
-          table.insert(self.locals, type)
+          self.locals[short_type_name:sub(3, -1)] = type
         end
       end
     end
