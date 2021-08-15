@@ -23,7 +23,7 @@ function File:init(reqpath, fullpath)
   asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
   self.reqpath = reqpath
   self.fullpath = fullpath
-  self.cache = require 'lib.luapi.file.cache' ()
+  self.cache = require 'lib.luapi.file.cache' (self)
 end
 
 
@@ -64,10 +64,9 @@ end
 < success (@) []
 ]]
 function File:parse_module()
-  local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     if block:find '\n=%s@%P'
-    or block:find('\n=%s' .. escaped_reqpath .. '%P') then
+    or block:find('\n=%s' .. self.cache.escaped_reqpath .. '%P') then
       self.module = Type(block)
       return self
     end
@@ -81,11 +80,10 @@ end
 < success (@) []
 ]]
 function File:parse()
-  local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
-      local short_type_name = type.name:gsub(escaped_reqpath, '@')
+      local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
       local s = short_type_name:sub(1, 2)
       type.name = short_type_name:sub(3, -1)
       if s == '@:' then

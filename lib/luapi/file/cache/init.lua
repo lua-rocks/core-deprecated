@@ -10,6 +10,7 @@ Gets removed after File:write() attempt.
 > head (@#output)
 > body (@#output)
 > foot (@#output)
+> escaped_reqpath (string)
 ]]
 local Cache = Object:extend 'lib.luapi.file.cache'
 
@@ -29,11 +30,12 @@ local Cache = Object:extend 'lib.luapi.file.cache'
 ]]
 
 
-function Cache:init()
+function Cache:init(file)
   local add = function(add, text) add.text = add.text .. text; return add end
   for _, key in ipairs { 'head', 'body', 'foot' } do
     self[key] = { text = '', add = add }
   end
+  self.escaped_reqpath = file.reqpath:gsub('%p', '%%%1')
 end
 
 
