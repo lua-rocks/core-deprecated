@@ -1,3 +1,7 @@
+-- TODO: Add all core types as separate classmodules in true OOP style.
+-- TODO: parse abstract (#) types
+
+
 local Object = require 'lib.object'
 local lume = require 'lib.lume'
 
@@ -23,9 +27,7 @@ local Block = Object:extend 'lib.luapi.block'
 
 
 --[[ Take comments block and create structured data block
-= @:init (function)
-> self   (@)
-> block  (string) []
+> block (string) []
 ]]
 function Block:init(block)
   if not block then return self end
@@ -37,9 +39,7 @@ end
 
 
 --[[ Parse block
-= @:parse (function)
-> self    (@)
-> block   (string)
+> block (string)
 ]]
 function Block:parse(block)
   assert(type(block) == 'string')
@@ -86,8 +86,7 @@ end
 
 --[[ Correct parsed block
 Trim and remove empty strings in table values
-= @:correct (function)
-> self      (table)
+> self (table)
 ]]
 function Block:correct()
   assert(type(self) == 'table')

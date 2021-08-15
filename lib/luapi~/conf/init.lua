@@ -2,7 +2,6 @@ local Object = require 'lib.object'
 
 
 --[[ Documentation generator config
-= @ (lib.object)
 > root_path (string)
 > path_filters (list) [] Search files only in these subdirs (relative to root)
 ]]
@@ -10,7 +9,6 @@ local Conf = Object:extend 'lib.luapi.conf'
 
 
 --[[
-= @:init (function)
 > conf (table=lib.luapi.conf)
 ]]
 function Conf:init(conf)

@@ -3,17 +3,13 @@ local File = require 'lib.luapi.file'
 
 
 --[[ All files in project (indexed by reqpaths)
-= @ (lib.object)
-> ?string (lib.luapi.file)
+= lib.luapi.files (lib.object)
+> =string (lib.luapi.file)
 ]]
 local Files = Object:extend 'lib.luapi.files'
 
 
---[[ Get paths, load, read, parse, write
-= @:init (function)
-> self   (@)
-> luapi  (lib.luapi)
-]]
+--[[ Get paths, load, read, parse, write ]]--
 function Files:init(luapi)
   assert(tostring(luapi) == 'instance of lib.luapi')
 
@@ -98,7 +94,46 @@ function Files:init(luapi)
     end
     file:cleanup()
   end
+
+  -- IDEA: Write index
+  -- Temporary disabled
+  -- self:write(out_path)
 end
+
+
+--[[ Write `readme.md` for entire project
+> index_path (string)
+< success (lib.luapi.files|nil)
+
+function Files:write(index_path)
+  local index_file = io.open(index_path, 'w+')
+  if not index_file then
+    print('error: failed to create "' .. index_path .. '"')
+    return nil
+  end
+
+  local out = '# Project Code Documentation\n\n'
+  local sorted_paths = {}
+  for path in pairs(self) do table.insert(sorted_paths, path) end
+  table.sort(sorted_paths)
+  out = out .. '| File | Title |\n| ---- | ----- |\n'
+  local links = ''
+  for _, path in pairs(sorted_paths) do
+    local file = self[path]
+    if tostring(file) == 'instance of lib.luapi.file' and file[1] then
+      local title = file[1].title
+      if title then title = title .. ' ' else title = '' end
+      out = out .. '| [' .. path .. '][] | ' .. title .. '|\n'
+      links = links .. '['  .. path ..  ']: ' .. file.reqpath .. '.md\n'
+    end
+  end
+  out = out .. '\n' .. links
+
+  index_file:write(out)
+  index_file:close()
+  return self
+end
+]]
 
 
 return Files

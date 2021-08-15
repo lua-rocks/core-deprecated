@@ -7,8 +7,6 @@ local Object = require 'lib.object'
 + IDEA: Add error handler module
 + IDEA: Support some IDE
 + IDEA: Clean markdown (no `markdownlint` warnings)
-
-= @     (lib.object)
 > conf  (lib.luapi.conf)
 > files (lib.luapi.files)
 ]]
@@ -16,9 +14,7 @@ local LUAPI = Object:extend 'lib.luapi'
 
 
 --[[
-= @:init (function)
-> self   (@)
-> conf   (table=lib.luapi.conf)
+> conf (table=lib.luapi.conf)
 ]]
 function LUAPI:init(conf)
   self.conf  = require 'lib.luapi.conf'  (conf)
