@@ -7,7 +7,7 @@ local Type    = require 'lib.luapi.type'
 = @ (lib.object)
 > reqpath  (string)
 > fullpath (string)
-> module   (lib.luapi.type) [] FIXME: Search for module at first
+> module   (lib.luapi.type) [] Search for module at first
 > cache    (@.cache) [] gets removed after File:write() attempt
 ]]
 local File = Object:extend 'lib.luapi.file'
