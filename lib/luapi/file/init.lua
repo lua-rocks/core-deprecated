@@ -8,7 +8,7 @@ local Type    = require 'lib.luapi.type'
 > reqpath  (string)
 > fullpath (string)
 > module   (lib.luapi.type) []
-> cache    (@.cache) [] gets removed after File:write() attempt
+> cache    (@.cache) [] Gets removed after File:write() attempt
 ]]
 local File = Object:extend 'lib.luapi.file'
 
