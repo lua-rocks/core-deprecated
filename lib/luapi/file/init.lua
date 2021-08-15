@@ -74,7 +74,7 @@ end
 
 
 --[[ Read file
-= @:read (function)
+= @:read  (function)
 > self    (@)
 < success (@) []
 ]]

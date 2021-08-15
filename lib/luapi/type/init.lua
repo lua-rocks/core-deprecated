@@ -4,31 +4,33 @@ local lume = require 'lib.lume'
 
 --[[ Parsed tagged comment block of any type
 = @ (lib.object)
-> title       (string)      [] First line in block
+> name        (string)         First word after tag =
+> parent      (string)         Text in parentheses after tag =
+> title       (string)      [] Any text at the end of tag = or 1st line in block
+> square      (string)      [] Text in square brackets after tag =
 > description (string)      [] Not tagged lines in block
 > fields      (list=@#line) [] Line after >
 > returns     (list=@#line) [] Line after <
-> line        (@#line)      [] Line after =
 ]]
-local Block = Object:extend 'lib.luapi.block'
+local Type = Object:extend 'lib.luapi.type'
 
 
 --[[ One line of tagged block
 = @#line (table)
-> name   (string) [] First word after tag
-> title  (string) [] Any text at the end
-> parent (string) [] Text in parentheses
-> square (string) [] Text in square brackets
+> name   (string)  [] First word after tag
+> parent (string)  [] Text in parentheses
+> title  (string)  [] Any text at the end
+> square (string)  [] Text in square brackets
+> index  (integer) [] Output order
 ]]
 
 
---[[ Take comments block and create structured data block
+--[[ Take comments block and return a type
 = @:init (function)
 > self   (@)
-> block  (string) []
+> block  (string)
 ]]
-function Block:init(block)
-  if not block then return self end
+function Type:init(block)
   assert(type(block) == 'string')
   if block then
     self:parse(block):correct()
@@ -41,7 +43,7 @@ end
 > self    (@)
 > block   (string)
 ]]
-function Block:parse(block)
+function Type:parse(block)
   assert(type(block) == 'string')
   self.title = self.title or block:match '%-%-%[%[(.-)%]%]':gsub('\n.*', '')
   -- Parse block line by line
@@ -70,7 +72,9 @@ function Block:parse(block)
         end
       end
       if tag == '=' then
-        self.line = self.line or parsed_line
+        for key, value in pairs(parsed_line) do
+          self[key] = value
+        end
       end
     elseif line ~= ']]' then
       local description = self.description or ''
@@ -89,10 +93,10 @@ Trim and remove empty strings in table values
 = @:correct (function)
 > self      (table)
 ]]
-function Block:correct()
+function Type:correct()
   assert(type(self) == 'table')
   for key, value in pairs(self) do
-    if type(value) == 'table' then Block.correct(value)
+    if type(value) == 'table' then Type.correct(value)
     elseif type(value) == 'string' then
       value = lume.trim(value)
       if value == '' then value = nil end
@@ -103,4 +107,4 @@ function Block:correct()
 end
 
 
-return Block
+return Type
