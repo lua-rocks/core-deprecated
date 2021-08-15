@@ -50,6 +50,7 @@ function Type:parse(block)
   assert(type(block) == 'string')
   self.title = self.title or block:match '%-%-%[%[(.-)%]%]':gsub('\n.*', '')
   -- Parse block line by line
+  local line_index = 1
   for line in block:gmatch '\n(%C*)' do
     local tag = line:sub(1, 1)
     if tag == '>' or tag == '<' or tag == '=' then
@@ -72,6 +73,8 @@ function Type:parse(block)
         if tag == short then
           self[long] = self[long] or {}
           self[long][parsed_line.name] = parsed_line
+          self[long][parsed_line.name].index = line_index
+          line_index = line_index + 1
         end
       end
       if tag == '=' then
