@@ -9,8 +9,9 @@ local lume = require 'lib.lume'
 > title       (string)      [] Any text at the end of tag = or 1st line in block
 > square      (string)      [] Text in square brackets after tag =
 > description (string)      [] Not tagged lines in block
-> fields      (list=@#line) [] Line after >
-> returns     (list=@#line) [] Line after <
+> returns   (list=@#line|@) [] Line after <
+> fields    (list=@#line|@) [] Line after >
+> locals    (list=@#line|@) [] Local types (module only)
 ]]
 local Type = Object:extend 'lib.luapi.type'
 

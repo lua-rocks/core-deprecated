@@ -7,8 +7,7 @@ local Type    = require 'lib.luapi.type'
 = @ (lib.object)
 > reqpath  (string)
 > fullpath (string)
-> module   ({string=lib.luapi.type...}) [] external types indexed by type names
-> locals   ({string=lib.luapi.type...}) [] internal types indexed by type names
+> module   (lib.luapi.type) [] FIXME: Search for module at first
 > cache    (@.cache) [] gets removed after File:write() attempt
 ]]
 local File = Object:extend 'lib.luapi.file'
@@ -59,47 +58,49 @@ function File:read()
 end
 
 
+--[[ Parse module before everything else
+= @:parse (function)
+> self    (@)
+< success (@) []
+]]
+function File:parse_module()
+  local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
+  for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
+    if block:find '\n=%s@%P'
+    or block:find('\n=%s' .. escaped_reqpath .. '%P') then
+      self.module = Type(block)
+      return self
+    end
+  end
+end
+
+
 --[[ Parse file
 = @:parse (function)
 > self    (@)
 < success (@) []
 ]]
 function File:parse()
-  -- Init
-  self.module = {}
-  self.locals = {}
   local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
-  -- Parse blocks
-  local type_index = 1
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
-      type.index = type_index
       local short_type_name = type.name:gsub(escaped_reqpath, '@')
-      if short_type_name == '@' then
-        for _, ifield in pairs(type.fields) do
-          self.module[ifield.name] = ifield
-        end
-      else
-        local s = short_type_name:sub(1, 2)
-        type.name = short_type_name:sub(3, -1)
-        if s == '@:' then
-          self.module[type.name] = type
-        elseif s == '@#' then
-          self.locals[type.name] = type
-        end
+      local s = short_type_name:sub(1, 2)
+      type.name = short_type_name:sub(3, -1)
+      if s == '@:' then
+        self.module.fields[type.name] = type
+      elseif s == '@#' then
+        self.module.locals = self.module.locals or {}
+        self.module.locals[type.name] = type
       end
     end
-    type_index = type_index + 1
   end
   -- Convert line fields to types
   -- for name, line in pairs(self.module) do
   --   local type = Type(line)
   --   if type then self.module[name] = type end
   -- end
-  -- Clean up
-  if next(self.module) == nil then self.module = nil end
-  if next(self.locals) == nil then self.locals = nil end
   return self
 end
 

@@ -90,9 +90,7 @@ function Files:init(luapi)
     local file = File(reqpath, fullpath)
     if not file:read() then
       print('Cannot read ' .. reqpath)
-    elseif not file:parse() then
-      print('Cannot parse ' .. reqpath)
-    else
+    elseif file:parse_module() and file:parse() then
       file:write()
       self[reqpath] = file
     end
