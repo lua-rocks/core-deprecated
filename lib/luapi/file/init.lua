@@ -11,42 +11,9 @@ XXX: REDUCE COMPLEXITY
 > fullpath (string)
 > module   ({string=lib.luapi.type...}) [] external types indexed by type names
 > locals   ({string=lib.luapi.type...}) [] internal types indexed by type names
-> content  (@#content) [] gets removed after File:write() attempt
-> output   (@#output)  [] gets removed after File:write() attempt
+> cache    (@.cache) [] gets removed after File:write() attempt
 ]]
 local File = Object:extend 'lib.luapi.file'
-
-
---[[ Content of this file plus some includes to the output
-= @#content (table)
-> full (string)    [] full content of this file
-> code (string)    [] uncommented content of this file
-> example (string) [] example.lua
-> readme (string)  [] dirname.lua
-]]
-
-
---[[ Output model
-= @#output (table)
-> head (@#output_field)
-> body (@#output_field)
-> foot (@#output_field)
-]]
-
-
---[[ Element of output model
-= @#output_field (table)
-> text (string)
-> add (@#output_field.add)
-]]
-
-
---[[ Add text to output field
-= @#output_field.add (function)
-> self (@#output_field)
-> text (string)
-< self (@#output_field)
-]]
 
 
 --[[ Init file but don't read it
@@ -59,17 +26,7 @@ function File:init(reqpath, fullpath)
   asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
   self.reqpath = reqpath
   self.fullpath = fullpath
-  self.content = {
-    ['full']    = nil,
-    ['code']    = nil,
-    ['example'] = nil,
-    ['readme']  = nil,
-  }
-  local add = function(add, text) add.text = add.text .. text; return add end
-  self.output = {}
-  for _, key in ipairs { 'head', 'body', 'foot' } do
-    self.output[key] = { text = '', add = add }
-  end
+  self.cache = require 'lib.luapi.file.cache' ()
 end
 
 
@@ -82,8 +39,8 @@ function File:read()
   -- init.lua
   local file = io.open(self.fullpath .. '/init.lua', 'rb')
   if not file then return nil end
-  self.content.full = file:read '*a'
-  self.content.code = self.content.full
+  self.cache.content = file:read '*a'
+  self.cache.code = self.cache.content
     :gsub('%-%-%[%[.-%]%]', '')
     :gsub('%-%-.-\n', '')
   file:close()
@@ -91,13 +48,13 @@ function File:read()
   local modname = self.fullpath:match '.+/(.+)'
   file = io.open(self.fullpath .. '/' .. modname .. '.md', 'rb')
   if file then
-    self.content.readme = '\n' .. file:read '*a'
+    self.cache.readme = '\n' .. file:read '*a'
     file:close()
   end
   -- example.lua
   file = io.open(self.fullpath .. '/example.lua', 'rb')
   if file then
-    self.content.example = file:read '*a'
+    self.cache.example = file:read '*a'
     file:close()
   end
   return self
@@ -115,7 +72,7 @@ function File:parse()
   self.locals = {}
   local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
   -- Parse blocks
-  for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
+  for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
       local short_type_name = type.line.name:gsub(escaped_reqpath, '@')
@@ -173,8 +130,8 @@ function File:write()
   end
 
   -- Write output
-  local out = self.output
-  if self.output then
+  local out = self.cache
+  if out then
     file:write(out.head.text .. out.body.text .. out.foot.text)
     file:close()
   end
@@ -206,13 +163,12 @@ function File:get_type(path)
 end
 
 
---[[ Remove "cache"
+--[[ Remove cache
 = @:cleanup (function)
 > self (@)
 ]]
 function File:cleanup()
-  self.output  = nil
-  self.content = nil
+  self.cache = nil
 end
 
 
