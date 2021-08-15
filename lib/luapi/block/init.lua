@@ -30,6 +30,7 @@ local Block = Object:extend 'lib.luapi.block'
 > block (string) []
 ]]
 function Block:init(block)
+  if not block then return self end
   assert(type(block) == 'string')
   if block then
     self:parse(block):correct()

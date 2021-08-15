@@ -1,4 +1,5 @@
 local Object = require 'lib.object'
+local Block  = require 'lib.luapi.block'
 
 
 --[[ Type is a parsed Block
@@ -38,11 +39,20 @@ local Type = Object:extend 'lib.luapi.type'
 There is 3 general types: "simple", "composite" and "function".
 Type "class" cannot be directly defined by user.
 User must extend it from other class.
-> raw_block (string) []
+> raw_block (string|@#line) []
 ]]
 function Type:init(raw_block)
-  assert(type(raw_block) == 'string')
-  local parsed_block = require 'lib.luapi.block' (raw_block)
+  local parsed_block
+
+  if type(raw_block) == 'string' then
+    parsed_block = Block(raw_block)
+  elseif type(raw_block) == 'table' then
+    parsed_block = Block()
+    parsed_block.line = raw_block
+  else
+    return false
+  end
+
   if not parsed_block then return false end
   if not parsed_block.line then return false end
   local name = parsed_block.line.name

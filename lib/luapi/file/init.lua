@@ -109,9 +109,11 @@ end
 < success (@|nil)
 ]]
 function File:parse()
+  -- Init
   self.module = {}
   self.locals = {}
   local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
+  -- Parse blocks
   for block in self.content.full:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
@@ -122,14 +124,21 @@ function File:parse()
         end
       else
         local s = short_type_name:sub(1, 2)
+        local e = short_type_name:sub(3, -1)
         if s == '@:' then
-          self.module[short_type_name:sub(3, -1)] = type
+          self.module[e] = type
         elseif s == '@#' then
-          self.locals[short_type_name:sub(3, -1)] = type
+          self.locals[e] = type
         end
       end
     end
   end
+  -- Convert line fields to types
+  for name, line in pairs(self.module) do
+    local type = Type(line)
+    if type then self.module[name] = type end
+  end
+  -- Clean up
   if next(self.module) == nil then self.module = nil end
   if next(self.locals) == nil then self.locals = nil end
   return self
@@ -346,6 +355,27 @@ function File:write()
   return self
 end
 ]]
+
+
+--[[ Try to get access to type in this file by path
+> path (string)
+< result (lib.luapi.type|string)
+]]
+function File:get_type(path)
+  path = path:gsub('@', self.reqpath)
+  local len = self.reqpath:len()
+  if path:sub(1, len) == self.reqpath then
+    local type_name = path:sub(len+2, -1)
+    local divider = len+1
+    divider = path:sub(divider, divider)
+    if divider == ':' then
+      return self.module[type_name]
+    elseif divider == '#' then
+      return self.locals[type_name]
+    end
+  end
+  return path
+end
 
 
 function File:cleanup()
