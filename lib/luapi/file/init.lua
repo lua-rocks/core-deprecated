@@ -4,8 +4,6 @@ local Type    = require 'lib.luapi.type'
 
 
 --[[ Single lua file
-XXX: REDUCE COMPLEXITY
-
 = @ (lib.object)
 > reqpath  (string)
 > fullpath (string)
@@ -72,24 +70,27 @@ function File:parse()
   self.locals = {}
   local escaped_reqpath = self.reqpath:gsub('%p', '%%%1')
   -- Parse blocks
+  local type_index = 1
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
+      type.index = type_index
       local short_type_name = type.name:gsub(escaped_reqpath, '@')
       if short_type_name == '@' then
-        for _, ifield in ipairs(type.fields) do
+        for _, ifield in pairs(type.fields) do
           self.module[ifield.name] = ifield
         end
       else
         local s = short_type_name:sub(1, 2)
-        local e = short_type_name:sub(3, -1)
+        type.name = short_type_name:sub(3, -1)
         if s == '@:' then
-          self.module[e] = type
+          self.module[type.name] = type
         elseif s == '@#' then
-          self.locals[e] = type
+          self.locals[type.name] = type
         end
       end
     end
+    type_index = type_index + 1
   end
   -- Convert line fields to types
   -- for name, line in pairs(self.module) do

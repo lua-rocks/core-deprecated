@@ -16,7 +16,10 @@ I don't use libraries like `busted` or `lpeg` because I don't like to
 unnecessarily complicate things. I'm 100% happy with the default asserts and
 patterns, and I hope you are too, but if not - no one forbids you to add them.
 
-Target lua version: `5+` (i.e. any version), including `luajit`, `love` etc.
+Target versions are *latest* for **lua** (`5.4`) and **luajit** (`2.1`).
+
+Target OS: **Linux**. I do not support proprietary software but theoretically
+on Windows and Mac everything should work fine too.
 
 Each file in this project is distributed under the free `MIT` license.
 

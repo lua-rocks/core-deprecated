@@ -70,7 +70,7 @@ function Type:parse(block)
       for short, long in pairs({ ['>'] = 'fields', ['<'] = 'returns' }) do
         if tag == short then
           self[long] = self[long] or {}
-          table.insert(self[long], parsed_line)
+          self[long][parsed_line.name] = parsed_line
         end
       end
       if tag == '=' then
