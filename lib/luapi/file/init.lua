@@ -75,7 +75,7 @@ function File:parse()
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     local type = Type(block)
     if type then
-      local short_type_name = type.line.name:gsub(escaped_reqpath, '@')
+      local short_type_name = type.name:gsub(escaped_reqpath, '@')
       if short_type_name == '@' then
         for _, ifield in ipairs(type.fields) do
           self.module[ifield.name] = ifield
@@ -92,10 +92,10 @@ function File:parse()
     end
   end
   -- Convert line fields to types
-  for name, line in pairs(self.module) do
-    local type = Type(line)
-    if type then self.module[name] = type end
-  end
+  -- for name, line in pairs(self.module) do
+  --   local type = Type(line)
+  --   if type then self.module[name] = type end
+  -- end
   -- Clean up
   if next(self.module) == nil then self.module = nil end
   if next(self.locals) == nil then self.locals = nil end

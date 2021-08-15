@@ -28,13 +28,15 @@ local Type = Object:extend 'lib.luapi.type'
 --[[ Take comments block and return a type
 = @:init (function)
 > self   (@)
-> block  (string)
+> block  (string) []
 ]]
 function Type:init(block)
+  if not block then return false end
   assert(type(block) == 'string')
   if block then
     self:parse(block):correct()
   end
+  if not self.name or not self.parent then return false end
 end
 
 
