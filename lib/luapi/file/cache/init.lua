@@ -1,6 +1,7 @@
 local Object  = require 'lib.object'
 
---[[
+--[[ Temporary data
+Gets removed after File:write() attempt.
 = @ (lib.object)
 > content (string) [] full content of this file
 > code    (string) [] uncommented content of this file
