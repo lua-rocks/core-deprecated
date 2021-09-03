@@ -30,6 +30,10 @@ local Cache = Object:extend 'lib.luapi.file.cache'
 ]]
 
 
+--[[ Initialize
+= @:init (function)
+> file (lib.luapi.file)
+]]
 function Cache:init(file)
   local add = function(add, text) add.text = add.text .. text; return add end
   for _, key in ipairs { 'head', 'body', 'foot' } do

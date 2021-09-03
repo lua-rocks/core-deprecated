@@ -65,9 +65,6 @@ Follow these rules to make your code enjoyable to work with:
 ## Highly recommended VSCodium extensions
 
 ```sh
-# Core
-codium --install-extension gruntfuggly.todo-tree
-
 # Lua
 codium --install-extension changnet.lua-tags
 codium --install-extension dwenegar.vscode-luacheck
@@ -80,4 +77,7 @@ codium --install-extension jayfidev.tablegenerator
 codium --install-extension davidanson.vscode-markdownlint
 codium --install-extension marvhen.reflow-markdown
 codium --install-extension zaaack.markdown-editor
+
+# Other
+codium --install-extension gruntfuggly.todo-tree
 ```

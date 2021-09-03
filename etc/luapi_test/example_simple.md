@@ -1,10 +1,10 @@
 # lib.test_num (number)
 
-Default: **32**
+🧮 Default: **32**
 
 ## Title (optional)
 
-> Nothing special.
+Nothing special.
 
 ## Example
 

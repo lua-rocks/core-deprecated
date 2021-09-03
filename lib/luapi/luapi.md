@@ -51,8 +51,8 @@ For more examples see source code of all this project 😉.
 
 Storing each module in a separate directory is a very good practice because it
 allows you to keep together with the lua files not only the documentation but
-also any other files on which this module depends, such as sounds, images, and
-whatever else. It makes your modules more portable and independent and also its
+also any other files on which this module depends - such as sounds, images, and
+whatever else. It makes your modules more portable and independent; also its
 pretty nice to see readme exactly under the files in your git-repository
 website. That's why documentation generates only from `init.lua` files and saves
 output `readme.md` in the same directory. File called `example.lua` will be
@@ -100,16 +100,13 @@ When you use `=` tag, you can mark your type different ways:
 You can use symbol `@` as shorcut for **this file reqpath** anywhere:
 `@:field`, `@#private`. Even for subtypes: `@.subtype:field`!
 
-Inside field definition (`>`) you can use `=type_of_name` instead of field name
+Inside field definition (`>`) you can use `?type_of_name` instead of field name
 if your table includes fields with undefined names.
 
 Like this:
 
 `> ?integer (lib.luapi.type) [] Types indexed by integer numbers`
 `> ?string  (lib.luapi.file) [] Files indexed by names`
-
-\* For the most static languages such definition would be unacceptable, but Lua
-is very flexible.
 
 ## Style guide
 

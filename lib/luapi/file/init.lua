@@ -117,17 +117,7 @@ function File:write()
   end
 
   -- Create output
-  local self1 = self[1]
-  if self1 then
-    self1:output_main(self)
-    for index = 2, #self do
-      local selfi = self[index]
-      assert(type(selfi.line) == 'table')
-      assert(type(selfi.line.name) == 'string')
-      assert(type(selfi.line.parent) == 'string')
-      selfi:output_add(self)
-    end
-  end
+  if self.module then self.module:build_module_output() end
 
   -- Write output
   local out = self.cache

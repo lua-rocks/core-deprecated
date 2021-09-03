@@ -113,4 +113,31 @@ function Type:correct()
 end
 
 
+--[[ Build markdown output for module-types
+There are 2 different templates for composite and simple types:
+
+## Composite (tables, classes, functions)
+
++ Header
++ Example
++ Components (short list with links to Details)
++ Types      (short list with links to Details)
++ Details    (full descriptions for everything)
++ Footer
+
+## Simple (everything else):
+
++ Header
++ Description
++ Example
++ Footer
+
+= @:build_output (function)
+> file (lib.luapi.file)
+]]
+function Type:build_module_output(file)
+
+end
+
+
 return Type
