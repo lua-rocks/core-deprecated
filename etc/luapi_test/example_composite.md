@@ -1,6 +1,6 @@
-# lib.test (table)
+# Table `lib.test`
 
-Requires( **none**
+Requires: **none**
 
 <details><summary><b>Example</b></summary>
 

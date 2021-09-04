@@ -27,15 +27,16 @@ local Type = Object:extend 'lib.luapi.type'
 
 
 --[[ Take comments block and return a type
-= @:init (function)
-> self   (@)
-> block  (string) []
+= @:init  (function)
+> self    (@)
+> block   (string) []
+> reqpath (string) []
 ]]
-function Type:init(block)
+function Type:init(block, reqpath)
   if not block then return false end
   assert(type(block) == 'string')
   if block then
-    self:parse(block):correct()
+    self:parse(block, reqpath):correct()
   end
   if not self.name or not self.parent then return false end
 end
@@ -45,16 +46,17 @@ end
 = @:parse (function)
 > self    (@)
 > block   (string)
+> reqpath (string) []
 ]]
-function Type:parse(block)
+function Type:parse(block, reqpath)
   assert(type(block) == 'string')
-  self.title = self.title or block:match '%-%-%[%[(.-)%]%]':gsub('\n.*', '')
   -- Parse block line by line
   local line_index = 1
   for line in block:gmatch '\n(%C*)' do
     local tag = line:sub(1, 1)
     if tag == '>' or tag == '<' or tag == '=' then
       local tagged_line = line:sub(3, -1)
+      if reqpath then tagged_line = tagged_line:gsub('@', reqpath) end
       local comment_start_at = math.max(
         (tagged_line:find '%s' or 0),
         (tagged_line:find '%)' or 0),
@@ -90,6 +92,9 @@ function Type:parse(block)
       self.description = description
     end
   end
+  if not self.title or self.title == '' then
+    self.title = block:match '%-%-%[%[(.-)%]%]':gsub('\n.*', '')
+  end
   return self
 end
 
@@ -116,27 +121,97 @@ end
 --[[ Build markdown output for module-types
 There are 2 different templates for composite and simple types:
 
-## Composite (tables, classes, functions)
+## Composite (classes, tables, functions)
 
 + Header
-+ Example
++ Example    (spoiler)
++ Readme
 + Components (short list with links to Details)
 + Types      (short list with links to Details)
 + Details    (full descriptions for everything)
 + Footer
 
-## Simple (everything else):
+## Simple (everything else)
 
 + Header
-+ Description
-+ Example
++ Readme
++ Example   (not spoiler)
 + Footer
 
 = @:build_output (function)
 > file (lib.luapi.file)
 ]]
-function Type:build_module_output(file)
+function Type:build_output(file)
+  local head, body, foot = file.cache.head, file.cache.body, file.cache.foot
 
+  local function emoji(str)
+    local basic = {
+      ['string']   = '📝',
+      ['number']   = '🧮',
+      ['boolean']  = '🔌',
+      ['function'] = '💡',
+      ['table']    = '📦',
+      ['thread']   = '🧵',
+      ['userdata'] = '🔒',
+    }
+    local found = basic[str]
+    if found then return found end
+    if str:find '%.' then return '👨‍👦' end
+    return '👽'
+  end
+
+  local function header_type_name()
+    if self.parent:find '%.' then
+      return lume.format('Module `{1}` : `{2}`', { self.name, self.parent })
+    else
+      return lume.format('{1} `{2}`', {
+        self.parent:gsub("^%l", string.upper),
+        self.name
+      })
+    end
+  end
+
+  local is_simple = true
+  if self.parent == 'table'
+  or self.parent == 'function'
+  or self.parent:find '%.' then is_simple = false end
+
+  local function out_example()
+    local example = file.cache.example
+    if example then head
+      :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
+      :add (example)
+      :add '```\n\n</details>\n'
+    end
+  end
+
+  local function out_title_and_readme()
+    local readme = file.cache.readme
+    if readme then
+      if not self.title then
+        self.title = readme:match '\n#%s(.-)\n'
+      end
+      readme = readme
+        :gsub('\n#%s.-\n', '') -- remove title header
+        :gsub('\n#', '\n##') -- increase all headers level
+    end
+    if self.title then head:add('\n## {1}\n', {self.title}) end
+    if self.description then head:add('\n{1}\n', {self.description}) end
+    if readme then head:add(readme) end
+  end
+
+  head:add('# {1}\n', {header_type_name()})
+
+  if is_simple then
+    if self.square then
+      head:add('\n{1} Default: **{2}**\n', {emoji(self.parent), self.square})
+    end
+  else
+    out_example()
+    out_title_and_readme()
+  end
+
+  foot:add('\n## 🖇️ Links\n')
 end
 
 

@@ -1,4 +1,5 @@
 local Object  = require 'lib.object'
+local lume    = require 'lib.lume'
 
 --[[ Temporary data
 Gets removed after File:write() attempt.
@@ -35,7 +36,14 @@ local Cache = Object:extend 'lib.luapi.file.cache'
 > file (lib.luapi.file)
 ]]
 function Cache:init(file)
-  local add = function(add, text) add.text = add.text .. text; return add end
+  local add = function(add, text, vars)
+    if vars then
+      add.text = add.text .. lume.format(text, vars)
+    else
+      add.text = add.text .. text
+    end
+    return add
+  end
   for _, key in ipairs { 'head', 'body', 'foot' } do
     self[key] = { text = '', add = add }
   end
