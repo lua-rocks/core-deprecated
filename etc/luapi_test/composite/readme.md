@@ -1,4 +1,4 @@
-# Module `etc.luapi_test` : `lib.object`
+# Module `etc.luapi_test.composite` : `lib.object`
 
 <details><summary><b>Example</b></summary>
 
@@ -12,21 +12,11 @@ print(2+2)
 
 Some readme...
 
-The `etc` directory is an experimentation ground and you can remove it
-without hesitation, but I advise you to read the contents first. Perhaps you
-will find something useful or interesting there.
-
-### How to run
-
-1. cd to the project **root**
-2. if `/bin/lua` existed then just run: `etc/luapi_test/run.lua`
-3. if your lua binary located in another place, put it before the command above
-
 ## Fields
 
 - 👨‍👦 **mega** ( lib.object )
 	`Mega-field`
-- 👨‍👦 **class2** ( etc.luapi_test:type2 )
+- 👨‍👦 **class2** ( etc.luapi_test.composite:type2 )
 	`IDEA: Should be writed as method`
 - 💡 **type2** ( function )
 	`Test type 2`
@@ -56,7 +46,7 @@ If type is function and you set it as module field, it will be parsed as method
 
 Fields:
 
-- 👨‍👦 **take** ( etc.luapi_test#tbl )
+- 👨‍👦 **take** ( etc.luapi_test.composite#tbl )
 	`abstract type desribed below`
 
 Returns:
@@ -79,7 +69,7 @@ Returns:
 
 - 🧮 **n** ( number )
 	`Blu ble`
-- 👨‍👦 **self** ( etc.luapi_test )
+- 👨‍👦 **self** ( etc.luapi_test.composite )
 	`Bli bla`
 
 ## 🖇️ Links
