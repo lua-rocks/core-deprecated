@@ -1,4 +1,4 @@
-# lib.test_num (number)
+# Number `lib.test_num`
 
 🧮 Default: **32**
 

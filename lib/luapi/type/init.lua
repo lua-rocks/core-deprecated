@@ -135,7 +135,7 @@ There are 2 different templates for composite and simple types:
 
 + Header
 + Readme
-+ Example   (not spoiler)
++ Example   (no spoiler)
 + Footer
 
 = @:build_output (function)
@@ -165,7 +165,7 @@ function Type:build_output(file)
       return lume.format('Module `{1}` : `{2}`', { self.name, self.parent })
     else
       return lume.format('{1} `{2}`', {
-        self.parent:gsub("^%l", string.upper),
+        self.parent:gsub('^%l', string.upper),
         self.name
       })
     end
@@ -200,6 +200,34 @@ function Type:build_output(file)
     if readme then head:add(readme) end
   end
 
+  local function out_list_of(t)
+    for key, value in pairs(t) do
+      local emo = emoji(value.parent)
+      head:add('\n- {1} **{2}** ( {3}', {emo, key, value.parent})
+      if value.square then head:add(' = *{1}*', {value.square}) end
+      head:add ' )'
+      if value.title then head:add('\n\t`{1}`', {value.title}) end
+    end
+  end
+
+  local function out_components()
+    if self.fields then
+      body:add '\n\n## 🧩 Details\n'
+      if self.parent == 'function' then
+        head:add '\n## 📜 Arguments\n'
+        body:add '\nArguments:\n'
+      else
+        head:add '\n## 📜 Fields\n'
+      end
+      out_list_of(self.fields)
+    end
+    if self.returns then
+      head:add '\n\n## 🪃 Returns\n'
+      if self.parent == 'function' then body:add '\nReturns:\n' end
+      out_list_of(self.returns)
+    end
+  end
+
   head:add('# {1}\n', {header_type_name()})
 
   if is_simple then
@@ -209,6 +237,7 @@ function Type:build_output(file)
   else
     out_example()
     out_title_and_readme()
+    out_components()
   end
 
   foot:add('\n## 🖇️ Links\n')

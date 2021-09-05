@@ -22,4 +22,25 @@ will find something useful or interesting there.
 2. if `/bin/lua` existed then just run: `etc/luapi_test/run.lua`
 3. if your lua binary located in another place, put it before the command above
 
+## 📜 Fields
+
+- 👨‍👦 **mega** ( lib.object )
+	`Mega-field`
+- 👨‍👦 **class2** ( etc.luapi_test:type2 )
+	`IDEA: Should be writed as method`
+- 💡 **type2** ( function )
+	`Test type 2`
+- 💡 **super_method** ( function )
+	`Super-duper method`
+- 👽 **some_field1** ( some_type1 = *some_default_value1* )
+	`Some field title1`
+- 👽 **some_field2** ( some_type2 = *some_default_value2* )
+	`Some field title2`
+
+## 🪃 Returns
+
+- 🔌 **lol** ( boolean = *nil* )
+
+## 🧩 Details
+
 ## 🖇️ Links

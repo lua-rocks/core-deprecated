@@ -1,4 +1,4 @@
-# Table `lib.test`
+# Module `etc.luapi_test` : `lib.object`
 
 Requires: **none**
 
@@ -23,42 +23,40 @@ module.start()
 I`m <not> a [code
 ```
 
-## 📜 Components
+## 📜 Fields
 
-Fields or Arguments:
-
-- 📦 `files` ( **{string=table...} = {}** )
+- 📦 `files` **{string=table...} = {}**
   `[files paths] = <parsed> (file) tables`
-- 📝 `test` ( **string = _nil_** )
+- 📝 `test` **string = _nil_**
   `some module field`
-- 🧮 `testNumber` ( **5** )
+- 🧮 `testNumber` **5**
   `Test table field`
-- 💡 `startModule` ( **function** )
+- 💡 `startModule` **function**
   `My function for documentation`
 
-Returns:
+## 🪃 Returns
 
-- 🧮 `success` ( **boolean** )
+- 🧮 `success` **boolean**
 `fail will be handled gracefully and return false`
-- 🔒 `test` ( **ololo!** )
+- 🔒 `test` **ololo!**
 `ddd`
 
 ## 👨‍👦 Types
 
-- 👨‍👦 `lib.test.testclass1` ( **[table][]** )
+- 👨‍👦 `lib.test.testclass1` **[table][]**
   `some comment maybe`
-  - 📦 `someField` ( **{string=table...} = {}** )
+  - 📦 `someField` **{string=table...} = {}**
   `bla bla bla`
-  - 💡 `doSomething` ( **function** )
-- 👨‍👦 `lib.test.testclass2` ( **lib.test** )
-  - 📦 `someField` ( **{string=table...} = {}** )
-  - 💡 `doSomething` ( **function** )
-- 📝 `str` ( **string** )
-- 🧮 `num` ( **number|boolean** )
-- 💡 `fn` ( **function** )
-- 📦 `tb` ( **table** )
-- 🧵 `thr` ( **thread** )
-- 🔒 `usr` ( **userdata** )
+  - 💡 `doSomething` **function**
+- 👨‍👦 `lib.test.testclass2` **lib.test**
+  - 📦 `someField` **{string=table...} = {}**
+  - 💡 `doSomething` **function**
+- 📝 `str` **string**
+- 🧮 `num` **number|boolean**
+- 💡 `fn` **function**
+- 📦 `tb` **table**
+- 🧵 `thr` **thread**
+- 🔒 `usr` **userdata**
 
 ## 🧩 Details
 
@@ -71,16 +69,16 @@ My function for documentation
 
 Fields:
 
-- 📝 `name` ( **string** )
+- 📝 `name` **string**
 `file will be created and overwritten`
-- 🧮 `verbose` ( **boolean** _[optional]_ )
+- 🧮 `verbose` **boolean** _[optional]_
 `more output if true`
 
 Returns:
 
-- 🧮 `success` ( **boolean** )
+- 🧮 `success` **boolean**
 `fail will be handled gracefully and return false`
-- 🔒 `test` ( **ololo!** )
+- 🔒 `test` **ololo!**
 `ddd`
 
 ## 🖇️ Links
