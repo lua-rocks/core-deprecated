@@ -201,7 +201,6 @@ function Type:build_output(file)
   end
 
   local function out_list_of(t, to)
-    if not t then return end
     for key, value in pairs(t) do
       local emo = emoji(value.parent)
       to:add('\n- {1} **{2}** ( {3}', {emo, key, value.parent})
@@ -217,25 +216,40 @@ function Type:build_output(file)
     if self.fields then
       is_empty = false
       if self.parent == 'function' then
-        head:add '\n## 📜 Arguments\n'
+        head:add '\n## Arguments\n'
         body:add '\nArguments:\n'
       else
-        head:add '\n## 📜 Fields\n'
+        head:add '\n## Fields\n'
         for _, field in pairs(self.fields) do
-          body:add('\n### {1}\n', {header_of(field)})
-          if field.description then body:add('\n{1}\n', {field.description}) end
-          out_list_of(field.fields, body)
+          local field_is_empty =
+            not field.description and
+            not field.fields and
+            not field.returns
+          if not field_is_empty then
+            body:add('\n### {1}\n', {header_of(field)})
+            if field.description then
+              body:add('\n{1}\n', {field.description})
+            end
+            if field.fields then
+              body:add '\nFields:\n'
+              out_list_of(field.fields, body)
+            end
+            if field.returns then
+              body:add '\nReturns:\n'
+              out_list_of(field.returns, body)
+            end
+          end
         end
       end
       out_list_of(self.fields, head)
     end
     if self.returns then
       is_empty = false
-      head:add '\n## 🪃 Returns\n'
+      head:add '\n## Returns\n'
       if self.parent == 'function' then body:add '\nReturns:\n' end
       out_list_of(self.returns, head)
     end
-    if not is_empty then head:add '\n## 🧩 Details\n' end
+    if not is_empty then head:add '\n## Details\n' end
   end
 
   head:add('# {1}\n', {header_of(self)})

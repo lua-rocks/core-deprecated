@@ -22,7 +22,7 @@ will find something useful or interesting there.
 2. if `/bin/lua` existed then just run: `etc/luapi_test/run.lua`
 3. if your lua binary located in another place, put it before the command above
 
-## 📜 Fields
+## Fields
 
 - 👨‍👦 **mega** ( lib.object )
 	`Mega-field`
@@ -37,25 +37,31 @@ will find something useful or interesting there.
 - 👽 **some_field2** ( some_type2 = *some_default_value2* )
 	`Some field title2`
 
-## 🪃 Returns
+## Returns
 
 - 🔌 **lol** ( boolean = *nil* )
 
-## 🧩 Details
+## Details
 
 ### Module `mega` : `lib.object`
 
+Fields:
+
 - 👽 **giga** ( any )
 	`Yay!`
-
-### Module `class2` : `etc.luapi_test:type2`
 
 ### Function `type2`
 
 If type is function and you set it as module field, it will be parsed as method
 
+Fields:
+
 - 👨‍👦 **take** ( etc.luapi_test#tbl )
 	`abstract type desribed below`
+
+Returns:
+
+- 👽 **give** ( integer )
 
 ### Function `super_method`
 
@@ -63,12 +69,17 @@ You no need to describe argument `self` for methods named with colon
 (actually you no **need** to describe anything 😉
 but of course you can if you want to).
 
+Fields:
+
 - 👽 **x** ( integer = *2* )
 - 🧮 **n** ( number )
 	`Spaces between tagged data will be ignored`
 
-### Some_type1 `some_field1`
+Returns:
 
-### Some_type2 `some_field2`
+- 🧮 **n** ( number )
+	`Blu ble`
+- 👨‍👦 **self** ( etc.luapi_test )
+	`Bli bla`
 
 ## 🖇️ Links
