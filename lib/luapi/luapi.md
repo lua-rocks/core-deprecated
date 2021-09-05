@@ -15,13 +15,13 @@ Check out `init.lua` files to see how it works. Some tests you can find
 
 ## Tags
 
-- `>`: function argument or table field
-- `<`: function return
-- `=`: set block [type](#types) and name/reqpath (can be only one in block)
-- first word after tag: variable name (or reqpath if tag is `=`)
-- `(parentheses)`: variable type name or parent class reqpath
-- `[square brackets]`: default value of the variable (makes it _optional_)
-- last words: one line comment (title)
++ `>`: function argument or table field
++ `<`: function or module return
++ `=`: set block [type](#types) and name/reqpath (can be only one in block)
++ first word after tag: variable name (or reqpath if tag is `=`)
++ `(parentheses)`: variable type name or parent class reqpath
++ `[square brackets]`: default value of the variable (makes it _optional_)
++ last words: one line comment (title)
 
 Quick example:
 
@@ -30,9 +30,6 @@ Quick example:
 Some function comment.
 Can be multiline.
 _Support_ **markdown**.
-
-The line started with the tag `=` is unnecessary but it makes this function
-special by specifying its type: *unique pseudo-reqpath*, to refer to it later.
 
 = src.module.example (function)
 > str (string) some string comment (one line and no markdown for such comments)
@@ -44,6 +41,11 @@ local function example(str, num)
   return str .. num
 end
 ```
+
+The line `= src.module.example (function)` is not required in "smart" mode
+(this data can be parsed from code), but "strict" mode parse only comments
+and works faster. Although performance is not an issue, but "strict" mode
+is easier to debug and "smart" is still in development.
 
 For more examples see source code of all this project 😉.
 

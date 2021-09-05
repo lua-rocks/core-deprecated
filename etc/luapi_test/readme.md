@@ -43,4 +43,32 @@ will find something useful or interesting there.
 
 ## 🧩 Details
 
+### Module `mega` : `lib.object`
+
+- 👽 **giga** ( any )
+	`Yay!`
+
+### Module `class2` : `etc.luapi_test:type2`
+
+### Function `type2`
+
+If type is function and you set it as module field, it will be parsed as method
+
+- 👨‍👦 **take** ( etc.luapi_test#tbl )
+	`abstract type desribed below`
+
+### Function `super_method`
+
+You no need to describe argument `self` for methods named with colon
+(actually you no **need** to describe anything 😉
+but of course you can if you want to).
+
+- 👽 **x** ( integer = *2* )
+- 🧮 **n** ( number )
+	`Spaces between tagged data will be ignored`
+
+### Some_type1 `some_field1`
+
+### Some_type2 `some_field2`
+
 ## 🖇️ Links

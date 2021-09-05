@@ -160,13 +160,13 @@ function Type:build_output(file)
     return '👽'
   end
 
-  local function header_type_name()
-    if self.parent:find '%.' then
-      return lume.format('Module `{1}` : `{2}`', { self.name, self.parent })
+  local function header_of(t)
+    if t.parent:find '%.' then
+      return lume.format('Module `{1}` : `{2}`', { t.name, t.parent })
     else
       return lume.format('{1} `{2}`', {
-        self.parent:gsub('^%l', string.upper),
-        self.name
+        t.parent:gsub('^%l', string.upper),
+        t.name
       })
     end
   end
@@ -200,35 +200,45 @@ function Type:build_output(file)
     if readme then head:add(readme) end
   end
 
-  local function out_list_of(t)
+  local function out_list_of(t, to)
+    if not t then return end
     for key, value in pairs(t) do
       local emo = emoji(value.parent)
-      head:add('\n- {1} **{2}** ( {3}', {emo, key, value.parent})
-      if value.square then head:add(' = *{1}*', {value.square}) end
-      head:add ' )'
-      if value.title then head:add('\n\t`{1}`', {value.title}) end
+      to:add('\n- {1} **{2}** ( {3}', {emo, key, value.parent})
+      if value.square then to:add(' = *{1}*', {value.square}) end
+      to:add ' )'
+      if value.title then to:add('\n\t`{1}`', {value.title}) end
     end
+    to:add '\n'
   end
 
   local function out_components()
+    local is_empty = true
     if self.fields then
-      body:add '\n\n## 🧩 Details\n'
+      is_empty = false
       if self.parent == 'function' then
         head:add '\n## 📜 Arguments\n'
         body:add '\nArguments:\n'
       else
         head:add '\n## 📜 Fields\n'
+        for _, field in pairs(self.fields) do
+          body:add('\n### {1}\n', {header_of(field)})
+          if field.description then body:add('\n{1}\n', {field.description}) end
+          out_list_of(field.fields, body)
+        end
       end
-      out_list_of(self.fields)
+      out_list_of(self.fields, head)
     end
     if self.returns then
-      head:add '\n\n## 🪃 Returns\n'
+      is_empty = false
+      head:add '\n## 🪃 Returns\n'
       if self.parent == 'function' then body:add '\nReturns:\n' end
-      out_list_of(self.returns)
+      out_list_of(self.returns, head)
     end
+    if not is_empty then head:add '\n## 🧩 Details\n' end
   end
 
-  head:add('# {1}\n', {header_type_name()})
+  head:add('# {1}\n', {header_of(self)})
 
   if is_simple then
     if self.square then
