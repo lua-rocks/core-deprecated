@@ -7,6 +7,7 @@ local Object = require 'lib.object'
 + TODO: Local links
 + IDEA: Global links
 + IDEA: Don't replace @ with reqpath
++ IDEA: "Smart" mode (parse code)
 + IDEA: Add error handler module
 + IDEA: Support some IDE
 ]]
