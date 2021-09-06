@@ -36,7 +36,7 @@ function File:read()
   -- init.lua
   local file = io.open(self.fullpath .. '/init.lua', 'rb')
   if not file then return nil end
-  self.cache.content = file:read '*a'
+  self.cache.content = file:read '*a' .. '\n'
   self.cache.code = self.cache.content
     :gsub('%-%-%[%[.-%]%]', '')
     :gsub('%-%-.-\n', '')

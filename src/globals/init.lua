@@ -1,8 +1,3 @@
---[[ Configuration table
-= @#conf (table)
-> production (boolean) Production or development mode
-]]
-
 --[[ Setup global variables for production and development modes
 = @ (function)
 > conf (@#conf)
@@ -27,3 +22,8 @@ return function (conf)
     function dump(...) print(inspect(...)) end
   end
 end
+
+--[[ Configuration table
+= @#conf (table)
+> production (boolean) Production or development mode
+]]
