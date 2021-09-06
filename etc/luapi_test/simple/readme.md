@@ -1,4 +1,4 @@
-# Number `etc.luapi_test.simple`
+# etc.luapi_test.simple `(number)`
 
 🧮 Default: **32**
 
@@ -13,5 +13,3 @@ Lorem ipsum dolar.
 ```lua
 print(30+2)
 ```
-
-## 🖇️ Links

@@ -1,14 +1,23 @@
-# `src.globals`
+# src.globals `(function)`
 
-Extends: **table**
+## Setup global variables for production and development modes
 
-## Configuration table
+## Arguments
 
-## 📜 Fields
+- 👨‍👦 **conf** ( src.globals#conf )
 
-+ **production : boolean**
-  `Production or development mode`
+## Locals
 
-## 🖇️ Links
+- 📦 **conf** ( table )
+	`Configuration table`
 
-[Go up](..)
+## Details
+
+### conf `(table)`
+
+Configuration table
+
+Fields:
+
+- 🔌 **production** ( boolean )
+	`Production or development mode`

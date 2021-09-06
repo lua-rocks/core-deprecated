@@ -1,4 +1,4 @@
-# Function `etc.luapi_test.function`
+# etc.luapi_test.function `(function)`
 
 ## Test function
 
@@ -29,11 +29,11 @@
 
 ## Details
 
-### Table `extra`
+### extra `(table)`
+
+Extra type
 
 Fields:
 
 - 📝 **name** ( string = *"Bob"* )
 - 🧮 **age** ( number = *12* )
-
-## 🖇️ Links

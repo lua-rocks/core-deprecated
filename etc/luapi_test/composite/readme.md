@@ -1,4 +1,4 @@
-# Module `etc.luapi_test.composite` : `lib.object`
+# etc.luapi_test.composite : lib.object `(module)`
 
 ## This file is sandbox for testing luapi
 
@@ -30,7 +30,9 @@ Some readme...
 
 ## Details
 
-### Module `mega` : `lib.object`
+### mega : lib.object `(module)`
+
+Mega-field
 
 Fields:
 
@@ -39,11 +41,13 @@ Fields:
 
 ---
 
-### Function `super_method`
+### super_method `(function)`
 
-You no need to describe argument `self` for methods named with colon
-(actually you no **need** to describe anything 😉
-but of course you can if you want to).
+Super-duper method
+
+> You no need to describe argument `self` for methods named with colon
+> (actually you no **need** to describe anything 😉
+> but of course you can if you want to).
 
 Arguments:
 
@@ -60,9 +64,11 @@ Returns:
 
 ---
 
-### Table `tbl`
+### tbl `(table)`
 
-Symbol `#` used to define [private|abstract|local] type
+Abstract type
+
+> Symbol `#` used to define [private|abstract|local] type
 
 Fields:
 
@@ -71,9 +77,11 @@ Fields:
 
 ---
 
-### Function `type2`
+### type2 `(function)`
 
-If type is function and you set it as module field, it will be parsed as method
+Test type 2
+
+> If type is function and you set it as module field, it will be parsed as method
 
 Arguments:
 
@@ -83,5 +91,3 @@ Arguments:
 Returns:
 
 - 🧮 **give** ( integer )
-
-## 🖇️ Links
