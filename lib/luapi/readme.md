@@ -36,7 +36,7 @@ _Support_ **markdown**.
 = src.module.example (function)
 > str (string) some string comment (one line and no markdown for such comments)
 > num (number) [2] this value becomes 2 if not set
-> opt (number) [] empty square brackets means [nil] - optional value
+> opt (number) [] empty square brackets means [nil] - optional value 
 < con (string) result of concatenation
 ]]
 local function example(str, num, opt)
