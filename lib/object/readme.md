@@ -1,13 +1,12 @@
-# `lib.object`
-
-Extends: **table**
+# lib.object `(table)`
 
 <details><summary><b>Example</b></summary>
 
 ```lua
 local Object = require 'lib.object'
 
-local Point = Object:extend 'Point'
+-- See [luapi types documentation](lib/luapi/readme.md#types)
+local Point = Object:extend 'lib.object#point'
 
 Point.scale = 2 -- Class field!
 
@@ -25,7 +24,7 @@ function Point.__call()
   return 'called'
 end
 
-local Rectangle = Point:extend 'Rectangle'
+local Rectangle = Point:extend 'lib.object#rectangle'
 
 function Rectangle:resize()
   Rectangle.super.resize(self) -- Extend Point's `resize()`.
@@ -54,9 +53,9 @@ local rect = Rectangle:new(2, 4, 6, 8)
 
 assert(rect.w == 6)
 assert(rect:is(Rectangle))
-assert(rect:is 'Rectangle')
+assert(rect:is 'lib.object#rectangle')
 assert(not rect:is(Point))
-assert(rect:has 'Point' == 1)
+assert(rect:has 'lib.object#point' == 1)
 assert(Rectangle:has(Object) == 2)
 assert(rect() == 'called')
 
@@ -80,111 +79,148 @@ Key features of this library:
 + can subtly identify class membership
 + tiny and fast, readable source
 
-## 📜 Fields
+## Fields
 
-+ **classname : string = "Object"**
-+ **super : lib.object|table = {}**
+- 📝 **classname** ( string = *"lib.object"* )
+- 👨‍👦 **super** ( lib.object|table = *{}* )
+- 💡 **each** ( function )
+	`Loops through all elements, performing an action on each`
+- 💡 **extend** ( function )
+	`Creates a new class by inheritance`
+- 💡 **new** ( function )
+	`Creates an instance of the class`
+- 💡 **implement** ( function )
+	`Sets someone else's methods`
+- 💡 **init** ( function )
+	`Initializes the class`
+- 💡 **is** ( function )
+	`Identifies affiliation to class`
+- 💡 **has** ( function )
+	`Returns the "membership range" between self and the checking class`
 
-## 💡 Methods
+## Details
 
-+ **new (...) : instance**
-  `Creates an instance of the class`
-+ **init (fields)**
-  `Initializes the class`
-+ **extend (name, ...) : cls**
-  `Creates a new class by inheritance`
-+ **implement (...)**
-  `Sets someone else's methods`
-+ **has (Test, limit) : membership_range**
-  `Returns the "membership range" between self and the checking class`
-+ **is (Test) : result**
-  `Identifies affiliation to class`
-+ **each (etype, action, ...) : result**
-  `Loops through all elements, performing an action on each`
-
-## 🧩 Details
-
-### Method `new`
-
-Creates an instance of the class
-
-> A simple call to the class as a function does the same.
-
-→ `...` : **any** _[nil]_
-`Arguments passed to init`
-
-← `instance` : **lib.object**
-
-### Method `init`
-
-Initializes the class
-
-> By default, an object takes a table with fields and applies them to itself,
-> but descendants are expected to replace this method with another.
-
-→ `fields` : **table** _[nil]_
-`New fields`
-
-### Method `extend`
-
-Creates a new class by inheritance
-
-→ `name` : **string**
-`New class name`
-
-→ `...` : **table|lib.object** _[nil]_
-`Additional properties`
-
-← `cls` : **lib.object**
-
-### Method `implement`
-
-Sets someone else's methods
-
-→ `...` : **table|lib.object**
-`Methods`
-
-### Method `has`
-
-Returns the "membership range" between self and the checking class
-
-> Returns `0` if belongs to it or `false` if there is no membership.
-
-→ `Test` : **string|lib.object**
-`Test class`
-
-→ `limit` : **integer** _[nil]_
-`Check depth (default unlimited)`
-
-← `membership_range` : **integer|boolean**
-
-### Method `is`
-
-Identifies affiliation to class
-
-→ `Test` : **string|lib.object**
-
-← `result` : **boolean**
-
-### Method `each`
+### each `(function)`
 
 Loops through all elements, performing an action on each
 
 > Can stop at fields, metafields, methods, or all.
 > Always skips basic fields and methods inherent from the Object class.
 
-→ `etype` : **"field"|"method"|"meta"|"all"**
-`Item type`
+Arguments:
 
-→ `action` : **function:key,value,...**
-`Action on each element`
+- 👽 **etype** ( "field"|"method"|"meta"|"all" )
+	`Item type`
+- 👨‍👦 **action** ( function:key,value,... )
+	`Action on each element`
+- ❓ **...** ( any = *nil* )
+	`Additional arguments for the action`
 
-→ `...` _[nil]_
-`Additional arguments for the action`
+Returns:
 
-← `result` : **integer=table}**
-`Results of all actions`
+- 👽 **result** ( integer=table} )
+	`Results of all actions`
 
-## 🖇️ Links
+---
 
-[Go up](..)
+### new `(function)`
+
+Creates an instance of the class
+
+> A simple call to the class as a function does the same.
+> By default it returns the same type if `lib.object.init` has no returns.
+>
+> For example, you can make class Animal which will return instance of
+> Dog or Bird, depending on arguments (have it wings or not),
+> but usually class Animal returns instanse of Animal.
+>
+> You can also return self if you want to stop initialization process
+> at the specific line.
+>
+> Notice: it can't return nil! Use false or exception message instead.
+
+Arguments:
+
+- ❓ **...** ( any = *nil* )
+	`Arguments passed to init`
+
+Returns:
+
+- ❓ **instance** ( any = *nil* )
+
+---
+
+### implement `(function)`
+
+Sets someone else's methods
+
+Arguments:
+
+- 👨‍👦 **...** ( table|lib.object )
+	`Methods`
+
+---
+
+### is `(function)`
+
+Identifies affiliation to class
+
+Arguments:
+
+- 👨‍👦 **Test** ( string|lib.object )
+
+Returns:
+
+- 🔌 **result** ( boolean )
+
+---
+
+### has `(function)`
+
+Returns the "membership range" between self and the checking class
+
+> Returns `0` if belongs to it or `false` if there is no membership.
+
+Arguments:
+
+- 👨‍👦 **Test** ( string|lib.object )
+	`Test class`
+- 🧮 **limit** ( integer = *nil* )
+	`Check depth (default unlimited)`
+
+Returns:
+
+- 👽 **membership_range** ( integer|boolean )
+
+---
+
+### init `(function)`
+
+Initializes the class
+
+> By default an object takes a table with fields and applies them to itself.
+> But you can (and probably should) replace it with your function.
+> This method should not return anything, but it can if you really want to.
+> See `lib.object.new` for more details.
+
+Arguments:
+
+- 📦 **fields** ( table = *nil* )
+	`New fields`
+
+---
+
+### extend `(function)`
+
+Creates a new class by inheritance
+
+Arguments:
+
+- 📝 **name** ( string )
+	`New class name`
+- 👨‍👦 **...** ( table|lib.object = *nil* )
+	`Additional properties`
+
+Returns:
+
+- 👨‍👦 **cls** ( lib.object )

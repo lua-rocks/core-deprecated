@@ -6,9 +6,9 @@ Key features of this library:
 + can subtly identify class membership
 + tiny and fast, readable source
 
-= lib.object (table)
+= @ (table)
 > classname (string) ["lib.object"]
-> super (lib.object|table) [{}]
+> super (@|table) [{}]
 ]]
 local Object = {
   classname = 'lib.object',
@@ -18,7 +18,7 @@ local Object = {
 
 --[[ Adds all metamethods from itself and all parents to the specified table
 Maintains the order of the hierarchy: Rect > Point > Object.
-> self (lib.object) Apply from
+> self (@) Apply from
 > apply_here (table) Apply to
 ]]
 local function apply_meta_from_parents(self, apply_here)
@@ -64,6 +64,7 @@ You can also return self if you want to stop initialization process
 at the specific line.
 
 Notice: it can't return nil! Use false or exception message instead.
+= @:new (function)
 > ... (any) [] Arguments passed to init
 < instance (any) []
 ]]
@@ -86,6 +87,7 @@ By default an object takes a table with fields and applies them to itself.
 But you can (and probably should) replace it with your function.
 This method should not return anything, but it can if you really want to.
 See `lib.object.new` for more details.
+= @:init (function)
 > fields (table) [] New fields
 ]]
 function Object:init(fields)
@@ -98,6 +100,7 @@ end
 
 
 --[[ Creates a new class by inheritance
+= @:extend (function)
 > name (string) New class name
 > ... (table|lib.object) [] Additional properties
 < cls (lib.object)
@@ -121,6 +124,7 @@ end
 
 
 --[[ Sets someone else's methods
+= @:implement (function)
 > ... (table|lib.object) Methods
 ]]
 function Object:implement(...)
@@ -136,6 +140,7 @@ end
 
 --[[ Returns the "membership range" between self and the checking class
 Returns `0` if belongs to it or `false` if there is no membership.
+= @:has (function)
 > Test (string|lib.object) Test class
 > limit (integer) [] Check depth (default unlimited)
 < membership_range (integer|boolean)
@@ -162,6 +167,7 @@ end
 
 
 --[[ Identifies affiliation to class
+= @:is (function)
 > Test (string|lib.object)
 < result (boolean)
 ]]
@@ -173,6 +179,7 @@ end
 --[[ Loops through all elements, performing an action on each
 Can stop at fields, metafields, methods, or all.
 Always skips basic fields and methods inherent from the Object class.
+= @:each (function)
 > etype ("field"|"method"|"meta"|"all") Item type
 > action (function:key,value,...) Action on each element
 > ... [] Additional arguments for the action

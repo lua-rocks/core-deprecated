@@ -1,31 +1,31 @@
-# `lib.inspect`
+# lib.inspect `(function)`
 
 ## Any lua variable inspector
 
 Returns any lua variable in human-readable format.
 
-## 📜 Fields
+## Arguments
 
-+ **options**
-  `Inspecton options`
+- ❓ **variable** ( any )
+- 👨‍👦 **options** ( lib.inspect#options = *nil* )
 
-## 💡 Methods
+## Returns
 
-+ **inspect (variable, options) : result**
-  `Inspect variable`
+- 📝 **result** ( string )
 
-## 🧩 Details
+## Locals
 
-### Method `inspect`
+- 📦 **options** ( table )
 
-Inspect variable
+## Details
 
-→ `variable` : **any**
+### options `(table)`
 
-→ `options` : **lib.inspect.options**
+Fields:
 
-← `result` : **string**
-
-## 🖇️ Links
-
-[Go up](..)
+- 🧮 **depth** ( integer = *nil* )
+	`sets the maximum depth that will be printed out`
+- 📝 **newline** ( string = *"\n"* )
+	`add a newline each level of a table`
+- 📝 **indent** ( string = *2 spaces* )
+	`add an indent each level of a table`

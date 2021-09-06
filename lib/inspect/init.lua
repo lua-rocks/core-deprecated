@@ -1,6 +1,3 @@
---[[ Any lua variable inspector
-Returns any lua variable in human-readable format.
-]]
 local inspect ={
   _VERSION = 'inspect.lua 3.1.0',
   _URL     = 'http://github.com/kikito/inspect.lua',
@@ -312,16 +309,18 @@ function Inspector:putValue(v)
   end
 end
 
---[[ Inspecton options
-= lib.inspect.options (table)
-> depth (integer) []
-> newline (string) []
-> indent (string) []
+--[[
+= @#options (table)
+> depth (integer) [] sets the maximum depth that will be printed out
+> newline (string) ["\n"] add a newline each level of a table
+> indent (string) [2 spaces] add an indent each level of a table
 ]]
 
---[[ Inspect variable
+--[[ Any lua variable inspector
+Returns any lua variable in human-readable format.
+= @ (function)
 > variable (any)
-> options (lib.inspect.options)
+> options (@#options) []
 < result (string)
 ]]
 function inspect.inspect(variable, options)

@@ -89,13 +89,60 @@ local function replaceCodes(str)
   return str
 end
 
--- public
+--[[ Colorize string
 
+The colors function makes sure that color attributes are reset at each end of
+the generated string. If you want to generate complex strings piece-by-piece,
+use `colors.noReset`, which works exactly the same, but without adding the reset
+codes at each end of the string.
+
+Misc. attributes:
+
++ reset
++ bright
++ dim
++ underline
++ blink
++ reverse
++ hidden
+
+Foreground colors:
+
++ black
++ red
++ green
++ yellow
++ blue
++ magenta
++ cyan
++ white
+
+Background colors:
+
++ blackbg
++ redbg
++ greenbg
++ yellowbg
++ bluebg
++ magentabg
++ cyanbg
++ whitebg
+
+= @ (table)
+> __call (@#__call)
+> noReset (function=@#__call)
+]]
 local function ansicolors( str )
   str = tostring(str or '')
 
   return replaceCodes('%{reset}' .. str .. '%{reset}')
 end
+
+--[[
+= @#__call (function)
+> str (string)
+< str (string)
+]]
 
 
 return setmetatable({noReset = replaceCodes}, {

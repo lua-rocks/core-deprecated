@@ -1,13 +1,13 @@
 local Object = require 'lib.object'
 
 
---[[ Documentation generator
-## Plans for future
-
+--[[ Plans for future
 + IDEA: Add error handler module
 + IDEA: Support some IDE
-+ IDEA: Clean markdown (no `markdownlint` warnings)
+]]
 
+
+--[[ Documentation generator
 = @     (lib.object)
 > conf  (lib.luapi.conf)
 > files (lib.luapi.files)

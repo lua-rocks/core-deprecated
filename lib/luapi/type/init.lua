@@ -67,7 +67,7 @@ function Type:parse(block, reqpath)
       local parsed_line = {
         name = lume.trim((tagged_line .. '\n'):match '^(.-)[%s\n]' or ''),
         title = lume.trim(tagged_line:sub(comment_start_at, -1)),
-        parent = tagged_line:match '%((.-)%)',
+        parent = tagged_line:match '%((.-)%)' or 'any',
         square = square,
       }
       if parsed_line.name:find '[%[%(]' then parsed_line.name = nil end
@@ -121,7 +121,7 @@ end
 --[[ Build markdown output for module-types
 There are 2 different templates for composite and simple types:
 
-## Composite (classes, tables, functions)
+#### Composite (classes, tables, functions)
 
 + Header
 + Example    (spoiler)
@@ -131,7 +131,7 @@ There are 2 different templates for composite and simple types:
 + Details    (full descriptions for everything)
 + Footer
 
-## Simple (everything else)
+#### Simple (everything else)
 
 + Header
 + Readme
@@ -171,10 +171,11 @@ function Type:build_output(file)
 
   local function header_of(t)
     if t.parent:find '%.' then
-      return lume.format('Module `{1}` : `{2}`', { t.name, t.parent })
+      return lume.format('{1} : {2} `(module)`', { t.name, t.parent })
     else
-      return lume.format('{1} `{2}`', {
-        t.parent:gsub('^%l', string.upper),
+      return lume.format('{2} `({1})`', {
+        -- t.parent:gsub('^%l', string.upper),
+        t.parent,
         t.name
       })
     end
@@ -242,8 +243,15 @@ function Type:build_output(file)
       if component_is_empty then goto next end
       if not first then body:add '\n---\n' end
       body:add('\n### {1}\n', {header_of(component)})
+      if component.title then
+        body:add('\n{1}\n', {component.title})
+      end
       if component.description then
-        body:add('\n{1}\n', {component.description})
+        body:add('\n> {1}\n', {
+          component.description
+            :gsub('\n', '\n> ')
+            :gsub('\n>%s\n', '\n>\n')
+        })
       end
       if component.fields then
         if component.parent == 'function' then
@@ -276,7 +284,7 @@ function Type:build_output(file)
       head:add '\n## Locals\n'
       out_list_of(self.locals, head)
     end
-    if body ~= '' then head:add '\n## Details\n' end
+    if body.text ~= '' then head:add '\n## Details\n' end
   end
 
   head:add('# {1}\n', {header_of(self)})
@@ -293,7 +301,7 @@ function Type:build_output(file)
     out_components()
   end
 
-  foot:add('\n## 🖇️ Links\n')
+  -- foot:add('\n## Links\n')
 end
 
 

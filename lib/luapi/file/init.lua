@@ -88,6 +88,7 @@ function File:parse()
       local s = short_type_name:sub(1, 2)
       type.name = short_type_name:sub(3, -1)
       if s == '@:' then
+        self.module.fields = self.module.fields or {}
         self.module.fields[type.name] = type
       elseif s == '@#' then
         self.module.locals = self.module.locals or {}
@@ -104,7 +105,7 @@ function File:parse()
 end
 
 
---[[ Write `@#output` to the file and clean up file cache
+--[[ Write @#output to the file and clean up file cache
 = @:write (function)
 > self (@)
 < self (@)

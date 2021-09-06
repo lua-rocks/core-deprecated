@@ -1,6 +1,4 @@
-# `lib.asserts`
-
-Extends: **assert**
+# lib.asserts `(function)`
 
 ## Multiple assertions
 
@@ -10,10 +8,12 @@ This function takes one argument and returns any number.
 If it returns nil or false, the test will be considered to have failed.
 The test will also fail if an error occurs during the test.
 
-## 📜 Fields
+## Arguments
 
-+ **__call : lib.asserts.__call**
+- 👽 **f** ( function|string = *nil* )
+- ❓ **...** ( any = *nil* )
 
-## 🖇️ Links
+## Returns
 
-[Go up](..)
+- 👽 **f** ( function|string = *nil* )
+- ❓ **...** ( any = *nil* )
