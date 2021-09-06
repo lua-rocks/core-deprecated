@@ -1,13 +1,5 @@
 # Module `etc.luapi_test.composite` : `lib.object`
 
-<details><summary><b>Example</b></summary>
-
-```lua
-print(2+2)
-```
-
-</details>
-
 ## This file is sandbox for testing luapi
 
 Some readme...
@@ -44,7 +36,7 @@ Fields:
 
 If type is function and you set it as module field, it will be parsed as method
 
-Fields:
+Arguments:
 
 - 👨‍👦 **take** ( etc.luapi_test.composite#tbl )
 	`abstract type desribed below`
@@ -59,7 +51,7 @@ You no need to describe argument `self` for methods named with colon
 (actually you no **need** to describe anything 😉
 but of course you can if you want to).
 
-Fields:
+Arguments:
 
 - 👽 **x** ( integer = *2* )
 - 🧮 **n** ( number )

@@ -176,12 +176,21 @@ function Type:build_output(file)
   or self.parent == 'function'
   or self.parent:find '%.' then is_simple = false end
 
-  local function out_example()
+  local function out_example_spoiler()
     local example = file.cache.example
     if example then head
       :add '\n<details><summary><b>Example</b></summary>\n\n```lua\n'
       :add (example)
       :add '```\n\n</details>\n'
+    end
+  end
+
+  local function out_example_topic()
+    local example = file.cache.example
+    if example then head
+      :add '\n## Example\n\n```lua\n'
+      :add (example)
+      :add '```\n'
     end
   end
 
@@ -231,7 +240,11 @@ function Type:build_output(file)
               body:add('\n{1}\n', {field.description})
             end
             if field.fields then
-              body:add '\nFields:\n'
+              if field.parent == 'function' then
+                body:add '\nArguments:\n'
+              else
+                body:add '\nFields:\n'
+              end
               out_list_of(field.fields, body)
             end
             if field.returns then
@@ -257,9 +270,11 @@ function Type:build_output(file)
   if is_simple then
     if self.square then
       head:add('\n{1} Default: **{2}**\n', {emoji(self.parent), self.square})
+      out_title_and_readme()
+      out_example_topic()
     end
   else
-    out_example()
+    out_example_spoiler()
     out_title_and_readme()
     out_components()
   end

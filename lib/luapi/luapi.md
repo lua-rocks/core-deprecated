@@ -122,8 +122,8 @@ These rules are _optional_, but highly recommended:
 These rules are _important_:
 
 + never call files in your project `readme.md` because these files will be
-  generated automatically; use `current_directory_name.md` instead (its
-  content will be included into `readme.md` in the generation process)
+  generated automatically; use `current_directory_name.md` or `include.md`
+  instead (its content will be included into `readme.md` in the process)
 
 [ldoc]: https://stevedonovan.github.io/ldoc/manual/doc.md.html
 [luadoc]: https://keplerproject.github.io/luadoc

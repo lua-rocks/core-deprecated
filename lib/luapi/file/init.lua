@@ -41,9 +41,10 @@ function File:read()
     :gsub('%-%-%[%[.-%]%]', '')
     :gsub('%-%-.-\n', '')
   file:close()
-  -- modname.md
+  -- modname.md or include.md
   local modname = self.fullpath:match '.+/(.+)'
   file = io.open(self.fullpath .. '/' .. modname .. '.md', 'rb')
+    or io.open(self.fullpath .. '/include.md', 'rb')
   if file then
     self.cache.readme = '\n' .. file:read '*a'
     file:close()
