@@ -81,8 +81,8 @@ Key features of this library:
 
 ## Fields
 
-- 📝 _classname_ ( string = *"lib.object"* )
-- 👨‍👦 _super_ ( lib.object|table = *{}* )
+- 📝 **classname** ( string = *"lib.object"* )
+- 👨‍👦 **super** ( lib.object|table = *{}* )
 - 💡 **each** ( function )
 	`Loops through all elements, performing an action on each`
 - 💡 **extend** ( function )

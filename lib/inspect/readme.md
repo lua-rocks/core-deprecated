@@ -25,7 +25,7 @@ Fields:
 
 - 🧮 _depth_ ( integer = *nil* )
 	`sets the maximum depth that will be printed out`
-- 📝 _newline_ ( string = *"\n"* )
+- 📝 **newline** ( string = *"\n"* )
 	`add a newline each level of a table`
-- 📝 _indent_ ( string = *2 spaces* )
+- 📝 **indent** ( string = *2 spaces* )
 	`add an indent each level of a table`

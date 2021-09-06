@@ -6,9 +6,9 @@ Some readme...
 
 ## Fields
 
-- 👽 _some_field1_ ( some_type1 = *some_default_value1* )
+- 👽 **some_field1** ( some_type1 = *some_default_value1* )
 	`Some field title1`
-- 👽 _some_field2_ ( some_type2 = *some_default_value2* )
+- 👽 **some_field2** ( some_type2 = *some_default_value2* )
 	`Some field title2`
 - 👨‍👦 **class2** ( etc.luapi_test.composite:type2 )
 	`IDEA: Should be writed as method`
@@ -53,7 +53,7 @@ Arguments:
 
 - 🧮 **n** ( number )
 	`Spaces between tagged data will be ignored`
-- 🧮 _x_ ( integer = *2* )
+- 🧮 **x** ( integer = *2* )
 
 Returns:
 

@@ -35,5 +35,5 @@ Extra type
 
 Fields:
 
-- 📝 _name_ ( string = *"Bob"* )
-- 🧮 _age_ ( number = *12* )
+- 📝 **name** ( string = *"Bob"* )
+- 🧮 **age** ( number = *12* )

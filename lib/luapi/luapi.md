@@ -20,7 +20,7 @@ Check out `init.lua` files to see how it works. Some tests you can find
 + `=`: set block [type](#types) and name/reqpath (can be only one in block)
 + first word after tag: variable name (or reqpath if tag is `=`)
 + `(parentheses)`: variable type name or parent class reqpath
-+ `[square brackets]`: default value of the variable (makes it _optional_)
++ `[square brackets]`: default value of the variable (`nil` makes it _optional_)
 + last words: one line comment (title)
 
 Quick example:
@@ -33,11 +33,13 @@ _Support_ **markdown**.
 
 = src.module.example (function)
 > str (string) some string comment (one line and no markdown for such comments)
-> num (number) [2] some number comment
+> num (number) [2] this value becomes 2 if not set
+> opt (number) [] empty square brackets means [nil] - optional value 
 < con (string) result of concatenation
 ]]
-local function example(str, num)
+local function example(str, num, opt)
   num = num or 2
+  if opt then num = num + opt end
   return str .. num
 end
 ```
