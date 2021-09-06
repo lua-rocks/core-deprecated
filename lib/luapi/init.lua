@@ -2,11 +2,11 @@ local Object = require 'lib.object'
 
 
 --[[ Plans for future
++ TODO: Don't replace @ with reqpath
 + TODO: Make docs for lume
 + TODO: Output footer
 + TODO: Local links
 + IDEA: Global links
-+ IDEA: Don't replace @ with reqpath
 + IDEA: "Smart" mode (parse code)
 + IDEA: Add error handler module
 + IDEA: Support some IDE
