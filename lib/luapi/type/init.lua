@@ -127,7 +127,7 @@ There are 2 different templates for composite and simple types:
 + Example    (spoiler)
 + Readme
 + Components (short list with links to Details)
-+ Types      (short list with links to Details)
++ Locals     (short list with links to Details)
 + Details    (full descriptions for everything)
 + Footer
 
@@ -144,15 +144,24 @@ There are 2 different templates for composite and simple types:
 function Type:build_output(file)
   local head, body, foot = file.cache.head, file.cache.body, file.cache.foot
 
+  local is_simple = true
+  if self.parent == 'table'
+  or self.parent == 'function'
+  or self.parent:find '%.' then is_simple = false end
+
   local function emoji(str)
     local basic = {
       ['string']   = '📝',
+      ['char']     = '📝',
       ['number']   = '🧮',
+      ['integer']  = '🧮',
       ['boolean']  = '🔌',
       ['function'] = '💡',
       ['table']    = '📦',
       ['thread']   = '🧵',
       ['userdata'] = '🔒',
+      ['list']     = '📜',
+      ['any']      = '❓',
     }
     local found = basic[str]
     if found then return found end
@@ -170,11 +179,6 @@ function Type:build_output(file)
       })
     end
   end
-
-  local is_simple = true
-  if self.parent == 'table'
-  or self.parent == 'function'
-  or self.parent:find '%.' then is_simple = false end
 
   local function out_example_spoiler()
     local example = file.cache.example
@@ -210,9 +214,15 @@ function Type:build_output(file)
   end
 
   local function out_list_of(t, to)
+    local indexed = {}
     for key, value in pairs(t) do
+      local index = value.index
+      if index then indexed[index] = value
+      else indexed[key] = value end
+    end
+    for _, value in pairs(indexed) do
       local emo = emoji(value.parent)
-      to:add('\n- {1} **{2}** ( {3}', {emo, key, value.parent})
+      to:add('\n- {1} **{2}** ( {3}', {emo, value.name, value.parent})
       if value.square then to:add(' = *{1}*', {value.square}) end
       to:add ' )'
       if value.title then to:add('\n\t`{1}`', {value.title}) end
@@ -221,48 +231,52 @@ function Type:build_output(file)
   end
 
   local function out_components()
-    local is_empty = true
+    local components = {}
+    lume.extend(components, self.fields, self.returns, self.locals)
+    local first = true
+    for _, component in pairs(components) do
+      local component_is_empty =
+        not component.description and
+        not component.fields and
+        not component.returns
+      if component_is_empty then goto next end
+      if not first then body:add '\n---\n' end
+      body:add('\n### {1}\n', {header_of(component)})
+      if component.description then
+        body:add('\n{1}\n', {component.description})
+      end
+      if component.fields then
+        if component.parent == 'function' then
+          body:add '\nArguments:\n'
+        else
+          body:add '\nFields:\n'
+        end
+        out_list_of(component.fields, body)
+      end
+      if component.returns then
+        body:add '\nReturns:\n'
+        out_list_of(component.returns, body)
+      end
+      first = false
+      ::next::
+    end
     if self.fields then
-      is_empty = false
       if self.parent == 'function' then
         head:add '\n## Arguments\n'
-        body:add '\nArguments:\n'
       else
         head:add '\n## Fields\n'
-        for _, field in pairs(self.fields) do
-          local field_is_empty =
-            not field.description and
-            not field.fields and
-            not field.returns
-          if not field_is_empty then
-            body:add('\n### {1}\n', {header_of(field)})
-            if field.description then
-              body:add('\n{1}\n', {field.description})
-            end
-            if field.fields then
-              if field.parent == 'function' then
-                body:add '\nArguments:\n'
-              else
-                body:add '\nFields:\n'
-              end
-              out_list_of(field.fields, body)
-            end
-            if field.returns then
-              body:add '\nReturns:\n'
-              out_list_of(field.returns, body)
-            end
-          end
-        end
       end
       out_list_of(self.fields, head)
     end
     if self.returns then
-      is_empty = false
       head:add '\n## Returns\n'
-      if self.parent == 'function' then body:add '\nReturns:\n' end
       out_list_of(self.returns, head)
     end
-    if not is_empty then head:add '\n## Details\n' end
+    if self.locals then
+      head:add '\n## Locals\n'
+      out_list_of(self.locals, head)
+    end
+    if body ~= '' then head:add '\n## Details\n' end
   end
 
   head:add('# {1}\n', {header_of(self)})

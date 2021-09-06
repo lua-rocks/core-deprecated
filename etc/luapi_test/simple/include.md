@@ -1,3 +1,3 @@
 # Example number
 
-Lore ipsum dolar.
+Lorem ipsum dolar.

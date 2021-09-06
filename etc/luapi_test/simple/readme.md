@@ -6,7 +6,7 @@
 
 Test description.
 
-Lore ipsum dolar.
+Lorem ipsum dolar.
 
 ## Example
 

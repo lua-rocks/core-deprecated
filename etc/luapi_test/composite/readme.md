@@ -6,22 +6,27 @@ Some readme...
 
 ## Fields
 
-- 👨‍👦 **mega** ( lib.object )
-	`Mega-field`
-- 👨‍👦 **class2** ( etc.luapi_test.composite:type2 )
-	`IDEA: Should be writed as method`
-- 💡 **type2** ( function )
-	`Test type 2`
-- 💡 **super_method** ( function )
-	`Super-duper method`
 - 👽 **some_field1** ( some_type1 = *some_default_value1* )
 	`Some field title1`
 - 👽 **some_field2** ( some_type2 = *some_default_value2* )
 	`Some field title2`
+- 👨‍👦 **class2** ( etc.luapi_test.composite:type2 )
+	`IDEA: Should be writed as method`
+- 👨‍👦 **mega** ( lib.object )
+	`Mega-field`
+- 💡 **super_method** ( function )
+	`Super-duper method`
+- 💡 **type2** ( function )
+	`Test type 2`
 
 ## Returns
 
 - 🔌 **lol** ( boolean = *nil* )
+
+## Locals
+
+- 📦 **tbl** ( table )
+	`Abstract type`
 
 ## Details
 
@@ -29,8 +34,42 @@ Some readme...
 
 Fields:
 
-- 👽 **giga** ( any )
+- ❓ **giga** ( any )
 	`Yay!`
+
+---
+
+### Function `super_method`
+
+You no need to describe argument `self` for methods named with colon
+(actually you no **need** to describe anything 😉
+but of course you can if you want to).
+
+Arguments:
+
+- 🧮 **n** ( number )
+	`Spaces between tagged data will be ignored`
+- 🧮 **x** ( integer = *2* )
+
+Returns:
+
+- 👨‍👦 **self** ( etc.luapi_test.composite )
+	`Bli bla`
+- 🧮 **n** ( number )
+	`Blu ble`
+
+---
+
+### Table `tbl`
+
+Symbol `#` used to define [private|abstract|local] type
+
+Fields:
+
+- 📝 **foo** ( string )
+- 📝 **bar** ( string )
+
+---
 
 ### Function `type2`
 
@@ -43,25 +82,6 @@ Arguments:
 
 Returns:
 
-- 👽 **give** ( integer )
-
-### Function `super_method`
-
-You no need to describe argument `self` for methods named with colon
-(actually you no **need** to describe anything 😉
-but of course you can if you want to).
-
-Arguments:
-
-- 👽 **x** ( integer = *2* )
-- 🧮 **n** ( number )
-	`Spaces between tagged data will be ignored`
-
-Returns:
-
-- 🧮 **n** ( number )
-	`Blu ble`
-- 👨‍👦 **self** ( etc.luapi_test.composite )
-	`Bli bla`
+- 🧮 **give** ( integer )
 
 ## 🖇️ Links
