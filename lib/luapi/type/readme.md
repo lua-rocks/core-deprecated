@@ -8,17 +8,17 @@
 	`First word after tag =`
 - 📝 **parent** ( string )
 	`Text in parentheses after tag =`
-- 📝 **title** ( string = *nil* )
+- 📝 _title_ ( string = *nil* )
 	`Any text at the end of tag = or 1st line in block`
-- 📝 **square** ( string = *nil* )
+- 📝 _square_ ( string = *nil* )
 	`Text in square brackets after tag =`
-- 📝 **description** ( string = *nil* )
+- 📝 _description_ ( string = *nil* )
 	`Not tagged lines in block`
-- 👨‍👦 **returns** ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
+- 👨‍👦 _returns_ ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
 	`Line after <`
-- 👨‍👦 **fields** ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
+- 👨‍👦 _fields_ ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
 	`Line after >`
-- 👨‍👦 **locals** ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
+- 👨‍👦 _locals_ ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
 	`Local types (module only)`
 - 💡 **parse** ( function )
 	`Parse block`
@@ -42,15 +42,15 @@ One line of tagged block
 
 Fields:
 
-- 📝 **name** ( string = *nil* )
+- 📝 _name_ ( string = *nil* )
 	`First word after tag`
-- 📝 **parent** ( string = *nil* )
+- 📝 _parent_ ( string = *nil* )
 	`Text in parentheses`
-- 📝 **title** ( string = *nil* )
+- 📝 _title_ ( string = *nil* )
 	`Any text at the end`
-- 📝 **square** ( string = *nil* )
+- 📝 _square_ ( string = *nil* )
 	`Text in square brackets`
-- 🧮 **index** ( integer = *nil* )
+- 🧮 _index_ ( integer = *nil* )
 	`Output order`
 
 ---
@@ -92,7 +92,7 @@ Arguments:
 
 - 👨‍👦 **self** ( lib.luapi.type )
 - 📝 **block** ( string )
-- 📝 **reqpath** ( string = *nil* )
+- 📝 _reqpath_ ( string = *nil* )
 
 ---
 
@@ -103,8 +103,8 @@ Take comments block and return a type
 Arguments:
 
 - 👨‍👦 **self** ( lib.luapi.type )
-- 📝 **block** ( string = *nil* )
-- 📝 **reqpath** ( string = *nil* )
+- 📝 _block_ ( string = *nil* )
+- 📝 _reqpath_ ( string = *nil* )
 
 ---
 

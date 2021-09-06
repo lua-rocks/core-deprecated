@@ -6,8 +6,8 @@
 
 - 📝 **reqpath** ( string )
 - 📝 **fullpath** ( string )
-- 👨‍👦 **module** ( lib.luapi.type = *nil* )
-- 👨‍👦 **cache** ( lib.luapi.file.cache = *nil* )
+- 👨‍👦 _module_ ( lib.luapi.type = *nil* )
+- 👨‍👦 _cache_ ( lib.luapi.file.cache = *nil* )
 	`Gets removed after File:write() attempt`
 - 💡 **write** ( function )
 	`Write @#output to the file and clean up file cache`
@@ -63,7 +63,7 @@ Arguments:
 
 Returns:
 
-- 👨‍👦 **success** ( lib.luapi.file = *nil* )
+- 👨‍👦 _success_ ( lib.luapi.file = *nil* )
 
 ---
 
@@ -99,4 +99,4 @@ Arguments:
 
 Returns:
 
-- 👨‍👦 **success** ( lib.luapi.file = *nil* )
+- 👨‍👦 _success_ ( lib.luapi.file = *nil* )

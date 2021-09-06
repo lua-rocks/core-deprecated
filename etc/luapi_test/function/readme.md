@@ -12,7 +12,7 @@
 	`will be concatenated with b`
 - 👨‍👦 **extra** ( etc.luapi_test.function#extra )
 	`see description below`
-- ❓ **...** ( any = *nil* )
+- ❓ _..._ ( any = *nil* )
 	`will be printed`
 
 ## Returns
@@ -35,5 +35,5 @@ Extra type
 
 Fields:
 
-- 📝 **name** ( string = *"Bob"* )
-- 🧮 **age** ( number = *12* )
+- 📝 _name_ ( string = *"Bob"* )
+- 🧮 _age_ ( number = *12* )

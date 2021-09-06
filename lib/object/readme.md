@@ -81,8 +81,8 @@ Key features of this library:
 
 ## Fields
 
-- 📝 **classname** ( string = *"lib.object"* )
-- 👨‍👦 **super** ( lib.object|table = *{}* )
+- 📝 _classname_ ( string = *"lib.object"* )
+- 👨‍👦 _super_ ( lib.object|table = *{}* )
 - 💡 **each** ( function )
 	`Loops through all elements, performing an action on each`
 - 💡 **extend** ( function )
@@ -113,7 +113,7 @@ Arguments:
 	`Item type`
 - 👨‍👦 **action** ( function:key,value,... )
 	`Action on each element`
-- ❓ **...** ( any = *nil* )
+- ❓ _..._ ( any = *nil* )
 	`Additional arguments for the action`
 
 Returns:
@@ -141,12 +141,12 @@ Creates an instance of the class
 
 Arguments:
 
-- ❓ **...** ( any = *nil* )
+- ❓ _..._ ( any = *nil* )
 	`Arguments passed to init`
 
 Returns:
 
-- ❓ **instance** ( any = *nil* )
+- ❓ _instance_ ( any = *nil* )
 
 ---
 
@@ -185,7 +185,7 @@ Arguments:
 
 - 👨‍👦 **Test** ( string|lib.object )
 	`Test class`
-- 🧮 **limit** ( integer = *nil* )
+- 🧮 _limit_ ( integer = *nil* )
 	`Check depth (default unlimited)`
 
 Returns:
@@ -205,7 +205,7 @@ Initializes the class
 
 Arguments:
 
-- 📦 **fields** ( table = *nil* )
+- 📦 _fields_ ( table = *nil* )
 	`New fields`
 
 ---
@@ -218,7 +218,7 @@ Arguments:
 
 - 📝 **name** ( string )
 	`New class name`
-- 👨‍👦 **...** ( table|lib.object = *nil* )
+- 👨‍👦 _..._ ( table|lib.object = *nil* )
 	`Additional properties`
 
 Returns:

@@ -5,7 +5,7 @@
 ## Fields
 
 - 📝 **root_path** ( string )
-- 📜 **path_filters** ( list = *nil* )
+- 📜 _path_filters_ ( list = *nil* )
 	`Search files only in these subdirs (relative to root)`
 - 💡 **init** ( function )
 

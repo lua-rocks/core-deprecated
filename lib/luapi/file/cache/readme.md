@@ -6,13 +6,13 @@ Gets removed after File:write() attempt.
 
 ## Fields
 
-- 📝 **content** ( string = *nil* )
+- 📝 _content_ ( string = *nil* )
 	`full content of this file`
-- 📝 **code** ( string = *nil* )
+- 📝 _code_ ( string = *nil* )
 	`uncommented content of this file`
-- 📝 **example** ( string = *nil* )
+- 📝 _example_ ( string = *nil* )
 	`example.lua`
-- 📝 **readme** ( string = *nil* )
+- 📝 _readme_ ( string = *nil* )
 	`dirname.lua`
 - 👨‍👦 **head** ( lib.luapi.file.cache#output )
 - 👨‍👦 **body** ( lib.luapi.file.cache#output )

@@ -7,7 +7,7 @@ Returns any lua variable in human-readable format.
 ## Arguments
 
 - ❓ **variable** ( any )
-- 👨‍👦 **options** ( lib.inspect#options = *nil* )
+- 👨‍👦 _options_ ( lib.inspect#options = *nil* )
 
 ## Returns
 
@@ -23,9 +23,9 @@ Returns any lua variable in human-readable format.
 
 Fields:
 
-- 🧮 **depth** ( integer = *nil* )
+- 🧮 _depth_ ( integer = *nil* )
 	`sets the maximum depth that will be printed out`
-- 📝 **newline** ( string = *"\n"* )
+- 📝 _newline_ ( string = *"\n"* )
 	`add a newline each level of a table`
-- 📝 **indent** ( string = *2 spaces* )
+- 📝 _indent_ ( string = *2 spaces* )
 	`add an indent each level of a table`

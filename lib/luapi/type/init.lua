@@ -223,7 +223,9 @@ function Type:build_output(file)
     end
     for _, value in pairs(indexed) do
       local emo = emoji(value.parent)
-      to:add('\n- {1} **{2}** ( {3}', {emo, value.name, value.parent})
+      local name = '**' .. value.name .. '**'
+      if value.square then name = '_' .. value.name .. '_' end
+      to:add('\n- {1} {2} ( {3}', {emo, name, value.parent})
       if value.square then to:add(' = *{1}*', {value.square}) end
       to:add ' )'
       if value.title then to:add('\n\t`{1}`', {value.title}) end
