@@ -61,23 +61,3 @@ Follow these rules to make your code enjoyable to work with:
 + always check the types of data you get and cover the code with basic tests
   (don't worry about a lot of asserts creating an unnecessary load; the `assert`
   function itself can easily be replaced by a pacifier function in production)
-
-## Highly recommended VSCodium extensions
-
-```sh
-# Lua
-codium --install-extension changnet.lua-tags
-codium --install-extension dwenegar.vscode-luacheck
-codium --install-extension tomblind.local-lua-debugger-vscode
-
-# Markdown
-codium --install-extension yzhang.markdown-all-in-one
-codium --install-extension fcrespo82.markdown-table-formatter
-codium --install-extension jayfidev.tablegenerator
-codium --install-extension davidanson.vscode-markdownlint
-codium --install-extension marvhen.reflow-markdown
-codium --install-extension zaaack.markdown-editor
-
-# Other
-codium --install-extension gruntfuggly.todo-tree
-```
