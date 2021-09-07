@@ -104,7 +104,9 @@ When you use `=` tag, you can mark your type different ways:
 + **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
 
 You can use symbol `@` as shorcut for **this file reqpath** anywhere:
-`@:field`, `@#private`. Even for subtypes: `@.subtype:field`!
+`@:field`, `@#private`.
+
+Even for subtypes: `@.subtype:field`
 
 Inside field definition (`>`) you can use `?type_of_name` instead of field name
 if your table includes fields with undefined names.
