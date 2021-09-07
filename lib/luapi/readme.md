@@ -136,8 +136,8 @@ These rules are _important_:
 
 ## Fields
 
-- 👨‍👦 **conf** ( lib.luapi.conf )
-- 👨‍👦 **files** ( lib.luapi.files )
+- 👨‍👦 **conf** ( @.conf )
+- 👨‍👦 **files** ( @.files )
 - 💡 **init** ( function )
 
 ## Details
@@ -146,8 +146,8 @@ These rules are _important_:
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi )
-- 👨‍👦 **conf** ( table=lib.luapi.conf )
+- 👨‍👦 **self** ( @ )
+- 👨‍👦 **conf** ( table=@.conf )
 
 ## Navigation
 

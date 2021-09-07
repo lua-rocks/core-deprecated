@@ -10,7 +10,7 @@ Some readme...
 	`Some field title1`
 - 👽 **some_field2** ( some_type2 = *some_default_value2* )
 	`Some field title2`
-- 👨‍👦 **class2** ( etc.luapi_test.composite:type2 )
+- 👨‍👦 **class2** ( @:type2 )
 	`IDEA: Should be writed as method`
 - 👨‍👦 **mega** ( lib.object )
 	`Mega-field`
@@ -57,7 +57,7 @@ Arguments:
 
 Returns:
 
-- 👨‍👦 **self** ( etc.luapi_test.composite )
+- 👨‍👦 **self** ( @ )
 	`Bli bla`
 - 🧮 **n** ( number )
 	`Blu ble`
@@ -85,7 +85,7 @@ Test type 2
 
 Arguments:
 
-- 👨‍👦 **take** ( etc.luapi_test.composite#tbl )
+- 👨‍👦 **take** ( @#tbl )
 	`abstract type desribed below`
 
 Returns:

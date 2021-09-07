@@ -235,7 +235,11 @@ function Type:build_output(file)
       and ('|'..value.square..'|'):match '%Wnil%W' then -- optional
         name = '_' .. value.name .. '_'
       end
-      to:add('\n- {1} {2} ( {3}', {emo, name, value.parent})
+      to:add('\n- {1} {2} ( {3}', {
+        emo,
+        name,
+        value.parent:gsub(file.cache.escaped_reqpath, '@')
+      })
       if value.square then to:add(' = *{1}*', {value.square}) end
       to:add ' )'
       if value.title then to:add('\n\t`{1}`', {value.title}) end

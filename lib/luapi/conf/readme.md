@@ -17,7 +17,7 @@
 
 Arguments:
 
-- 👨‍👦 **conf** ( table=lib.luapi.conf )
+- 👨‍👦 **conf** ( table=@ )
 
 ## Navigation
 

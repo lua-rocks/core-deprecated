@@ -53,8 +53,8 @@ Background colors:
 
 ## Fields
 
-- 👨‍👦 **__call** ( lib.ansicolors#__call )
-- 👨‍👦 **noReset** ( function=lib.ansicolors#__call )
+- 👨‍👦 **__call** ( @#__call )
+- 👨‍👦 **noReset** ( function=@#__call )
 
 ## Locals
 

@@ -10,7 +10,7 @@
 	`will be concatenated with c`
 - 📝 **c** ( string )
 	`will be concatenated with b`
-- 👨‍👦 **extra** ( etc.luapi_test.function#extra )
+- 👨‍👦 **extra** ( @#extra )
 	`see description below`
 - ❓ _..._ ( any = *nil* )
 	`will be printed`

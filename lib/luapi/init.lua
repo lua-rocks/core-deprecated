@@ -2,7 +2,6 @@ local Object = require 'lib.object'
 
 
 --[[ Plans for future
-+ TODO: Don't replace @ with reqpath
 + TODO: Make docs for lume
 + TODO: Output footer
 + TODO: Local links

@@ -16,7 +16,7 @@ Get paths, load, read, parse, write
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.files )
+- 👨‍👦 **self** ( @ )
 - 👨‍👦 **luapi** ( lib.luapi )
 
 ## Navigation

@@ -82,7 +82,7 @@ Key features of this library:
 ## Fields
 
 - 📝 **classname** ( string = *"lib.object"* )
-- 👨‍👦 **super** ( lib.object|table = *{}* )
+- 👨‍👦 **super** ( @|table = *{}* )
 - 💡 **each** ( function )
 	`Loops through all elements, performing an action on each`
 - 💡 **extend** ( function )
@@ -156,7 +156,7 @@ Sets someone else's methods
 
 Arguments:
 
-- 👨‍👦 **...** ( table|lib.object )
+- 👨‍👦 **...** ( table|@ )
 	`Methods`
 
 ---
@@ -167,7 +167,7 @@ Identifies affiliation to class
 
 Arguments:
 
-- 👨‍👦 **Test** ( string|lib.object )
+- 👨‍👦 **Test** ( string|@ )
 
 Returns:
 
@@ -183,7 +183,7 @@ Returns the "membership range" between self and the checking class
 
 Arguments:
 
-- 👨‍👦 **Test** ( string|lib.object )
+- 👨‍👦 **Test** ( string|@ )
 	`Test class`
 - 🧮 _limit_ ( integer = *nil* )
 	`Check depth (default unlimited)`
@@ -218,12 +218,12 @@ Arguments:
 
 - 📝 **name** ( string )
 	`New class name`
-- 👨‍👦 _..._ ( table|lib.object = *nil* )
+- 👨‍👦 _..._ ( table|@ = *nil* )
 	`Additional properties`
 
 Returns:
 
-- 👨‍👦 **cls** ( lib.object )
+- 👨‍👦 **cls** ( @ )
 
 ## Navigation
 

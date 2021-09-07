@@ -15,11 +15,11 @@
 	`Text in square brackets after tag =`
 - 📝 _description_ ( string = *nil* )
 	`Not tagged lines in block`
-- 👨‍👦 _returns_ ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
+- 👨‍👦 _returns_ ( list=@#line|@ = *nil* )
 	`Line after <`
-- 👨‍👦 _fields_ ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
+- 👨‍👦 _fields_ ( list=@#line|@ = *nil* )
 	`Line after >`
-- 👨‍👦 _locals_ ( list=lib.luapi.type#line|lib.luapi.type = *nil* )
+- 👨‍👦 _locals_ ( list=@#line|@ = *nil* )
 	`Local types (module only)`
 - 💡 **parse** ( function )
 	`Parse block`
@@ -82,6 +82,7 @@ Build markdown output for module-types
 Arguments:
 
 - 👨‍👦 **file** ( lib.luapi.file )
+- 📝 **reqpath** ( string )
 
 ---
 
@@ -91,7 +92,7 @@ Parse block
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.type )
+- 👨‍👦 **self** ( @ )
 - 📝 **block** ( string )
 - 📝 _reqpath_ ( string = *nil* )
 
@@ -103,7 +104,7 @@ Take comments block and return a type
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.type )
+- 👨‍👦 **self** ( @ )
 - 👨‍👦 **conf** ( lib.luapi.conf )
 - 📝 _block_ ( string = *nil* )
 - 📝 _reqpath_ ( string = *nil* )

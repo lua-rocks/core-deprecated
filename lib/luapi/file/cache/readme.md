@@ -14,9 +14,9 @@ Gets removed after File:write() attempt.
 	`example.lua`
 - 📝 _readme_ ( string = *nil* )
 	`dirname.lua`
-- 👨‍👦 **head** ( lib.luapi.file.cache#output )
-- 👨‍👦 **body** ( lib.luapi.file.cache#output )
-- 👨‍👦 **foot** ( lib.luapi.file.cache#output )
+- 👨‍👦 **head** ( @#output )
+- 👨‍👦 **body** ( @#output )
+- 👨‍👦 **foot** ( @#output )
 - 📝 **escaped_reqpath** ( string )
 - 💡 **init** ( function )
 	`Initialize`
@@ -36,12 +36,12 @@ Add text to output field
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.file.cache#output )
+- 👨‍👦 **self** ( @#output )
 - 📝 **text** ( string )
 
 Returns:
 
-- 👨‍👦 **self** ( lib.luapi.file.cache#output )
+- 👨‍👦 **self** ( @#output )
 
 ---
 
@@ -52,7 +52,7 @@ Element of output model
 Fields:
 
 - 📝 **text** ( string )
-- 👨‍👦 **add** ( lib.luapi.file.cache#output.add )
+- 👨‍👦 **add** ( @#output.add )
 
 ---
 

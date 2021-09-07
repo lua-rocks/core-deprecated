@@ -4,7 +4,7 @@
 
 ## Arguments
 
-- 👨‍👦 **conf** ( src.globals#conf )
+- 👨‍👦 **conf** ( @#conf )
 
 ## Locals
 

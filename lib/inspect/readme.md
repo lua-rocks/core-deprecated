@@ -7,7 +7,7 @@ Returns any lua variable in human-readable format.
 ## Arguments
 
 - ❓ **variable** ( any )
-- 👨‍👦 _options_ ( lib.inspect#options = *nil* )
+- 👨‍👦 _options_ ( @#options = *nil* )
 
 ## Returns
 

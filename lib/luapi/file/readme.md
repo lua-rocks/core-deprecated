@@ -7,7 +7,7 @@
 - 📝 **reqpath** ( string )
 - 📝 **fullpath** ( string )
 - 👨‍👦 _module_ ( lib.luapi.type = *nil* )
-- 👨‍👦 _cache_ ( lib.luapi.file.cache = *nil* )
+- 👨‍👦 _cache_ ( @.cache = *nil* )
 	`Gets removed after File:write() attempt`
 - 💡 **write** ( function )
 	`Write @#output to the file and clean up file cache`
@@ -30,11 +30,11 @@ Write @#output to the file and clean up file cache
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.file )
+- 👨‍👦 **self** ( @ )
 
 Returns:
 
-- 👨‍👦 **self** ( lib.luapi.file )
+- 👨‍👦 **self** ( @ )
 
 ---
 
@@ -44,7 +44,7 @@ Try to get access to type in this file by path
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.file )
+- 👨‍👦 **self** ( @ )
 - 📝 **path** ( string )
 
 Returns:
@@ -59,11 +59,11 @@ Parse file
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.file )
+- 👨‍👦 **self** ( @ )
 
 Returns:
 
-- 👨‍👦 _success_ ( lib.luapi.file = *nil* )
+- 👨‍👦 _success_ ( @ = *nil* )
 
 ---
 
@@ -73,7 +73,7 @@ Init file but don't read it
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.file )
+- 👨‍👦 **self** ( @ )
 - 📝 **reqpath** ( string )
 - 📝 **fullpath** ( string )
 - 👨‍👦 **conf** ( lib.luapi.conf )
@@ -86,7 +86,7 @@ Remove cache
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.file )
+- 👨‍👦 **self** ( @ )
 
 ---
 
@@ -96,11 +96,11 @@ Read file
 
 Arguments:
 
-- 👨‍👦 **self** ( lib.luapi.file )
+- 👨‍👦 **self** ( @ )
 
 Returns:
 
-- 👨‍👦 _success_ ( lib.luapi.file = *nil* )
+- 👨‍👦 _success_ ( @ = *nil* )
 
 ## Navigation
 
