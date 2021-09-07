@@ -1,0 +1,21 @@
+'body, atom-text-editor':
+  'f1': 'command-palette:toggle'
+  'ctrl-shift-o': 'application:reopen-project'
+  'alt-shift-o': 'application:open-folder'
+  'alt-ctrl-a': 'dev-live-reload:reload-all'
+  'alt': 'none'
+  'ctrl-m': 'window:toggle-menu-bar'
+  'ctrl-shift-w': 'pinned-tabs:close-unpinned'
+  'alt-p': 'pinned-tabs:pin-active'
+
+'atom-workspace':
+  'f9': 'open-terminal-here:open-root'
+  'alt-s': 'snake-case:format'
+
+'atom-text-editor':
+  'alt-[': 'editor:fold-current-row'
+  'alt-]': 'editor:unfold-current-row'
+  'alt-q': 'autoflow:reflow-selection'
+  'ctrl-`': 'editor:unfold-all'
+  'f5': 'love-launcher:launch'
+  'alt': 'snippets:previous-tab-stop'
