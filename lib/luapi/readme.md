@@ -112,8 +112,8 @@ if your table includes fields with undefined names.
 Like this:
 
 ```text
-> ?integer (lib.luapi.type) [] Types indexed by integer numbers
-> ?string  (lib.luapi.file) [] Files indexed by names
+> ?integer (@.type) [] Types indexed by integer numbers
+> ?string  (@.file) [] Files indexed by names
 ```
 
 ### Style guide
