@@ -6,26 +6,26 @@ Some readme...
 
 ## Fields
 
-- 👽 **some_field1** ( some_type1 = *some_default_value1* )
++ 👽 **some_field1** ( some_type1 = *some_default_value1* )
 	`Some field title1`
-- 👽 **some_field2** ( some_type2 = *some_default_value2* )
++ 👽 **some_field2** ( some_type2 = *some_default_value2* )
 	`Some field title2`
-- 👨‍👦 **class2** ( @:type2 )
++ 👨‍👦 **class2** ( @:type2 )
 	`IDEA: Should be writed as method`
-- 👨‍👦 **mega** ( lib.object )
++ 👨‍👦 **mega** ( lib.object )
 	`Mega-field`
-- 💡 **super_method** ( function )
++ 💡 **super_method** ( function )
 	`Super-duper method`
-- 💡 **type2** ( function )
++ 💡 **type2** ( function )
 	`Test type 2`
 
 ## Returns
 
-- 🔌 _lol_ ( boolean = *nil* )
++ 🔌 _lol_ ( boolean = *nil* )
 
 ## Locals
 
-- 📦 **tbl** ( table )
++ 📦 **tbl** ( table )
 	`Abstract type`
 
 ## Details
@@ -36,7 +36,7 @@ Mega-field
 
 Fields:
 
-- ❓ **giga** ( any )
++ ❓ **giga** ( any )
 	`Yay!`
 
 ---
@@ -51,15 +51,15 @@ Super-duper method
 
 Arguments:
 
-- 🧮 **n** ( number )
++ 🧮 **n** ( number )
 	`Spaces between tagged data will be ignored`
-- 🧮 **x** ( integer = *2* )
++ 🧮 **x** ( integer = *2* )
 
 Returns:
 
-- 👨‍👦 **self** ( @ )
++ 👨‍👦 **self** ( @ )
 	`Bli bla`
-- 🧮 **n** ( number )
++ 🧮 **n** ( number )
 	`Blu ble`
 
 ---
@@ -72,8 +72,8 @@ Abstract type
 
 Fields:
 
-- 📝 **foo** ( string )
-- 📝 **bar** ( string )
++ 📝 **foo** ( string )
++ 📝 **bar** ( string )
 
 ---
 
@@ -85,12 +85,12 @@ Test type 2
 
 Arguments:
 
-- 👨‍👦 **take** ( @#tbl )
++ 👨‍👦 **take** ( @#tbl )
 	`abstract type desribed below`
 
 Returns:
 
-- 🧮 **give** ( integer )
++ 🧮 **give** ( integer )
 
 ## Navigation
 

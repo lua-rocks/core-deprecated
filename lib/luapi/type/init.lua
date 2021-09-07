@@ -13,6 +13,8 @@ local lume = require 'lib.lume'
 > returns   (list=@#line|@) [] Line after <
 > fields    (list=@#line|@) [] Line after >
 > locals    (list=@#line|@) [] Local types (module only)
+> _titles ({string=string,...}) [] Temporary storage for formatted titles
+> _links  ({string=string,...}) [] Temporary storage for markdown links
 ]]
 local Type = Object:extend 'lib.luapi.type'
 
@@ -39,6 +41,8 @@ function Type:init(conf, block, reqpath)
   if not block then return false end
   assert(type(block) == 'string')
   self.conf = conf
+  self._links = {}
+  self._titles = {}
   if block then
     self:parse(block, reqpath):correct()
   end
@@ -153,8 +157,6 @@ function Type:build_output(file)
   or self.parent == 'function'
   or self.parent:find '%.' then is_simple = false end
 
-  local links = {}
-
   local function emoji(str)
     local basic = {
       ['string']   = '📝',
@@ -175,16 +177,17 @@ function Type:build_output(file)
     return '👽'
   end
 
-  -- return fancy name and save its browser #link
-  local function header_of(t)
-    local esc_name = t.name:gsub('%.', '')
-    local esc_parent = t.parent:gsub('%.', '')
-    if t.parent:find '%.' then
-      links[t.name] = lume.format('#{1}--{2}-module', { esc_name, esc_parent })
-      return lume.format('{1} : {2} `(module)`', { t.name, t.parent })
+  local function make_links_and_titles(t)
+    local name = t.name
+    local parent = t.parent
+    local esc_name = name:gsub('%.', '')
+    local esc_parent = parent:gsub('%.', '')
+    if parent:find '%.' then
+      self._links[name] = lume.format('#{1}--{2}-module', {esc_name,esc_parent})
+      self._titles[name] = lume.format('{1} : {2} `(module)`', { name, parent })
     else
-      links[t.name] = lume.format('#{1}-{2}', { esc_name, esc_parent })
-      return lume.format('{1} `({2})`', { t.name, t.parent })
+      self._links[name] = lume.format('#{1}-{2}', { esc_name, esc_parent })
+      self._titles[name] = lume.format('{1} `({2})`', { name, parent })
     end
   end
 
@@ -235,7 +238,7 @@ function Type:build_output(file)
       and ('|'..value.square..'|'):match '%Wnil%W' then -- optional
         name = '_' .. value.name .. '_'
       end
-      to:add('\n- {1} {2} ( {3}', {
+      to:add('\n+ {1} {2} ( {3}', {
         emo,
         name,
         value.parent:gsub(file.cache.escaped_reqpath, '@')
@@ -257,8 +260,9 @@ function Type:build_output(file)
         not component.fields and
         not component.returns
       if component_is_empty then goto next end
+      make_links_and_titles(component)
       if not first then body:add '\n---\n' end
-      body:add('\n### {1}\n', {header_of(component)})
+      body:add('\n### {1}\n', {self._titles[component.name]})
       if component.title then
         body:add('\n{1}\n', {component.title})
       end
@@ -313,13 +317,15 @@ function Type:build_output(file)
       return path
     end
     foot:add '\n## Navigation\n'
-    foot:add('\n[Back to top of the document]({1})\n', { links[self.name] })
+    foot:add('\n[Back to top of the document]({1})\n',
+      { self._links[self.name] })
     foot:add '\n[Back to upper directory](..)\n'
     foot:add('\n[Back to project root]({1})\n', { get_root_path() })
   end
 
   do -- everything
-    head:add('# {1}\n', {header_of(self)})
+    make_links_and_titles(self)
+    head:add('# {1}\n', {self._titles[self.name]})
     if is_simple then
       if self.square then
         head:add('\n{1} Default: **{2}**\n', {emoji(self.parent), self.square})
@@ -333,6 +339,9 @@ function Type:build_output(file)
     end
     out_footer()
   end
+
+  self._links  = nil
+  self._titles = nil
 end
 
 

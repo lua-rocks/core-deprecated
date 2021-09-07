@@ -6,26 +6,26 @@ Gets removed after File:write() attempt.
 
 ## Fields
 
-- 📝 _content_ ( string = *nil* )
++ 📝 _content_ ( string = *nil* )
 	`full content of this file`
-- 📝 _code_ ( string = *nil* )
++ 📝 _code_ ( string = *nil* )
 	`uncommented content of this file`
-- 📝 _example_ ( string = *nil* )
++ 📝 _example_ ( string = *nil* )
 	`example.lua`
-- 📝 _readme_ ( string = *nil* )
++ 📝 _readme_ ( string = *nil* )
 	`dirname.lua`
-- 👨‍👦 **head** ( @#output )
-- 👨‍👦 **body** ( @#output )
-- 👨‍👦 **foot** ( @#output )
-- 📝 **escaped_reqpath** ( string )
-- 💡 **init** ( function )
++ 👨‍👦 **head** ( @#output )
++ 👨‍👦 **body** ( @#output )
++ 👨‍👦 **foot** ( @#output )
++ 📝 **escaped_reqpath** ( string )
++ 💡 **init** ( function )
 	`Initialize`
 
 ## Locals
 
-- 📦 **output** ( table )
++ 📦 **output** ( table )
 	`Element of output model`
-- 💡 **output.add** ( function )
++ 💡 **output.add** ( function )
 	`Add text to output field`
 
 ## Details
@@ -36,12 +36,12 @@ Add text to output field
 
 Arguments:
 
-- 👨‍👦 **self** ( @#output )
-- 📝 **text** ( string )
++ 👨‍👦 **self** ( @#output )
++ 📝 **text** ( string )
 
 Returns:
 
-- 👨‍👦 **self** ( @#output )
++ 👨‍👦 **self** ( @#output )
 
 ---
 
@@ -51,8 +51,8 @@ Element of output model
 
 Fields:
 
-- 📝 **text** ( string )
-- 👨‍👦 **add** ( @#output.add )
++ 📝 **text** ( string )
++ 👨‍👦 **add** ( @#output.add )
 
 ---
 
@@ -62,7 +62,7 @@ Initialize
 
 Arguments:
 
-- 👨‍👦 **file** ( lib.luapi.file )
++ 👨‍👦 **file** ( lib.luapi.file )
 
 ## Navigation
 

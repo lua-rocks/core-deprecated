@@ -4,8 +4,8 @@
 
 ## Fields
 
-- 👨‍👦 **?string** ( lib.luapi.file )
-- 💡 **init** ( function )
++ 👨‍👦 **?string** ( lib.luapi.file )
++ 💡 **init** ( function )
 	`Get paths, load, read, parse, write`
 
 ## Details
@@ -16,8 +16,8 @@ Get paths, load, read, parse, write
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
-- 👨‍👦 **luapi** ( lib.luapi )
++ 👨‍👦 **self** ( @ )
++ 👨‍👦 **luapi** ( lib.luapi )
 
 ## Navigation
 

@@ -53,12 +53,12 @@ Background colors:
 
 ## Fields
 
-- 👨‍👦 **__call** ( @#__call )
-- 👨‍👦 **noReset** ( function=@#__call )
++ 👨‍👦 **__call** ( @#__call )
++ 👨‍👦 **noReset** ( function=@#__call )
 
 ## Locals
 
-- 💡 **__call** ( function )
++ 💡 **__call** ( function )
 
 ## Details
 
@@ -66,11 +66,11 @@ Background colors:
 
 Arguments:
 
-- 📝 **str** ( string )
++ 📝 **str** ( string )
 
 Returns:
 
-- 📝 **str** ( string )
++ 📝 **str** ( string )
 
 ## Navigation
 

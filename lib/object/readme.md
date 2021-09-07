@@ -81,21 +81,21 @@ Key features of this library:
 
 ## Fields
 
-- 📝 **classname** ( string = *"lib.object"* )
-- 👨‍👦 **super** ( @|table = *{}* )
-- 💡 **each** ( function )
++ 📝 **classname** ( string = *"lib.object"* )
++ 👨‍👦 **super** ( @|table = *{}* )
++ 💡 **each** ( function )
 	`Loops through all elements, performing an action on each`
-- 💡 **extend** ( function )
++ 💡 **extend** ( function )
 	`Creates a new class by inheritance`
-- 💡 **new** ( function )
++ 💡 **new** ( function )
 	`Creates an instance of the class`
-- 💡 **implement** ( function )
++ 💡 **implement** ( function )
 	`Sets someone else's methods`
-- 💡 **init** ( function )
++ 💡 **init** ( function )
 	`Initializes the class`
-- 💡 **is** ( function )
++ 💡 **is** ( function )
 	`Identifies affiliation to class`
-- 💡 **has** ( function )
++ 💡 **has** ( function )
 	`Returns the "membership range" between self and the checking class`
 
 ## Details
@@ -109,16 +109,16 @@ Loops through all elements, performing an action on each
 
 Arguments:
 
-- 👽 **etype** ( "field"|"method"|"meta"|"all" )
++ 👽 **etype** ( "field"|"method"|"meta"|"all" )
 	`Item type`
-- 👨‍👦 **action** ( function:key,value,... )
++ 👨‍👦 **action** ( function:key,value,... )
 	`Action on each element`
-- ❓ _..._ ( any = *nil* )
++ ❓ _..._ ( any = *nil* )
 	`Additional arguments for the action`
 
 Returns:
 
-- 👽 **result** ( integer=table} )
++ 👽 **result** ( integer=table} )
 	`Results of all actions`
 
 ---
@@ -141,12 +141,12 @@ Creates an instance of the class
 
 Arguments:
 
-- ❓ _..._ ( any = *nil* )
++ ❓ _..._ ( any = *nil* )
 	`Arguments passed to init`
 
 Returns:
 
-- ❓ _instance_ ( any = *nil* )
++ ❓ _instance_ ( any = *nil* )
 
 ---
 
@@ -156,7 +156,7 @@ Sets someone else's methods
 
 Arguments:
 
-- 👨‍👦 **...** ( table|@ )
++ 👨‍👦 **...** ( table|@ )
 	`Methods`
 
 ---
@@ -167,11 +167,11 @@ Identifies affiliation to class
 
 Arguments:
 
-- 👨‍👦 **Test** ( string|@ )
++ 👨‍👦 **Test** ( string|@ )
 
 Returns:
 
-- 🔌 **result** ( boolean )
++ 🔌 **result** ( boolean )
 
 ---
 
@@ -183,14 +183,14 @@ Returns the "membership range" between self and the checking class
 
 Arguments:
 
-- 👨‍👦 **Test** ( string|@ )
++ 👨‍👦 **Test** ( string|@ )
 	`Test class`
-- 🧮 _limit_ ( integer = *nil* )
++ 🧮 _limit_ ( integer = *nil* )
 	`Check depth (default unlimited)`
 
 Returns:
 
-- 👽 **membership_range** ( integer|boolean )
++ 👽 **membership_range** ( integer|boolean )
 
 ---
 
@@ -205,7 +205,7 @@ Initializes the class
 
 Arguments:
 
-- 📦 _fields_ ( table = *nil* )
++ 📦 _fields_ ( table = *nil* )
 	`New fields`
 
 ---
@@ -216,14 +216,14 @@ Creates a new class by inheritance
 
 Arguments:
 
-- 📝 **name** ( string )
++ 📝 **name** ( string )
 	`New class name`
-- 👨‍👦 _..._ ( table|@ = *nil* )
++ 👨‍👦 _..._ ( table|@ = *nil* )
 	`Additional properties`
 
 Returns:
 
-- 👨‍👦 **cls** ( @ )
++ 👨‍👦 **cls** ( @ )
 
 ## Navigation
 

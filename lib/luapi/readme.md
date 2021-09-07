@@ -140,9 +140,9 @@ These rules are _important_:
 
 ## Fields
 
-- 👨‍👦 **conf** ( @.conf )
-- 👨‍👦 **files** ( @.files )
-- 💡 **init** ( function )
++ 👨‍👦 **conf** ( @.conf )
++ 👨‍👦 **files** ( @.files )
++ 💡 **init** ( function )
 
 ## Details
 
@@ -150,8 +150,8 @@ These rules are _important_:
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
-- 👨‍👦 **conf** ( table=@.conf )
++ 👨‍👦 **self** ( @ )
++ 👨‍👦 **conf** ( table=@.conf )
 
 ## Navigation
 

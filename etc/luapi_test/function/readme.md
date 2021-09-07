@@ -4,27 +4,27 @@
 
 ## Arguments
 
-- 🧮 **a** ( number )
++ 🧮 **a** ( number )
 	`will be doubled`
-- 📝 **b** ( string )
++ 📝 **b** ( string )
 	`will be concatenated with c`
-- 📝 **c** ( string )
++ 📝 **c** ( string )
 	`will be concatenated with b`
-- 👨‍👦 **extra** ( @#extra )
++ 👨‍👦 **extra** ( @#extra )
 	`see description below`
-- ❓ _..._ ( any = *nil* )
++ ❓ _..._ ( any = *nil* )
 	`will be printed`
 
 ## Returns
 
-- 📝 **bc** ( string )
++ 📝 **bc** ( string )
 	`concatenated b and c`
-- 🧮 **a2** ( number )
++ 🧮 **a2** ( number )
 	`doubled a`
 
 ## Locals
 
-- 📦 **extra** ( table )
++ 📦 **extra** ( table )
 	`Extra type`
 
 ## Details
@@ -35,8 +35,8 @@ Extra type
 
 Fields:
 
-- 📝 **name** ( string = *"Bob"* )
-- 🧮 **age** ( number = *12* )
++ 📝 **name** ( string = *"Bob"* )
++ 🧮 **age** ( number = *12* )
 
 ## Navigation
 

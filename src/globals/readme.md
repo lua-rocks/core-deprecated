@@ -4,11 +4,11 @@
 
 ## Arguments
 
-- 👨‍👦 **conf** ( @#conf )
++ 👨‍👦 **conf** ( @#conf )
 
 ## Locals
 
-- 📦 **conf** ( table )
++ 📦 **conf** ( table )
 	`Configuration table`
 
 ## Details
@@ -19,7 +19,7 @@ Configuration table
 
 Fields:
 
-- 🔌 **production** ( boolean )
++ 🔌 **production** ( boolean )
 	`Production or development mode`
 
 ## Navigation

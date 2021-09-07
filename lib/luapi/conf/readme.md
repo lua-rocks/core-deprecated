@@ -4,12 +4,12 @@
 
 ## Fields
 
-- 📝 **root_path** ( string )
-- 📜 _path_filters_ ( list = *nil* )
++ 📝 **root_path** ( string )
++ 📜 _path_filters_ ( list = *nil* )
 	`Search files only in these subdirs (relative to root)`
-- 📝 **publish** ( string = *'local'* )
++ 📝 **publish** ( string = *'local'* )
 	`Correct links to publish locally or on github`
-- 💡 **init** ( function )
++ 💡 **init** ( function )
 
 ## Details
 
@@ -17,7 +17,7 @@
 
 Arguments:
 
-- 👨‍👦 **conf** ( table=@ )
++ 👨‍👦 **conf** ( table=@ )
 
 ## Navigation
 

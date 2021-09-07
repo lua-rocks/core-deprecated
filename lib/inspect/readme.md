@@ -6,16 +6,16 @@ Returns any lua variable in human-readable format.
 
 ## Arguments
 
-- ❓ **variable** ( any )
-- 👨‍👦 _options_ ( @#options = *nil* )
++ ❓ **variable** ( any )
++ 👨‍👦 _options_ ( @#options = *nil* )
 
 ## Returns
 
-- 📝 **result** ( string )
++ 📝 **result** ( string )
 
 ## Locals
 
-- 📦 **options** ( table )
++ 📦 **options** ( table )
 
 ## Details
 
@@ -23,11 +23,11 @@ Returns any lua variable in human-readable format.
 
 Fields:
 
-- 🧮 _depth_ ( integer = *nil* )
++ 🧮 _depth_ ( integer = *nil* )
 	`sets the maximum depth that will be printed out`
-- 📝 **newline** ( string = *"\n"* )
++ 📝 **newline** ( string = *"\n"* )
 	`add a newline each level of a table`
-- 📝 **indent** ( string = *2 spaces* )
++ 📝 **indent** ( string = *2 spaces* )
 	`add an indent each level of a table`
 
 ## Navigation

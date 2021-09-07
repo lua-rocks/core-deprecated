@@ -4,22 +4,22 @@
 
 ## Fields
 
-- 📝 **reqpath** ( string )
-- 📝 **fullpath** ( string )
-- 👨‍👦 _module_ ( lib.luapi.type = *nil* )
-- 👨‍👦 _cache_ ( @.cache = *nil* )
++ 📝 **reqpath** ( string )
++ 📝 **fullpath** ( string )
++ 👨‍👦 _module_ ( lib.luapi.type = *nil* )
++ 👨‍👦 _cache_ ( @.cache = *nil* )
 	`Gets removed after File:write() attempt`
-- 💡 **write** ( function )
++ 💡 **write** ( function )
 	`Write @#output to the file and clean up file cache`
-- 💡 **read** ( function )
++ 💡 **read** ( function )
 	`Read file`
-- 💡 **parse** ( function )
++ 💡 **parse** ( function )
 	`Parse file`
-- 💡 **init** ( function )
++ 💡 **init** ( function )
 	`Init file but don't read it`
-- 💡 **cleanup** ( function )
++ 💡 **cleanup** ( function )
 	`Remove cache`
-- 💡 **get_type** ( function )
++ 💡 **get_type** ( function )
 	`Try to get access to type in this file by path`
 
 ## Details
@@ -30,11 +30,11 @@ Write @#output to the file and clean up file cache
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
++ 👨‍👦 **self** ( @ )
 
 Returns:
 
-- 👨‍👦 **self** ( @ )
++ 👨‍👦 **self** ( @ )
 
 ---
 
@@ -44,12 +44,12 @@ Try to get access to type in this file by path
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
-- 📝 **path** ( string )
++ 👨‍👦 **self** ( @ )
++ 📝 **path** ( string )
 
 Returns:
 
-- 👨‍👦 **result** ( lib.luapi.type|string )
++ 👨‍👦 **result** ( lib.luapi.type|string )
 
 ---
 
@@ -59,11 +59,11 @@ Parse file
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
++ 👨‍👦 **self** ( @ )
 
 Returns:
 
-- 👨‍👦 _success_ ( @ = *nil* )
++ 👨‍👦 _success_ ( @ = *nil* )
 
 ---
 
@@ -73,10 +73,10 @@ Init file but don't read it
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
-- 📝 **reqpath** ( string )
-- 📝 **fullpath** ( string )
-- 👨‍👦 **conf** ( lib.luapi.conf )
++ 👨‍👦 **self** ( @ )
++ 📝 **reqpath** ( string )
++ 📝 **fullpath** ( string )
++ 👨‍👦 **conf** ( lib.luapi.conf )
 
 ---
 
@@ -86,7 +86,7 @@ Remove cache
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
++ 👨‍👦 **self** ( @ )
 
 ---
 
@@ -96,11 +96,11 @@ Read file
 
 Arguments:
 
-- 👨‍👦 **self** ( @ )
++ 👨‍👦 **self** ( @ )
 
 Returns:
 
-- 👨‍👦 _success_ ( @ = *nil* )
++ 👨‍👦 _success_ ( @ = *nil* )
 
 ## Navigation
 
