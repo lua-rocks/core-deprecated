@@ -87,7 +87,7 @@ function Files:init(luapi)
   -- Load and handle files
   for _, fullpath in ipairs(fullpaths) do
     local reqpath = fullpath:gsub(root .. '/', ''):gsub(root, ''):gsub('/', '.')
-    local file = File(reqpath, fullpath)
+    local file = File(reqpath, fullpath, luapi.conf)
     if not file:read() then
       print('Cannot read ' .. reqpath)
     elseif file:parse_module() and file:parse() then

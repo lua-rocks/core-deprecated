@@ -20,4 +20,4 @@ print(30+2)
 
 [Back to upper directory](..)
 
-[Back to project root](/)
+[Back to project root](/../..)

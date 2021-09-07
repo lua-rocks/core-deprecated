@@ -70,4 +70,4 @@ Arguments:
 
 [Back to upper directory](..)
 
-[Back to project root](/)
+[Back to project root](/../..)

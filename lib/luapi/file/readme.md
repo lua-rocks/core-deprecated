@@ -76,6 +76,7 @@ Arguments:
 - 👨‍👦 **self** ( lib.luapi.file )
 - 📝 **reqpath** ( string )
 - 📝 **fullpath** ( string )
+- 👨‍👦 **conf** ( lib.luapi.conf )
 
 ---
 
@@ -107,4 +108,4 @@ Returns:
 
 [Back to upper directory](..)
 
-[Back to project root](/)
+[Back to project root](/../..)

@@ -4,6 +4,7 @@
 
 ## Fields
 
+- 👨‍👦 **conf** ( lib.luapi.conf )
 - 📝 **name** ( string )
 	`First word after tag =`
 - 📝 **parent** ( string )
@@ -103,6 +104,7 @@ Take comments block and return a type
 Arguments:
 
 - 👨‍👦 **self** ( lib.luapi.type )
+- 👨‍👦 **conf** ( lib.luapi.conf )
 - 📝 _block_ ( string = *nil* )
 - 📝 _reqpath_ ( string = *nil* )
 
@@ -124,4 +126,4 @@ Arguments:
 
 [Back to upper directory](..)
 
-[Back to project root](/)
+[Back to project root](/../..)

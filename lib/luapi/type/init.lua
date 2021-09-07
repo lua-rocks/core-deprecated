@@ -4,6 +4,7 @@ local lume = require 'lib.lume'
 
 --[[ Parsed tagged comment block of any type
 = @ (lib.object)
+> conf (lib.luapi.conf)
 > name        (string)         First word after tag =
 > parent      (string)         Text in parentheses after tag =
 > title       (string)      [] Any text at the end of tag = or 1st line in block
@@ -29,12 +30,15 @@ local Type = Object:extend 'lib.luapi.type'
 --[[ Take comments block and return a type
 = @:init  (function)
 > self    (@)
+> conf    (lib.luapi.conf)
 > block   (string) []
 > reqpath (string) []
 ]]
-function Type:init(block, reqpath)
+function Type:init(conf, block, reqpath)
+  assert(conf:is('lib.luapi.conf'))
   if not block then return false end
   assert(type(block) == 'string')
+  self.conf = conf
   if block then
     self:parse(block, reqpath):correct()
   end
@@ -297,12 +301,12 @@ function Type:build_output(file)
 
   local function out_footer()
     local function get_root_path()
-      -- local path = '..'
-      -- local _, level = self.name:gsub('%.', '')
-      -- if not level or level == 0 then return path end
-      -- for _=1, level do path = path .. '/..' end
-      -- return path
-      return '/'
+      if self.conf.publish == 'github' then return '/../..' end
+      local path = '..'
+      local _, level = self.name:gsub('%.', '')
+      if not level or level == 0 then return path end
+      for _=1, level do path = path .. '/..' end
+      return path
     end
     foot:add '\n## Navigation\n'
     foot:add('\n[Back to top of the document]({1})\n', { links[self.name] })

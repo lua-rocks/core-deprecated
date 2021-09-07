@@ -18,9 +18,12 @@ local File = Object:extend 'lib.luapi.file'
 > self     (@)
 > reqpath  (string)
 > fullpath (string)
+> conf (lib.luapi.conf)
 ]]
-function File:init(reqpath, fullpath)
+function File:init(reqpath, fullpath, conf)
   asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
+  assert(conf:is('lib.luapi.conf'))
+  self.conf = conf
   self.reqpath = reqpath
   self.fullpath = fullpath
   self.cache = require 'lib.luapi.file.cache' (self)
@@ -68,7 +71,7 @@ function File:parse_module()
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     if block:find '\n=%s@%P'
     or block:find('\n=%s' .. self.cache.escaped_reqpath .. '%P') then
-      self.module = Type(block, self.reqpath)
+      self.module = Type(self.conf, block, self.reqpath)
       return self
     end
   end
@@ -82,7 +85,7 @@ end
 ]]
 function File:parse()
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
-    local type = Type(block, self.reqpath)
+    local type = Type(self.conf, block, self.reqpath)
     if type then
       local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
       local s = short_type_name:sub(1, 2)
@@ -98,7 +101,7 @@ function File:parse()
   end
   -- Convert line fields to types
   -- for name, line in pairs(self.module) do
-  --   local type = Type(line)
+  --   local type = Type(self.conf, line)
   --   if type then self.module[name] = type end
   -- end
   return self

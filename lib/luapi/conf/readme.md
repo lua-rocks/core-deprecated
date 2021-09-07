@@ -7,6 +7,8 @@
 - 📝 **root_path** ( string )
 - 📜 _path_filters_ ( list = *nil* )
 	`Search files only in these subdirs (relative to root)`
+- 📝 **publish** ( string = *'local'* )
+	`Correct links to publish locally or on github`
 - 💡 **init** ( function )
 
 ## Details
@@ -23,4 +25,4 @@ Arguments:
 
 [Back to upper directory](..)
 
-[Back to project root](/)
+[Back to project root](/../..)
