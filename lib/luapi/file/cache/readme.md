@@ -18,14 +18,14 @@ Gets removed after File:write() attempt.
 + 👨‍👦 **body** ( @#output )
 + 👨‍👦 **foot** ( @#output )
 + 📝 **escaped_reqpath** ( string )
-+ 💡 **init** ( function )
++ 💡 **[init][]** ( function )
 	`Initialize`
 
 ## Locals
 
-+ 📦 **output** ( table )
++ 📦 **[output][]** ( table )
 	`Element of output model`
-+ 💡 **output.add** ( function )
++ 💡 **[output.add][]** ( function )
 	`Add text to output field`
 
 ## Details
@@ -71,3 +71,8 @@ Arguments:
 [Back to upper directory](..)
 
 [Back to project root](/../..)
+
+[output.add]: #outputadd-function
+[init]: #init-function
+[@]: #libluapifilecache--libobject-module
+[output]: #output-table

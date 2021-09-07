@@ -9,7 +9,7 @@
 	`Search files only in these subdirs (relative to root)`
 + 📝 **publish** ( string = *'local'* )
 	`Correct links to publish locally or on github`
-+ 💡 **init** ( function )
++ 💡 **[init][]** ( function )
 
 ## Details
 
@@ -26,3 +26,6 @@ Arguments:
 [Back to upper directory](..)
 
 [Back to project root](/../..)
+
+[init]: #init-function
+[@]: #libluapiconf--libobject-module

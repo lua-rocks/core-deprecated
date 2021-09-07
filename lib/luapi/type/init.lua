@@ -233,10 +233,16 @@ function Type:build_output(file)
     end
     for _, value in pairs(indexed) do
       local emo = emoji(value.parent)
-      local name = '**' .. value.name .. '**'
-      if value.square
-      and ('|'..value.square..'|'):match '%Wnil%W' then -- optional
-        name = '_' .. value.name .. '_'
+      local name
+      if self._links[value.name] then
+        name = '[' .. value.name .. '][]'
+      else
+        name = value.name
+      end
+      if value.square and ('|'..value.square..'|'):match '%Wnil%W' then
+        name = '_' .. name .. '_'
+      else
+        name = '**' .. name .. '**'
       end
       to:add('\n+ {1} {2} ( {3}', {
         emo,
@@ -321,6 +327,15 @@ function Type:build_output(file)
       { self._links[self.name] })
     foot:add '\n[Back to upper directory](..)\n'
     foot:add('\n[Back to project root]({1})\n', { get_root_path() })
+    if next(self._links) then
+      for key, value in pairs(self._links) do
+        foot:add('\n[{1}]: {2}', {
+          key:gsub(file.cache.escaped_reqpath, '@'),
+          value
+        })
+      end
+      foot:add '\n'
+    end
   end
 
   do -- everything

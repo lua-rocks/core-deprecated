@@ -83,19 +83,19 @@ Key features of this library:
 
 + 📝 **classname** ( string = *"lib.object"* )
 + 👨‍👦 **super** ( @|table = *{}* )
-+ 💡 **each** ( function )
++ 💡 **[each][]** ( function )
 	`Loops through all elements, performing an action on each`
-+ 💡 **extend** ( function )
++ 💡 **[extend][]** ( function )
 	`Creates a new class by inheritance`
-+ 💡 **new** ( function )
++ 💡 **[new][]** ( function )
 	`Creates an instance of the class`
-+ 💡 **implement** ( function )
++ 💡 **[implement][]** ( function )
 	`Sets someone else's methods`
-+ 💡 **init** ( function )
++ 💡 **[init][]** ( function )
 	`Initializes the class`
-+ 💡 **is** ( function )
++ 💡 **[is][]** ( function )
 	`Identifies affiliation to class`
-+ 💡 **has** ( function )
++ 💡 **[has][]** ( function )
 	`Returns the "membership range" between self and the checking class`
 
 ## Details
@@ -232,3 +232,12 @@ Returns:
 [Back to upper directory](..)
 
 [Back to project root](/../..)
+
+[@]: #libobject-table
+[each]: #each-function
+[extend]: #extend-function
+[new]: #new-function
+[init]: #init-function
+[implement]: #implement-function
+[is]: #is-function
+[has]: #has-function

@@ -3,7 +3,6 @@ local Object = require 'lib.object'
 
 --[[ Plans for future
 + TODO: Make docs for lume
-+ TODO: Local links
 + IDEA: Global links and external module types
 + IDEA: "Smart" mode (parse code)
 + IDEA: Add error handler module

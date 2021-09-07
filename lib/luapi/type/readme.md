@@ -25,18 +25,18 @@
 	`Temporary storage for formatted titles`
 + 👨‍👦 __links_ ( {string=string,...} = *nil* )
 	`Temporary storage for markdown links`
-+ 💡 **parse** ( function )
++ 💡 **[parse][]** ( function )
 	`Parse block`
-+ 💡 **init** ( function )
++ 💡 **[init][]** ( function )
 	`Take comments block and return a type`
-+ 💡 **build_output** ( function )
++ 💡 **[build_output][]** ( function )
 	`Build markdown output for module-types`
-+ 💡 **correct** ( function )
++ 💡 **[correct][]** ( function )
 	`Correct parsed block`
 
 ## Locals
 
-+ 📦 **line** ( table )
++ 📦 **[line][]** ( table )
 	`One line of tagged block`
 
 ## Details
@@ -131,3 +131,10 @@ Arguments:
 [Back to upper directory](..)
 
 [Back to project root](/../..)
+
+[@]: #libluapitype--libobject-module
+[build_output]: #build_output-function
+[parse]: #parse-function
+[init]: #init-function
+[line]: #line-table
+[correct]: #correct-function

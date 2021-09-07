@@ -12,11 +12,11 @@ Some readme...
 	`Some field title2`
 + 👨‍👦 **class2** ( @:type2 )
 	`IDEA: Should be writed as method`
-+ 👨‍👦 **mega** ( lib.object )
++ 👨‍👦 **[mega][]** ( lib.object )
 	`Mega-field`
-+ 💡 **super_method** ( function )
++ 💡 **[super_method][]** ( function )
 	`Super-duper method`
-+ 💡 **type2** ( function )
++ 💡 **[type2][]** ( function )
 	`Test type 2`
 
 ## Returns
@@ -25,7 +25,7 @@ Some readme...
 
 ## Locals
 
-+ 📦 **tbl** ( table )
++ 📦 **[tbl][]** ( table )
 	`Abstract type`
 
 ## Details
@@ -99,3 +99,9 @@ Returns:
 [Back to upper directory](..)
 
 [Back to project root](/../..)
+
+[mega]: #mega--libobject-module
+[@]: #etcluapi_testcomposite--libobject-module
+[super_method]: #super_method-function
+[tbl]: #tbl-table
+[type2]: #type2-function
