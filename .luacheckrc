@@ -1,6 +1,8 @@
+---@diagnostic disable: lowercase-global
+
 new_globals = {
   '_', 'lume',
-  'inspect', 'dump', 'dbg',
+  'inspect', 'dump',
   'assert', 'asserts',
   'module', 'Object',
 }

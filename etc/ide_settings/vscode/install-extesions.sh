@@ -14,6 +14,5 @@ code --install-extension marvhen.reflow-markdown
 code --install-extension zaaack.markdown-editor
 
 # Lua
-code --install-extension changnet.lua-tags
-code --install-extension dwenegar.vscode-luacheck
+code --install-extension sumneko.lua
 code --install-extension tomblind.local-lua-debugger-vscode

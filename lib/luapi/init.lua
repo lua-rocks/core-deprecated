@@ -4,10 +4,12 @@ local Object = require 'lib.object'
 --[[ Plans for future
 + TODO: Make docs for lume
 + TODO: Local links
-+ IDEA: Global links
++ IDEA: Global links and external module types
 + IDEA: "Smart" mode (parse code)
 + IDEA: Add error handler module
-+ IDEA: Support some IDE
++ IDEA: Compatibility with sumneko LSP
+  + Add emmylua tags parser
+  + Ask sumneko to support my syntax
 ]]
 
 
