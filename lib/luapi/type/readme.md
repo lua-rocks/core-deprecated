@@ -82,7 +82,6 @@ Build markdown output for module-types
 Arguments:
 
 - 👨‍👦 **file** ( lib.luapi.file )
-- 📝 **reqpath** ( string )
 
 ---
 
