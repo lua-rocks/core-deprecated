@@ -14,12 +14,6 @@ return function (conf)
     assert = nothing
     if asserts then asserts = nothing end
   else
-    -- Enable debugging functions
-    -- dbg is no needed if you have lua debugger in your IDE,
-    -- but inspect/dump can be helpful for real-time non-breaking debugging
-    -- (maybe it's also possible with normal debugger, I'm not sure).
-    dbg = require 'lib.debugger'
-    dbg.auto_where = 5
     inspect = require 'lib.inspect'
     function dump(...) print(inspect(...)) end
   end
