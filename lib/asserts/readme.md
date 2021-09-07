@@ -24,4 +24,4 @@ The test will also fail if an error occurs during the test.
 
 [Back to upper directory](..)
 
-[Back to project root](../..)
+[Back to project root](/)
