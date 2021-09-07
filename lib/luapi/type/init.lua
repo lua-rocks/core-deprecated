@@ -297,11 +297,12 @@ function Type:build_output(file)
 
   local function out_footer()
     local function get_root_path()
-      local path = '..'
-      local _, level = self.name:gsub('%.', '')
-      if not level or level == 0 then return path end
-      for _=1, level do path = path .. '/..' end
-      return path
+      -- local path = '..'
+      -- local _, level = self.name:gsub('%.', '')
+      -- if not level or level == 0 then return path end
+      -- for _=1, level do path = path .. '/..' end
+      -- return path
+      return '/'
     end
     foot:add '\n## Navigation\n'
     foot:add('\n[Back to top of the document]({1})\n', { links[self.name] })
