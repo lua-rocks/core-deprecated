@@ -91,3 +91,11 @@ Arguments:
 Returns:
 
 - 🧮 **give** ( integer )
+
+## Navigation
+
+[Back to top of the document](#etcluapi_testcomposite--libobject-module)
+
+[Back to upper directory](..)
+
+[Back to project root](../../..)

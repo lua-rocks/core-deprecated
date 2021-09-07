@@ -63,3 +63,11 @@ Initialize
 Arguments:
 
 - 👨‍👦 **file** ( lib.luapi.file )
+
+## Navigation
+
+[Back to top of the document](#libluapifilecache--libobject-module)
+
+[Back to upper directory](..)
+
+[Back to project root](../../../..)

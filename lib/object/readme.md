@@ -224,3 +224,11 @@ Arguments:
 Returns:
 
 - 👨‍👦 **cls** ( lib.object )
+
+## Navigation
+
+[Back to top of the document](#libobject-table)
+
+[Back to upper directory](..)
+
+[Back to project root](../..)

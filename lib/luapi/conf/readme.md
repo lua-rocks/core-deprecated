@@ -16,3 +16,11 @@
 Arguments:
 
 - 👨‍👦 **conf** ( table=lib.luapi.conf )
+
+## Navigation
+
+[Back to top of the document](#libluapiconf--libobject-module)
+
+[Back to upper directory](..)
+
+[Back to project root](../../..)

@@ -11,5 +11,7 @@ local luapi = require 'lib.luapi' {
 }
 
 if arg[1] == 'dump' then -- dump(luapi)
-  dump(luapi.files["etc.luapi_test.simple"], { depth = 2 })
+  local inspect = luapi.files["etc.luapi_test.composite"].module--.fields
+  local options = { depth = tonumber(arg[2]) or 2 }
+  dump(inspect, options)
 end

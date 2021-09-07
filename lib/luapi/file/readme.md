@@ -100,3 +100,11 @@ Arguments:
 Returns:
 
 - 👨‍👦 _success_ ( lib.luapi.file = *nil* )
+
+## Navigation
+
+[Back to top of the document](#libluapifile--libobject-module)
+
+[Back to upper directory](..)
+
+[Back to project root](../../..)

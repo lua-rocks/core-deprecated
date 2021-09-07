@@ -17,3 +17,11 @@ The test will also fail if an error occurs during the test.
 
 - 👽 _f_ ( function|string = *nil* )
 - ❓ _..._ ( any = *nil* )
+
+## Navigation
+
+[Back to top of the document](#libasserts-function)
+
+[Back to upper directory](..)
+
+[Back to project root](../..)

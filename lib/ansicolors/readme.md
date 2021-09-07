@@ -71,3 +71,11 @@ Arguments:
 Returns:
 
 - 📝 **str** ( string )
+
+## Navigation
+
+[Back to top of the document](#libansicolors-table)
+
+[Back to upper directory](..)
+
+[Back to project root](../..)

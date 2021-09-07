@@ -148,3 +148,11 @@ Arguments:
 
 - 👨‍👦 **self** ( lib.luapi )
 - 👨‍👦 **conf** ( table=lib.luapi.conf )
+
+## Navigation
+
+[Back to top of the document](#libluapi--libobject-module)
+
+[Back to upper directory](..)
+
+[Back to project root](../..)

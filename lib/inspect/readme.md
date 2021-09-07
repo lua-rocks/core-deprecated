@@ -29,3 +29,11 @@ Fields:
 	`add a newline each level of a table`
 - 📝 **indent** ( string = *2 spaces* )
 	`add an indent each level of a table`
+
+## Navigation
+
+[Back to top of the document](#libinspect-function)
+
+[Back to upper directory](..)
+
+[Back to project root](../..)

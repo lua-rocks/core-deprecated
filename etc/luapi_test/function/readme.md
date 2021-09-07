@@ -37,3 +37,11 @@ Fields:
 
 - 📝 **name** ( string = *"Bob"* )
 - 🧮 **age** ( number = *12* )
+
+## Navigation
+
+[Back to top of the document](#etcluapi_testfunction-function)
+
+[Back to upper directory](..)
+
+[Back to project root](../../..)

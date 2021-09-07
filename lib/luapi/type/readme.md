@@ -117,3 +117,11 @@ Correct parsed block
 Arguments:
 
 - 📦 **self** ( table )
+
+## Navigation
+
+[Back to top of the document](#libluapitype--libobject-module)
+
+[Back to upper directory](..)
+
+[Back to project root](../../..)

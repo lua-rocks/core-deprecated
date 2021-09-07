@@ -13,3 +13,11 @@ Lorem ipsum dolar.
 ```lua
 print(30+2)
 ```
+
+## Navigation
+
+[Back to top of the document](#etcluapi_testsimple-number)
+
+[Back to upper directory](..)
+
+[Back to project root](../../..)

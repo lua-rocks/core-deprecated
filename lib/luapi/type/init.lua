@@ -149,6 +149,8 @@ function Type:build_output(file)
   or self.parent == 'function'
   or self.parent:find '%.' then is_simple = false end
 
+  local links = {}
+
   local function emoji(str)
     local basic = {
       ['string']   = '📝',
@@ -169,15 +171,16 @@ function Type:build_output(file)
     return '👽'
   end
 
+  -- return fancy name and save its browser #link
   local function header_of(t)
+    local esc_name = t.name:gsub('%.', '')
+    local esc_parent = t.parent:gsub('%.', '')
     if t.parent:find '%.' then
+      links[t.name] = lume.format('#{1}--{2}-module', { esc_name, esc_parent })
       return lume.format('{1} : {2} `(module)`', { t.name, t.parent })
     else
-      return lume.format('{2} `({1})`', {
-        -- t.parent:gsub('^%l', string.upper),
-        t.parent,
-        t.name
-      })
+      links[t.name] = lume.format('#{1}-{2}', { esc_name, esc_parent })
+      return lume.format('{1} `({2})`', { t.name, t.parent })
     end
   end
 
@@ -292,21 +295,35 @@ function Type:build_output(file)
     if body.text ~= '' then head:add '\n## Details\n' end
   end
 
-  head:add('# {1}\n', {header_of(self)})
-
-  if is_simple then
-    if self.square then
-      head:add('\n{1} Default: **{2}**\n', {emoji(self.parent), self.square})
-      out_title_and_readme()
-      out_example_topic()
+  local function out_footer()
+    local function get_root_path()
+      local path = '..'
+      local _, level = self.name:gsub('%.', '')
+      if not level or level == 0 then return path end
+      for _=1, level do path = path .. '/..' end
+      return path
     end
-  else
-    out_example_spoiler()
-    out_title_and_readme()
-    out_components()
+    foot:add '\n## Navigation\n'
+    foot:add('\n[Back to top of the document]({1})\n', { links[self.name] })
+    foot:add '\n[Back to upper directory](..)\n'
+    foot:add('\n[Back to project root]({1})\n', { get_root_path() })
   end
 
-  -- foot:add('\n## Links\n')
+  do -- everything
+    head:add('# {1}\n', {header_of(self)})
+    if is_simple then
+      if self.square then
+        head:add('\n{1} Default: **{2}**\n', {emoji(self.parent), self.square})
+        out_title_and_readme()
+        out_example_topic()
+      end
+    else
+      out_example_spoiler()
+      out_title_and_readme()
+      out_components()
+    end
+    out_footer()
+  end
 end
 
 
