@@ -12,11 +12,11 @@ Some readme...
 	`Some field title2`
 + 👨‍👦 **class2** ( @:type2 )
 	`IDEA: Should be writed as method`
-+ 👨‍👦 **[mega][]** ( lib.object )
++ 👨‍👦 **[mega][@:mega]** ( lib.object )
 	`Mega-field`
-+ 💡 **[super_method][]** ( function )
++ 💡 **[super_method][@:super_method]** ( function )
 	`Super-duper method`
-+ 💡 **[type2][]** ( function )
++ 💡 **[type2][@:type2]** ( function )
 	`Test type 2`
 
 ## Returns
@@ -25,14 +25,14 @@ Some readme...
 
 ## Locals
 
-+ 📦 **[tbl][]** ( table )
++ 📦 **[tbl][@:tbl]** ( table )
 	`Abstract type`
 
 ## Details
 
 ### mega : lib.object `(module)`
 
-Mega-field
+Mega-field.
 
 Fields:
 
@@ -43,7 +43,7 @@ Fields:
 
 ### super_method `(function)`
 
-Super-duper method
+Super-duper method.
 
 > You no need to describe argument `self` for methods named with colon
 > (actually you no **need** to describe anything 😉
@@ -66,7 +66,7 @@ Returns:
 
 ### tbl `(table)`
 
-Abstract type
+Abstract type.
 
 > Symbol `#` used to define [private|abstract|local] type
 
@@ -79,7 +79,7 @@ Fields:
 
 ### type2 `(function)`
 
-Test type 2
+Test type 2.
 
 > If type is function and you set it as module field, it will be parsed as method
 
@@ -100,8 +100,8 @@ Returns:
 
 [Back to project root](/../..)
 
-[mega]: #mega--libobject-module
 [@]: #etcluapi_testcomposite--libobject-module
-[super_method]: #super_method-function
-[tbl]: #tbl-table
-[type2]: #type2-function
+[@:tbl]: #tbl-table
+[@:mega]: #mega--libobject-module
+[@:super_method]: #super_method-function
+[@:type2]: #type2-function

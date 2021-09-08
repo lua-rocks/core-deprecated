@@ -142,7 +142,7 @@ These rules are _important_:
 
 + 👨‍👦 **conf** ( @.conf )
 + 👨‍👦 **files** ( @.files )
-+ 💡 **[init][]** ( function )
++ 💡 **[init][@:init]** ( function )
 
 ## Details
 
@@ -161,5 +161,5 @@ Arguments:
 
 [Back to project root](/../..)
 
-[init]: #init-function
+[@:init]: #init-function
 [@]: #libluapi--libobject-module

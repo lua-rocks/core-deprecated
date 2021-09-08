@@ -83,26 +83,26 @@ Key features of this library:
 
 + 📝 **classname** ( string = *"lib.object"* )
 + 👨‍👦 **super** ( @|table = *{}* )
-+ 💡 **[each][]** ( function )
++ 💡 **[each][@:each]** ( function )
 	`Loops through all elements, performing an action on each`
-+ 💡 **[extend][]** ( function )
++ 💡 **[extend][@:extend]** ( function )
 	`Creates a new class by inheritance`
-+ 💡 **[new][]** ( function )
++ 💡 **[new][@:new]** ( function )
 	`Creates an instance of the class`
-+ 💡 **[implement][]** ( function )
++ 💡 **[implement][@:implement]** ( function )
 	`Sets someone else's methods`
-+ 💡 **[init][]** ( function )
++ 💡 **[init][@:init]** ( function )
 	`Initializes the class`
-+ 💡 **[is][]** ( function )
++ 💡 **[is][@:is]** ( function )
 	`Identifies affiliation to class`
-+ 💡 **[has][]** ( function )
++ 💡 **[has][@:has]** ( function )
 	`Returns the "membership range" between self and the checking class`
 
 ## Details
 
 ### each `(function)`
 
-Loops through all elements, performing an action on each
+Loops through all elements, performing an action on each.
 
 > Can stop at fields, metafields, methods, or all.
 > Always skips basic fields and methods inherent from the Object class.
@@ -125,7 +125,7 @@ Returns:
 
 ### new `(function)`
 
-Creates an instance of the class
+Creates an instance of the class.
 
 > A simple call to the class as a function does the same.
 > By default it returns the same type if `lib.object.init` has no returns.
@@ -152,7 +152,7 @@ Returns:
 
 ### implement `(function)`
 
-Sets someone else's methods
+Sets someone else's methods.
 
 Arguments:
 
@@ -163,7 +163,7 @@ Arguments:
 
 ### is `(function)`
 
-Identifies affiliation to class
+Identifies affiliation to class.
 
 Arguments:
 
@@ -177,7 +177,7 @@ Returns:
 
 ### has `(function)`
 
-Returns the "membership range" between self and the checking class
+Returns the "membership range" between self and the checking class.
 
 > Returns `0` if belongs to it or `false` if there is no membership.
 
@@ -196,7 +196,7 @@ Returns:
 
 ### init `(function)`
 
-Initializes the class
+Initializes the class.
 
 > By default an object takes a table with fields and applies them to itself.
 > But you can (and probably should) replace it with your function.
@@ -212,7 +212,7 @@ Arguments:
 
 ### extend `(function)`
 
-Creates a new class by inheritance
+Creates a new class by inheritance.
 
 Arguments:
 
@@ -233,11 +233,11 @@ Returns:
 
 [Back to project root](/../..)
 
+[@:is]: #is-function
+[@:extend]: #extend-function
+[@:implement]: #implement-function
 [@]: #libobject-table
-[each]: #each-function
-[extend]: #extend-function
-[new]: #new-function
-[init]: #init-function
-[implement]: #implement-function
-[is]: #is-function
-[has]: #has-function
+[@:new]: #new-function
+[@:init]: #init-function
+[@:each]: #each-function
+[@:has]: #has-function

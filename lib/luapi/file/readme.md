@@ -9,24 +9,24 @@
 + 👨‍👦 _module_ ( lib.luapi.type = *nil* )
 + 👨‍👦 _cache_ ( @.cache = *nil* )
 	`Gets removed after File:write() attempt`
-+ 💡 **[write][]** ( function )
++ 💡 **[write][@:write]** ( function )
 	`Write @#output to the file and clean up file cache`
-+ 💡 **[read][]** ( function )
++ 💡 **[read][@:read]** ( function )
 	`Read file`
-+ 💡 **[parse][]** ( function )
++ 💡 **[parse][@:parse]** ( function )
 	`Parse file`
-+ 💡 **[init][]** ( function )
++ 💡 **[init][@:init]** ( function )
 	`Init file but don't read it`
-+ 💡 **[cleanup][]** ( function )
++ 💡 **[cleanup][@:cleanup]** ( function )
 	`Remove cache`
-+ 💡 **[get_type][]** ( function )
++ 💡 **[get_type][@:get_type]** ( function )
 	`Try to get access to type in this file by path`
 
 ## Details
 
 ### write `(function)`
 
-Write @#output to the file and clean up file cache
+Write @#output to the file and clean up file cache.
 
 Arguments:
 
@@ -40,7 +40,7 @@ Returns:
 
 ### get_type `(function)`
 
-Try to get access to type in this file by path
+Try to get access to type in this file by path.
 
 Arguments:
 
@@ -55,7 +55,7 @@ Returns:
 
 ### parse `(function)`
 
-Parse file
+Parse file.
 
 Arguments:
 
@@ -69,7 +69,7 @@ Returns:
 
 ### init `(function)`
 
-Init file but don't read it
+Init file but don't read it.
 
 Arguments:
 
@@ -82,7 +82,7 @@ Arguments:
 
 ### cleanup `(function)`
 
-Remove cache
+Remove cache.
 
 Arguments:
 
@@ -92,7 +92,7 @@ Arguments:
 
 ### read `(function)`
 
-Read file
+Read file.
 
 Arguments:
 
@@ -110,10 +110,10 @@ Returns:
 
 [Back to project root](/../..)
 
-[read]: #read-function
-[write]: #write-function
+[@:get_type]: #get_type-function
+[@:parse]: #parse-function
 [@]: #libluapifile--libobject-module
-[parse]: #parse-function
-[init]: #init-function
-[cleanup]: #cleanup-function
-[get_type]: #get_type-function
+[@:read]: #read-function
+[@:init]: #init-function
+[@:cleanup]: #cleanup-function
+[@:write]: #write-function

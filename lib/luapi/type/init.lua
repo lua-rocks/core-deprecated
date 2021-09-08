@@ -13,8 +13,6 @@ local lume = require 'lib.lume'
 > returns   (list=@#line|@) [] Line after <
 > fields    (list=@#line|@) [] Line after >
 > locals    (list=@#line|@) [] Local types (module only)
-> _titles ({string=string,...}) [] Temporary storage for formatted titles
-> _links  ({string=string,...}) [] Temporary storage for markdown links
 ]]
 local Type = Object:extend 'lib.luapi.type'
 
@@ -41,8 +39,6 @@ function Type:init(conf, block, reqpath)
   if not block then return false end
   assert(type(block) == 'string')
   self.conf = conf
-  self._links = {}
-  self._titles = {}
   if block then
     self:parse(block, reqpath):correct()
   end
@@ -150,6 +146,8 @@ There are 2 different templates for composite and simple types:
 > file (lib.luapi.file)
 ]]
 function Type:build_output(file)
+  local _links = {}
+  local _titles = {}
   local head, body, foot = file.cache.head, file.cache.body, file.cache.foot
 
   local is_simple = true
@@ -182,12 +180,14 @@ function Type:build_output(file)
     local parent = t.parent
     local esc_name = name:gsub('%.', '')
     local esc_parent = parent:gsub('%.', '')
+    local id = '@'
+    if t ~= self then id = '@:' .. name end
     if parent:find '%.' then
-      self._links[name] = lume.format('#{1}--{2}-module', {esc_name,esc_parent})
-      self._titles[name] = lume.format('{1} : {2} `(module)`', { name, parent })
+      _links[id] = lume.format('#{1}--{2}-module', { esc_name, esc_parent })
+      _titles[id] = lume.format('{1} : {2} `(module)`', { name, parent })
     else
-      self._links[name] = lume.format('#{1}-{2}', { esc_name, esc_parent })
-      self._titles[name] = lume.format('{1} `({2})`', { name, parent })
+      _links[id] = lume.format('#{1}-{2}', { esc_name, esc_parent })
+      _titles[id] = lume.format('{1} `({2})`', { name, parent })
     end
   end
 
@@ -224,7 +224,9 @@ function Type:build_output(file)
     if readme then head:add(readme) end
   end
 
-  local function out_list_of(t, to)
+  local function out_list_of(t, to, prefix, postfix)
+    prefix = prefix or ''
+    postfix = postfix or ''
     local indexed = {}
     for key, value in pairs(t) do
       local index = value.index
@@ -234,8 +236,9 @@ function Type:build_output(file)
     for _, value in pairs(indexed) do
       local emo = emoji(value.parent)
       local name
-      if self._links[value.name] then
-        name = '[' .. value.name .. '][]'
+      local id = prefix .. value.name .. postfix
+      if _links[id] then
+        name = '[' .. value.name .. '][' .. id .. ']'
       else
         name = value.name
       end
@@ -268,9 +271,9 @@ function Type:build_output(file)
       if component_is_empty then goto next end
       make_links_and_titles(component)
       if not first then body:add '\n---\n' end
-      body:add('\n### {1}\n', {self._titles[component.name]})
+      body:add('\n### {1}\n', {_titles['@:' .. component.name]})
       if component.title then
-        body:add('\n{1}\n', {component.title})
+        body:add('\n{1}.\n', {component.title})
       end
       if component.description then
         body:add('\n> {1}\n', {
@@ -300,15 +303,15 @@ function Type:build_output(file)
       else
         head:add '\n## Fields\n'
       end
-      out_list_of(self.fields, head)
+      out_list_of(self.fields, head, '@:')
     end
     if self.returns then
       head:add '\n## Returns\n'
-      out_list_of(self.returns, head)
+      out_list_of(self.returns, head, '@:')
     end
     if self.locals then
       head:add '\n## Locals\n'
-      out_list_of(self.locals, head)
+      out_list_of(self.locals, head, '@:')
     end
     if body.text ~= '' then head:add '\n## Details\n' end
   end
@@ -323,14 +326,13 @@ function Type:build_output(file)
       return path
     end
     foot:add '\n## Navigation\n'
-    foot:add('\n[Back to top of the document]({1})\n',
-      { self._links[self.name] })
+    foot:add('\n[Back to top of the document]({1})\n', { _links['@'] })
     foot:add '\n[Back to upper directory](..)\n'
     foot:add('\n[Back to project root]({1})\n', { get_root_path() })
-    if next(self._links) then
-      for key, value in pairs(self._links) do
+    if next(_links) then
+      for key, value in pairs(_links) do
         foot:add('\n[{1}]: {2}', {
-          key:gsub(file.cache.escaped_reqpath, '@'),
+          key, -- key:gsub(file.cache.escaped_reqpath, '@'),
           value
         })
       end
@@ -340,7 +342,7 @@ function Type:build_output(file)
 
   do -- everything
     make_links_and_titles(self)
-    head:add('# {1}\n', {self._titles[self.name]})
+    head:add('# {1}\n', {_titles['@']})
     if is_simple then
       if self.square then
         head:add('\n{1} Default: **{2}**\n', {emoji(self.parent), self.square})
@@ -354,9 +356,6 @@ function Type:build_output(file)
     end
     out_footer()
   end
-
-  self._links  = nil
-  self._titles = nil
 end
 
 

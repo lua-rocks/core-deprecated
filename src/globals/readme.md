@@ -4,18 +4,18 @@
 
 ## Arguments
 
-+ 👨‍👦 **[conf][]** ( @#conf )
++ 👨‍👦 **[conf][@:conf]** ( @#conf )
 
 ## Locals
 
-+ 📦 **[conf][]** ( table )
++ 📦 **[conf][@:conf]** ( table )
 	`Configuration table`
 
 ## Details
 
 ### conf `(table)`
 
-Configuration table
+Configuration table.
 
 Fields:
 
@@ -30,5 +30,5 @@ Fields:
 
 [Back to project root](/../..)
 
-[conf]: #conf-table
+[@:conf]: #conf-table
 [@]: #srcglobals-function

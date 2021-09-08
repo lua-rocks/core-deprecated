@@ -5,14 +5,14 @@
 ## Fields
 
 + 👨‍👦 **?string** ( lib.luapi.file )
-+ 💡 **[init][]** ( function )
++ 💡 **[init][@:init]** ( function )
 	`Get paths, load, read, parse, write`
 
 ## Details
 
 ### init `(function)`
 
-Get paths, load, read, parse, write
+Get paths, load, read, parse, write.
 
 Arguments:
 
@@ -27,5 +27,5 @@ Arguments:
 
 [Back to project root](/../..)
 
-[init]: #init-function
+[@:init]: #init-function
 [@]: #libluapifiles--libobject-module

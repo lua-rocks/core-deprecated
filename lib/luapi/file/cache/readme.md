@@ -18,21 +18,21 @@ Gets removed after File:write() attempt.
 + 👨‍👦 **body** ( @#output )
 + 👨‍👦 **foot** ( @#output )
 + 📝 **escaped_reqpath** ( string )
-+ 💡 **[init][]** ( function )
++ 💡 **[init][@:init]** ( function )
 	`Initialize`
 
 ## Locals
 
-+ 📦 **[output][]** ( table )
++ 📦 **[output][@:output]** ( table )
 	`Element of output model`
-+ 💡 **[output.add][]** ( function )
++ 💡 **[output.add][@:output.add]** ( function )
 	`Add text to output field`
 
 ## Details
 
 ### output.add `(function)`
 
-Add text to output field
+Add text to output field.
 
 Arguments:
 
@@ -47,7 +47,7 @@ Returns:
 
 ### output `(table)`
 
-Element of output model
+Element of output model.
 
 Fields:
 
@@ -58,7 +58,7 @@ Fields:
 
 ### init `(function)`
 
-Initialize
+Initialize.
 
 Arguments:
 
@@ -72,7 +72,7 @@ Arguments:
 
 [Back to project root](/../..)
 
-[output.add]: #outputadd-function
-[init]: #init-function
+[@:init]: #init-function
+[@:output.add]: #outputadd-function
+[@:output]: #output-table
 [@]: #libluapifilecache--libobject-module
-[output]: #output-table

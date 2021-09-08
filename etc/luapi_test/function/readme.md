@@ -10,7 +10,7 @@
 	`will be concatenated with c`
 + 📝 **c** ( string )
 	`will be concatenated with b`
-+ 👨‍👦 **[extra][]** ( @#extra )
++ 👨‍👦 **[extra][@:extra]** ( @#extra )
 	`see description below`
 + ❓ _..._ ( any = *nil* )
 	`will be printed`
@@ -24,14 +24,14 @@
 
 ## Locals
 
-+ 📦 **[extra][]** ( table )
++ 📦 **[extra][@:extra]** ( table )
 	`Extra type`
 
 ## Details
 
 ### extra `(table)`
 
-Extra type
+Extra type.
 
 Fields:
 
@@ -46,5 +46,5 @@ Fields:
 
 [Back to project root](/../..)
 
+[@:extra]: #extra-table
 [@]: #etcluapi_testfunction-function
-[extra]: #extra-table
