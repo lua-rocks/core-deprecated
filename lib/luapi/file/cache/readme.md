@@ -23,12 +23,31 @@ Gets removed after File:write() attempt.
 
 ## Locals
 
-+ 📦 **[output][@:output]** ( table )
++ 📦 **[output][@#output]** ( table )
 	`Element of output model`
-+ 💡 **[output.add][@:output.add]** ( function )
++ 💡 **[output.add][@#output.add]** ( function )
 	`Add text to output field`
 
 ## Details
+
+### init `(function)`
+
+Initialize.
+
+Arguments:
+
++ 👨‍👦 **file** ( lib.luapi.file )
+
+### output `(table)`
+
+Element of output model.
+
+Fields:
+
++ 📝 **text** ( string )
++ 👨‍👦 **add** ( @#output.add )
+
+---
 
 ### output.add `(function)`
 
@@ -43,27 +62,6 @@ Returns:
 
 + 👨‍👦 **self** ( @#output )
 
----
-
-### output `(table)`
-
-Element of output model.
-
-Fields:
-
-+ 📝 **text** ( string )
-+ 👨‍👦 **add** ( @#output.add )
-
----
-
-### init `(function)`
-
-Initialize.
-
-Arguments:
-
-+ 👨‍👦 **file** ( lib.luapi.file )
-
 ## Navigation
 
 [Back to top of the document](#libluapifilecache--libobject-module)
@@ -72,7 +70,7 @@ Arguments:
 
 [Back to project root](/../..)
 
+[@#output.add]: #outputadd-function
 [@:init]: #init-function
-[@:output.add]: #outputadd-function
-[@:output]: #output-table
+[@#output]: #output-table
 [@]: #libluapifilecache--libobject-module

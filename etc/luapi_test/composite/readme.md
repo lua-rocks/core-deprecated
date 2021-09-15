@@ -25,7 +25,7 @@ Some readme...
 
 ## Locals
 
-+ 📦 **[tbl][@:tbl]** ( table )
++ 📦 **[tbl][@#tbl]** ( table )
 	`Abstract type`
 
 ## Details
@@ -64,19 +64,6 @@ Returns:
 
 ---
 
-### tbl `(table)`
-
-Abstract type.
-
-> Symbol `#` used to define [private|abstract|local] type
-
-Fields:
-
-+ 📝 **foo** ( string )
-+ 📝 **bar** ( string )
-
----
-
 ### type2 `(function)`
 
 Test type 2.
@@ -92,6 +79,17 @@ Returns:
 
 + 🧮 **give** ( integer )
 
+### tbl `(table)`
+
+Abstract type.
+
+> Symbol `#` used to define [private|abstract|local] type
+
+Fields:
+
++ 📝 **foo** ( string )
++ 📝 **bar** ( string )
+
 ## Navigation
 
 [Back to top of the document](#etcluapi_testcomposite--libobject-module)
@@ -101,7 +99,7 @@ Returns:
 [Back to project root](/../..)
 
 [@]: #etcluapi_testcomposite--libobject-module
-[@:tbl]: #tbl-table
-[@:mega]: #mega--libobject-module
-[@:super_method]: #super_method-function
+[@#tbl]: #tbl-table
 [@:type2]: #type2-function
+[@:super_method]: #super_method-function
+[@:mega]: #mega--libobject-module

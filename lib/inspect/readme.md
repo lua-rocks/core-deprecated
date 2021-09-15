@@ -7,7 +7,7 @@ Returns any lua variable in human-readable format.
 ## Arguments
 
 + ❓ **variable** ( any )
-+ 👨‍👦 _[options][@:options]_ ( @#options = *nil* )
++ 👨‍👦 _options_ ( @#options = *nil* )
 
 ## Returns
 
@@ -15,7 +15,7 @@ Returns any lua variable in human-readable format.
 
 ## Locals
 
-+ 📦 **[options][@:options]** ( table )
++ 📦 **[options][@#options]** ( table )
 
 ## Details
 
@@ -38,5 +38,5 @@ Fields:
 
 [Back to project root](/../..)
 
-[@:options]: #options-table
+[@#options]: #options-table
 [@]: #libinspect-function

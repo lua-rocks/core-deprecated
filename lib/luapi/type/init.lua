@@ -175,13 +175,13 @@ function Type:build_output(file)
     return '👽'
   end
 
-  local function make_links_and_titles(t)
+  local function make_links_and_titles(t, tag)
     local name = t.name
     local parent = t.parent
     local esc_name = name:gsub('%.', '')
     local esc_parent = parent:gsub('%.', '')
     local id = '@'
-    if t ~= self then id = '@:' .. name end
+    if tag then id = tag .. name end
     if parent:find '%.' then
       _links[id] = lume.format('#{1}--{2}-module', { esc_name, esc_parent })
       _titles[id] = lume.format('{1} : {2} `(module)`', { name, parent })
@@ -260,43 +260,47 @@ function Type:build_output(file)
   end
 
   local function out_components()
-    local components = {}
-    lume.extend(components, self.fields, self.returns, self.locals)
-    local first = true
-    for _, component in pairs(components) do
-      local component_is_empty =
-        not component.description and
-        not component.fields and
-        not component.returns
-      if component_is_empty then goto next end
-      make_links_and_titles(component)
-      if not first then body:add '\n---\n' end
-      body:add('\n### {1}\n', {_titles['@:' .. component.name]})
-      if component.title then
-        body:add('\n{1}.\n', {component.title})
-      end
-      if component.description then
-        body:add('\n> {1}\n', {
-          component.description
-            :gsub('\n', '\n> ')
-            :gsub('\n>%s\n', '\n>\n')
-        })
-      end
-      if component.fields then
-        if component.parent == 'function' then
-          body:add '\nArguments:\n'
-        else
-          body:add '\nFields:\n'
+    local function main_loop(components, tag)
+      local first = true
+      for _, component in pairs(components) do
+        local component_is_empty =
+          not component.description and
+          not component.fields and
+          not component.returns
+        if component_is_empty then goto next end
+        make_links_and_titles(component, tag)
+        if not first then body:add '\n---\n' end
+        body:add('\n### {1}\n', {_titles[tag .. component.name]})
+        if component.title then
+          body:add('\n{1}.\n', {component.title})
         end
-        out_list_of(component.fields, body)
+        if component.description then
+          body:add('\n> {1}\n', {
+            component.description
+              :gsub('\n', '\n> ')
+              :gsub('\n>%s\n', '\n>\n')
+          })
+        end
+        if component.fields then
+          if component.parent == 'function' then
+            body:add '\nArguments:\n'
+          else
+            body:add '\nFields:\n'
+          end
+          out_list_of(component.fields, body)
+        end
+        if component.returns then
+          body:add '\nReturns:\n'
+          out_list_of(component.returns, body)
+        end
+        first = false
+        ::next::
       end
-      if component.returns then
-        body:add '\nReturns:\n'
-        out_list_of(component.returns, body)
-      end
-      first = false
-      ::next::
     end
+
+    main_loop(lume.extend({}, self.fields, self.returns), '@:')
+    main_loop(self.locals or {}, '@#')
+
     if self.fields then
       if self.parent == 'function' then
         head:add '\n## Arguments\n'
@@ -311,7 +315,7 @@ function Type:build_output(file)
     end
     if self.locals then
       head:add '\n## Locals\n'
-      out_list_of(self.locals, head, '@:')
+      out_list_of(self.locals, head, '@#')
     end
     if body.text ~= '' then head:add '\n## Details\n' end
   end

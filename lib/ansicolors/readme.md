@@ -53,12 +53,12 @@ Background colors:
 
 ## Fields
 
-+ 👨‍👦 **[__call][@:__call]** ( @#__call )
++ 👨‍👦 **__call** ( @#__call )
 + 👨‍👦 **noReset** ( function=@#__call )
 
 ## Locals
 
-+ 💡 **[__call][@:__call]** ( function )
++ 💡 **[__call][@#__call]** ( function )
 
 ## Details
 
@@ -80,5 +80,5 @@ Returns:
 
 [Back to project root](/../..)
 
-[@:__call]: #__call-function
+[@#__call]: #__call-function
 [@]: #libansicolors-table

@@ -32,29 +32,10 @@
 
 ## Locals
 
-+ 📦 **[line][@:line]** ( table )
++ 📦 **[line][@#line]** ( table )
 	`One line of tagged block`
 
 ## Details
-
-### line `(table)`
-
-One line of tagged block.
-
-Fields:
-
-+ 📝 _name_ ( string = *nil* )
-	`First word after tag`
-+ 📝 _parent_ ( string = *nil* )
-	`Text in parentheses`
-+ 📝 _title_ ( string = *nil* )
-	`Any text at the end`
-+ 📝 _square_ ( string = *nil* )
-	`Text in square brackets`
-+ 🧮 _index_ ( integer = *nil* )
-	`Output order`
-
----
 
 ### build_output `(function)`
 
@@ -120,6 +101,23 @@ Arguments:
 
 + 📦 **self** ( table )
 
+### line `(table)`
+
+One line of tagged block.
+
+Fields:
+
++ 📝 _name_ ( string = *nil* )
+	`First word after tag`
++ 📝 _parent_ ( string = *nil* )
+	`Text in parentheses`
++ 📝 _title_ ( string = *nil* )
+	`Any text at the end`
++ 📝 _square_ ( string = *nil* )
+	`Text in square brackets`
++ 🧮 _index_ ( integer = *nil* )
+	`Output order`
+
 ## Navigation
 
 [Back to top of the document](#libluapitype--libobject-module)
@@ -128,9 +126,9 @@ Arguments:
 
 [Back to project root](/../..)
 
+[@#line]: #line-table
 [@:parse]: #parse-function
 [@]: #libluapitype--libobject-module
 [@:build_output]: #build_output-function
 [@:init]: #init-function
 [@:correct]: #correct-function
-[@:line]: #line-table

@@ -2,7 +2,6 @@ local Object = require 'lib.object'
 
 
 --[[ Plans for future
-+ FIXME: links id's uses ":" as separator for everything, including locals
 + TODO: Make docs for lume
 + TODO: Save order for all values
 + IDEA: Global links and external module types
