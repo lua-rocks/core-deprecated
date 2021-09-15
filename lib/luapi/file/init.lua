@@ -14,7 +14,7 @@ local File = Object:extend 'lib.luapi.file'
 
 
 --[[ Init file but don't read it
-= @:init   (function)
+= @>init   (function)
 > self     (@)
 > reqpath  (string)
 > fullpath (string)
@@ -31,7 +31,7 @@ end
 
 
 --[[ Read file
-= @:read  (function)
+= @>read  (function)
 > self    (@)
 < success (@) []
 ]]
@@ -63,7 +63,7 @@ end
 
 
 --[[ Parse module before everything else
-= @:parse (function)
+= @>parse (function)
 > self    (@)
 < success (@) []
 ]]
@@ -79,7 +79,7 @@ end
 
 
 --[[ Parse file
-= @:parse (function)
+= @>parse (function)
 > self    (@)
 < success (@) []
 ]]
@@ -90,7 +90,7 @@ function File:parse()
       local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
       local s = short_type_name:sub(1, 2)
       type.name = short_type_name:sub(3, -1)
-      if s == '@:' then
+      if s == '@>' then
         self.module.fields = self.module.fields or {}
         self.module.fields[type.name] = type
       elseif s == '@#' then
@@ -109,7 +109,7 @@ end
 
 
 --[[ Write @#output to the file and clean up file cache
-= @:write (function)
+= @>write (function)
 > self (@)
 < self (@)
 ]]
@@ -134,7 +134,7 @@ end
 
 
 --[[ Try to get access to type in this file by path
-= @:get_type (function)
+= @>get_type (function)
 > self       (@)
 > path       (string)
 < result     (lib.luapi.type|string)
@@ -157,7 +157,7 @@ end
 
 
 --[[ Remove cache
-= @:cleanup (function)
+= @>cleanup (function)
 > self (@)
 ]]
 function File:cleanup()

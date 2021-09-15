@@ -7,7 +7,7 @@ Some readme...
 = @ (lib.object)
 > some_field1 (some_type1) [some_default_value1] Some field title1
 > some_field2 (some_type2) [some_default_value2] Some field title2
-> class2      (@:type2) IDEA: Should be writed as method
+> class2      (@>type2) IDEA: Should be writed as method
 < lol (boolean) []
 ]]
 local M = {}
@@ -17,7 +17,7 @@ local M = {}
 You no need to describe argument `self` for methods named with colon
 (actually you no **need** to describe anything 😉
 but of course you can if you want to).
-= @:super_method (function)
+= @>super_method (function)
 > n    (number)    Spaces between tagged data will be ignored
 > x    (integer)   [2]
 < self (@)         Bli bla
@@ -29,14 +29,14 @@ end
 
 
 --[[ Mega-field
-= @:mega (lib.object)
+= @>mega (lib.object)
 > giga (any) Yay!
 ]]
 
 
 --[[ Test type 2
 If type is function and you set it as module field, it will be parsed as method
-= @:type2 (function)
+= @>type2 (function)
 > take (@#tbl) abstract type desribed below
 < give (integer)
 ]]

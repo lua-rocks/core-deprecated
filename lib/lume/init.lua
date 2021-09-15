@@ -62,7 +62,7 @@ end
 
 --[[ Returns the number x clamped between the numbers min and max
 
-= @:clamp (function)
+= @>clamp (function)
 > x (number)
 > min (number)
 > max (number)
@@ -83,7 +83,7 @@ lume.round(2.3) -- Returns 2
 lume.round(123.4567, .1) -- Returns 123.5
 ```
 
-= @:round (function)
+= @>round (function)
 > x (number)
 > increment (integer) []
 < rounded (integer)
@@ -96,7 +96,7 @@ end
 
 --[[ Returns 1 if x is 0 or above, returns -1 when x is negative
 
-= @:sign (function)
+= @>sign (function)
 > x (number)
 < sign (integer)
 ]]
@@ -114,7 +114,7 @@ it is clamped.
 lume.lerp(100, 200, .5) -- Returns 150
 ```
 
-= @:lerp (function)
+= @>lerp (function)
 > a (number)
 > b (number)
 > amount (number)
@@ -125,9 +125,9 @@ function lume.lerp(a, b, amount)
 end
 
 
---[[ Similar to @:lerp but uses cubic interpolation instead of linear
+--[[ Similar to @>lerp but uses cubic interpolation instead of linear
 
-= @:smooth (function)
+= @>smooth (function)
 > a (number)
 > b (number)
 > amount (number)
@@ -142,7 +142,7 @@ end
 
 --[[ Ping-pongs the number x between 0 and 1
 
-= @:pingpong (function)
+= @>pingpong (function)
 > x (number)
 < x (number)
 ]]
@@ -156,7 +156,7 @@ end
 If `squared` is true then the squared distance is returned.
 This is faster to calculate and can still be used when comparing distances.
 
-= @:distance (function)
+= @>distance (function)
 > x1 (number)
 > y1 (number)
 > x2 (number)
@@ -174,7 +174,7 @@ end
 
 --[[ Returns the angle between the two points
 
-= @:angle (function)
+= @>angle (function)
 > x1 (number)
 > y1 (number)
 > x2 (number)
@@ -192,7 +192,7 @@ end
 local x, y = lume.vector(0, 10) -- Returns 10, 0
 ```
 
-= @:vector (function)
+= @>vector (function)
 > angle (number)
 > magnitude (number)
 < x (number)
@@ -208,7 +208,7 @@ end
 If only `a` is supplied a number between `0` and `a` is returned. If no
 arguments are supplied a random number between `0` and `1` is returned.
 
-= @:random (function)
+= @>random (function)
 > a (number)
 > b (number)
 < random (number)
@@ -228,7 +228,7 @@ If the list is empty an error is raised.
 lume.randomchoice({true, false}) -- Returns either true or false
 ```
 
-= @:randomchoice (function)
+= @>randomchoice (function)
 > t (list)
 < value (any)
 ]]
@@ -238,7 +238,7 @@ end
 
 
 --[[
-= @:weightedchoice (function)
+= @>weightedchoice (function)
 
 Takes the argument table `t` where the keys are the possible choices and the
 value is the choice's weight. A weight should be 0 or above, the larger the
@@ -274,7 +274,7 @@ The value is assumed to be an array if it is a table which contains a value at
 the index `1`. This function is used internally and can be overridden if you
 wish to use a different method to detect arrays.
 
-= @:isarray (function)
+= @>isarray (function)
 > x (any)
 < isarray (boolean)
 ]]
@@ -292,7 +292,7 @@ local t = { 1, 2, 3 }
 lume.push(t, 4, 5) -- `t` becomes { 1, 2, 3, 4, 5 }
 ```
 
-= @:push (function)
+= @>push (function)
 > t (table)
 > ... (any)
 < ... (any)
@@ -307,7 +307,7 @@ end
 
 
 --[[
-= @:remove (function)
+= @>remove (function)
 ]]
 function lume.remove(t, x)
   local iter = getiter(t)
@@ -327,7 +327,7 @@ end
 
 
 --[[
-= @:clear (function)
+= @>clear (function)
 ]]
 function lume.clear(t)
   local iter = getiter(t)
@@ -339,7 +339,7 @@ end
 
 
 --[[
-= @:extend (function)
+= @>extend (function)
 ]]
 function lume.extend(t, ...)
   for i = 1, select("#", ...) do
@@ -355,7 +355,7 @@ end
 
 
 --[[
-= @:shuffle (function)
+= @>shuffle (function)
 ]]
 function lume.shuffle(t)
   local rtn = {}
@@ -371,7 +371,7 @@ end
 
 
 --[[
-= @:sort (function)
+= @>sort (function)
 ]]
 function lume.sort(t, comp)
   local rtn = lume.clone(t)
@@ -389,7 +389,7 @@ end
 
 
 --[[
-= @:array (function)
+= @>array (function)
 ]]
 function lume.array(...)
   local t = {}
@@ -399,7 +399,7 @@ end
 
 
 --[[
-= @:each (function)
+= @>each (function)
 ]]
 function lume.each(t, fn, ...)
   local iter = getiter(t)
@@ -413,7 +413,7 @@ end
 
 
 --[[
-= @:map (function)
+= @>map (function)
 ]]
 function lume.map(t, fn)
   fn = iteratee(fn)
@@ -425,7 +425,7 @@ end
 
 
 --[[
-= @:all (function)
+= @>all (function)
 ]]
 function lume.all(t, fn)
   fn = iteratee(fn)
@@ -438,7 +438,7 @@ end
 
 
 --[[
-= @:any (function)
+= @>any (function)
 ]]
 function lume.any(t, fn)
   fn = iteratee(fn)
@@ -451,7 +451,7 @@ end
 
 
 --[[
-= @:reduce (function)
+= @>reduce (function)
 ]]
 function lume.reduce(t, fn, first)
   local acc = first
@@ -471,7 +471,7 @@ end
 
 
 --[[
-= @:set (function)
+= @>set (function)
 ]]
 function lume.set(t)
   local rtn = {}
@@ -483,7 +483,7 @@ end
 
 
 --[[
-= @:filter (function)
+= @>filter (function)
 ]]
 function lume.filter(t, fn, retainkeys)
   fn = iteratee(fn)
@@ -503,7 +503,7 @@ end
 
 
 --[[
-= @:reject (function)
+= @>reject (function)
 ]]
 function lume.reject(t, fn, retainkeys)
   fn = iteratee(fn)
@@ -523,7 +523,7 @@ end
 
 
 --[[
-= @:merge (function)
+= @>merge (function)
 ]]
 function lume.merge(...)
   local rtn = {}
@@ -539,7 +539,7 @@ end
 
 
 --[[
-= @:concat (function)
+= @>concat (function)
 ]]
 function lume.concat(...)
   local rtn = {}
@@ -557,7 +557,7 @@ end
 
 
 --[[
-= @:find (function)
+= @>find (function)
 ]]
 function lume.find(t, value)
   local iter = getiter(t)
@@ -569,7 +569,7 @@ end
 
 
 --[[
-= @:match (function)
+= @>match (function)
 ]]
 function lume.match(t, fn)
   fn = iteratee(fn)
@@ -582,7 +582,7 @@ end
 
 
 --[[
-= @:count (function)
+= @>count (function)
 ]]
 function lume.count(t, fn)
   local count = 0
@@ -603,7 +603,7 @@ end
 
 
 --[[
-= @:slice (function)
+= @>slice (function)
 ]]
 function lume.slice(t, i, j)
   i = i and absindex(#t, i) or 1
@@ -617,7 +617,7 @@ end
 
 
 --[[
-= @:first (function)
+= @>first (function)
 ]]
 function lume.first(t, n)
   if not n then return t[1] end
@@ -626,7 +626,7 @@ end
 
 
 --[[
-= @:last (function)
+= @>last (function)
 ]]
 function lume.last(t, n)
   if not n then return t[#t] end
@@ -635,7 +635,7 @@ end
 
 
 --[[
-= @:invert (function)
+= @>invert (function)
 ]]
 function lume.invert(t)
   local rtn = {}
@@ -645,7 +645,7 @@ end
 
 
 --[[
-= @:pick (function)
+= @>pick (function)
 ]]
 function lume.pick(t, ...)
   local rtn = {}
@@ -658,7 +658,7 @@ end
 
 
 --[[
-= @:keys (function)
+= @>keys (function)
 ]]
 function lume.keys(t)
   local rtn = {}
@@ -669,7 +669,7 @@ end
 
 
 --[[
-= @:clone (function)
+= @>clone (function)
 ]]
 function lume.clone(t)
   local rtn = {}
@@ -679,7 +679,7 @@ end
 
 
 --[[
-= @:fn (function)
+= @>fn (function)
 ]]
 function lume.fn(fn, ...)
   assert(iscallable(fn), "expected a function as the first argument")
@@ -692,7 +692,7 @@ end
 
 
 --[[
-= @:once (function)
+= @>once (function)
 ]]
 function lume.once(fn, ...)
   local f = lume.fn(fn, ...)
@@ -710,7 +710,7 @@ local memoize_nil = {}
 
 
 --[[
-= @:memoize (function)
+= @>memoize (function)
 ]]
 function lume.memoize(fn)
   local cache = {}
@@ -728,7 +728,7 @@ end
 
 
 --[[
-= @:combine (function)
+= @>combine (function)
 ]]
 function lume.combine(...)
   local n = select('#', ...)
@@ -754,7 +754,7 @@ end
 
 
 --[[
-= @:call (function)
+= @>call (function)
 ]]
 function lume.call(fn, ...)
   if fn then
@@ -764,7 +764,7 @@ end
 
 
 --[[
-= @:time (function)
+= @>time (function)
 ]]
 function lume.time(fn, ...)
   local start = os.clock()
@@ -777,7 +777,7 @@ local lambda_cache = {}
 
 
 --[[
-= @:lambda (function)
+= @>lambda (function)
 ]]
 function lume.lambda(str)
   if not lambda_cache[str] then
@@ -825,7 +825,7 @@ end
 
 
 --[[
-= @:serialize (function)
+= @>serialize (function)
 ]]
 function lume.serialize(x)
   return serialize(x)
@@ -833,7 +833,7 @@ end
 
 
 --[[
-= @:deserialize (function)
+= @>deserialize (function)
 ]]
 function lume.deserialize(str)
   return lume.dostring("return " .. str)
@@ -841,7 +841,7 @@ end
 
 
 --[[
-= @:split (function)
+= @>split (function)
 ]]
 function lume.split(str, sep)
   if not sep then
@@ -855,7 +855,7 @@ end
 
 
 --[[
-= @:trim (function)
+= @>trim (function)
 ]]
 function lume.trim(str, chars)
   if not chars then return str:match("^[%s]*(.-)[%s]*$") end
@@ -865,7 +865,7 @@ end
 
 
 --[[
-= @:wordwrap (function)
+= @>wordwrap (function)
 ]]
 function lume.wordwrap(str, limit)
   limit = limit or 72
@@ -900,7 +900,7 @@ end
 
 
 --[[
-= @:format (function)
+= @>format (function)
 ]]
 function lume.format(str, vars)
   if not vars then return str end
@@ -912,7 +912,7 @@ end
 
 
 --[[
-= @:trace (function)
+= @>trace (function)
 ]]
 function lume.trace(...)
   local info = debug.getinfo(2, "Sl")
@@ -929,7 +929,7 @@ end
 
 
 --[[
-= @:dostring (function)
+= @>dostring (function)
 ]]
 function lume.dostring(str)
   return assert((loadstring or load)(str))()
@@ -937,7 +937,7 @@ end
 
 
 --[[
-= @:uuid (function)
+= @>uuid (function)
 ]]
 function lume.uuid()
   local fn = function(x)
@@ -950,7 +950,7 @@ end
 
 
 --[[
-= @:hotswap (function)
+= @>hotswap (function)
 ]]
 function lume.hotswap(modname)
   local oldglobal = lume.clone(_G)
@@ -996,7 +996,7 @@ end
 
 
 --[[
-= @:ripairs (function)
+= @>ripairs (function)
 ]]
 function lume.ripairs(t)
   return ripairs_iter, t, (#t + 1)
@@ -1004,7 +1004,7 @@ end
 
 
 --[[
-= @:color (function)
+= @>color (function)
 ]]
 function lume.color(str, mul)
   mul = mul or 1
@@ -1029,7 +1029,7 @@ end
 
 
 --[[
-= @:rgba (function)
+= @>rgba (function)
 ]]
 function lume.rgba(color)
   local a = math_floor((color / 16777216) % 256)
@@ -1052,7 +1052,7 @@ chain_mt.__index.result = function(x) return x._value end
 
 
 --[[
-= @:chain (function)
+= @>chain (function)
 ]]
 function lume.chain(value)
   return setmetatable({ _value = value }, chain_mt)

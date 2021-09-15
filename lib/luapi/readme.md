@@ -100,11 +100,12 @@ You **can't** use **ClassNames** as types because they are not unique.
 
 When you use `=` tag, you can mark your type different ways:
 
-+ **lib.luapi:line** `line` is field or method of `lib.luapi`
++ **lib.luapi>line** `line` is field or method of `lib.luapi`
++ **lib.build<result** `result` is something returned from `lib.build`
 + **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
 
 You can use symbol `@` as shorcut for **this file reqpath** anywhere:
-`@:field`, `@#private`.
+`@>field`, `@#private`.
 
 Even for subtypes: `@.subtype:field`
 
@@ -142,7 +143,7 @@ These rules are _important_:
 
 + 👨‍👦 **conf** ( @.conf )
 + 👨‍👦 **files** ( @.files )
-+ 💡 **[init][@:init]** ( function )
++ 💡 **[init][@>init]** ( function )
 
 ## Details
 
@@ -161,5 +162,5 @@ Arguments:
 
 [Back to project root](/../..)
 
-[@:init]: #init-function
+[@>init]: #init-function
 [@]: #libluapi--libobject-module

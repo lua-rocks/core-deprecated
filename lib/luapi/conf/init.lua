@@ -11,7 +11,7 @@ local Conf = Object:extend 'lib.luapi.conf'
 
 
 --[[
-= @:init (function)
+= @>init (function)
 > conf (table=lib.luapi.conf)
 ]]
 function Conf:init(conf)

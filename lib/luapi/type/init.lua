@@ -28,7 +28,7 @@ local Type = Object:extend 'lib.luapi.type'
 
 
 --[[ Take comments block and return a type
-= @:init  (function)
+= @>init  (function)
 > self    (@)
 > conf    (lib.luapi.conf)
 > block   (string) []
@@ -47,7 +47,7 @@ end
 
 
 --[[ Parse block
-= @:parse (function)
+= @>parse (function)
 > self    (@)
 > block   (string)
 > reqpath (string) []
@@ -105,7 +105,7 @@ end
 
 --[[ Correct parsed block
 Trim and remove empty strings in table values
-= @:correct (function)
+= @>correct (function)
 > self      (table)
 ]]
 function Type:correct()
@@ -142,7 +142,7 @@ There are 2 different templates for composite and simple types:
 + Example   (no spoiler)
 + Footer
 
-= @:build_output (function)
+= @>build_output (function)
 > file (lib.luapi.file)
 ]]
 function Type:build_output(file)
@@ -298,7 +298,8 @@ function Type:build_output(file)
       end
     end
 
-    main_loop(lume.extend({}, self.fields, self.returns), '@:')
+    main_loop(self.fields or {}, '@>')
+    main_loop(self.returns or {}, '@<')
     main_loop(self.locals or {}, '@#')
 
     if self.fields then
@@ -307,11 +308,11 @@ function Type:build_output(file)
       else
         head:add '\n## Fields\n'
       end
-      out_list_of(self.fields, head, '@:')
+      out_list_of(self.fields, head, '@>')
     end
     if self.returns then
       head:add '\n## Returns\n'
-      out_list_of(self.returns, head, '@:')
+      out_list_of(self.returns, head, '@>')
     end
     if self.locals then
       head:add '\n## Locals\n'

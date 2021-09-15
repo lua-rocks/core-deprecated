@@ -32,7 +32,7 @@ local Cache = Object:extend 'lib.luapi.file.cache'
 
 
 --[[ Initialize
-= @:init (function)
+= @>init (function)
 > file (lib.luapi.file)
 ]]
 function Cache:init(file)

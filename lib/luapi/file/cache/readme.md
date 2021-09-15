@@ -18,7 +18,7 @@ Gets removed after File:write() attempt.
 + 👨‍👦 **body** ( @#output )
 + 👨‍👦 **foot** ( @#output )
 + 📝 **escaped_reqpath** ( string )
-+ 💡 **[init][@:init]** ( function )
++ 💡 **[init][@>init]** ( function )
 	`Initialize`
 
 ## Locals
@@ -71,6 +71,6 @@ Returns:
 [Back to project root](/../..)
 
 [@#output.add]: #outputadd-function
-[@:init]: #init-function
 [@#output]: #output-table
+[@>init]: #init-function
 [@]: #libluapifilecache--libobject-module

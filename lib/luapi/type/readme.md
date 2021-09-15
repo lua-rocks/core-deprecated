@@ -21,13 +21,13 @@
 	`Line after >`
 + 👨‍👦 _locals_ ( list=@#line|@ = *nil* )
 	`Local types (module only)`
-+ 💡 **[parse][@:parse]** ( function )
++ 💡 **[parse][@>parse]** ( function )
 	`Parse block`
-+ 💡 **[init][@:init]** ( function )
++ 💡 **[init][@>init]** ( function )
 	`Take comments block and return a type`
-+ 💡 **[build_output][@:build_output]** ( function )
++ 💡 **[build_output][@>build_output]** ( function )
 	`Build markdown output for module-types`
-+ 💡 **[correct][@:correct]** ( function )
++ 💡 **[correct][@>correct]** ( function )
 	`Correct parsed block`
 
 ## Locals
@@ -66,6 +66,18 @@ Arguments:
 
 ---
 
+### correct `(function)`
+
+Correct parsed block.
+
+> Trim and remove empty strings in table values
+
+Arguments:
+
++ 📦 **self** ( table )
+
+---
+
 ### parse `(function)`
 
 Parse block.
@@ -88,18 +100,6 @@ Arguments:
 + 👨‍👦 **conf** ( lib.luapi.conf )
 + 📝 _block_ ( string = *nil* )
 + 📝 _reqpath_ ( string = *nil* )
-
----
-
-### correct `(function)`
-
-Correct parsed block.
-
-> Trim and remove empty strings in table values
-
-Arguments:
-
-+ 📦 **self** ( table )
 
 ### line `(table)`
 
@@ -126,9 +126,9 @@ Fields:
 
 [Back to project root](/../..)
 
-[@#line]: #line-table
-[@:parse]: #parse-function
+[@>correct]: #correct-function
 [@]: #libluapitype--libobject-module
-[@:build_output]: #build_output-function
-[@:init]: #init-function
-[@:correct]: #correct-function
+[@>build_output]: #build_output-function
+[@#line]: #line-table
+[@>init]: #init-function
+[@>parse]: #parse-function

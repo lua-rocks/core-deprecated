@@ -9,18 +9,18 @@ A collection of functions for Lua, geared towards game development.
 + 💡 **merge** ( function )
 + 💡 **format** ( function )
 + 💡 **invert** ( function )
-+ 💡 **[lerp][@:lerp]** ( function )
++ 💡 **[lerp][@>lerp]** ( function )
 	`Returns the linearly interpolated number between a and b`
 + 💡 **lambda** ( function )
 + 💡 **first** ( function )
 + 💡 **match** ( function )
-+ 💡 **[smooth][@:smooth]** ( function )
-	`Similar to @:lerp but uses cubic interpolation instead of linear`
++ 💡 **[smooth][@>smooth]** ( function )
+	`Similar to @>lerp but uses cubic interpolation instead of linear`
 + 💡 **concat** ( function )
-+ 💡 **[distance][@:distance]** ( function )
++ 💡 **[distance][@>distance]** ( function )
 	`Returns the distance between the two points`
 + 💡 **time** ( function )
-+ 💡 **[push][@:push]** ( function )
++ 💡 **[push][@>push]** ( function )
 	`Pushes all the given values to the end of the table t`
 + 💡 **extend** ( function )
 + 💡 **split** ( function )
@@ -29,32 +29,32 @@ A collection of functions for Lua, geared towards game development.
 + 💡 **set** ( function )
 + 💡 **wordwrap** ( function )
 + 💡 **slice** ( function )
-+ 💡 **[round][@:round]** ( function )
++ 💡 **[round][@>round]** ( function )
 	`Rounds x to the nearest integer`
 + 💡 **reduce** ( function )
 + 💡 **ripairs** ( function )
 + 💡 **pick** ( function )
 + 💡 **sort** ( function )
 + 💡 **trace** ( function )
-+ 💡 **[pingpong][@:pingpong]** ( function )
++ 💡 **[pingpong][@>pingpong]** ( function )
 	`Ping-pongs the number x between 0 and 1`
 + 💡 **shuffle** ( function )
 + 💡 **array** ( function )
 + 💡 **map** ( function )
-+ 💡 **[random][@:random]** ( function )
++ 💡 **[random][@>random]** ( function )
 	`Returns a random number between a and b`
 + 💡 **find** ( function )
-+ 💡 **[sign][@:sign]** ( function )
++ 💡 **[sign][@>sign]** ( function )
 	`Returns 1 if x is 0 or above, returns -1 when x is negative`
 + 💡 **color** ( function )
-+ 💡 **[randomchoice][@:randomchoice]** ( function )
++ 💡 **[randomchoice][@>randomchoice]** ( function )
 	`Returns a random value from list t`
 + 💡 **clone** ( function )
 + 💡 **uuid** ( function )
-+ 💡 **[clamp][@:clamp]** ( function )
++ 💡 **[clamp][@>clamp]** ( function )
 	`Returns the number x clamped between the numbers min and max`
 + 💡 **memoize** ( function )
-+ 💡 **[isarray][@:isarray]** ( function )
++ 💡 **[isarray][@>isarray]** ( function )
 	`Returns true if x is an array`
 + 💡 **reject** ( function )
 + 💡 **deserialize** ( function )
@@ -62,13 +62,13 @@ A collection of functions for Lua, geared towards game development.
 + 💡 **combine** ( function )
 + 💡 **chain** ( function )
 + 💡 **last** ( function )
-+ 💡 **[weightedchoice][@:weightedchoice]** ( function )
-+ 💡 **[angle][@:angle]** ( function )
++ 💡 **[weightedchoice][@>weightedchoice]** ( function )
++ 💡 **[angle][@>angle]** ( function )
 	`Returns the angle between the two points`
 + 💡 **keys** ( function )
 + 💡 **rgba** ( function )
 + 💡 **fn** ( function )
-+ 💡 **[vector][@:vector]** ( function )
++ 💡 **[vector][@>vector]** ( function )
 	`Given an angle and magnitude, returns a vector`
 + 💡 **dostring** ( function )
 + 💡 **call** ( function )
@@ -83,6 +83,20 @@ A collection of functions for Lua, geared towards game development.
 
 ## Details
 
+### sign `(function)`
+
+Returns 1 if x is 0 or above, returns -1 when x is negative.
+
+Arguments:
+
++ 🧮 **x** ( number )
+
+Returns:
+
++ 🧮 **sign** ( integer )
+
+---
+
 ### lerp `(function)`
 
 Returns the linearly interpolated number between a and b.
@@ -93,22 +107,6 @@ Returns the linearly interpolated number between a and b.
 > ```lua
 > lume.lerp(100, 200, .5) -- Returns 150
 > ```
-
-Arguments:
-
-+ 🧮 **a** ( number )
-+ 🧮 **b** ( number )
-+ 🧮 **amount** ( number )
-
-Returns:
-
-+ 🧮 **interpolated** ( number )
-
----
-
-### smooth `(function)`
-
-Similar to @:lerp but uses cubic interpolation instead of linear.
 
 Arguments:
 
@@ -143,51 +141,6 @@ Returns:
 
 ---
 
-### push `(function)`
-
-Pushes all the given values to the end of the table t.
-
-> Returns the pushed values. Nil values are ignored.
->
-> ```lua
-> local t = { 1, 2, 3 }
-> lume.push(t, 4, 5) -- `t` becomes { 1, 2, 3, 4, 5 }
-> ```
-
-Arguments:
-
-+ 📦 **t** ( table )
-+ ❓ **...** ( any )
-
-Returns:
-
-+ ❓ **...** ( any )
-
----
-
-### round `(function)`
-
-Rounds x to the nearest integer.
-
-> Rounds away from zero if we're midway between two integers. If `increment` is
-> set then the number is rounded to the nearest increment.
->
-> ```lua
-> lume.round(2.3) -- Returns 2
-> lume.round(123.4567, .1) -- Returns 123.5
-> ```
-
-Arguments:
-
-+ 🧮 **x** ( number )
-+ 🧮 _increment_ ( integer = *nil* )
-
-Returns:
-
-+ 🧮 **rounded** ( integer )
-
----
-
 ### pingpong `(function)`
 
 Ping-pongs the number x between 0 and 1.
@@ -199,38 +152,6 @@ Arguments:
 Returns:
 
 + 🧮 **x** ( number )
-
----
-
-### random `(function)`
-
-Returns a random number between a and b.
-
-> If only `a` is supplied a number between `0` and `a` is returned. If no
-> arguments are supplied a random number between `0` and `1` is returned.
-
-Arguments:
-
-+ 🧮 **a** ( number )
-+ 🧮 **b** ( number )
-
-Returns:
-
-+ 🧮 **random** ( number )
-
----
-
-### sign `(function)`
-
-Returns 1 if x is 0 or above, returns -1 when x is negative.
-
-Arguments:
-
-+ 🧮 **x** ( number )
-
-Returns:
-
-+ 🧮 **sign** ( integer )
 
 ---
 
@@ -251,6 +172,26 @@ Arguments:
 Returns:
 
 + ❓ **value** ( any )
+
+---
+
+### vector `(function)`
+
+Given an angle and magnitude, returns a vector.
+
+> ```lua
+> local x, y = lume.vector(0, 10) -- Returns 10, 0
+> ```
+
+Arguments:
+
++ 🧮 **angle** ( number )
++ 🧮 **magnitude** ( number )
+
+Returns:
+
++ 🧮 **x** ( number )
++ 🧮 **y** ( number )
 
 ---
 
@@ -327,23 +268,82 @@ Returns:
 
 ---
 
-### vector `(function)`
+### random `(function)`
 
-Given an angle and magnitude, returns a vector.
+Returns a random number between a and b.
 
+> If only `a` is supplied a number between `0` and `a` is returned. If no
+> arguments are supplied a random number between `0` and `1` is returned.
+
+Arguments:
+
++ 🧮 **a** ( number )
++ 🧮 **b** ( number )
+
+Returns:
+
++ 🧮 **random** ( number )
+
+---
+
+### round `(function)`
+
+Rounds x to the nearest integer.
+
+> Rounds away from zero if we're midway between two integers. If `increment` is
+> set then the number is rounded to the nearest increment.
+>
 > ```lua
-> local x, y = lume.vector(0, 10) -- Returns 10, 0
+> lume.round(2.3) -- Returns 2
+> lume.round(123.4567, .1) -- Returns 123.5
 > ```
 
 Arguments:
 
-+ 🧮 **angle** ( number )
-+ 🧮 **magnitude** ( number )
++ 🧮 **x** ( number )
++ 🧮 _increment_ ( integer = *nil* )
 
 Returns:
 
-+ 🧮 **x** ( number )
-+ 🧮 **y** ( number )
++ 🧮 **rounded** ( integer )
+
+---
+
+### push `(function)`
+
+Pushes all the given values to the end of the table t.
+
+> Returns the pushed values. Nil values are ignored.
+>
+> ```lua
+> local t = { 1, 2, 3 }
+> lume.push(t, 4, 5) -- `t` becomes { 1, 2, 3, 4, 5 }
+> ```
+
+Arguments:
+
++ 📦 **t** ( table )
++ ❓ **...** ( any )
+
+Returns:
+
++ ❓ **...** ( any )
+
+---
+
+### smooth `(function)`
+
+Similar to @>lerp but uses cubic interpolation instead of linear.
+
+Arguments:
+
++ 🧮 **a** ( number )
++ 🧮 **b** ( number )
++ 🧮 **amount** ( number )
+
+Returns:
+
++ 🧮 **interpolated** ( number )
 
 ## Navigation
 
@@ -353,18 +353,18 @@ Returns:
 
 [Back to project root](/../..)
 
-[@:push]: #push-function
-[@:clamp]: #clamp-function
+[@>angle]: #angle-function
+[@>pingpong]: #pingpong-function
+[@>vector]: #vector-function
 [@]: #liblume-table
-[@:lerp]: #lerp-function
-[@:randomchoice]: #randomchoice-function
-[@:smooth]: #smooth-function
-[@:angle]: #angle-function
-[@:distance]: #distance-function
-[@:random]: #random-function
-[@:weightedchoice]: #weightedchoice-function
-[@:isarray]: #isarray-function
-[@:round]: #round-function
-[@:pingpong]: #pingpong-function
-[@:vector]: #vector-function
-[@:sign]: #sign-function
+[@>distance]: #distance-function
+[@>weightedchoice]: #weightedchoice-function
+[@>clamp]: #clamp-function
+[@>push]: #push-function
+[@>sign]: #sign-function
+[@>smooth]: #smooth-function
+[@>randomchoice]: #randomchoice-function
+[@>isarray]: #isarray-function
+[@>random]: #random-function
+[@>round]: #round-function
+[@>lerp]: #lerp-function

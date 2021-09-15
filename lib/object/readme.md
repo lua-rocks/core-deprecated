@@ -83,19 +83,19 @@ Key features of this library:
 
 + 📝 **classname** ( string = *"lib.object"* )
 + 👨‍👦 **super** ( @|table = *{}* )
-+ 💡 **[each][@:each]** ( function )
++ 💡 **[each][@>each]** ( function )
 	`Loops through all elements, performing an action on each`
-+ 💡 **[extend][@:extend]** ( function )
++ 💡 **[extend][@>extend]** ( function )
 	`Creates a new class by inheritance`
-+ 💡 **[new][@:new]** ( function )
++ 💡 **[new][@>new]** ( function )
 	`Creates an instance of the class`
-+ 💡 **[implement][@:implement]** ( function )
++ 💡 **[implement][@>implement]** ( function )
 	`Sets someone else's methods`
-+ 💡 **[init][@:init]** ( function )
++ 💡 **[init][@>init]** ( function )
 	`Initializes the class`
-+ 💡 **[is][@:is]** ( function )
++ 💡 **[is][@>is]** ( function )
 	`Identifies affiliation to class`
-+ 💡 **[has][@:has]** ( function )
++ 💡 **[has][@>has]** ( function )
 	`Returns the "membership range" between self and the checking class`
 
 ## Details
@@ -233,11 +233,11 @@ Returns:
 
 [Back to project root](/../..)
 
-[@:is]: #is-function
-[@:extend]: #extend-function
-[@:implement]: #implement-function
+[@>init]: #init-function
+[@>each]: #each-function
+[@>is]: #is-function
 [@]: #libobject-table
-[@:new]: #new-function
-[@:init]: #init-function
-[@:each]: #each-function
-[@:has]: #has-function
+[@>extend]: #extend-function
+[@>has]: #has-function
+[@>implement]: #implement-function
+[@>new]: #new-function

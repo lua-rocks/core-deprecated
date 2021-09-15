@@ -64,7 +64,7 @@ You can also return self if you want to stop initialization process
 at the specific line.
 
 Notice: it can't return nil! Use false or exception message instead.
-= @:new (function)
+= @>new (function)
 > ... (any) [] Arguments passed to init
 < instance (any) []
 ]]
@@ -87,7 +87,7 @@ By default an object takes a table with fields and applies them to itself.
 But you can (and probably should) replace it with your function.
 This method should not return anything, but it can if you really want to.
 See `lib.object.new` for more details.
-= @:init (function)
+= @>init (function)
 > fields (table) [] New fields
 ]]
 function Object:init(fields)
@@ -100,7 +100,7 @@ end
 
 
 --[[ Creates a new class by inheritance
-= @:extend (function)
+= @>extend (function)
 > name (string) New class name
 > ... (table|lib.object) [] Additional properties
 < cls (lib.object)
@@ -124,7 +124,7 @@ end
 
 
 --[[ Sets someone else's methods
-= @:implement (function)
+= @>implement (function)
 > ... (table|lib.object) Methods
 ]]
 function Object:implement(...)
@@ -140,7 +140,7 @@ end
 
 --[[ Returns the "membership range" between self and the checking class
 Returns `0` if belongs to it or `false` if there is no membership.
-= @:has (function)
+= @>has (function)
 > Test (string|lib.object) Test class
 > limit (integer) [] Check depth (default unlimited)
 < membership_range (integer|boolean)
@@ -167,7 +167,7 @@ end
 
 
 --[[ Identifies affiliation to class
-= @:is (function)
+= @>is (function)
 > Test (string|lib.object)
 < result (boolean)
 ]]
@@ -179,7 +179,7 @@ end
 --[[ Loops through all elements, performing an action on each
 Can stop at fields, metafields, methods, or all.
 Always skips basic fields and methods inherent from the Object class.
-= @:each (function)
+= @>each (function)
 > etype ("field"|"method"|"meta"|"all") Item type
 > action (function:key,value,...) Action on each element
 > ... [] Additional arguments for the action

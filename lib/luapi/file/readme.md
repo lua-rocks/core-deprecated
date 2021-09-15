@@ -9,17 +9,17 @@
 + 👨‍👦 _module_ ( lib.luapi.type = *nil* )
 + 👨‍👦 _cache_ ( @.cache = *nil* )
 	`Gets removed after File:write() attempt`
-+ 💡 **[write][@:write]** ( function )
++ 💡 **[write][@>write]** ( function )
 	`Write @#output to the file and clean up file cache`
-+ 💡 **[read][@:read]** ( function )
++ 💡 **[read][@>read]** ( function )
 	`Read file`
-+ 💡 **[parse][@:parse]** ( function )
++ 💡 **[parse][@>parse]** ( function )
 	`Parse file`
-+ 💡 **[init][@:init]** ( function )
++ 💡 **[init][@>init]** ( function )
 	`Init file but don't read it`
-+ 💡 **[cleanup][@:cleanup]** ( function )
++ 💡 **[cleanup][@>cleanup]** ( function )
 	`Remove cache`
-+ 💡 **[get_type][@:get_type]** ( function )
++ 💡 **[get_type][@>get_type]** ( function )
 	`Try to get access to type in this file by path`
 
 ## Details
@@ -110,10 +110,10 @@ Returns:
 
 [Back to project root](/../..)
 
-[@:get_type]: #get_type-function
-[@:parse]: #parse-function
+[@>write]: #write-function
+[@>cleanup]: #cleanup-function
 [@]: #libluapifile--libobject-module
-[@:read]: #read-function
-[@:init]: #init-function
-[@:cleanup]: #cleanup-function
-[@:write]: #write-function
+[@>parse]: #parse-function
+[@>read]: #read-function
+[@>init]: #init-function
+[@>get_type]: #get_type-function

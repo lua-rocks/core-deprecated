@@ -10,7 +10,7 @@ local Files = Object:extend 'lib.luapi.files'
 
 
 --[[ Get paths, load, read, parse, write
-= @:init (function)
+= @>init (function)
 > self   (@)
 > luapi  (lib.luapi)
 ]]
