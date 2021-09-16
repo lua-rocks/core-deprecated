@@ -523,8 +523,19 @@ function lume.all(t, fn)
 end
 
 
---[[
+--[[ Returns true if any of the values in t table are true
+
+If a `fn` function is supplied it is called on each value, true is returned if
+any of the calls to `fn` return true.
+
+```lua
+lume.any({1, 2, 1}, function(x) return x == 1 end) -- Returns true
+```
+
 = @>any (function)
+> t (table)
+> fn (function) []
+< any (boolean)
 ]]
 function lume.any(t, fn)
   fn = iteratee(fn)

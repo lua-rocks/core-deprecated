@@ -81,7 +81,8 @@ A collection of functions for Lua, geared towards game development.
 + 💡 **dostring** ( function )
 + 💡 **call** ( function )
 + 💡 **filter** ( function )
-+ 💡 **any** ( function )
++ 💡 **[any][@>any]** ( function )
+	`Returns true if any of the values in t table are true`
 + 💡 **[remove][@>remove]** ( function )
 	`Removes the first instance of the value x if it exists in the table t`
 + 💡 **hotswap** ( function )
@@ -170,6 +171,28 @@ Arguments:
 Returns:
 
 + 📦 **t** ( table )
+
+---
+
+### any `(function)`
+
+Returns true if any of the values in t table are true.
+
+> If a `fn` function is supplied it is called on each value, true is returned if
+> any of the calls to `fn` return true.
+>
+> ```lua
+> lume.any({1, 2, 1}, function(x) return x == 1 end) -- Returns true
+> ```
+
+Arguments:
+
++ 📦 **t** ( table )
++ 💡 _fn_ ( function = *nil* )
+
+Returns:
+
++ 🔌 **any** ( boolean )
 
 ---
 
@@ -554,23 +577,24 @@ Returns:
 [@>isarray]: #isarray-function
 [@>map]: #map-function
 [@>sign]: #sign-function
-[@>remove]: #remove-function
+[@>any]: #any-function
 [@>extend]: #extend-function
-[@>clear]: #clear-function
+[@>array]: #array-function
 [@>smooth]: #smooth-function
+[@>push]: #push-function
 [@>angle]: #angle-function
-[@>each]: #each-function
+[@>pingpong]: #pingpong-function
 [@>vector]: #vector-function
 [@]: #liblume-table
 [@>distance]: #distance-function
 [@>weightedchoice]: #weightedchoice-function
 [@>shuffle]: #shuffle-function
 [@>clamp]: #clamp-function
-[@>push]: #push-function
 [@>all]: #all-function
+[@>remove]: #remove-function
 [@>sort]: #sort-function
 [@>randomchoice]: #randomchoice-function
-[@>pingpong]: #pingpong-function
+[@>clear]: #clear-function
 [@>random]: #random-function
 [@>round]: #round-function
-[@>array]: #array-function
+[@>each]: #each-function

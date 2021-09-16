@@ -4,7 +4,6 @@
 
 ## Fields
 
-+ 👨‍👦 **conf** ( lib.luapi.conf )
 + 📝 **name** ( string )
 	`First word after tag =`
 + 📝 **parent** ( string )
@@ -97,7 +96,6 @@ Take comments block and return a type.
 Arguments:
 
 + 👨‍👦 **self** ( @ )
-+ 👨‍👦 **conf** ( lib.luapi.conf )
 + 📝 _block_ ( string = *nil* )
 + 📝 _reqpath_ ( string = *nil* )
 

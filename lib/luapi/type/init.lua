@@ -4,7 +4,6 @@ local lume = require 'lib.lume'
 
 --[[ Parsed tagged comment block of any type
 = @ (lib.object)
-> conf (lib.luapi.conf)
 > name        (string)         First word after tag =
 > parent      (string)         Text in parentheses after tag =
 > title       (string)      [] Any text at the end of tag = or 1st line in block
@@ -30,15 +29,12 @@ local Type = Object:extend 'lib.luapi.type'
 --[[ Take comments block and return a type
 = @>init  (function)
 > self    (@)
-> conf    (lib.luapi.conf)
 > block   (string) []
 > reqpath (string) []
 ]]
-function Type:init(conf, block, reqpath)
-  assert(conf:is('lib.luapi.conf'))
+function Type:init(block, reqpath)
   if not block then return false end
   assert(type(block) == 'string')
-  self.conf = conf
   if block then
     self:parse(block, reqpath):correct()
   end
@@ -299,11 +295,8 @@ function Type:build_output(file)
       end
     end
 
-    main_loop(self.fields or {}, '@>')
-    main_loop(self.returns or {}, '@<')
-    main_loop(self.locals or {}, '@#')
-
     if self.fields then
+      main_loop(self.fields, '@>')
       if self.parent == 'function' then
         head:add '\n## Arguments\n'
       else
@@ -312,10 +305,12 @@ function Type:build_output(file)
       out_list_of(self.fields, head, '@>')
     end
     if self.returns then
+      main_loop(self.returns, '@<')
       head:add '\n## Returns\n'
-      out_list_of(self.returns, head, '@>')
+      out_list_of(self.returns, head, '@<')
     end
     if self.locals then
+      main_loop(self.locals, '@#')
       head:add '\n## Locals\n'
       out_list_of(self.locals, head, '@#')
     end
@@ -324,7 +319,7 @@ function Type:build_output(file)
 
   local function out_footer()
     local function get_root_path()
-      if self.conf.publish == 'github' then return '/../..' end
+      if file.conf.publish == 'github' then return '/../..' end
       local path = '..'
       local _, level = self.name:gsub('%.', '')
       if not level or level == 0 then return path end

@@ -71,7 +71,7 @@ function File:parse_module()
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     if block:find '\n=%s@%P'
     or block:find('\n=%s' .. self.cache.escaped_reqpath .. '%P') then
-      self.module = Type(self.conf, block, self.reqpath)
+      self.module = Type(block, self.reqpath)
       return self
     end
   end
@@ -85,7 +85,7 @@ end
 ]]
 function File:parse()
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
-    local type = Type(self.conf, block, self.reqpath)
+    local type = Type(block, self.reqpath)
     if type then
       local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
       local s = short_type_name:sub(1, 2)
@@ -101,7 +101,7 @@ function File:parse()
   end
   -- Convert line fields to types
   -- for name, line in pairs(self.module) do
-  --   local type = Type(self.conf, line)
+  --   local type = Type(line)
   --   if type then self.module[name] = type end
   -- end
   return self

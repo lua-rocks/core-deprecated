@@ -12,10 +12,11 @@ really want to add autocomplete support for some IDE(s).
 ### Demo
 
 Almost all `readme.md` files including this one was generated using `lib.luapi`.
-Check out `init.lua` files to see how it works. Some tests you can find
-[here](../../etc/luapi_test).
+Check out `init.lua` files to see how it works.
 
-Instruction how to run it you can find [here](../../etc/readme.md).
+Some tests you can find [here](../../etc/luapi_test).
+
+Instruction how to run them - [here](../../etc/readme.md).
 
 ### Tags
 
@@ -36,10 +37,10 @@ Can be multiline.
 _Support_ **markdown**.
 
 = src.module.example (function)
-> str (string) some string comment (one line and no markdown for such comments)
-> num (number) [2] this value becomes 2 if not set
-> opt (number) [] empty square brackets means [nil] - optional value 
-< con (string) result of concatenation
+> str (string) Some string comment (one line and no markdown for such comments)
+> num (number) [2] This value becomes 2 if not set
+> opt (number) [] Empty square brackets means [nil] - optional value 
+< con (string) Result of concatenation
 ]]
 local function example(str, num, opt)
   num = num or 2
@@ -96,7 +97,7 @@ Also you can use your defined module require paths as types:
 + **lib.luapi.block** some class or module
 + **table=lib.luapi.conf** table that has the same fields as class or module,
   but it is not necessarily an instance of it
-+ **lib.luapi.type=lib.luapi.block** custom classes can do the same
++ **lib.luapi.type=lib.luapi.block** custom types can do the same
 
 You **can't** use **ClassNames** as types because they are not unique.
 
@@ -104,7 +105,7 @@ When you use `=` tag, you can mark your type different ways:
 
 + **lib.luapi>line** `line` is field or method of `lib.luapi`
 + **lib.build<result** `result` is something returned from `lib.build`
-+ **lib.luapi#line** `line` is abstract or private type defined in `lib.luapi`
++ **lib.luapi#private** `private` is local type defined in `lib.luapi`
 
 You can use symbol `@` as shorcut for **this file reqpath** anywhere:
 `@>field`, `@#private`.
