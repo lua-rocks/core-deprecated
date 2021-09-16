@@ -4,7 +4,8 @@ local Object = require 'lib.object'
 --[[ Plans for future
 + TODO: Make docs for lume
 + TODO: Links in type description
-+ IDEA: Global links and external module types
++ IDEA: Global links
++ IDEA: Show inharited fields
 + IDEA: "Smart" mode (parse code)
 + IDEA: Add error handler module
 + IDEA: Compatibility with sumneko LSP
