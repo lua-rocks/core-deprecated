@@ -237,7 +237,7 @@ function lume.randomchoice(t)
 end
 
 
---[[
+--[[ Returns a "weighted" value from list t
 = @>weightedchoice (function)
 
 Takes the argument table `t` where the keys are the possible choices and the
@@ -306,8 +306,17 @@ function lume.push(t, ...)
 end
 
 
---[[
+--[[ Removes the first instance of the value x if it exists in the table t
+
+```lua
+local t = { 1, 2, 3 }
+lume.remove(t, 2) -- `t` becomes { 1, 3 }
+```
+
 = @>remove (function)
+> t (table)
+> x (any)
+< x (any)
 ]]
 function lume.remove(t, x)
   local iter = getiter(t)
@@ -326,8 +335,16 @@ function lume.remove(t, x)
 end
 
 
---[[
+--[[ Nils all the values in the table t, this renders the table empty
+
+```lua
+local t = { 1, 2, 3 }
+lume.clear(t) -- `t` becomes {}
+```
+
 = @>clear (function)
+> t (table)
+< t (table)
 ]]
 function lume.clear(t)
   local iter = getiter(t)
@@ -338,8 +355,19 @@ function lume.clear(t)
 end
 
 
---[[
+--[[ Copies all the fields from the source tables to the table t
+
+If a key exists in multiple tables the right-most table's value is used.
+
+```lua
+local t = { a = 1, b = 2 }
+lume.extend(t, { b = 4, c = 6 }) -- `t` becomes { a = 1, b = 4, c = 6 }
+```
+
 = @>extend (function)
+> t (table)
+> ... (table)
+< t (table)
 ]]
 function lume.extend(t, ...)
   for i = 1, select("#", ...) do
@@ -354,8 +382,11 @@ function lume.extend(t, ...)
 end
 
 
---[[
+--[[ Returns a shuffled copy of the array t
+
 = @>shuffle (function)
+> t (table)
+< shuffled (table)
 ]]
 function lume.shuffle(t)
   local rtn = {}
@@ -370,8 +401,21 @@ function lume.shuffle(t)
 end
 
 
---[[
+--[[ Returns a copy of the array t with all its items sorted
+
+If `comp` is a function it will be used to compare the items when sorting. If
+`comp` is a string it will be used as the key to sort the items by.
+
+```lua
+lume.sort({ 1, 4, 3, 2, 5 }) -- Returns { 1, 2, 3, 4, 5 }
+lume.sort({ {z=2}, {z=3}, {z=1} }, "z") -- Returns { {z=1}, {z=2}, {z=3} }
+lume.sort({ 1, 3, 2 }, function(a, b) return a > b end) -- Returns { 3, 2, 1 }
+```
+
 = @>sort (function)
+> t (table)
+> comp (function|string)
+< sorted (table)
 ]]
 function lume.sort(t, comp)
   local rtn = lume.clone(t)
@@ -388,8 +432,15 @@ function lume.sort(t, comp)
 end
 
 
---[[
+--[[ Iterates the supplied iterator and returns an array filled with the values
+
+```lua
+lume.array(string.gmatch("Hello world", "%a+")) -- Returns {"Hello", "world"}
+```
+
 = @>array (function)
+> ... (any)
+< array (array)
 ]]
 function lume.array(...)
   local t = {}
@@ -398,8 +449,22 @@ function lume.array(...)
 end
 
 
---[[
+--[[ Does somthing with each table value
+
+Iterates the table `t` and calls the function `fn` on each value followed by
+the supplied additional arguments; if `fn` is a string the method of that name
+is called for each value. The function returns `t` unmodified.
+
+```lua
+lume.each({1, 2, 3}, print) -- Prints "1", "2", "3" on separate lines
+lume.each({a, b, c}, "move", 10, 20) -- Does x:move(10, 20) on each value
+```
+
 = @>each (function)
+> t (table)
+> fn (function|string)
+> ... (any) []
+< t (table)
 ]]
 function lume.each(t, fn, ...)
   local iter = getiter(t)
@@ -412,8 +477,18 @@ function lume.each(t, fn, ...)
 end
 
 
---[[
+--[[ Applies the function fn to each value in table t
+
+Returns a new table with the resulting values.
+
+```lua
+lume.map({1, 2, 3}, function(x) return x * 2 end) -- Returns {2, 4, 6}
+```
+
 = @>map (function)
+> t (table)
+> fn (function)
+< map (table)
 ]]
 function lume.map(t, fn)
   fn = iteratee(fn)
@@ -424,8 +499,19 @@ function lume.map(t, fn)
 end
 
 
---[[
+--[[ Returns true if all the values in table are true
+
+If a `fn` function is supplied it is called on each value, true is returned if
+all of the calls to `fn` return true.
+
+```lua
+lume.all({1, 2, 1}, function(x) return x == 1 end) -- Returns false
+```
+
 = @>all (function)
+> t (table)
+> fn (function) []
+< result (boolean)
 ]]
 function lume.all(t, fn)
   fn = iteratee(fn)

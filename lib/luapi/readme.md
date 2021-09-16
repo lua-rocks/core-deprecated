@@ -82,12 +82,12 @@ different in different definitions):
 
 + **any** for any type
 + **integer** for non float number
-+ **list** for tables with integer keys
++ **list** or **array** _(synonyms)_ for tables with integer keys
 + **list=function|table** list **of** functions **or** tables
 + **{string=number|string}** table with **one** key=value
 + **{1=string,"size"=32}** similar example of two key=values
 + **{string=string...}** any number of key=values
-+ **{integer=any...}** this example is equivalent to **list**
++ **{integer=any...}** this example is equivalent to **list** or **array**
 
 Also you can use your defined module require paths as types:
 
@@ -107,7 +107,7 @@ When you use `=` tag, you can mark your type different ways:
 You can use symbol `@` as shorcut for **this file reqpath** anywhere:
 `@>field`, `@#private`.
 
-Even for subtypes: `@.subtype:field`
+Even for subtypes: `@.subtype>field`
 
 Inside field definition (`>`) you can use `?type_of_name` instead of field name
 if your table includes fields with undefined names.

@@ -167,6 +167,7 @@ function Type:build_output(file)
       ['thread']   = '🧵',
       ['userdata'] = '🔒',
       ['list']     = '📜',
+      ['array']    = '📜',
       ['any']      = '❓',
     }
     local found = basic[str]
