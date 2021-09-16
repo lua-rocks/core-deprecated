@@ -8,26 +8,18 @@
 	`First word after tag =`
 + 📝 **parent** ( string )
 	`Text in parentheses after tag =`
-+ 📝 _title_ ( string = *nil* )
-	`Any text at the end of tag = or 1st line in block`
-+ 📝 _square_ ( string = *nil* )
-	`Text in square brackets after tag =`
++ 💡 **[init][@>init]** ( function )
+	`Take comments block and return a type`
++ 💡 **[parse][@>parse]** ( function )
+	`Parse block`
 + 📝 _description_ ( string = *nil* )
 	`Not tagged lines in block`
-+ 👨‍👦 _returns_ ( list=@#line|@ = *nil* )
-	`Line after <`
++ 💡 **[build_output][@>build_output]** ( function )
+	`Build markdown output for module-types`
 + 👨‍👦 _fields_ ( list=@#line|@ = *nil* )
 	`Line after >`
 + 👨‍👦 _locals_ ( list=@#line|@ = *nil* )
 	`Local types (module only)`
-+ 💡 **[parse][@>parse]** ( function )
-	`Parse block`
-+ 💡 **[init][@>init]** ( function )
-	`Take comments block and return a type`
-+ 💡 **[build_output][@>build_output]** ( function )
-	`Build markdown output for module-types`
-+ 💡 **[correct][@>correct]** ( function )
-	`Correct parsed block`
 
 ## Locals
 

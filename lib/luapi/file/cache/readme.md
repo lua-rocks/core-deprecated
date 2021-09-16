@@ -18,8 +18,6 @@ Gets removed after File:write() attempt.
 + 👨‍👦 **body** ( @#output )
 + 👨‍👦 **foot** ( @#output )
 + 📝 **escaped_reqpath** ( string )
-+ 💡 **[init][@>init]** ( function )
-	`Initialize`
 
 ## Locals
 

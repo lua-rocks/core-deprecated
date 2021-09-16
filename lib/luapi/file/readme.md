@@ -5,22 +5,20 @@
 ## Fields
 
 + 📝 **reqpath** ( string )
-+ 📝 **fullpath** ( string )
-+ 👨‍👦 _module_ ( lib.luapi.type = *nil* )
-+ 👨‍👦 _cache_ ( @.cache = *nil* )
-	`Gets removed after File:write() attempt`
-+ 💡 **[write][@>write]** ( function )
-	`Write @#output to the file and clean up file cache`
-+ 💡 **[read][@>read]** ( function )
-	`Read file`
-+ 💡 **[parse][@>parse]** ( function )
-	`Parse file`
 + 💡 **[init][@>init]** ( function )
 	`Init file but don't read it`
-+ 💡 **[cleanup][@>cleanup]** ( function )
-	`Remove cache`
++ 💡 **[read][@>read]** ( function )
+	`Read file`
++ 👨‍👦 _cache_ ( @.cache = *nil* )
+	`Gets removed after File:write() attempt`
++ 💡 **[parse][@>parse]** ( function )
+	`Parse file`
++ 💡 **[write][@>write]** ( function )
+	`Write @#output to the file and clean up file cache`
 + 💡 **[get_type][@>get_type]** ( function )
 	`Try to get access to type in this file by path`
++ 💡 **[cleanup][@>cleanup]** ( function )
+	`Remove cache`
 
 ## Details
 

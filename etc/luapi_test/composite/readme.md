@@ -12,10 +12,6 @@ Some readme...
 	`Some field title2`
 + 👨‍👦 **class2** ( @>type2 )
 	`IDEA: Should be writed as method`
-+ 👨‍👦 **[mega][@>mega]** ( lib.object )
-	`Mega-field`
-+ 💡 **[super_method][@>super_method]** ( function )
-	`Super-duper method`
 + 💡 **[type2][@>type2]** ( function )
 	`Test type 2`
 

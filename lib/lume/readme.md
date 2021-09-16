@@ -6,91 +6,91 @@ A collection of functions for Lua, geared towards game development.
 
 ## Fields
 
-+ 💡 **merge** ( function )
-+ 💡 **format** ( function )
-+ 💡 **invert** ( function )
-+ 💡 **[lerp][@>lerp]** ( function )
-	`Returns the linearly interpolated number between a and b`
-+ 💡 **lambda** ( function )
-+ 💡 **first** ( function )
-+ 💡 **match** ( function )
-+ 💡 **[smooth][@>smooth]** ( function )
-	`Similar to @>lerp but uses cubic interpolation instead of linear`
-+ 💡 **concat** ( function )
-+ 💡 **[distance][@>distance]** ( function )
-	`Returns the distance between the two points`
-+ 💡 **time** ( function )
-+ 💡 **[push][@>push]** ( function )
-	`Pushes all the given values to the end of the table t`
-+ 💡 **[extend][@>extend]** ( function )
-	`Copies all the fields from the source tables to the table t`
-+ 💡 **split** ( function )
-+ 💡 **[each][@>each]** ( function )
-	`Does somthing with each table value`
-+ 💡 **[all][@>all]** ( function )
-	`Returns true if all the values in table are true`
-+ 💡 **set** ( function )
-+ 💡 **wordwrap** ( function )
-+ 💡 **slice** ( function )
-+ 💡 **[round][@>round]** ( function )
-	`Rounds x to the nearest integer`
-+ 💡 **reduce** ( function )
-+ 💡 **ripairs** ( function )
-+ 💡 **pick** ( function )
-+ 💡 **[sort][@>sort]** ( function )
-	`Returns a copy of the array t with all its items sorted`
-+ 💡 **trace** ( function )
-+ 💡 **[pingpong][@>pingpong]** ( function )
-	`Ping-pongs the number x between 0 and 1`
-+ 💡 **[shuffle][@>shuffle]** ( function )
-	`Returns a shuffled copy of the array t`
-+ 💡 **[array][@>array]** ( function )
-	`Iterates the supplied iterator and returns an array filled with the values`
-+ 💡 **[map][@>map]** ( function )
-	`Applies the function fn to each value in table t`
-+ 💡 **[random][@>random]** ( function )
-	`Returns a random number between a and b`
-+ 💡 **find** ( function )
-+ 💡 **[sign][@>sign]** ( function )
-	`Returns 1 if x is 0 or above, returns -1 when x is negative`
-+ 💡 **color** ( function )
-+ 💡 **[randomchoice][@>randomchoice]** ( function )
-	`Returns a random value from list t`
-+ 💡 **clone** ( function )
-+ 💡 **uuid** ( function )
 + 💡 **[clamp][@>clamp]** ( function )
 	`Returns the number x clamped between the numbers min and max`
-+ 💡 **memoize** ( function )
-+ 💡 **[isarray][@>isarray]** ( function )
-	`Returns true if x is an array`
-+ 💡 **reject** ( function )
-+ 💡 **deserialize** ( function )
-+ 💡 **once** ( function )
-+ 💡 **combine** ( function )
-+ 💡 **chain** ( function )
-+ 💡 **last** ( function )
-+ 💡 **[weightedchoice][@>weightedchoice]** ( function )
-	`Returns a "weighted" value from list t`
++ 💡 **[round][@>round]** ( function )
+	`Rounds x to the nearest integer`
++ 💡 **[sign][@>sign]** ( function )
+	`Returns 1 if x is 0 or above, returns -1 when x is negative`
++ 💡 **[lerp][@>lerp]** ( function )
+	`Returns the linearly interpolated number between a and b`
++ 💡 **[smooth][@>smooth]** ( function )
+	`Similar to @>lerp but uses cubic interpolation instead of linear`
++ 💡 **[pingpong][@>pingpong]** ( function )
+	`Ping-pongs the number x between 0 and 1`
++ 💡 **[distance][@>distance]** ( function )
+	`Returns the distance between the two points`
 + 💡 **[angle][@>angle]** ( function )
 	`Returns the angle between the two points`
-+ 💡 **keys** ( function )
-+ 💡 **rgba** ( function )
-+ 💡 **fn** ( function )
 + 💡 **[vector][@>vector]** ( function )
 	`Given an angle and magnitude, returns a vector`
-+ 💡 **dostring** ( function )
-+ 💡 **call** ( function )
-+ 💡 **filter** ( function )
-+ 💡 **[any][@>any]** ( function )
-	`Returns true if any of the values in t table are true`
++ 💡 **[random][@>random]** ( function )
+	`Returns a random number between a and b`
++ 💡 **[randomchoice][@>randomchoice]** ( function )
+	`Returns a random value from list t`
++ 💡 **[weightedchoice][@>weightedchoice]** ( function )
+	`Returns a "weighted" value from list t`
++ 💡 **[isarray][@>isarray]** ( function )
+	`Returns true if x is an array`
++ 💡 **[push][@>push]** ( function )
+	`Pushes all the given values to the end of the table t`
 + 💡 **[remove][@>remove]** ( function )
 	`Removes the first instance of the value x if it exists in the table t`
-+ 💡 **hotswap** ( function )
-+ 💡 **trim** ( function )
-+ 💡 **count** ( function )
 + 💡 **[clear][@>clear]** ( function )
 	`Nils all the values in the table t, this renders the table empty`
++ 💡 **[extend][@>extend]** ( function )
+	`Copies all the fields from the source tables to the table t`
++ 💡 **[shuffle][@>shuffle]** ( function )
+	`Returns a shuffled copy of the array t`
++ 💡 **[sort][@>sort]** ( function )
+	`Returns a copy of the array t with all its items sorted`
++ 💡 **[array][@>array]** ( function )
+	`Iterates the supplied iterator and returns an array filled with the values`
++ 💡 **[each][@>each]** ( function )
+	`Does somthing with each table value`
++ 💡 **[map][@>map]** ( function )
+	`Applies the function fn to each value in table t`
++ 💡 **[all][@>all]** ( function )
+	`Returns true if all the values in table are true`
++ 💡 **[any][@>any]** ( function )
+	`Returns true if any of the values in t table are true`
++ 💡 **reduce** ( function )
++ 💡 **set** ( function )
++ 💡 **filter** ( function )
++ 💡 **reject** ( function )
++ 💡 **merge** ( function )
++ 💡 **concat** ( function )
++ 💡 **find** ( function )
++ 💡 **match** ( function )
++ 💡 **count** ( function )
++ 💡 **slice** ( function )
++ 💡 **first** ( function )
++ 💡 **last** ( function )
++ 💡 **invert** ( function )
++ 💡 **pick** ( function )
++ 💡 **keys** ( function )
++ 💡 **clone** ( function )
++ 💡 **fn** ( function )
++ 💡 **once** ( function )
++ 💡 **memoize** ( function )
++ 💡 **combine** ( function )
++ 💡 **call** ( function )
++ 💡 **time** ( function )
++ 💡 **lambda** ( function )
 + 💡 **serialize** ( function )
++ 💡 **deserialize** ( function )
++ 💡 **split** ( function )
++ 💡 **trim** ( function )
++ 💡 **wordwrap** ( function )
++ 💡 **format** ( function )
++ 💡 **trace** ( function )
++ 💡 **dostring** ( function )
++ 💡 **uuid** ( function )
++ 💡 **hotswap** ( function )
++ 💡 **ripairs** ( function )
++ 💡 **color** ( function )
++ 💡 **rgba** ( function )
++ 💡 **chain** ( function )
 
 ## Details
 
