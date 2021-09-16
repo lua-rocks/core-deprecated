@@ -30,6 +30,7 @@ their author, by clicking on its name, but if the author is not listed, then
 they are mine and this repository is native to them.
 
 + [luapi][] - documentation (**WIP**)
++ [öbject][] - simple OOP
 + [asserts][] - multiple assertions
 + [lume][] - a set of various goodies by `rxi`
 + [inspect][] - variable inspector by `kikito`

@@ -15,6 +15,8 @@ Almost all `readme.md` files including this one was generated using `lib.luapi`.
 Check out `init.lua` files to see how it works. Some tests you can find
 [here](../../etc/luapi_test).
 
+Instruction how to run it you can find [here](../../etc/readme.md).
+
 ### Tags
 
 + `>`: function argument or table field
