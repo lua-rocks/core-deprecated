@@ -84,13 +84,15 @@ end
 ]]
 function File:parse()
   local parser = self.cache.conf.parser
+  local conten = self.cache.content
+  local escaped_reqpath = self.cache.escaped_reqpath
   if parser == 'strict' then
     local index = 1
-    for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
+    for block in conten:gmatch '%-%-%[%[.-%]%].-\n' do
       local type = Type(block, self.reqpath, parser)
       if type then
         type.index = index
-        local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
+        local short_type_name = type.name:gsub(escaped_reqpath, '@')
         local s = short_type_name:sub(1, 2)
         type.name = short_type_name:sub(3, -1)
         if s == '@>' then
