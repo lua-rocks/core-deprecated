@@ -35,6 +35,7 @@ local Cache = Object:extend 'lib.luapi.file.cache'
 --[[ Initialize
 = @>init (function)
 > file (lib.luapi.file)
+> conf (lib.luapi.conf)
 ]]
 function Cache:init(file, conf)
   local add = function(add, text, vars)
