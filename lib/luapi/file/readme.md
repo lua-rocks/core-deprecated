@@ -61,7 +61,7 @@ Arguments:
 
 Returns:
 
-+ 👨‍👦 *success* ( @ = *nil* )
++ 👨‍👦 **success** ( @ )
 
 ---
 

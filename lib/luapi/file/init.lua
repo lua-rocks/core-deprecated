@@ -80,36 +80,35 @@ end
 --[[ Parse file
 = @>parse (function)
 > self    (@)
-< success (@) []
+< success (@)
 ]]
 function File:parse()
-  local index = 1
-  for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
-    local type = Type(block, self.reqpath, self.cache.conf.parser)
-    if type then
-      type.index = index
-      local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
-      local s = short_type_name:sub(1, 2)
-      type.name = short_type_name:sub(3, -1)
-      if s == '@>' then
-        self.module.fields = self.module.fields or {}
-        self.module.fields[type.name] = type
-      elseif s == '@<' then
-        self.module.returns = self.module.returns or {}
-        self.module.returns[type.name] = type
-      elseif s == '@#' then
-        self.module.locals = self.module.locals or {}
-        self.module.locals[type.name] = type
+  local parser = self.cache.conf.parser
+  if parser == 'strict' then
+    local index = 1
+    for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
+      local type = Type(block, self.reqpath, parser)
+      if type then
+        type.index = index
+        local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
+        local s = short_type_name:sub(1, 2)
+        type.name = short_type_name:sub(3, -1)
+        if s == '@>' then
+          self.module.fields = self.module.fields or {}
+          self.module.fields[type.name] = type
+        elseif s == '@<' then
+          self.module.returns = self.module.returns or {}
+          self.module.returns[type.name] = type
+        elseif s == '@#' then
+          self.module.locals = self.module.locals or {}
+          self.module.locals[type.name] = type
+        end
       end
+      index = index + 1
     end
-    index = index + 1
+    return self
   end
-  -- Convert line fields to types
-  -- for name, line in pairs(self.module) do
-  --   local type = Type(line)
-  --   if type then self.module[name] = type end
-  -- end
-  return self
+  return false
 end
 
 
