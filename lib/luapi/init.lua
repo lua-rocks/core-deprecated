@@ -2,15 +2,16 @@ local Object = require 'lib.object'
 
 
 --[[ Plans for future
-+ TODO: Make docs for lume
-+ TODO: Links in type description
++ TODO: Add lib.luapi.type.parser
+  + "strict" (default)
+  + "smart" (parse code)
+  + "emmy" (compatibility with sumneko LSP)
+    + Ask sumneko to support my syntax
 + IDEA: Global links
-+ IDEA: Show inharited fields
-+ IDEA: "Smart" mode (parse code)
+  + IDEA: Links in type description
+  + IDEA: Show inharited fields
 + IDEA: Add error handler module
-+ IDEA: Compatibility with sumneko LSP
-  + Add emmylua tags parser
-  + Ask sumneko to support my syntax
++ IDEA: Make docs for lume
 ]]
 
 

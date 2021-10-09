@@ -9,7 +9,7 @@
 	`Init file but don't read it`
 + 💡 **[read][@>read]** ( function )
 	`Read file`
-+ 👨‍👦 _cache_ ( @.cache = *nil* )
++ 👨‍👦 *cache* ( @.cache = *nil* )
 	`Gets removed after File:write() attempt`
 + 💡 **[parse][@>parse]** ( function )
 	`Parse file`
@@ -61,7 +61,7 @@ Arguments:
 
 Returns:
 
-+ 👨‍👦 _success_ ( @ = *nil* )
++ 👨‍👦 *success* ( @ = *nil* )
 
 ---
 
@@ -98,7 +98,7 @@ Arguments:
 
 Returns:
 
-+ 👨‍👦 _success_ ( @ = *nil* )
++ 👨‍👦 *success* ( @ = *nil* )
 
 ## Navigation
 

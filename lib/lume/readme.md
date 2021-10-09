@@ -144,7 +144,7 @@ Arguments:
 + 🧮 **y1** ( number )
 + 🧮 **x2** ( number )
 + 🧮 **y2** ( number )
-+ 🔌 _squared_ ( boolean = *nil* )
++ 🔌 *squared* ( boolean = *nil* )
 
 Returns:
 
@@ -188,7 +188,7 @@ Returns true if any of the values in t table are true.
 Arguments:
 
 + 📦 **t** ( table )
-+ 💡 _fn_ ( function = *nil* )
++ 💡 *fn* ( function = *nil* )
 
 Returns:
 
@@ -213,7 +213,7 @@ Arguments:
 
 + 📦 **t** ( table )
 + 👽 **fn** ( function|string )
-+ ❓ _..._ ( any = *nil* )
++ ❓ *...* ( any = *nil* )
 
 Returns:
 
@@ -479,7 +479,7 @@ Rounds x to the nearest integer.
 Arguments:
 
 + 🧮 **x** ( number )
-+ 🧮 _increment_ ( integer = *nil* )
++ 🧮 *increment* ( integer = *nil* )
 
 Returns:
 
@@ -521,7 +521,7 @@ Returns true if all the values in table are true.
 Arguments:
 
 + 📦 **t** ( table )
-+ 💡 _fn_ ( function = *nil* )
++ 💡 *fn* ( function = *nil* )
 
 Returns:
 

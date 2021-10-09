@@ -17,7 +17,7 @@ Some readme...
 
 ## Returns
 
-+ 🔌 _lol_ ( boolean = *nil* )
++ 🔌 *lol* ( boolean = *nil* )
 
 ## Locals
 

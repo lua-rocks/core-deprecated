@@ -12,7 +12,7 @@
 	`will be concatenated with b`
 + 👨‍👦 **extra** ( @#extra )
 	`see description below`
-+ ❓ _..._ ( any = *nil* )
++ ❓ *...* ( any = *nil* )
 	`will be printed`
 
 ## Returns

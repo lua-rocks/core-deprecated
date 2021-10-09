@@ -12,13 +12,13 @@
 	`Take comments block and return a type`
 + 💡 **[parse][@>parse]** ( function )
 	`Parse block`
-+ 📝 _description_ ( string = *nil* )
++ 📝 *description* ( string = *nil* )
 	`Not tagged lines in block`
 + 💡 **[build_output][@>build_output]** ( function )
 	`Build markdown output for module-types`
-+ 👨‍👦 _fields_ ( list=@#line|@ = *nil* )
++ 👨‍👦 *fields* ( list=@#line|@ = *nil* )
 	`Line after >`
-+ 👨‍👦 _locals_ ( list=@#line|@ = *nil* )
++ 👨‍👦 *locals* ( list=@#line|@ = *nil* )
 	`Local types (module only)`
 
 ## Locals
@@ -77,7 +77,7 @@ Arguments:
 
 + 👨‍👦 **self** ( @ )
 + 📝 **block** ( string )
-+ 📝 _reqpath_ ( string = *nil* )
++ 📝 *reqpath* ( string = *nil* )
 
 ---
 
@@ -88,8 +88,9 @@ Take comments block and return a type.
 Arguments:
 
 + 👨‍👦 **self** ( @ )
-+ 📝 _block_ ( string = *nil* )
-+ 📝 _reqpath_ ( string = *nil* )
++ 📝 *block* ( string = *nil* )
++ 📝 *reqpath* ( string = *nil* )
++ 👨‍👦 *parser_mode* ( lib.luapi.conf>parser = *nil* )
 
 ### line `(table)`
 
@@ -97,15 +98,15 @@ One line of tagged block.
 
 Fields:
 
-+ 📝 _name_ ( string = *nil* )
++ 📝 *name* ( string = *nil* )
 	`First word after tag`
-+ 📝 _parent_ ( string = *nil* )
++ 📝 *parent* ( string = *nil* )
 	`Text in parentheses`
-+ 📝 _title_ ( string = *nil* )
++ 📝 *title* ( string = *nil* )
 	`Any text at the end`
-+ 📝 _square_ ( string = *nil* )
++ 📝 *square* ( string = *nil* )
 	`Text in square brackets`
-+ 🧮 _index_ ( integer = *nil* )
++ 🧮 *index* ( integer = *nil* )
 	`Output order`
 
 ## Navigation

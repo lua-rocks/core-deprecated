@@ -113,7 +113,7 @@ Arguments:
 	`Item type`
 + 👨‍👦 **action** ( function:key,value,... )
 	`Action on each element`
-+ ❓ _..._ ( any = *nil* )
++ ❓ *...* ( any = *nil* )
 	`Additional arguments for the action`
 
 Returns:
@@ -141,12 +141,12 @@ Creates an instance of the class.
 
 Arguments:
 
-+ ❓ _..._ ( any = *nil* )
++ ❓ *...* ( any = *nil* )
 	`Arguments passed to init`
 
 Returns:
 
-+ ❓ _instance_ ( any = *nil* )
++ ❓ *instance* ( any = *nil* )
 
 ---
 
@@ -185,7 +185,7 @@ Arguments:
 
 + 👨‍👦 **Test** ( string|@ )
 	`Test class`
-+ 🧮 _limit_ ( integer = *nil* )
++ 🧮 *limit* ( integer = *nil* )
 	`Check depth (default unlimited)`
 
 Returns:
@@ -205,7 +205,7 @@ Initializes the class.
 
 Arguments:
 
-+ 📦 _fields_ ( table = *nil* )
++ 📦 *fields* ( table = *nil* )
 	`New fields`
 
 ---
@@ -218,7 +218,7 @@ Arguments:
 
 + 📝 **name** ( string )
 	`New class name`
-+ 👨‍👦 _..._ ( table|@ = *nil* )
++ 👨‍👦 *...* ( table|@ = *nil* )
 	`Additional properties`
 
 Returns:

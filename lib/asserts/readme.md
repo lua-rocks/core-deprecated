@@ -10,13 +10,13 @@ The test will also fail if an error occurs during the test.
 
 ## Arguments
 
-+ 👽 _f_ ( function|string = *nil* )
-+ ❓ _..._ ( any = *nil* )
++ 👽 *f* ( function|string = *nil* )
++ ❓ *...* ( any = *nil* )
 
 ## Returns
 
-+ 👽 _f_ ( function|string = *nil* )
-+ ❓ _..._ ( any = *nil* )
++ 👽 *f* ( function|string = *nil* )
++ ❓ *...* ( any = *nil* )
 
 ## Navigation
 

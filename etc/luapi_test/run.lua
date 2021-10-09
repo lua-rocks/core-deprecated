@@ -13,7 +13,7 @@ local luapi = require 'lib.luapi' {
 }
 
 if arg[1] == 'dump' then -- dump(luapi)
-  local inspect = luapi.files["etc.luapi_test.composite"].conf--.module.fields
+  local inspect = luapi.files["etc.luapi_test.composite"].conf
   local options = { depth = tonumber(arg[2]) or 2 }
   dump(inspect, options)
 end
