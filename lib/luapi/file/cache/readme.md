@@ -18,6 +18,7 @@ Gets removed after File:write() attempt.
 + 👨‍👦 **body** ( @#output )
 + 👨‍👦 **foot** ( @#output )
 + 📝 **escaped_reqpath** ( string )
++ 👨‍👦 **conf** ( lib.luapi.conf )
 
 ## Locals
 

@@ -272,7 +272,7 @@ function Type:build_output(file)
 
   local function out_footer()
     local function get_root_path()
-      if file.conf.publish == 'github' then return '/../..' end
+      if file.cache.conf.publish == 'github' then return '/../..' end
       local path = '..'
       local _, level = self.name:gsub('%.', '')
       if not level or level == 0 then return path end

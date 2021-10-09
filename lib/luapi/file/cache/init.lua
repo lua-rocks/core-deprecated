@@ -12,6 +12,7 @@ Gets removed after File:write() attempt.
 > body (@#output)
 > foot (@#output)
 > escaped_reqpath (string)
+> conf (lib.luapi.conf)
 ]]
 local Cache = Object:extend 'lib.luapi.file.cache'
 
@@ -35,7 +36,7 @@ local Cache = Object:extend 'lib.luapi.file.cache'
 = @>init (function)
 > file (lib.luapi.file)
 ]]
-function Cache:init(file)
+function Cache:init(file, conf)
   local add = function(add, text, vars)
     if vars then
       add.text = add.text .. lume.format(text, vars)
@@ -48,6 +49,7 @@ function Cache:init(file)
     self[key] = { text = '', add = add }
   end
   self.escaped_reqpath = file.reqpath:gsub('%p', '%%%1')
+  self.conf = conf
 end
 
 

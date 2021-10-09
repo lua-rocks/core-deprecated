@@ -23,10 +23,9 @@ local File = Object:extend 'lib.luapi.file'
 function File:init(reqpath, fullpath, conf)
   asserts(function(x) return type(x) == 'string' end, reqpath, fullpath)
   assert(conf:is('lib.luapi.conf'))
-  self.conf = conf
   self.reqpath = reqpath
   self.fullpath = fullpath
-  self.cache = require 'lib.luapi.file.cache' (self)
+  self.cache = require 'lib.luapi.file.cache' (self, conf)
 end
 
 
@@ -71,7 +70,7 @@ function File:parse_module()
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
     if block:find '\n=%s@%P'
     or block:find('\n=%s' .. self.cache.escaped_reqpath .. '%P') then
-      self.module = Type(block, self.reqpath, self.conf.parser)
+      self.module = Type(block, self.reqpath, self.cache.conf.parser)
       return self
     end
   end
@@ -86,7 +85,7 @@ end
 function File:parse()
   local index = 1
   for block in self.cache.content:gmatch '%-%-%[%[.-%]%].-\n' do
-    local type = Type(block, self.reqpath, self.conf.parser)
+    local type = Type(block, self.reqpath, self.cache.conf.parser)
     if type then
       type.index = index
       local short_type_name = type.name:gsub(self.cache.escaped_reqpath, '@')
