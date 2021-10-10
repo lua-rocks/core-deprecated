@@ -32,7 +32,7 @@
 --- }
 --- lume.count(t, { age = 10 }) -- returns 2
 --- ```
----@class Lume
+---@class lume
 local lume = { _version = "2.3.0" }
 
 --- Returns the number `x` clamped between the numbers `min` and `max`.
