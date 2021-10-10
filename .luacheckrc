@@ -1,9 +1,9 @@
 ---@diagnostic disable: lowercase-global
 
 new_globals = {
-  '_', 'lume', 'Object',
-  'inspect', 'dump',
-  'assert', 'asserts',
+  '_', 'Object',
+  'love', 'lume',
+  'inspect', 'dump'
 }
 
 exclude_files = { '**/.*' }
