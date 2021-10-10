@@ -168,7 +168,7 @@ end
 ---Can stop at fields, metafields, methods, or all.
 ---Always skips basic fields and methods inherent from the Object class.
 ---Returns table with packed results, indexed by order of loop
----@param etype "field"|"method"|"meta"|"all" Item type
+---@param etype '"field"'|'"method"'|'"meta"'|'"all"' Item type
 ---@param action fun(key:any, value:any, ...): any? Action on each element
 ---@vararg any? Additional arguments for the action
 ---@return table<integer, table>
