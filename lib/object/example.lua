@@ -24,7 +24,7 @@ end
 ---@field super lib.object.example-point
 ---@field width integer
 ---@field height integer
-local Rectangle = Point:extend 'lib.object.example-rect'
+local Rectangle = Point:extend('lib.object.example-rect')
 
 function Rectangle:resize()
   Rectangle.super.resize(self) -- Extend Point's `resize()`.

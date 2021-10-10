@@ -7,8 +7,6 @@
 ---+ can subtly identify class membership
 ---+ tiny and fast, readable source
 ---@class lib.object
----@field classname string
----@field super table
 local Object = {
   classname = 'lib.object',
   super = {}
