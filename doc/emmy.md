@@ -12,7 +12,7 @@
   * [@class](#class)
   * [@field](#field)
   * [Types and @type](#types-and-type)
-  * [Comments](#Comments)
+  * [Comments](#comments)
   * [Optional Params](#optional-params)
   * [@vararg](#vararg)
   * [@alias](#alias)
