@@ -84,6 +84,7 @@ local function escapeKeys(str)
   return table.concat(buffer)
 end
 
+-- Colorize string (no reset)
 local function replaceCodes(str)
   str = string.gsub(str,"(%%{(.-)})", function(_, s) return escapeKeys(s) end )
   return str
@@ -93,7 +94,7 @@ end
 
 The colors function makes sure that color attributes are reset at each end of
 the generated string. If you want to generate complex strings piece-by-piece,
-use `colors.noReset`, which works exactly the same, but without adding the reset
+use second function, which works exactly the same, but without adding the reset
 codes at each end of the string.
 
 Misc. attributes:
@@ -128,7 +129,6 @@ Background colors:
 + cyanbg
 + whitebg
 ]]
----@class lib.ansicolors-__call
 ---@param str string
 ---@return string
 local function ansicolors( str )
@@ -138,11 +138,4 @@ local function ansicolors( str )
 end
 
 
----@class lib.ansicolors
----@field __call lib.ansicolors-__call
----@field noReset lib.ansicolors-__call
-
-
-return setmetatable({noReset = replaceCodes}, {
-  __call = function (_, str) return ansicolors (str) end
-})
+return ansicolors, replaceCodes

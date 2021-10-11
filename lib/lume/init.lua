@@ -1,6 +1,6 @@
 -- luacheck: no max line length
 
---- A collection of functions for Lua, geared towards game development.
+--- A collection of functions for Lua, geared towards game development
 --- ---
 --- Several lume functions allow a `table`, `string` or `nil` to be used in place
 --- of their iteratee function argument. The functions that provide this behaviour

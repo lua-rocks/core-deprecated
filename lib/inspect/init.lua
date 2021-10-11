@@ -310,7 +310,7 @@ function Inspector:putValue(v)
 end
 
 
----@class lib.inspect-options
+---@class lib.inspect-options:table
 ---@field depth integer? sets the maximum depth that will be printed out
 ---@field newline string? add custom newline each level of a table
 ---@field indent string? add an indent each level of a table
@@ -321,7 +321,7 @@ end
 ---@param variable any
 ---@param options lib.inspect-options
 ---@return string
-function inspect.inspect(variable, options)
+local function inspection(variable, options)
   options       = options or {}
 
   local depth   = options.depth   or math.huge
@@ -349,8 +349,5 @@ function inspect.inspect(variable, options)
   return table.concat(inspector.buffer)
 end
 
-setmetatable(inspect, { __call = function(_, ...)
-  return inspect.inspect(...)
-end })
 
-return inspect
+return inspection

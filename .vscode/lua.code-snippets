@@ -6,9 +6,9 @@
 			"local ${1:Object} = require '${2:lib.object}'",
 			"",
 			"---${0:Description}",
-			"---@class ${3:src.point}:$2",
+			"---@class ${3:src.example}:$2",
 			"---@field super $2",
-			"local ${4:Point} = $1:extend '$3'",
+			"local ${4:Example} = $1:extend '$3'",
 			""
 		],
 	},
