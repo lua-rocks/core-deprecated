@@ -1,12 +1,8 @@
-local ansicolors = require 'lib.ansicolors'
-local inspect = require 'lib.inspect'
-local lume = require 'lib.lume'
-local object = require 'lib.object'
+-- Use autocomplete after any of these requires to see documentation in VSCode.
+-- Type dot after any of these variables to see their fields and methods
+-- or type opening bracket if this is a function to see the arguments.
 
--- Use autocomplete on any of these variables to see documentation in VSCode
--- (type dot after any of these variables to see their fields and methods)
-return
-  ansicolors,
-  inspect,
-  lume,
-  object
+require 'lib.ansicolors'
+require 'lib.inspect'
+require 'lib.lume'
+require 'lib.object'
