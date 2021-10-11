@@ -1,6 +1,4 @@
 -- luacheck: no max line length
--- luacheck: no unused
--- luacheck: no global
 
 --- A collection of functions for Lua, geared towards game development.
 --- ---
@@ -35,12 +33,69 @@
 ---@class lume
 local lume = { _version = "2.3.0" }
 
+local pairs, ipairs = pairs, ipairs
+local type, assert, unpack = type, assert, unpack or table.unpack
+local tostring, tonumber = tostring, tonumber
+local math_floor = math.floor
+local math_ceil = math.ceil
+local math_atan2 = math.atan2 or math.atan
+local math_sqrt = math.sqrt
+local math_abs = math.abs
+
+local noop = function()
+end
+
+local identity = function(x)
+  return x
+end
+
+local patternescape = function(str)
+  return str:gsub("[%(%)%.%%%+%-%*%?%[%]%^%$]", "%%%1")
+end
+
+local absindex = function(len, i)
+  return i < 0 and (len + i + 1) or i
+end
+
+local iscallable = function(x)
+  if type(x) == "function" then return true end
+  local mt = getmetatable(x)
+  return mt and mt.__call ~= nil
+end
+
+local getiter = function(x)
+  if lume.isarray(x) then
+    return ipairs
+  elseif type(x) == "table" then
+    return pairs
+  end
+  error("expected table", 3)
+end
+
+local iteratee = function(x)
+  if x == nil then return identity end
+  if iscallable(x) then return x end
+  if type(x) == "table" then
+    return function(z)
+      for k, v in pairs(x) do
+        if z[k] ~= v then return false end
+      end
+      return true
+    end
+  end
+  return function(z) return z[x] end
+end
+
+
 --- Returns the number `x` clamped between the numbers `min` and `max`.
 ---@param x number
 ---@param min number
 ---@param max number
 ---@return number
-function lume.clamp(x, min, max) end
+function lume.clamp(x, min, max)
+  return x < min and min or (x > max and max or x)
+end
+
 
 --- Rounds `x` to the nearest integer; rounds away from zero if we're midway
 --- between two integers. If `increment` is set then the number is rounded to the
@@ -52,12 +107,19 @@ function lume.clamp(x, min, max) end
 ---@param x number
 ---@param increment number
 ---@return number
-function lume.round(x, increment) end
+function lume.round(x, increment)
+  if increment then return lume.round(x / increment) * increment end
+  return x >= 0 and math_floor(x + .5) or math_ceil(x - .5)
+end
+
 
 --- Returns `1` if `x` is 0 or above, returns `-1` when `x` is negative.
 ---@param x number
 ---@return number
-function lume.sign(x) end
+function lume.sign(x)
+  return x < 0 and -1 or 1
+end
+
 
 --- Returns the linearly interpolated number between `a` and `b`, `amount` should
 --- be in the range of 0 - 1; if `amount` is outside of this range it is clamped.
@@ -68,7 +130,10 @@ function lume.sign(x) end
 ---@param b number
 ---@param amount number
 ---@return number
-function lume.lerp(a, b, amount) end
+function lume.lerp(a, b, amount)
+  return a + (b - a) * lume.clamp(amount, 0, 1)
+end
+
 
 --- Similar to `lume.lerp()` but uses cubic interpolation instead of linear.
 ---@param a number
@@ -76,12 +141,20 @@ function lume.lerp(a, b, amount) end
 ---@param amount number
 ---@return number
 ---@see Lume#lerp
-function lume.smooth(a, b, amount) end
+function lume.smooth(a, b, amount)
+  local t = lume.clamp(amount, 0, 1)
+  local m = t * t * (3 - 2 * t)
+  return a + (b - a) * m
+end
+
 
 --- Ping-pongs the number `x` between 0 and 1.
 ---@param x number
 ---@return number
-function lume.pingpong(x) end
+function lume.pingpong(x)
+  return 1 - math_abs(1 - x % 2)
+end
+
 
 --- Returns the distance between the two points. If `squared` is true then the
 --- squared distance is returned -- this is faster to calculate and can still be
@@ -92,7 +165,13 @@ function lume.pingpong(x) end
 ---@param y2 number
 ---@param squared boolean
 ---@return number
-function lume.distance(x1, y1, x2, y2, squared) end
+function lume.distance(x1, y1, x2, y2, squared)
+  local dx = x1 - x2
+  local dy = y1 - y2
+  local s = dx * dx + dy * dy
+  return squared and s or math_sqrt(s)
+end
+
 
 --- Returns the angle between the two points.
 ---@param x1 number
@@ -100,7 +179,10 @@ function lume.distance(x1, y1, x2, y2, squared) end
 ---@param x2 number
 ---@param y2 number
 ---@return number
-function lume.angle(x1, y1, x2, y2) end
+function lume.angle(x1, y1, x2, y2)
+  return math_atan2(y2 - y1, x2 - x1)
+end
+
 
 --- Given an `angle` and `magnitude`, returns a vector.
 --- ```lua
@@ -109,7 +191,10 @@ function lume.angle(x1, y1, x2, y2) end
 ---@param angle number
 ---@param magnitude number
 ---@return number, number
-function lume.vector(angle, magnitude) end
+function lume.vector(angle, magnitude)
+  return math.cos(angle) * magnitude, math.sin(angle) * magnitude
+end
+
 
 --- Returns a random number between `a` and `b`. If only `a` is supplied a number
 --- between `0` and `a` is returned. If no arguments are supplied a random number
@@ -117,7 +202,12 @@ function lume.vector(angle, magnitude) end
 ---@param a number
 ---@param b number
 ---@return number
-function lume.random(a, b) end
+function lume.random(a, b)
+  if not a then a, b = 0, 1 end
+  if not b then b = 0 end
+  return a + math.random() * (b - a)
+end
+
 
 --- Returns a random value from array `t`. If the array is empty an error is
 --- raised.
@@ -126,7 +216,10 @@ function lume.random(a, b) end
 --- ```
 ---@param t table
 ---@return any
-function lume.randomchoice(t) end
+function lume.randomchoice(t)
+  return t[math.random(#t)]
+end
+
 
 --- Takes the argument table `t` where the keys are the possible choices and the
 --- value is the choice's weight. A weight should be 0 or above, the larger the
@@ -139,7 +232,20 @@ function lume.randomchoice(t) end
 --- Returns either "cat" or "dog" with "cat" being twice as likely to be chosen.
 ---@param t table
 ---@return any
-function lume.weightedchoice(t) end
+function lume.weightedchoice(t)
+  local sum = 0
+  for _, v in pairs(t) do
+    assert(v >= 0, "weight value less than zero")
+    sum = sum + v
+  end
+  assert(sum ~= 0, "all weights are zero")
+  local rnd = lume.random(sum)
+  for k, v in pairs(t) do
+    if rnd < v then return k end
+    rnd = rnd - v
+  end
+end
+
 
 --- Returns `true` if `x` is an array -- the value is assumed to be an array if it
 --- is a table which contains a value at the index `1`.
@@ -147,7 +253,10 @@ function lume.weightedchoice(t) end
 --- if you wish to use a different method to detect arrays.
 ---@param x any
 ---@return boolean
-function lume.isarray(x) end
+function lume.isarray(x)
+  return (type(x) == "table" and x[1] ~= nil) and true or false
+end
+
 
 --- Pushes all the given values to the end of the table `t` and returns the pushed
 --- values. Nil values are ignored.
@@ -157,7 +266,14 @@ function lume.isarray(x) end
 --- ```
 ---@param t table
 ---@return ...
-function lume.push(t, ...) end
+function lume.push(t, ...)
+  local n = select("#", ...)
+  for i = 1, n do
+    t[#t + 1] = select(i, ...)
+  end
+  return ...
+end
+
 
 --- Removes the first instance of the value `x` if it exists in the table `t`.
 --- Returns `x`.
@@ -168,7 +284,22 @@ function lume.push(t, ...) end
 ---@param t table
 ---@param x any
 ---@return any
-function lume.remove(t, x) end
+function lume.remove(t, x)
+  local iter = getiter(t)
+  for i, v in iter(t) do
+    if v == x then
+      if lume.isarray(t) then
+        table.remove(t, i)
+        break
+      else
+        t[i] = nil
+        break
+      end
+    end
+  end
+  return x
+end
+
 
 --- Nils all the values in the table `t`, this renders the table empty. Returns
 --- `t`.
@@ -178,7 +309,14 @@ function lume.remove(t, x) end
 --- ```
 ---@param t table
 ---@return table
-function lume.clear(t) end
+function lume.clear(t)
+  local iter = getiter(t)
+  for k in iter(t) do
+    t[k] = nil
+  end
+  return t
+end
+
 
 --- Copies all the fields from the source tables to the table `t` and returns `t`.
 --- If a key exists in multiple tables the right-most table's value is used.
@@ -189,12 +327,34 @@ function lume.clear(t) end
 ---@param t table
 ---@vararg table
 ---@return table
-function lume.extend(t, ...) end
+function lume.extend(t, ...)
+  for i = 1, select("#", ...) do
+    local x = select(i, ...)
+    if x then
+      for k, v in pairs(x) do
+        t[k] = v
+      end
+    end
+  end
+  return t
+end
+
 
 --- Returns a shuffled copy of the array `t`.
 ---@param t table[]
 ---@return table[]
-function lume.shuffle(t) end
+function lume.shuffle(t)
+  local rtn = {}
+  for i = 1, #t do
+    local r = math.random(i)
+    if r ~= i then
+      rtn[i] = rtn[r]
+    end
+    rtn[r] = t[i]
+  end
+  return rtn
+end
+
 
 --- Returns a copy of the array `t` with all its items sorted. If `comp` is a
 --- function it will be used to compare the items when sorting. If `comp` is a
@@ -207,14 +367,32 @@ function lume.shuffle(t) end
 ---@param t table[]
 ---@param comp string|function
 ---@return table[]
-function lume.sort(t, comp) end
+function lume.sort(t, comp)
+  local rtn = lume.clone(t)
+  if comp then
+    if type(comp) == "string" then
+      table.sort(rtn, function(a, b) return a[comp] < b[comp] end)
+    else
+      table.sort(rtn, comp)
+    end
+  else
+    table.sort(rtn)
+  end
+  return rtn
+end
+
 
 --- Iterates the supplied iterator and returns an array filled with the values.
 --- ```lua
 --- lume.array(string.gmatch("Hello world", "%a+")) -- Returns {"Hello", "world"}
 --- ```
 ---@return table[]
-function lume.array(...) end
+function lume.array(...)
+  local t = {}
+  for x in ... do t[#t + 1] = x end
+  return t
+end
+
 
 ---Iterates the table `t` and calls the function `fn` on each value followed by
 ---the supplied additional arguments; if `fn` is a string the method of that name
@@ -226,7 +404,16 @@ function lume.array(...) end
 ---@param t table
 ---@param fn function
 ---@return table
-function lume.each(t, fn, ...) end
+function lume.each(t, fn, ...)
+  local iter = getiter(t)
+  if type(fn) == "string" then
+    for _, v in iter(t) do v[fn](v, ...) end
+  else
+    for _, v in iter(t) do fn(v, ...) end
+  end
+  return t
+end
+
 
 --- Applies the function `fn` to each value in table `t` and returns a new table
 --- with the resulting values.
@@ -236,7 +423,14 @@ function lume.each(t, fn, ...) end
 ---@param t table
 ---@param fn function
 ---@return table
-function lume.map(t, fn) end
+function lume.map(t, fn)
+  fn = iteratee(fn)
+  local iter = getiter(t)
+  local rtn = {}
+  for k, v in iter(t) do rtn[k] = fn(v) end
+  return rtn
+end
+
 
 --- Returns true if all the values in `t` table are true. If a `fn` function is
 --- supplied it is called on each value, true is returned if all of the calls to
@@ -247,7 +441,15 @@ function lume.map(t, fn) end
 ---@param t table
 ---@param fn function
 ---@return boolean
-function lume.all(t, fn) end
+function lume.all(t, fn)
+  fn = iteratee(fn)
+  local iter = getiter(t)
+  for _, v in iter(t) do
+    if not fn(v) then return false end
+  end
+  return true
+end
+
 
 --- Returns true if any of the values in `t` table are true. If a `fn` function is
 --- supplied it is called on each value, true is returned if any of the calls to
@@ -258,7 +460,15 @@ function lume.all(t, fn) end
 ---@param t table
 ---@param fn function
 ---@return boolean
-function lume.any(t, fn) end
+function lume.any(t, fn)
+  fn = iteratee(fn)
+  local iter = getiter(t)
+  for _, v in iter(t) do
+    if fn(v) then return true end
+  end
+  return false
+end
+
 
 --- Applies `fn` on two arguments cumulative to the items of the array `t`, from
 --- left to right, so as to reduce the array to a single value. If a `first` value
@@ -272,7 +482,22 @@ function lume.any(t, fn) end
 ---@param fn function
 ---@param first any
 ---@return any
-function lume.reduce(t, fn, first) end
+function lume.reduce(t, fn, first)
+  local acc = first
+  local started = first and true or false
+  local iter = getiter(t)
+  for _, v in iter(t) do
+    if started then
+      acc = fn(acc, v)
+    else
+      acc = v
+      started = true
+    end
+  end
+  assert(started, "reduce of an empty table with no first value")
+  return acc
+end
+
 
 --- Returns a copy of the `t` array with all the duplicate values removed.
 --- ```lua
@@ -280,7 +505,14 @@ function lume.reduce(t, fn, first) end
 --- ```
 ---@param t table
 ---@return table
-function lume.unique(t) end
+function lume.unique(t)
+  local rtn = {}
+  for k in pairs(lume.invert(t)) do
+    rtn[#rtn + 1] = k
+  end
+  return rtn
+end
+
 
 --- Calls `fn` on each value of `t` table. Returns a new table with only the values
 --- where `fn` returned true. If `retainkeys` is true the table is not treated as
@@ -292,7 +524,22 @@ function lume.unique(t) end
 ---@param fn function
 ---@param retainkeys boolean
 ---@return table
-function lume.filter(t, fn, retainkeys) end
+function lume.filter(t, fn, retainkeys)
+  fn = iteratee(fn)
+  local iter = getiter(t)
+  local rtn = {}
+  if retainkeys then
+    for k, v in iter(t) do
+      if fn(v) then rtn[k] = v end
+    end
+  else
+    for _, v in iter(t) do
+      if fn(v) then rtn[#rtn + 1] = v end
+    end
+  end
+  return rtn
+end
+
 
 --- The opposite of `lume.filter()`: Calls `fn` on each value of `t` table; returns
 --- a new table with only the values where `fn` returned false. If `retainkeys` is
@@ -304,7 +551,22 @@ function lume.filter(t, fn, retainkeys) end
 ---@param fn function
 ---@param retainkeys boolean
 ---@return table
-function lume.reject(t, fn, retainkeys) end
+function lume.reject(t, fn, retainkeys)
+  fn = iteratee(fn)
+  local iter = getiter(t)
+  local rtn = {}
+  if retainkeys then
+    for k, v in iter(t) do
+      if not fn(v) then rtn[k] = v end
+    end
+  else
+    for _, v in iter(t) do
+      if not fn(v) then rtn[#rtn + 1] = v end
+    end
+  end
+  return rtn
+end
+
 
 --- Returns a new table with all the given tables merged together. If a key exists
 --- in multiple tables the right-most table's value is used.
@@ -313,7 +575,18 @@ function lume.reject(t, fn, retainkeys) end
 --- ```
 ---@vararg table
 ---@return table
-function lume.merge(...) end
+function lume.merge(...)
+  local rtn = {}
+  for i = 1, select("#", ...) do
+    local t = select(i, ...)
+    local iter = getiter(t)
+    for k, v in iter(t) do
+      rtn[k] = v
+    end
+  end
+  return rtn
+end
+
 
 --- Returns a new array consisting of all the given arrays concatenated into one.
 --- ```lua
@@ -321,7 +594,20 @@ function lume.merge(...) end
 --- ```
 ---@vararg table[]
 ---@return table[]
-function lume.concat(...) end
+function lume.concat(...)
+  local rtn = {}
+  for i = 1, select("#", ...) do
+    local t = select(i, ...)
+    if t ~= nil then
+      local iter = getiter(t)
+      for _, v in iter(t) do
+        rtn[#rtn + 1] = v
+      end
+    end
+  end
+  return rtn
+end
+
 
 --- Returns the index/key of `value` in `t`. Returns `nil` if that value does not
 --- exist in the table.
@@ -331,7 +617,14 @@ function lume.concat(...) end
 ---@param t table
 ---@param value any
 ---@return any
-function lume.find(t, value) end
+function lume.find(t, value)
+  local iter = getiter(t)
+  for k, v in iter(t) do
+    if v == value then return k end
+  end
+  return nil
+end
+
 
 --- Returns the value and key of the value in table `t` which returns true when
 --- `fn` is called on it. Returns `nil` if no such value exists.
@@ -341,7 +634,15 @@ function lume.find(t, value) end
 ---@param t table
 ---@param fn function
 ---@return any, any
-function lume.match(t, fn) end
+function lume.match(t, fn)
+  fn = iteratee(fn)
+  local iter = getiter(t)
+  for k, v in iter(t) do
+    if fn(v) then return v, k end
+  end
+  return nil
+end
+
 
 --- Counts the number of values in the table `t`. If a `fn` function is supplied it
 --- is called on each value, the number of times it returns true is counted.
@@ -352,7 +653,23 @@ function lume.match(t, fn) end
 ---@param t table
 ---@param fn function
 ---@return number
-function lume.count(t, fn) end
+function lume.count(t, fn)
+  local count = 0
+  local iter = getiter(t)
+  if fn then
+    fn = iteratee(fn)
+    for _, v in iter(t) do
+      if fn(v) then count = count + 1 end
+    end
+  else
+    if lume.isarray(t) then
+      return #t
+    end
+    for _ in iter(t) do count = count + 1 end
+  end
+  return count
+end
+
 
 --- Mimics the behaviour of Lua's `string.sub`, but operates on an array rather
 --- than a string. Creates and returns a new array of the given slice.
@@ -363,7 +680,16 @@ function lume.count(t, fn) end
 ---@param i number
 ---@param j number
 ---@return table[]
-function lume.slice(t, i, j) end
+function lume.slice(t, i, j)
+  i = i and absindex(#t, i) or 1
+  j = j and absindex(#t, j) or #t
+  local rtn = {}
+  for x = i < 1 and 1 or i, j > #t and #t or j do
+    rtn[#rtn + 1] = t[x]
+  end
+  return rtn
+end
+
 
 --- Returns the first element of an array or nil if the array is empty. If `n` is
 --- specificed an array of the first `n` elements is returned.
@@ -373,7 +699,11 @@ function lume.slice(t, i, j) end
 ---@param t table[]
 ---@param n number
 ---@return any
-function lume.first(t, n) end
+function lume.first(t, n)
+  if not n then return t[1] end
+  return lume.slice(t, 1, n)
+end
+
 
 --- Returns the last element of an array or nil if the array is empty. If `n` is
 --- specificed an array of the last `n` elements is returned.
@@ -383,7 +713,11 @@ function lume.first(t, n) end
 ---@param t table[]
 ---@param n number
 ---@return any
-function lume.last(t, n) end
+function lume.last(t, n)
+  if not n then return t[#t] end
+  return lume.slice(t, -n, -1)
+end
+
 
 --- Returns a copy of the table where the keys have become the values and the
 --- values the keys.
@@ -392,7 +726,12 @@ function lume.last(t, n) end
 --- ```
 ---@param t table
 ---@return table
-function lume.invert(t) end
+function lume.invert(t)
+  local rtn = {}
+  for k, v in pairs(t) do rtn[v] = k end
+  return rtn
+end
+
 
 --- Returns a copy of the table filtered to only contain values for the given keys.
 --- ```lua
@@ -400,17 +739,36 @@ function lume.invert(t) end
 --- ```
 ---@param t table
 ---@return table
-function lume.pick(t, ...) end
+function lume.pick(t, ...)
+  local rtn = {}
+  for i = 1, select("#", ...) do
+    local k = select(i, ...)
+    rtn[k] = t[k]
+  end
+  return rtn
+end
+
 
 --- Returns an array containing each key of the table.
 ---@param t table
 ---@return table[]
-function lume.keys(t) end
+function lume.keys(t)
+  local rtn = {}
+  local iter = getiter(t)
+  for k in iter(t) do rtn[#rtn + 1] = k end
+  return rtn
+end
+
 
 --- Returns a shallow copy of the table `t`.
 ---@param t table
 ---@return table
-function lume.clone(t) end
+function lume.clone(t)
+  local rtn = {}
+  for k, v in pairs(t) do rtn[k] = v end
+  return rtn
+end
+
 
 --- Creates a wrapper function around function `fn`, automatically inserting the
 --- arguments into `fn` which will persist every time the wrapper is called. Any
@@ -422,7 +780,39 @@ function lume.clone(t) end
 --- ```
 ---@param fn function
 ---@return function
-function lume.fn(fn, ...) end
+function lume.fn(fn, ...)
+  assert(iscallable(fn), "expected a function as the first argument")
+  local args = { ... }
+  return function(...)
+    local a = lume.concat(args, { ... })
+    return fn(unpack(a))
+  end
+end
+
+
+--- Returns a wrapper function to `fn` which takes the supplied arguments. The wrapper
+--- function will call `fn` on the first call and do nothing on any subsequent calls.
+--- ```lua
+--- local f = lume.once(print, "Hello")
+--- f() -- Prints "Hello"
+--- f() -- Does nothing
+--- ```
+--- @param fn function
+--- @return function
+function lume.once(fn, ...)
+  local f = lume.fn(fn, ...)
+  local done = false
+  return function(...)
+    if done then return end
+    done = true
+    return f(...)
+  end
+end
+
+
+local memoize_fnkey = {}
+local memoize_nil = {}
+
 
 --- Returns a wrapper function to `fn` where the results for any given set of
 --- arguments are cached. `lume.memoize()` is useful when used on functions with
@@ -432,7 +822,20 @@ function lume.fn(fn, ...) end
 --- ```
 ---@param fn function
 ---@return function
-function lume.once(fn, ...) end
+function lume.memoize(fn)
+  local cache = {}
+  return function(...)
+    local c = cache
+    for i = 1, select("#", ...) do
+      local a = select(i, ...) or memoize_nil
+      c[a] = c[a] or {}
+      c = c[a]
+    end
+    c[memoize_fnkey] = c[memoize_fnkey] or {fn(...)}
+    return unpack(c[memoize_fnkey])
+  end
+end
+
 
 --- Creates a wrapper function which calls each supplied argument in the order they
 --- were passed to `lume.combine()`; nil arguments are ignored. The wrapper
@@ -445,7 +848,28 @@ function lume.once(fn, ...) end
 --- ```
 ---@vararg function
 ---@return function
-function lume.combine(...) end
+function lume.combine(...)
+  local n = select('#', ...)
+  if n == 0 then return noop end
+  if n == 1 then
+    local fn = select(1, ...)
+    if not fn then return noop end
+    assert(iscallable(fn), "expected a function or nil")
+    return fn
+  end
+  local funcs = {}
+  for i = 1, n do
+    local fn = select(i, ...)
+    if fn ~= nil then
+      assert(iscallable(fn), "expected a function or nil")
+      funcs[#funcs + 1] = fn
+    end
+  end
+  return function(...)
+    for _, f in ipairs(funcs) do f(...) end
+  end
+end
+
 
 --- Calls the given function with the provided arguments and returns its values. If
 --- `fn` is `nil` then no action is performed and the function returns `nil`.
@@ -454,7 +878,12 @@ function lume.combine(...) end
 --- ```
 ---@param fn function
 ---@return function
-function lume.call(fn, ...) end
+function lume.call(fn, ...)
+  if fn then
+    return fn(...)
+  end
+end
+
 
 --- Inserts the arguments into function `fn` and calls it. Returns the time in
 --- seconds the function `fn` took to execute followed by `fn`'s returned values.
@@ -463,7 +892,15 @@ function lume.call(fn, ...) end
 --- ```
 ---@param fn function
 ---@return number
-function lume.time(fn, ...) end
+function lume.time(fn, ...)
+  local start = os.clock()
+  local rtn = {fn(...)}
+  return (os.clock() - start), unpack(rtn)
+end
+
+
+local lambda_cache = {}
+
 
 --- Takes a string lambda and returns a function. `str` should be a list of
 --- comma-separated parameters, followed by `->`, followed by the expression which
@@ -474,7 +911,50 @@ function lume.time(fn, ...) end
 --- ```
 ---@param str string
 ---@return function
-function lume.lambda(str) end
+function lume.lambda(str)
+  if not lambda_cache[str] then
+    local args, body = str:match([[^([%w,_ ]-)%->(.-)$]])
+    assert(args and body, "bad string lambda")
+    local s = "return function(" .. args .. ")\nreturn " .. body .. "\nend"
+    lambda_cache[str] = lume.dostring(s)
+  end
+  return lambda_cache[str]
+end
+
+
+local serialize
+
+local serialize_map = {
+  [ "boolean" ] = tostring,
+  [ "nil"     ] = tostring,
+  [ "string"  ] = function(v) return string.format("%q", v) end,
+  [ "number"  ] = function(v)
+    if      v ~=  v     then return  "0/0"      --  nan
+    elseif  v ==  1 / 0 then return  "1/0"      --  inf
+    elseif  v == -1 / 0 then return "-1/0" end  -- -inf
+    return tostring(v)
+  end,
+  [ "table"   ] = function(t, stk)
+    stk = stk or {}
+    if stk[t] then error("circular reference") end
+    local rtn = {}
+    stk[t] = true
+    for k, v in pairs(t) do
+      rtn[#rtn + 1] = "[" .. serialize(k, stk) .. "]=" .. serialize(v, stk)
+    end
+    stk[t] = nil
+    return "{" .. table.concat(rtn, ",") .. "}"
+  end
+}
+
+setmetatable(serialize_map, {
+  __index = function(_, k) error("unsupported serialize type: " .. k) end
+})
+
+serialize = function(x, stk)
+  return serialize_map[type(x)](x, stk)
+end
+
 
 --- Serializes the argument `x` into a string which can be loaded again using
 --- `lume.deserialize()`. Only booleans, numbers, tables and strings can be
@@ -486,7 +966,10 @@ function lume.lambda(str) end
 --- ```
 ---@param x any
 ---@return string
-function lume.serialize(x) end
+function lume.serialize(x)
+  return serialize(x)
+end
+
 
 --- Deserializes a string created by `lume.serialize()` and returns the resulting
 --- value. This function should not be run on an untrusted string.
@@ -495,7 +978,10 @@ function lume.serialize(x) end
 --- ```
 ---@param str string
 ---@return any
-function lume.deserialize(str) end
+function lume.deserialize(str)
+  return lume.dostring("return " .. str)
+end
+
 
 --- Returns an array of the words in the string `str`. If `sep` is provided it is
 --- used as the delimiter, consecutive delimiters are not grouped together and will
@@ -507,7 +993,16 @@ function lume.deserialize(str) end
 ---@param str string
 ---@param sep string
 ---@return table[]
-function lume.split(str, sep) end
+function lume.split(str, sep)
+  if not sep then
+    return lume.array(str:gmatch("([%S]+)"))
+  else
+    assert(sep ~= "", "empty separator")
+    local psep = patternescape(sep)
+    return lume.array((str..sep):gmatch("(.-)("..psep..")"))
+  end
+end
+
 
 --- Trims the whitespace from the start and end of the string `str` and returns the
 --- new string. If a `chars` value is set the characters in `chars` are trimmed
@@ -518,7 +1013,12 @@ function lume.split(str, sep) end
 ---@param str string
 ---@param chars string
 ---@return string
-function lume.trim(str, chars) end
+function lume.trim(str, chars)
+  if not chars then return str:match("^[%s]*(.-)[%s]*$") end
+  chars = patternescape(chars)
+  return str:match("^[" .. chars .. "]*(.-)[" .. chars .. "]*$")
+end
+
 
 --- Returns `str` wrapped to `limit` number of characters per line, by default
 --- `limit` is `72`. `limit` can also be a function which when passed a string,
@@ -530,7 +1030,37 @@ function lume.trim(str, chars) end
 ---@param str string
 ---@param limit number
 ---@return string
-function lume.wordwrap(str, limit) end
+function lume.wordwrap(str, limit)
+  limit = limit or 72
+  local check
+  if type(limit) == "number" then
+    check = function(s) return #s >= limit end
+  else
+    check = limit
+  end
+  local rtn = {}
+  local line = ""
+  for word, spaces in str:gmatch("(%S+)(%s*)") do
+    local s = line .. word
+    if check(s) then
+      table.insert(rtn, line .. "\n")
+      line = word
+    else
+      line = s
+    end
+    for c in spaces:gmatch(".") do
+      if c == "\n" then
+        table.insert(rtn, line .. "\n")
+        line = ""
+      else
+        line = line .. c
+      end
+    end
+  end
+  table.insert(rtn, line)
+  return table.concat(rtn)
+end
+
 
 --- Returns a formatted string. The values of keys in the table `vars` can be
 --- inserted into the string by using the form `"{key}"` in `str`; numerical keys
@@ -542,7 +1072,14 @@ function lume.wordwrap(str, limit) end
 ---@param str string
 ---@param vars table
 ---@return string
-function lume.format(str, vars) end
+function lume.format(str, vars)
+  if not vars then return str end
+  local f = function(x)
+    return tostring(vars[x] or vars[tonumber(x)] or "{" .. x .. "}")
+  end
+  return (str:gsub("{(.-)}", f))
+end
+
 
 --- Prints the current filename and line number followed by each argument separated
 --- by a space.
@@ -550,20 +1087,43 @@ function lume.format(str, vars) end
 --- -- Assuming the file is called "example.lua" and the next line is 12:
 --- lume.trace("hello", 1234) -- Prints "example.lua:12: hello 1234"
 --- ```
-function lume.trace(...) end
+function lume.trace(...)
+  local info = debug.getinfo(2, "Sl")
+  local t = { info.short_src .. ":" .. info.currentline .. ":" }
+  for i = 1, select("#", ...) do
+    local x = select(i, ...)
+    if type(x) == "number" then
+      x = string.format("%g", lume.round(x, .01))
+    end
+    t[#t + 1] = tostring(x)
+  end
+  print(table.concat(t, " "))
+end
+
 
 --- Executes the lua code inside `str`.
 --- ```lua
 --- lume.dostring("print('Hello!')") -- Prints "Hello!"
 --- ```
 ---@param str string
----@return any Assert.
-function lume.dostring(str) end
+---@return any
+function lume.dostring(str)
+  return assert((loadstring or load)(str))()
+end
+
 
 --- Generates a random UUID string; version 4 as specified in
 --- [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt).
 ---@return string
-function lume.uuid() end
+function lume.uuid()
+  local fn = function(x)
+    local r = math.random(16) - 1
+    r = (x == "x") and (r + 1) or (r % 4) + 9
+    return ("0123456789abcdef"):sub(r, r)
+  end
+  return (("xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"):gsub("[xy]", fn))
+end
+
 
 --- Reloads an already loaded module in place, allowing you to immediately see the
 --- effects of code changes without having to restart the program. `modname` should
@@ -576,7 +1136,48 @@ function lume.uuid() end
 --- ```
 ---@param modname string
 ---@return table
-function lume.hotswap(modname) end
+function lume.hotswap(modname)
+  local oldglobal = lume.clone(_G)
+  local updated = {}
+  local function update(old, new)
+    if updated[old] then return end
+    updated[old] = true
+    local oldmt, newmt = getmetatable(old), getmetatable(new)
+    if oldmt and newmt then update(oldmt, newmt) end
+    for k, v in pairs(new) do
+      if type(v) == "table" then update(old[k], v) else old[k] = v end
+    end
+  end
+  local err = nil
+  local function onerror(e)
+    for k in pairs(_G) do _G[k] = oldglobal[k] end
+    err = lume.trim(e)
+  end
+  local ok, oldmod = pcall(require, modname)
+  oldmod = ok and oldmod or nil
+  xpcall(function()
+    package.loaded[modname] = nil
+    local newmod = require(modname)
+    if type(oldmod) == "table" then update(oldmod, newmod) end
+    for k, v in pairs(oldglobal) do
+      if v ~= _G[k] and type(v) == "table" then
+        update(v, _G[k])
+        _G[k] = v
+      end
+    end
+  end, onerror)
+  package.loaded[modname] = oldmod
+  if err then return nil, err end
+  return oldmod
+end
+
+
+local ripairs_iter = function(t, i)
+  i = i - 1
+  local v = t[i]
+  if v then return i, v end
+end
+
 
 --- Performs the same function as `ipairs()` but iterates in reverse; this allows
 --- the removal of items from the table during iteration without any items being
@@ -589,7 +1190,10 @@ function lume.hotswap(modname) end
 --- Prints "3->c", "2->b" and "1->a" on separate lines
 ---@param t table
 ---@return function, table, number
-function lume.ripairs(t) end
+function lume.ripairs(t)
+  return ripairs_iter, t, (#t + 1)
+end
+
 
 --- Takes color string `str` and returns 4 values, one for each color channel (`r`,
 --- `g`, `b` and `a`). By default the returned values are between 0 and 1; the
@@ -603,7 +1207,38 @@ function lume.ripairs(t) end
 ---@param str string
 ---@param mul number
 ---@return number, number, number, number
-function lume.color(str, mul) end
+function lume.color(str, mul)
+  mul = mul or 1
+  local r, g, b, a
+  r, g, b = str:match("#(%x%x)(%x%x)(%x%x)")
+  if r then
+    r = tonumber(r, 16) / 0xff
+    g = tonumber(g, 16) / 0xff
+    b = tonumber(b, 16) / 0xff
+    a = 1
+  elseif str:match("rgba?%s*%([%d%s%.,]+%)") then
+    local f = str:gmatch("[%d.]+")
+    r = (f() or 0) / 0xff
+    g = (f() or 0) / 0xff
+    b = (f() or 0) / 0xff
+    a = f() or 1
+  else
+    error(("bad color string '%s'"):format(str))
+  end
+  return r * mul, g * mul, b * mul, a * mul
+end
+
+
+local chain_mt = {}
+chain_mt.__index = lume.map(lume.filter(lume, iscallable, true),
+  function(fn)
+    return function(self, ...)
+      self._value = fn(self._value, ...)
+      return self
+    end
+  end)
+chain_mt.__index.result = function(x) return x._value end
+
 
 --- Returns a wrapped object which allows chaining of lume functions. The function
 --- result() should be called at the end of the chain to return the resulting
@@ -621,6 +1256,15 @@ function lume.color(str, mul) end
 --- ```
 ---@param value any
 ---@return table
-function lume.chain(value) end
+function lume.chain(value)
+  return setmetatable({ _value = value }, chain_mt)
+end
+
+setmetatable(lume,  {
+  __call = function(_, ...)
+    return lume.chain(...)
+  end
+})
+
 
 return lume
