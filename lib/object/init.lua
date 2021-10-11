@@ -132,6 +132,7 @@ end
 
 ---Returns the "membership range" between self and the checking class
 ---Returns `0` if belongs to it or `false` if there is no membership.
+---Positive number means number of subclasses between `self` and `Test`.
 ---@param Test string|lib.object Test class
 ---@param limit? integer Check depth (default unlimited)
 ---@return integer|boolean
