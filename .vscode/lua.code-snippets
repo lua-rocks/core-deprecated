@@ -1,0 +1,15 @@
+{
+	"Class extend": {
+		"prefix": "class",
+		"description": "Create new class via inheritance",
+		"body": [
+			"local $1 = require '$2'",
+			"",
+			"---${0:Description}",
+			"---@class $3:$2",
+			"---@field super $2",
+			"local Point = $1:extend '$3'",
+			""
+		],
+	},
+}
