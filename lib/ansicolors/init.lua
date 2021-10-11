@@ -131,11 +131,8 @@ Background colors:
 ---@param noReset? boolean
 ---@return string
 local function ansicolors(str, noReset)
-  if noReset then
-    return replaceCodes(str)
-  end
-  str = tostring(str or '')
-
+  str = tostring(str) or ''
+  if noReset then return replaceCodes(str) end
   return replaceCodes('%{reset}' .. str .. '%{reset}')
 end
 
