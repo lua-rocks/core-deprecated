@@ -1,4 +1,3 @@
----@type lib.ansicolors|lib.ansicolors-__call
 local colors = require 'lib.ansicolors'
 
 
