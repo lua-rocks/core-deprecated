@@ -3,12 +3,12 @@
 		"prefix": "class",
 		"description": "Create new class via inheritance",
 		"body": [
-			"local $1 = require '$2'",
+			"local ${1:Object} = require '${2:lib.object}'",
 			"",
 			"---${0:Description}",
-			"---@class $3:$2",
+			"---@class ${3:src.point}:$2",
 			"---@field super $2",
-			"local Point = $1:extend '$3'",
+			"local ${4:Point} = $1:extend '$3'",
 			""
 		],
 	},
