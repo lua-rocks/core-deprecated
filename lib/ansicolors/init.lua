@@ -93,9 +93,7 @@ end
 --[[ Colorize string
 
 The colors function makes sure that color attributes are reset at each end of
-the generated string. If you want to generate complex strings piece-by-piece,
-use second function, which works exactly the same, but without adding the reset
-codes at each end of the string.
+the generated string.
 
 Misc. attributes:
 
@@ -130,12 +128,16 @@ Background colors:
 + whitebg
 ]]
 ---@param str string
+---@param noReset? boolean
 ---@return string
-local function ansicolors( str )
+local function ansicolors(str, noReset)
+  if noReset then
+    return replaceCodes(str)
+  end
   str = tostring(str or '')
 
   return replaceCodes('%{reset}' .. str .. '%{reset}')
 end
 
 
-return ansicolors, replaceCodes
+return ansicolors
