@@ -23,3 +23,18 @@ local Point = Object:extend 'lib.object.example-point'
 ```
 
 Use the `class` snippet for convenience.
+
+## Core VSCode plugins
+
+Lua
+
++ sumneko.lua
++ tomblind.local-lua-debugger-vscode
+
+Markdown
+
++ yzhang.markdown-all-in-one
++ davidanson.vscode-markdownlint
++ marvhen.reflow-markdown
++ fcrespo82.markdown-table-formatter
++ jayfidev.tablegenerator
