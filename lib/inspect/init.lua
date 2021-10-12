@@ -314,7 +314,7 @@ end
 ---@field depth integer? sets the maximum depth that will be printed out
 ---@field newline string? add custom newline each level of a table
 ---@field indent string? add an indent each level of a table
----@field process function? additional handler
+---@field process fun(...): any? additional handler
 
 
 ---Returns any lua variable in human-readable format.
