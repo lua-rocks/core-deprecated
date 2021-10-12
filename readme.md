@@ -12,7 +12,7 @@ Please name your classes according to their require paths
 so that they are always unique.
 
 If the file contains several classes, separate the internal ones with a hyphen
-("`-`"), in format `reqpath-classname`.
+(`-`), in format `reqpath-classname`.
 
 ```lua
 ---@type lib.object
