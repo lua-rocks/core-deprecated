@@ -32,12 +32,13 @@ end
 ---@param self lib.object Apply from
 ---@param apply_here table Apply to
 local function apply_meta_index_from_parents(self, apply_here)
-  if self.__index == nil then apply_here.__index = self return end
+  local i = self.__index
+  if i == nil then apply_here.__index = self return end
+  local t = type(i)
+  local v
   apply_here.__index = function(instance, key)
-    local t = type(self.__index)
-    local v
-    if t == 'function' then v = self.__index(instance, key)
-      elseif t == 'table' then v = self.__index[key]
+    if t == 'function' then v = i(instance, key)
+      elseif t == 'table' then v = i[key]
       else error('"__index" must be a function or table', 2)
     end
     if v ~= nil then return v end
